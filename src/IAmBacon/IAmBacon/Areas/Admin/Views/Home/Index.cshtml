@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Admin Index</h2>
+<h3>User Admin</h3>
+<ul>
+    <li>@Html.ActionLink("View Users", "Index", "User")</li>
+</ul>
+<h3>Post Admin</h3>
+<ul>
+    <li>@Html.ActionLink("View Posts", "Index", "Post")</li>
+</ul>
+<h3>Categories</h3>
+<ul>
+    <li>@Html.ActionLink("View Categories", "Index", "Category")</li>
+</ul>
+<h3>Tags</h3>
+<ul>
+    <li>@Html.ActionLink("View Tags", "Index", "Tag")</li>
+</ul>
+<h3>Comments</h3>
+<ul>
+    <li>@Html.ActionLink("View Comments", "Index", "Comment")</li>
+</ul>
+<h3>Templates</h3>
+<ul>
+    <li>@Html.ActionLink("Blog Post version 2", "Index", "Template", new { id = 2 }, null)</li>
+    <li>@Html.ActionLink("Blog Post", "Index", "Template", new { id = 0 }, null)</li>
+    <li>@Html.ActionLink("Blog Landing Page", "Index", "Template", new { id = 1 }, null)</li>
+</ul>

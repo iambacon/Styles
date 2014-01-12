@@ -1,0 +1,18 @@
+@mixin font-size($value: 16px) {
+	font-size: $value;
+	font-size: rem($value);
+}
+
+@mixin transition ($transition) {
+	-webkit-transition: $transition;  
+	-moz-transition:    $transition;
+	-ms-transition:     $transition; 
+	-o-transition:      $transition;  
+	transition:			$transition;
+}
+
+@mixin box-sizing ($type: border-box) {
+	-webkit-box-sizing: $type;
+	-moz-box-sizing:    $type;
+	box-sizing:         $type;
+}

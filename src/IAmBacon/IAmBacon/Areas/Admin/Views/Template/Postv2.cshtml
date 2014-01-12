@@ -1,0 +1,79 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Background fail - Chrome bug with background-size - I am Bacon</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/bundles/postCss")
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><a href="/">I am Bacon.</a></h1>
+            <a href="http://feeds.feedburner.com/iambacon" title="Subscribe to my blog">Subscribe to my blog</a>
+        </header>
+        <main class="content">
+            <article>
+                <header>
+                    <h1>Background fail - Chrome bug with background-size</h1>
+                    <ul>
+                        <li>
+                            <strong>Published:</strong>
+                            <time datetime="2013-09-13T17:31:43">2013-09-13 17:31</time>
+                        </li>
+                        <li>
+                            <strong>Category:</strong>
+                            <a href="/blog/category/css">CSS</a>
+                        </li>
+                    </ul>
+                </header>
+                <p>Background-size is a great addition to CSS, but there appears to be a bug with it in the latest Chrome (29 at time of writing).</p>
+                <h2>The background</h2>
+                <p>I came across this issue whilst adding a logo for Retina (high density) screens.  The idea behind Retina images is to create an image twice the size of the original.  
+                    For example if the original size is 100px x 100px, then your Retina image size will be 200px x 200px.  Adding our regular logo as a background image we would do something like this:</p>
+                <p>Then to target Retina displays we can use a media query:</p>
+                <p>Here we are using our 200px x 200px image and sizing it to 100px x 100px.  This gives us a nice sharp image on Retina displays.</p>
+                <h2>So what's your beef?</h2>
+                <p>Testing this in mobile safari worked as expected and also in Chrome (18) for Android.  Then testing on a newer Android in Chrome (29), 
+                    the Retina image was being used but background-size was not kicking in. </p>
+                <p>After much Googling and this excellent <a href="http://chriswharton.me/2012/08/google-chrome-for-macbook-pro-Retina-bug/">post</a> from Chris Wharton, 
+                    it's appears that a bug has been introduced to Chrome certainly after version 18.</p>
+                <h2>The bug</h2>
+                <p>If you put <code>background-size</code> before <code>background</code> Chrome seems to ignore it.  But placing it after does the trick!</p>
+                <p>And all is good in the Retina world again.</p>
+                <footer>
+                    <ul>
+                        <li>
+                            <strong>Tags:</strong>
+                            <a href="/blog/tag/chrome">Chrome</a>
+                            <a href="/blog/tag/bug">bug</a>
+                        </li>
+                        <li>
+                            <strong>Author:</strong>
+                            Colin Bacon
+                        </li>
+                    </ul>
+                </footer>
+            </article>
+            <section class="respond">
+                <h1>Leave a Comment</h1>
+                <form action="/Post/SaveComment" class="comment-form" method="post">
+                    <input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="Id" name="Id" type="hidden" value="6" />
+                    <input id="Title" name="Title" type="hidden" value="Background fail - Chrome bug with background-size" />
+                    <label for="NewComment_Name">Name</label>
+                    <input autocomplete="off" id="NewComment_Name" name="NewComment.Name" required="required" type="text" value="" />
+                    <label for="NewComment_Email">Email</label><input id="NewComment_Email" name="NewComment.Email" type="email" value="" />        
+                    <em>This is only used for gravitar image</em>
+                    <label for="NewComment_Url">Website</label><input id="NewComment_Url" name="NewComment.Url" type="url" value="" />
+                    <label for="NewComment_Content">Comment</label>
+                    <textarea cols="20" id="NewComment_Content" name="NewComment.Content" required="required" rows="2">
+                        </textarea>        
+                    <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

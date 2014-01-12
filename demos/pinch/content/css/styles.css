@@ -1,0 +1,72 @@
+body{	
+	font-family: Verdana, Tahoma, Arial;
+	color: #333333;		
+	margin: 0 auto;
+	width: 600px;
+}
+
+body > h1 {	
+	font-size: 31.5px;
+	font-size: 3.15rem;
+}
+
+section {
+	font-family: 'Open Sans', sans-serif;
+	color: #FFFFFF;
+	background-color: #E30613;
+	width: 460px;
+	height: 270px;
+	padding-left: 20px;
+}
+
+section h1{
+	padding-top: 50px;	
+	font-size: 2rem;
+}
+
+/***********************************************************************
+* Pinch styles
+************************************************************************/
+.pinch
+{
+    position:relative;	    
+}
+
+/* creates a rectangle of the colour wanted for the pointy bit */
+.pinch:before 
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 17%;
+	width: 128px;	
+    height: 40px;
+	/*margin: 0 0 0 -63px;*/
+	background-color: #FFFFFF;
+}
+
+/* creates a rounded rectangle to cover part of the rectangle generated above */
+.pinch:after 
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 30%;
+	width: 100px;	
+    height: 40px;	
+    border-top-left-radius: 70% 100%; 
+    background-color: #E30613;   
+}
+
+/* creates the other rounded rectangle */
+.pinch > :first-child:before 
+{
+	content: ""; 
+	position: absolute; 
+	top: 0; 
+	right: 69%; 
+	width: 100px; 	
+    height: 40px;	  
+    border-top-right-radius: 70% 100%;   
+    background-color: #E30613; 
+}

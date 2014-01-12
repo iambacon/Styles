@@ -1,0 +1,29 @@
+﻿@model HandleErrorInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error - I am Bacon</title>
+</head>
+<body>
+    <h1>Admin - Error</h1>
+
+    @if (Model != null)
+    {
+        <p>
+            <b>Exception:</b> @Model.Exception.Message<br />
+            <b>Controller:</b> @Model.ControllerName<br />
+            <b>Action:</b> @Model.ActionName
+        </p>
+            
+        <pre>
+            @Model.Exception.StackTrace
+        </pre>
+    }
+</body>
+</html>

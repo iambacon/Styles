@@ -1,0 +1,82 @@
+﻿@model IAmBacon.Areas.Admin.ViewModels.EditPostViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Post</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Authors)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AuthorId, Model.Authors)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Categories)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoryId, Model.Categories)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Tags)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Tags)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NoCss)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NoCss)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Active)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Active)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Image)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Image)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Markdown)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Markdown, new { rows = 15, cols = 92 })
+            @Html.ValidationMessageFor(model => model.Markdown)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateCreated)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateCreated)
+            @Html.ValidationMessageFor(model => model.DateCreated)
+        </div>
+        @Html.HiddenFor(x => x.Id)
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+}

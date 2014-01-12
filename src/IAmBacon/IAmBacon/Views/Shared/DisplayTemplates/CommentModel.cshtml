@@ -1,0 +1,9 @@
+﻿@model IAmBacon.Models.CommentModel
+<li>
+    <article>
+        <img src="@Model.GravitarUrl" alt="Gavatar image of @Model.Name" width="80" height="80">
+        <h4><a rel="external nofollow" href="@Model.Url">@Model.Name</a></h4>
+        <time datetime="@Model.DateTime">@Model.DateCreated</time>
+        <p class="comment">@Model.Content</p>
+    </article>
+</li>

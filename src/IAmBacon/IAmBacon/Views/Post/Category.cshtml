@@ -1,0 +1,16 @@
+﻿@model IAmBacon.ViewModels.PostsViewModel
+@{
+    Layout = "~/Views/Shared/_PostLayout.cshtml";
+}
+@section css
+{
+    @Styles.Render("~/bundles/categoryCss")
+}
+@section iecss
+{
+    @Styles.Render("~/bundles/categoryIeCss")
+}
+
+<h1>Recent posts for category '@Model.Title'</h1>
+
+@Html.DisplayFor(x => x.Posts)

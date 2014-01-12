@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Pages</title>
+</head>
+<body>
+    <header>
+        @if (Request.IsAuthenticated)
+        {
+            <strong>@Html.Encode(User.Identity.Name)</strong>
+            @Html.ActionLink("Sign Out", "Logout", "Authentication")
+        }
+        else
+        {
+            @Html.ActionLink("Sign In", "Login", "Authentication")
+        }
+    </header>
+    <h1>
+        @Html.ActionLink("Blog Admin", "Index", "Home")
+    </h1>
+    <div>
+        @this.RenderBody()
+    </div>
+    @this.RenderSection("Scripts", required: false)
+</body>
+</html>

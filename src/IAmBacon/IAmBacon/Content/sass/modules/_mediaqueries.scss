@@ -1,0 +1,28 @@
+$fix-media-min: false !default;
+$fix-media-max: false !default;
+
+@mixin media-min($width){
+	@if $fix-media-min {
+		@if $fix-media-min >= $width {
+			@content;
+		}
+	}	
+	@else {
+		@media screen and (min-width: rem($width)) {
+			@content;
+		}
+	}
+}
+
+@mixin media-max($width){
+	@if $fix-media-max {
+		@if $fix-media-max <= $width {
+			@content;
+		} 
+	}
+	@else {
+		@media screen and (max-width: rem($width)) {
+			@content;
+		}
+	}
+}

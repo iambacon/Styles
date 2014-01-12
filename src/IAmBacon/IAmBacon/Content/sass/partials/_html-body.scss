@@ -1,0 +1,93 @@
+html {
+    font-size: $html-font-size-percentage;
+}
+
+body {
+	font-family: $base-font-family;
+	color: $body-color;
+	line-height: $base-line-height;
+	background-color: $page-background-colour;
+	@include font-size($base-font-size);
+}
+
+h1 {	
+	@include font-size($h1-font-size-mobile);
+
+	@include media-min($min-width-541px) {
+		@include font-size($h1-font-size);
+	}
+}
+
+h2 {
+	@include font-size($h2-font-size-mobile);
+
+	@include media-min($min-width-541px) {
+		@include font-size($h2-font-size);
+	}
+}
+
+ul,
+ol {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+label,
+input[type=submit] {
+	display: block;
+	margin-top: 1em;
+}
+
+input[type=text],
+input[type=email],
+input[type=url],
+textarea {
+	width: 100%;
+	padding-left: 0.5em;		
+	padding-right: 0.5em;
+	@include box-sizing();
+}	
+
+input[type=text],
+input[type=email],
+input[type=url] {
+	
+	height: 2em;
+}	
+
+textarea {
+	height: 7em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+
+	&:hover {
+		color: $link-hover-colour;
+	}
+}
+
+blockquote {
+	font-family: Georgia, serif;
+	font-style: italic;	
+	@include font-size($blockquote-font-size);		
+}
+
+.wrapper {
+	margin: 0 auto;
+	text-align: left;
+	max-width: 1440px;
+}
+
+.content,
+.header{
+	margin-left: $body-gutter;
+	margin-right: $body-gutter;
+}
+
+.link {
+	text-decoration: underline;
+}

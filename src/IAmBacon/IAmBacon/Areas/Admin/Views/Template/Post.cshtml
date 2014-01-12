@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width">
+    <title>Blog post</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/shared/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/Content/less/blog/post.less" media="screen, handheld">
+</head>
+<body>
+    <header class="header">
+        <a href="#">I Am Blog</a>
+        <p>Development within a Bacon context</p>        
+    </header>
+    <div id="content">
+        <article>
+            <header>
+                <h1>Building a responsive blog</h1>
+                <time datetime="2012-01-23 09:00">23rd Janurary 2012</time>
+            </header>
+            <p>
+                This is the article, which will be html itself so may not need to be wrapped Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et aperiam ex eius totam consequuntur deserunt quis dolorum dignissimos sint quos amet quod fugiat odit sit illum error blanditiis in a? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores iusto eum ipsam omnis veniam libero. Odio atque ab reprehenderit distinctio recusandae fugiat ex. Quas aperiam similique numquam nisi provident nulla?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad expedita culpa fuga mollitia necessitatibus iure magni numquam dignissimos nostrum quas reprehenderit obcaecati ab doloribus aliquam asperiores vero velit alias. Sit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi dolorem commodi vero modi veniam quia qui natus magnam rerum quisquam cumque at non placeat harum impedit molestias similique eligendi delectus officia doloribus expedita corporis unde quas odit ipsum. Doloremque maiores laboriosam harum porro voluptates obcaecati excepturi explicabo ipsa id. Ab rem eum nisi aliquid quas exercitationem obcaecati placeat tempore sed iusto rerum temporibus atque eaque! Officia id et tempora mollitia delectus molestiae repellendus excepturi reiciendis at quae adipisci fuga debitis perspiciatis consectetur incidunt enim pariatur repellat minus dolorum deserunt totam cupiditate assumenda saepe consequatur odit ab ipsum similique culpa maiores voluptatibus blanditiis quaerat dignissimos omnis distinctio dolore accusamus ex nesciunt quidem molestias cum neque temporibus expedita recusandae voluptatem esse libero. Placeat quod quidem soluta incidunt ratione sequi labore illo sint pariatur hic quisquam fuga dolor atque velit officiis alias voluptatem cumque laborum cupiditate iusto! Quisquam ipsa quo nulla qui error velit odio voluptates necessitatibus quas omnis libero dicta illo quaerat officiis eaque! Cupiditate debitis neque ipsum sapiente natus expedita vero libero harum in consequuntur. Provident voluptas earum commodi harum odit mollitia nisi eos laudantium laborum. Sapiente rem incidunt delectus odio laborum facilis ab ipsa eaque accusantium quo neque esse repellendus?</p>
+            <footer>
+                <ul>
+                    <li>
+                        <strong>Tags:</strong>
+                        <a href="#">CSS3</a>
+                        <a href="#">HTML5</a>
+                        <a href="#">RWD</a>
+                    </li>
+                    <li>
+                        <strong>Author:</strong>
+                        Colin Bacon
+                    </li>
+                </ul>               
+            </footer>
+            <h2>2 Comments</h2>
+            <ol class="comments">
+                <li>
+                    <article>
+                        <img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="">
+                        <h4>Pat Long</h4>
+                        <time datetime="2010-06-30 11:32">30/06/2010</time>
+                        <p class="comment">What a fantastic read!</p>                
+                    </article>        
+                </li>
+                <li>
+                    <article>
+                        <img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="">
+                        <h4>Brad Frost</h4>
+                        <time datetime="2010-09-21 16:11">21/09/2010</time>
+                        <p class="comment">The blog article blew my mind! Gnarly.</p>                
+                    </article>        
+                </li>
+            </ol>            
+        </article>
+        <section class="respond">
+            <h1>Leave a Comment</h1>
+            <form class="comment-form" method="post" action="#">
+                <label for="author">Name</label>
+                <input type="text" id="author" name="author" autocomplete="off" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <em>This is only used for gravitar image</em>
+                <label for="url">Website</label>
+                <input type="url" id="url" name="url">
+                <label for="comment">Comment</label>
+                <textarea name="comment" id="comment" required></textarea>
+                <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
+            </form>
+        </section>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>

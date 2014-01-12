@@ -1,0 +1,22 @@
+/*==========================================================
+ * Code - Example code within posts.
+ *==========================================================*/
+
+ pre {
+	background-color: #333333;
+	color: #FFFFFF;	
+	padding: $base-padding;
+	overflow: auto;
+
+	code {
+		background-color: #333333;
+		padding: 0;
+		border: none;
+	}
+ }
+
+ code {
+	background-color: #F8F8FF;
+	padding: 0 .2em;
+	border: 1px solid #DEDEDE;
+ }

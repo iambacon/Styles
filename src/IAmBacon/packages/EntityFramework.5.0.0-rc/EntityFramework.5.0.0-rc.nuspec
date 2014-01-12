@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>EntityFramework</id>
+    <version>5.0.0-rc</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=248959</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkId=248960</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Entity Framework is Microsoft's recommended data access technology for new applications.</description>
+    <summary>Entity Framework is Microsoft's recommended data access technology for new applications.</summary>
+    <language>en-US</language>
+  </metadata>
+</package>

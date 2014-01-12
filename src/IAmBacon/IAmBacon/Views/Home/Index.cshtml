@@ -1,0 +1,29 @@
+﻿@model IAmBacon.ViewModels.HomeViewModel
+@section css
+{
+    <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/bundles/iambacon")
+}
+<h1>I am Bacon.</h1>
+<p class="intro">I am a web developer. I am a ski instructor.  I am not related to Kevin Bacon.</p>
+
+<section>
+    <h1 class="visually-hidden">This is where you can find me.</h1>
+    <ul class="social-nav">
+        <li>
+            <a rel="me" title="Follow Colin Bacon on Twitter" href="http://www.twitter.com/iambacon" aria-hidden="true" class="icon-twitter">
+                <span class="visually-hidden">Twitter</span>
+            </a>
+        </li>
+        <li>
+            <a rel="me" title="Connect with Colin Bacon on LinkedIn" href="http://uk.linkedin.com/pub/colin-bacon/32/1a1/776" aria-hidden="true" class="icon-linkedin-2">
+                <span class="visually-hidden">LinkedIn</span>
+            </a>
+        </li>
+        <li>
+            <a title="Blog for Colin Bacon" href="/blog" aria-hidden="true" class="icon-blog">
+                <span class="visually-hidden">Blog</span>
+            </a>
+        </li>
+    </ul>
+</section>

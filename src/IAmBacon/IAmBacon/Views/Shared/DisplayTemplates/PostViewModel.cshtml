@@ -1,0 +1,28 @@
+﻿@model IAmBacon.ViewModels.PostViewModel
+<article>
+    <header>
+        <h1>@Html.RouteLink(Model.Title, "BlogPost", new { title = Model.SeoTitle })</h1>
+        <time datetime="@Model.DateTime">@Model.DateCreated</time>
+        <strong>Category:</strong>
+        @Html.RouteLink(Model.Category, "Category", new { name = Model.Category.ToSeoUrl() }, new { @class = "link" })
+    </header>
+    <p>
+        @Model.Content
+    </p>
+    <footer>
+        <ul>
+            @if (Model.Tags != null && Model.Tags.Any())
+            {
+                <li>
+                    <strong>Tags:</strong>
+                    @Html.DisplayFor(x => x.Tags)
+                </li>
+            }
+            <li>
+                <strong>Author:</strong>
+                @Model.Author
+            </li>
+        </ul>
+        @* TODO: Social sharing links *@
+    </footer>
+</article>

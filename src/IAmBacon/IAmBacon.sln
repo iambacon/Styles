@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web", "IAmBacon\IAmBacon.Web.csproj", "{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Data", "IAmBacon.Data\IAmBacon.Data.csproj", "{79E933B6-75AB-437C-BCCF-B7F882E4CAD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4B10E62F-D0BA-438B-B460-DAD37476A2D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99CED37A-195A-434F-9455-82B04371B82F}"
+	ProjectSection(SolutionItems) = preProject
+		IAmBacon.vsmdi = IAmBacon.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Model", "IAmBacon.Model\IAmBacon.Model.csproj", "{683844A9-988F-4BB2-83A5-2043D499A3A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Domain", "IAmBacon.Domain\IAmBacon.Domain.csproj", "{F742ECC4-400A-4859-A055-220975DD9962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web.Tests", "IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj", "{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E933B6-75AB-437C-BCCF-B7F882E4CAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E933B6-75AB-437C-BCCF-B7F882E4CAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E933B6-75AB-437C-BCCF-B7F882E4CAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E933B6-75AB-437C-BCCF-B7F882E4CAD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683844A9-988F-4BB2-83A5-2043D499A3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683844A9-988F-4BB2-83A5-2043D499A3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683844A9-988F-4BB2-83A5-2043D499A3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683844A9-988F-4BB2-83A5-2043D499A3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F742ECC4-400A-4859-A055-220975DD9962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F742ECC4-400A-4859-A055-220975DD9962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F742ECC4-400A-4859-A055-220975DD9962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F742ECC4-400A-4859-A055-220975DD9962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99CED37A-195A-434F-9455-82B04371B82F} = {4B10E62F-D0BA-438B-B460-DAD37476A2D6}
+		{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9} = {4B10E62F-D0BA-438B-B460-DAD37476A2D6}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = IAmBacon.vsmdi
+	EndGlobalSection
+EndGlobal

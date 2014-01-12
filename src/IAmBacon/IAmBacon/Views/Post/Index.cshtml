@@ -1,0 +1,22 @@
+﻿@model IAmBacon.ViewModels.PostsViewModel
+@{
+    this.Layout = "~/Views/Shared/_PostLayout.cshtml";
+}
+@section meta
+{
+    <meta name="description" content="Blog site for Colin Bacon - Web Developer.  Push button, receive blog." />
+}
+@section css
+{
+    @Styles.Render("~/bundles/landingpageCss")
+}
+@section iecss
+{
+    @Styles.Render("~/bundles/landingpageIeCss")
+}
+
+<h1 class="page-title">@Html.ActionLink("I am Blog.", "Index", "Post")</h1>
+
+<h2>Recent Posts</h2>
+
+@Html.DisplayFor(x => x.Posts)

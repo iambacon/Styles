@@ -1,0 +1,20 @@
+﻿@using IAmBacon.Presentation.HtmlHelpers;
+@model IAmBacon.ViewModels.ViewModelBase
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.PageTitle</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Colin Bacon - Web Developer.  Will develop for money and Bacon..." />
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <main class="main" role="main">
+        @RenderBody()
+    </main>
+    @RenderSection("scripts", required: false)
+    @Google.GetAnalyticsHtml()
+</body>
+</html>

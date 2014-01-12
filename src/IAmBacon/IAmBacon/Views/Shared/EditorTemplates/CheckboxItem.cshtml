@@ -1,0 +1,5 @@
+﻿@model IAmBacon.Models.CheckboxItem
+
+@Html.HiddenFor(x => x.Id)
+@Html.Label(Model.Label)
+@Html.CheckBoxFor(x => x.IsChecked)

@@ -1,0 +1,5 @@
+﻿@model IAmBacon.Model.Entities.Tag
+
+@* TODO Shouldn't be using Entities in the presentation layer  
+*@
+@Html.RouteLink(Model.Name, "Tag", new { name = Model.SeoName }, new { @class = "link" })
