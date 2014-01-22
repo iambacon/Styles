@@ -17,6 +17,14 @@
         /// </value>
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
+        /// <summary>
+        /// Gets or sets the spam comments.
+        /// </summary>
+        /// <value>
+        /// The spam comments.
+        /// </value>
+        public IEnumerable<CommentViewModel> SpamComments { get; set; }
+
         #endregion
     }
 }

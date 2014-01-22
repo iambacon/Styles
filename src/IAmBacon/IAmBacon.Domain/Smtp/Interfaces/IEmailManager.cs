@@ -3,7 +3,6 @@
     using System.Net.Mail;
 
     using IAmBacon.Model.Common;
-    using IAmBacon.Model.Entities;
 
     /// <summary>
     /// The email manager interface.
@@ -19,8 +18,9 @@
         /// <param name="from">The sender.</param>
         /// <param name="subject">The subject.</param>
         /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         /// <returns></returns>
-        IResult SendEmail(MailAddress to, MailAddress from, string subject, string body);
+        IResult SendEmail(MailAddress to, MailAddress from, string subject, string body, bool isHtml);
 
         /// <summary>
         /// Sends the email from the system email address.
@@ -28,15 +28,18 @@
         /// <param name="to">The recipient.</param>
         /// <param name="subject">The subject.</param>
         /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         /// <returns></returns>
-        IResult SendEmail(MailAddress to, string subject, string body);
+        IResult SendEmail(MailAddress to, string subject, string body, bool isHtml);
 
         /// <summary>
         /// Sends the new comment email.
         /// </summary>
-        /// <param name="comment">The comment.</param>
+        /// <param name="subject">The subject.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         /// <returns></returns>
-        IResult SendNewCommentEmail(Comment comment);
+        IResult SendNewCommentEmail(string subject, string body, bool isHtml);
 
         #endregion
     }

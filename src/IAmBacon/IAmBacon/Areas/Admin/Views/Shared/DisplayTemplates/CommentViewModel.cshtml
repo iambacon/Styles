@@ -1,0 +1,31 @@
+﻿@model IAmBacon.Areas.Admin.ViewModels.CommentViewModel
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.PostTitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Content)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Url)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.DateCreated)
+    </td>
+    <td>
+        @using (Html.BeginForm("Spam", "Comment", FormMethod.Post))
+        {
+            var submitValue = Model.Active ? "Spam" : "Not spam";
+
+            <input type="hidden" value="@Model.Id" name="Id" />
+            <input type="submit" value="@submitValue" />
+        }
+    </td>
+</tr>

@@ -200,7 +200,9 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Extensions\SelectListItemExtensions.cs" />
+    <Compile Include="Models\EmailTemplateModel.cs" />
+    <Compile Include="Presentation\Builders\EmailTemplateBuilder.cs" />
+    <Compile Include="Presentation\Extensions\SelectListItemExtensions.cs" />
     <Compile Include="Framework\Mvc\FeedResult.cs" />
     <Compile Include="Framework\Optimization\LessTransform.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +231,10 @@
     <Compile Include="Migrations\201312261120413_AddDateModified.cs" />
     <Compile Include="Migrations\201312261120413_AddDateModified.Designer.cs">
       <DependentUpon>201312261120413_AddDateModified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401121153590_AddActiveCommentField.cs" />
+    <Compile Include="Migrations\201401121153590_AddActiveCommentField.Designer.cs">
+      <DependentUpon>201401121153590_AddActiveCommentField.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckboxItem.cs" />
@@ -274,6 +280,7 @@
     <Content Include="Areas\Admin\Views\Template\Postv2.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\CommentViewModel.cshtml" />
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

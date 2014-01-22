@@ -1,6 +1,4 @@
-﻿using IAmBacon.Extensions;
-
-namespace IAmBacon.Areas.Admin.Controllers
+﻿namespace IAmBacon.Areas.Admin.Controllers
 {
     using System.Collections.Generic;
     using System.Globalization;

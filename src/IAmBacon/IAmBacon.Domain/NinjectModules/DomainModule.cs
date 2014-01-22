@@ -1,4 +1,7 @@
-﻿namespace IAmBacon.Domain.NinjectModules
+﻿using IAmBacon.Domain.Utilities;
+using IAmBacon.Domain.Utilities.Interfaces;
+
+namespace IAmBacon.Domain.NinjectModules
 {
     using Services;
     using Services.Interfaces;
@@ -27,6 +30,7 @@
             this.Bind<ITagService>().To<TagService>().InRequestScope();
             this.Bind<ICommentService>().To<CommentService>().InRequestScope();
             this.Bind<IEmailManager>().To<EmailManager>().InRequestScope();
+            this.Bind<ISpamManager>().To<SpamManager>().InRequestScope();
         }
 
         #endregion

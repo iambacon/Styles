@@ -1,17 +1,19 @@
-﻿namespace IAmBacon.Areas.Admin.Controllers
+﻿using System.Linq;
+using System.Web.Mvc;
+using IAmBacon.Areas.Admin.ViewModels;
+using IAmBacon.Domain.Services.Interfaces;
+using IAmBacon.Model.Entities;
+using IAmBacon.Presentation.Extensions;
+
+namespace IAmBacon.Areas.Admin.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.Mvc;
-
-    using ViewModels;
-    using Domain.Services.Interfaces;
-
     /// <summary>
     ///     The comment controller.
     /// </summary>
     public class CommentController : BaseController
     {
+        private const int TruncateLength = 300;
+
         #region Fields
 
         /// <summary>
@@ -37,30 +39,30 @@
         #region Public Methods and Operators
 
         /// <summary>
-        /// Deletes the specified unique identifier.
+        ///     Deletes the specified unique identifier.
         /// </summary>
         /// <param name="id">The unique identifier.</param>
         /// <returns></returns>
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var comment = this.commentService.Get(id);
+            Comment comment = commentService.Get(id);
 
             var model = new CommentViewModel
-                {
-                    Content = comment.Content,
-                    DateCreated = comment.DateCreated,
-                    Id = comment.Id,
-                    Name = comment.Name,
-                    PostTitle = comment.Post.Title,
-                    Url = comment.Url
-                };
+            {
+                Content = comment.Content,
+                DateCreated = comment.DateCreated,
+                Id = comment.Id,
+                Name = comment.Name,
+                PostTitle = comment.Post.Title,
+                Url = comment.Url
+            };
 
-            return this.View(model);
+            return View(model);
         }
 
         /// <summary>
-        /// Deletes the specified model.
+        ///     Deletes the specified model.
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns></returns>
@@ -68,10 +70,10 @@
         [ValidateAntiForgeryToken]
         public ActionResult Delete(CommentViewModel model)
         {
-            var comment = this.commentService.Get(model.Id);
-            this.commentService.Delete(comment);
+            Comment comment = commentService.Get(model.Id);
+            commentService.Delete(comment);
 
-            return this.RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -80,24 +82,65 @@
         /// <returns></returns>
         public ActionResult Index()
         {
+            CommentsViewModel model = CommentsViewModel();
+
+            return View(model);
+        }
+
+        /// <summary>
+        ///     Toggles the active value for the specified comment.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Spam(int id)
+        {
+            Comment comment = commentService.Get(id);
+
+            if (comment == null)
+            {
+                return View("Index");
+            }
+
+            comment.Active = !comment.Active;
+            commentService.Save(comment);
+
+            return RedirectToAction("Index");
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Builds the comments view model.
+        /// </summary>
+        /// <returns>The comments view model.</returns>
+        private CommentsViewModel CommentsViewModel()
+        {
             // TODO: Automapper.
-            IEnumerable<CommentViewModel> comments =
-                this.commentService.GetAll()
+            var comments =
+                commentService.GetAll()
                     .Select(
                         x =>
-                        new CommentViewModel
+                            new CommentViewModel
                             {
-                                Content = x.Content,
+                                Content = x.Content.TruncateAtWord(TruncateLength),
                                 DateCreated = x.DateCreated,
                                 Id = x.Id,
                                 Name = x.Name,
                                 PostTitle = x.Post.Title,
-                                Url = x.Url
-                            });
+                                Url = x.Url,
+                                Active = x.Active
+                            }).ToList();
 
-            var model = new CommentsViewModel { Comments = comments };
+            var model = new CommentsViewModel
+            {
+                Comments = comments.Where(x => x.Active),
+                SpamComments = comments.Where(x => !x.Active)
+            };
 
-            return View(model);
+            return model;
         }
 
         #endregion

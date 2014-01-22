@@ -6,6 +6,11 @@
     public interface IComment : IEntity
     {
         /// <summary>
+        /// Gets or sets a value indicating whether [active].
+        /// </summary>
+        bool Active { get; set; }
+
+        /// <summary>
         /// Gets or sets the content.
         /// </summary>
         string Content { get; set; }

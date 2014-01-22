@@ -10,6 +10,14 @@
         #region Public Properties
 
         /// <summary>
+        /// Gets or sets a value indicating whether [active].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [active]; otherwise, <c>false</c>.
+        /// </value>
+        public bool Active { get; set; }
+
+        /// <summary>
         /// Gets or sets the content.
         /// </summary>
         /// <value>

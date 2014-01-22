@@ -1,4 +1,8 @@
 ﻿
+using IAmBacon.Domain.Smtp.Interfaces;
+using IAmBacon.Domain.Utilities.Interfaces;
+using IAmBacon.Presentation.Builders;
+
 namespace IAmBacon.Controllers
 {
     using System;
@@ -8,13 +12,13 @@ namespace IAmBacon.Controllers
     using System.Web;
     using System.Web.Mvc;
 
-    using IAmBacon.Domain.Services.Interfaces;
-    using IAmBacon.Framework.Mvc;
-    using IAmBacon.Model.Entities;
-    using IAmBacon.Models;
-    using IAmBacon.Presentation.Extensions;
-    using IAmBacon.Presentation.Helpers;
-    using IAmBacon.ViewModels;
+    using Domain.Services.Interfaces;
+    using Framework.Mvc;
+    using Model.Entities;
+    using Models;
+    using Presentation.Extensions;
+    using Presentation.Helpers;
+    using ViewModels;
 
     /// <summary>
     /// The post controller.
@@ -39,6 +43,16 @@ namespace IAmBacon.Controllers
         private readonly ICommentService commentService;
 
         /// <summary>
+        /// The email manager.
+        /// </summary>
+        private readonly IEmailManager emailManager;
+
+        /// <summary>
+        /// The spam manager.
+        /// </summary>
+        private readonly ISpamManager spamManager;
+
+        /// <summary>
         /// The tag service.
         /// </summary>
         private readonly ITagService tagService;
@@ -54,12 +68,20 @@ namespace IAmBacon.Controllers
         /// <param name="commentService">The comment service.</param>
         /// <param name="tagService">The tag service.</param>
         /// <param name="categoryService">The category service.</param>
-        public PostController(IPostService postService, ICommentService commentService, ITagService tagService, ICategoryService categoryService)
+        /// <param name="spamManager">The spam manager.</param>
+        /// <param name="emailManager">The email manager.</param>
+        public PostController(IPostService postService, ICommentService commentService,
+            ITagService tagService,
+            ICategoryService categoryService,
+            ISpamManager spamManager,
+            IEmailManager emailManager)
         {
             this.postService = postService;
             this.commentService = commentService;
             this.tagService = tagService;
             this.categoryService = categoryService;
+            this.spamManager = spamManager;
+            this.emailManager = emailManager;
         }
 
         #endregion
@@ -136,7 +158,7 @@ namespace IAmBacon.Controllers
             }
 
             var comments =
-                post.Comments.Select(x => new CommentModel
+                post.Comments.Where(x => x.Active).Select(x => new CommentModel
                 {
                     Content = x.Content,
                     GravitarUrl = x.Hash.ToGravatarUrl(),
@@ -228,7 +250,18 @@ namespace IAmBacon.Controllers
                     PostId = id
                 };
 
+                // TODO: Should this be in the comment service? Controller shouldn't have to know about it.
+                var isActive = this.spamManager.VerifyComment(entity);
+
+                entity.Active = isActive;
+
                 this.commentService.Create(entity);
+
+                // Send email notification to me.
+                var commentUrl = Url.Action("Index", "Comment", new { area = "Admin" }, Request.Url.Scheme);
+                var post = this.postService.Get(id);
+                var emailTemplate = EmailTemplateBuilder.NewCommentEmail(entity, post.Title, commentUrl, "View comment");
+                this.emailManager.SendNewCommentEmail(emailTemplate.Subject, emailTemplate.Body, emailTemplate.IsHtml);
             }
 
             // TODO: Url generation needs improving, so we don't forget to sanitise the title.

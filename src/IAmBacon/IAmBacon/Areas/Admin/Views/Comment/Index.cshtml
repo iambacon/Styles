@@ -4,62 +4,58 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments.First().Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments.First().PostTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments.First().Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments.First().Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments.First().Url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments.First().DateCreated)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model.Comments)
-    {
+<h1>Comments</h1>
+<section>
+    <h1>Active comments</h1>
+    <table>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments.First().Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments.First().PostTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments.First().Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments.First().Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments.First().DateCreated)
+            </th>
+            <th></th>
         </tr>
-    }
-
-</table>
+        @Html.DisplayFor(x => x.Comments)
+    </table>
+</section>
+<section>
+    <h1>Spam comments</h1>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpamComments.First().Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpamComments.First().PostTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpamComments.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpamComments.First().Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpamComments.First().Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpamComments.First().DateCreated)
+            </th>
+            <th></th>
+        </tr>
+        @Html.DisplayFor(x => x.SpamComments)
+    </table>
+</section>

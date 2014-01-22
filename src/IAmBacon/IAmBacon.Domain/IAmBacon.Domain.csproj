@@ -78,7 +78,9 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Smtp\EmailManager.cs" />
     <Compile Include="Smtp\Interfaces\IEmailManager.cs" />
+    <Compile Include="Utilities\Interfaces\ISpamManager.cs" />
     <Compile Include="Utilities\Seo.cs" />
+    <Compile Include="Utilities\SpamManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IAmBacon.Data\IAmBacon.Data.csproj">

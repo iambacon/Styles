@@ -7,7 +7,6 @@
     using IAmBacon.Domain.Services.Interfaces;
     using IAmBacon.Domain.Smtp.Interfaces;
     using IAmBacon.Model.Common;
-    using IAmBacon.Model.Entities;
 
     /// <summary>
     ///     Email manager. Handles SMTP messages.
@@ -44,6 +43,7 @@
         {
             get
             {
+                // TODO: Should be web config or db.
                 return new MailAddress("comments@iambacon.co.uk");
             }
         }
@@ -67,18 +67,25 @@
         #region Public Methods and Operators
 
         /// <summary>
-        ///     Sends the email.
+        /// Sends the email.
         /// </summary>
         /// <param name="to">The recipient.</param>
         /// <param name="from">The sender.</param>
         /// <param name="subject">The subject.</param>
         /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         /// <returns></returns>
-        public IResult SendEmail(MailAddress to, MailAddress from, string subject, string body)
+        public IResult SendEmail(MailAddress to, MailAddress from, string subject, string body, bool isHtml)
         {
             var mailSent = true;
             var client = new SmtpClient();
-            var message = new MailMessage(from, to) { Subject = subject, Body = body, BodyEncoding = Encoding.UTF8 };
+            var message = new MailMessage(from, to)
+            {
+                Subject = subject,
+                Body = body,
+                BodyEncoding = Encoding.UTF8,
+                IsBodyHtml = isHtml
+            };
 
             try
             {
@@ -97,39 +104,29 @@
         }
 
         /// <summary>
-        ///     Sends the email from the system email address.
+        /// Sends the email from the system email address.
         /// </summary>
         /// <param name="to">The recipient.</param>
         /// <param name="subject">The subject.</param>
         /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         /// <returns></returns>
-        public IResult SendEmail(MailAddress to, string subject, string body)
+        public IResult SendEmail(MailAddress to, string subject, string body, bool isHtml)
         {
-            return this.SendEmail(to, SystemMailAddress, subject, body);
+            return this.SendEmail(to, SystemMailAddress, subject, body, isHtml);
         }
 
         /// <summary>
-        ///     Sends the new comment email.
+        /// Sends the new comment email.
         /// </summary>
-        /// <param name="comment">The comment.</param>
+        /// <param name="subject">The subject.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="isHtml">if set to <c>true</c> [is HTML].</param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public IResult SendNewCommentEmail(Comment comment)
+        public IResult SendNewCommentEmail(string subject, string body, bool isHtml)
         {
-            Post post = this.postService.Get(comment.PostId);
-            string subject = "New comment";
-
-            if (post != null)
-            {
-                subject = string.Format("New comment for {0}", post.Title);
-            }
-
-            var body = new StringBuilder();
-            body.AppendLine(comment.Name);
-            body.AppendLine(comment.Url);
-            body.AppendLine(comment.Content);
-
-            return this.SendEmail(CommentMailAddress, subject, body.ToString());
+            return this.SendEmail(CommentMailAddress, subject, body, isHtml);
         }
 
         #endregion

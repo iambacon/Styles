@@ -14,6 +14,11 @@ namespace IAmBacon.Model.Entities
         #region Public Properties
 
         /// <summary>
+        /// Gets or sets a value indicating whether [active].
+        /// </summary>
+        public bool Active { get; set; }
+
+        /// <summary>
         /// Gets or sets the content.
         /// </summary>
         [Required]
