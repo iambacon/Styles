@@ -121,6 +121,8 @@ namespace IAmBacon.Areas.Admin.Controllers
             // TODO: Automapper.
             var comments =
                 commentService.GetAll()
+                .OrderByDescending(x => x.Id)
+                .Take(100)
                     .Select(
                         x =>
                             new CommentViewModel

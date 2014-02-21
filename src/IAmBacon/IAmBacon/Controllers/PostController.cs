@@ -232,6 +232,7 @@ namespace IAmBacon.Controllers
         /// <param name="id">The post id.</param>
         /// <param name="title">The title.</param>
         /// <returns></returns>
+        [ValidateAntiForgeryToken]
         public ActionResult SaveComment(CommentModel newComment, int id, string title)
         {
             if (ModelState.IsValid)
