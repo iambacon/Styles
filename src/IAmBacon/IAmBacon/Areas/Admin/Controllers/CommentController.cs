@@ -121,8 +121,6 @@ namespace IAmBacon.Areas.Admin.Controllers
             // TODO: Automapper.
             var comments =
                 commentService.GetAll()
-                .OrderByDescending(x => x.Id)
-                .Take(100)
                     .Select(
                         x =>
                             new CommentViewModel
@@ -136,10 +134,16 @@ namespace IAmBacon.Areas.Admin.Controllers
                                 Active = x.Active
                             }).ToList();
 
+            var spamComments = comments.Where(x => !x.Active)
+                .OrderByDescending(x => x.Id)
+                .Take(100)
+                .ToList();
+                
+
             var model = new CommentsViewModel
             {
                 Comments = comments.Where(x => x.Active),
-                SpamComments = comments.Where(x => !x.Active)
+                SpamComments = spamComments
             };
 
             return model;
