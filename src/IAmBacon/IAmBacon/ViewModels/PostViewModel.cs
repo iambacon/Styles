@@ -32,6 +32,14 @@
         public IEnumerable<CommentModel> Comments { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether [comments active].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [comments active]; otherwise, <c>false</c>.
+        /// </value>
+        public bool CommentsActive { get; set; }
+
+        /// <summary>
         /// Gets or sets the content.
         /// </summary>
         public IHtmlString Content { get; set; }

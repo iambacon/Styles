@@ -102,7 +102,7 @@ namespace IAmBacon.Controllers
             var postModels = CreatePostModels(posts);
 
             var model = new PostsViewModel { Posts = postModels, PageTitle = "I am Blog - I am Bacon" };
-
+            
             return this.View(model);
         }
 
@@ -186,6 +186,10 @@ namespace IAmBacon.Controllers
                     PageTitle = post.Title + " - I am Bacon"
                 };
 
+            
+            // TODO: Temporary until we sort out spam
+            model.CommentsActive = false;
+
             return this.View(model);
         }
 
@@ -235,34 +239,40 @@ namespace IAmBacon.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveComment(CommentModel newComment, int id, string title)
         {
-            if (ModelState.IsValid)
+            // TODO: temporary until we sort out spam
+            if (false)
             {
-                // TODO: Use Automapper
-                var hash = newComment.Email != null ?
-                    EncryptionHelper.GetMd5Hash(newComment.Email.ToLower().Trim()) :
-                    null;
-
-                var entity = new Comment
+                if (ModelState.IsValid)
                 {
-                    Content = newComment.Content,
-                    Hash = hash,
-                    Name = newComment.Name,
-                    Url = newComment.Url,
-                    PostId = id
-                };
+                    // TODO: Use Automapper
+                    var hash = newComment.Email != null
+                        ? EncryptionHelper.GetMd5Hash(newComment.Email.ToLower().Trim())
+                        : null;
 
-                // TODO: Should this be in the comment service? Controller shouldn't have to know about it.
-                var isActive = this.spamManager.VerifyComment(entity);
+                    var entity = new Comment
+                    {
+                        Content = newComment.Content,
+                        Hash = hash,
+                        Name = newComment.Name,
+                        Url = newComment.Url,
+                        PostId = id
+                    };
 
-                entity.Active = isActive;
+                    // TODO: Should this be in the comment service? Controller shouldn't have to know about it.
+                    var isActive = this.spamManager.VerifyComment(entity);
 
-                this.commentService.Create(entity);
+                    entity.Active = isActive;
 
-                // Send email notification to me.
-                var commentUrl = Url.Action("Index", "Comment", new { area = "Admin" }, Request.Url.Scheme);
-                var post = this.postService.Get(id);
-                var emailTemplate = EmailTemplateBuilder.NewCommentEmail(entity, post.Title, commentUrl, "View comment");
-                this.emailManager.SendNewCommentEmail(emailTemplate.Subject, emailTemplate.Body, emailTemplate.IsHtml);
+                    this.commentService.Create(entity);
+
+                    // Send email notification to me.
+                    var commentUrl = Url.Action("Index", "Comment", new {area = "Admin"}, Request.Url.Scheme);
+                    var post = this.postService.Get(id);
+                    var emailTemplate = EmailTemplateBuilder.NewCommentEmail(entity, post.Title, commentUrl,
+                        "View comment");
+                    this.emailManager.SendNewCommentEmail(emailTemplate.Subject, emailTemplate.Body,
+                        emailTemplate.IsHtml);
+                }
             }
 
             // TODO: Url generation needs improving, so we don't forget to sanitise the title.

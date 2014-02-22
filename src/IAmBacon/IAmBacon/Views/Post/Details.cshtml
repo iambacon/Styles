@@ -58,27 +58,30 @@
         <h2>@Model.Comments.Count() Comments</h2>
         <ol class="comments">
             @Html.DisplayFor(x => x.Comments)
-        </ol>   
+        </ol>
     }
 </article>
-<section class="respond">
-    <h1>Leave a Comment</h1>
-    @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(x => x.Id)
-        @Html.HiddenFor(x => x.Title)
-        @Html.LabelFor(x => x.NewComment.Name)
-        @Html.TextBoxFor(x => x.NewComment.Name, new { autocomplete = "off", required = "required" })
-        @Html.LabelFor(x => x.NewComment.Email)
-        @Html.TextBoxFor(x => x.NewComment.Email, new { type = "email" })
-        <em>This is only used for gravitar image</em>
-        @Html.LabelFor(x => x.NewComment.Url)
-        @Html.TextBoxFor(x => x.NewComment.Url, new { type = "url" })
-        @Html.LabelFor(x => x.NewComment.Content)
-        @Html.TextAreaFor(x => x.NewComment.Content, new { required = "required" })
-        <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
-    }
-</section>
+@if (@Model.CommentsActive)
+{
+    <section class="respond">
+        <h1>Leave a Comment</h1>
+        @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.Title)
+            @Html.LabelFor(x => x.NewComment.Name)
+            @Html.TextBoxFor(x => x.NewComment.Name, new { autocomplete = "off", required = "required" })
+            @Html.LabelFor(x => x.NewComment.Email)
+            @Html.TextBoxFor(x => x.NewComment.Email, new { type = "email" })
+            <em>This is only used for gravitar image</em>
+            @Html.LabelFor(x => x.NewComment.Url)
+            @Html.TextBoxFor(x => x.NewComment.Url, new { type = "url" })
+            @Html.LabelFor(x => x.NewComment.Content)
+            @Html.TextAreaFor(x => x.NewComment.Content, new { required = "required" })
+            <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
+        }
+    </section>
+}
 
 
