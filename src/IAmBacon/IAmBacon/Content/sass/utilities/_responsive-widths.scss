@@ -1,0 +1,6 @@
+﻿//
+// responsive width helper classes.
+// Various widths with breakpoint behaviours.
+// --------------------------------------------------
+
+%sm-half    { @include breakpoint($screen-sm-min) { width:50% }; }

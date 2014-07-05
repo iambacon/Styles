@@ -1,0 +1,26 @@
+﻿//
+// Helper classes for typography.
+// --------------------------------------------------
+
+.h1 {
+	font-size: $h1-font-size;
+	font-weight: 700;
+	@include line-height-proportional;
+}
+
+.h2 {
+	font-size: $h2-font-size;
+	font-weight: 700;
+	@include line-height-proportional;
+}
+
+.h3 {
+	font-size: $h3-font-size;
+	font-weight: 700;
+	@include line-height-proportional;
+}
+
+.h4 {
+	font-size: $h4-font-size;
+	@include line-height-proportional;
+}

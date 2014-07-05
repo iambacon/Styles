@@ -1,0 +1,39 @@
+﻿//
+// Style guide page.
+// --------------------------------------------------
+
+// Base
+// ------------------------
+@import "../../base/base";
+@import "../../base/base-all";
+
+// Objects
+// ------------------------
+@import "../../objects/grid";
+
+// Utilities
+// ------------------------
+@import "../../utilities/colours";
+@import "../../utilities/floats";
+@import "../../utilities/typography";
+
+// Page
+// ------------------------
+.colour-container {
+	@include container;
+	padding-top: $base-line-height;
+	padding-bottom: $base-line-height;
+	background-color: $white-smoke;
+}
+
+.colour-item {
+	@include column(6);	
+	border-radius: 4px;
+	color: $white;
+	text-align: center;
+	margin-bottom: $base-line-height;
+}
+
+.colour-item--light {
+	color: $black;
+}

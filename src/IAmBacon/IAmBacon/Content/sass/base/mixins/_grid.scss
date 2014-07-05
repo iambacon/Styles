@@ -1,0 +1,54 @@
+﻿//
+// Grid mixins
+// Grid layout mixins to produce a semantic responsive layout.
+// --------------------------------------------------
+$column-width: 60px !default;
+$gutter-width: 20px !default;
+$total-columns: 12;
+
+// Grid column.
+@mixin column($span) {
+	float: left;
+	width: fluid-grid($span);
+	margin-left: fluid-gutter();
+	box-sizing: border-box;
+
+	&:nth-child(odd) {
+		margin-left: 0;
+	}
+	/*&:first-child {
+		margin-left: 0;
+	}*/
+}
+
+// Grid container.
+@mixin container() {
+	@include clearfix;
+	box-sizing: border-box;
+}
+
+//Functions
+// Returns the width of the column including gutters.
+@function column-width($columns) {
+	@return ($columns * $column-width) + (($columns - 1) * $gutter-width);
+}
+
+// Returns the total width of the column container.
+@function container-width() {
+	@return ($total-columns * $column-width) + (($total-columns - 1) * $gutter-width);
+}
+
+// Returns the column width as a percentage.
+@function fluid-grid($columns) {
+	@return percentage(column-width($columns) / container-width());
+}
+
+// Returns the gutter width as a percentage.
+@function fluid-gutter() {
+	@return percentage(gutter-width());
+}
+
+// Returns the gutter width.
+@function gutter-width() {
+	@return $gutter-width / container-width();
+}

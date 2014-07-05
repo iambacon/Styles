@@ -200,6 +200,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\StyleguideController.cs" />
     <Compile Include="Models\EmailTemplateModel.cs" />
     <Compile Include="Presentation\Builders\EmailTemplateBuilder.cs" />
     <Compile Include="Presentation\Extensions\SelectListItemExtensions.cs" />
@@ -289,11 +290,21 @@
     <Content Include="Content\less\blog\images\diamond-small.png" />
     <Content Include="Content\less\blog\images\diamond.png" />
     <Content Include="Content\css\modules\normalize.css" />
+    <Content Include="Content\sass\base\_base.scss" />
+    <Content Include="Content\sass\base\_colours.scss" />
+    <Content Include="Content\sass\base\_grid.scss" />
+    <Content Include="Content\sass\base\_normalize.scss" />
+    <Content Include="Content\sass\base\_typography.scss" />
+    <Content Include="Content\sass\base\mixins\_grid.scss" />
+    <Content Include="Content\sass\base\mixins\_line-height.scss" />
+    <Content Include="Content\sass\base\functions\_functions.scss" />
+    <Content Include="Content\sass\base\_base-all.scss" />
     <None Include="Content\sass\modules\README.txt" />
     <Content Include="Content\stylesheets\category-ie.css" />
     <Content Include="Content\stylesheets\category.css" />
     <Content Include="Content\stylesheets\landingpage-ie.css" />
     <Content Include="Content\stylesheets\landingpage.css" />
+    <Content Include="Content\stylesheets\pages\styleguide\styleguide.css" />
     <Content Include="Content\stylesheets\post-ie.css" />
     <Content Include="Content\stylesheets\post.css" />
     <Content Include="Content\stylesheets\tag-ie.css" />
@@ -343,13 +354,27 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Post\Category.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Styleguide\Styleguide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\sass\components\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\sass\partials\_header.scss" />
+    <Content Include="Content\sass\pages\styleguide\styleguide.scss" />
+    <Content Include="Content\sass\objects\_grid.scss" />
+    <Content Include="Content\sass\base\mixins\_clearfix.scss" />
+    <Content Include="Content\sass\base\mixins\_base.scss" />
+    <Content Include="Content\sass\objects\_lists.scss" />
+    <Content Include="Content\sass\base\mixins\_breakpoints.scss" />
+    <Content Include="Content\sass\utilities\_colours.scss" />
+    <Content Include="Content\sass\utilities\_padding.scss" />
+    <Content Include="Content\sass\utilities\_widths.scss" />
+    <Content Include="Content\sass\utilities\_responsive-widths.scss" />
+    <Content Include="Content\sass\utilities\_floats.scss" />
+    <Content Include="Content\sass\utilities\_typography.scss" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

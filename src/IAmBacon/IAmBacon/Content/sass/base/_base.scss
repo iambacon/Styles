@@ -1,0 +1,43 @@
+﻿//
+// Base
+// Imports all variables and reset styles.
+// --------------------------------------------------
+
+// Variables
+// ------------------------
+@import "colours";
+@import "typography";
+@import "grid";
+
+// Reset
+// ------------------------
+@import "normalize";
+
+// putting my reset needs here for now, until I decide what to do.
+ul {
+	list-style-type: none;
+}
+
+ul {
+	padding: 0;
+}
+
+ul {
+	margin: 0;
+}
+
+html {
+    font-size: $base-font-size;
+}
+
+body {
+	font-family: $base-font-family;
+	color: $base-color;
+	line-height: $base-line-height;
+	background-color: $base-background-color;
+	font-size: $base-font-size;
+}
+
+blockquote {
+	font-style: italic;
+}

@@ -1,0 +1,13 @@
+﻿//
+// General functions
+// --------------------------------------------------
+
+// Strips unit value from number.
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+// Returns pixel value as rem.
+@function rem($px) {
+	@return (strip-unit($px) / 10) + rem;
+}

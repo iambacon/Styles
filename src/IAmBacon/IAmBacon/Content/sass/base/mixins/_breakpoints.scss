@@ -1,0 +1,10 @@
+﻿//
+// Breakpoint mixins.
+// media query mixins, use to wrap content blocks.
+// --------------------------------------------------
+
+@mixin breakpoint($minSize) {
+	@media (min-width: $minSize) {
+		@content;
+	}
+}

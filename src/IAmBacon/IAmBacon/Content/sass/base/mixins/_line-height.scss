@@ -1,0 +1,8 @@
+﻿//
+// line height mixins
+// For calculating line height values
+// --------------------------------------------------
+
+@mixin line-height-proportional($line-height: $base-line-height, $font-size: $base-font-size) {	
+	line-height: $line-height / $font-size;
+}
