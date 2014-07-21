@@ -64,7 +64,7 @@
 @if (@Model.CommentsActive)
 {
     <section class="respond">
-        <h1>Leave a Comment</h1>
+        <h2 class="h1">Leave a Comment</h2>
         @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
         {
             @Html.AntiForgeryToken()

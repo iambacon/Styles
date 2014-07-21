@@ -1,7 +1,7 @@
 ﻿@model IAmBacon.ViewModels.PostViewModel
 <article>
     <header>
-        <h1>@Html.RouteLink(Model.Title, "BlogPost", new { title = Model.SeoTitle })</h1>
+        <h3 class="h1">@Html.RouteLink(Model.Title, "BlogPost", new { title = Model.SeoTitle })</h3>
         <time datetime="@Model.DateTime">@Model.DateCreated</time>
         <strong>Category:</strong>
         @Html.RouteLink(Model.Category, "Category", new { name = Model.Category.ToSeoUrl() }, new { @class = "link" })
