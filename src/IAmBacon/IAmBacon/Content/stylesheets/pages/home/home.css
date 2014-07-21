@@ -542,9 +542,24 @@ blockquote {
   overflow: hidden;
 }
 
-/* line 6, ../../../sass/utilities/_floats.scss */
+/* line 7, ../../../sass/utilities/_floats.scss */
 .co {
   overflow: hidden;
+}
+
+/* line 15, ../../../sass/base/mixins/_clearfix.scss */
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../../sass/base/mixins/_clearfix.scss */
+.cf:after {
+  clear: both;
+}
+
+/* line 17, ../../../sass/utilities/_floats.scss */
+.cb {
+  clear: both;
 }
 
 /* line 5, ../../../sass/utilities/_social.scss */
@@ -732,10 +747,13 @@ blockquote {
 .linksList-item {
   border-bottom: 1px solid rgba(153, 153, 153, 0.8);
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
 }
 
 /* line 117, ../../../sass/pages/home/home.scss */
 .linksList-link {
   color: #fffff7;
+  overflow: hidden;
+  display: inline-block;
+  height: 48px;
 }

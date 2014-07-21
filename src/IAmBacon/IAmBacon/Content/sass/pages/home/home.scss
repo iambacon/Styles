@@ -111,10 +111,13 @@ body {
 .linksList-item {
 	border-bottom: 1px solid rgba($nobel, .8);
 	padding-top: $base-line-height;
-	padding-bottom: $base-line-height; // TODO: Should this be a utility or mixin (padding)?
+	padding-bottom: $base-line-height * 0.5; // TODO: Should this be a utility or mixin (padding)?
 }
 
 .linksList-link {
 	color: $marshmallow;
+	overflow: hidden;
+	display: inline-block;
+	height: $base-line-height * 2;
 }
 

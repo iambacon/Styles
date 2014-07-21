@@ -503,9 +503,24 @@ blockquote {
   background-color: #97ce68;
 }
 
-/* line 6, ../../../sass/utilities/_floats.scss */
+/* line 7, ../../../sass/utilities/_floats.scss */
 .co {
   overflow: hidden;
+}
+
+/* line 15, ../../../sass/base/mixins/_clearfix.scss */
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../../sass/base/mixins/_clearfix.scss */
+.cf:after {
+  clear: both;
+}
+
+/* line 17, ../../../sass/utilities/_floats.scss */
+.cb {
+  clear: both;
 }
 
 /* line 7, ../../../sass/utilities/_typography.scss */
