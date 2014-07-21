@@ -5,29 +5,29 @@ html {
 
 /* line 5, ../sass/partials/_html-body.scss */
 body {
-  font-family: Verdana, Tahoma, Arial;
+  font-family: "Lato", sans-serif;
   color: #333333;
   line-height: 2;
   background-color: white;
-  font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 /* line 14, ../sass/partials/_html-body.scss */
 h1,
 .h1 {
-  font-size: 21px;
-  font-size: 2.1rem;
-  font-size: 31.5px;
-  font-size: 3.15rem;
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 /* line 22, ../sass/partials/_html-body.scss */
 h2 {
-  font-size: 17.5px;
-  font-size: 1.75rem;
-  font-size: 21px;
-  font-size: 2.1rem;
+  font-size: 20px;
+  font-size: 2rem;
+  font-size: 24px;
+  font-size: 2.4rem;
 }
 
 /* line 31, ../sass/partials/_html-body.scss */
@@ -85,8 +85,8 @@ a:hover {
 blockquote {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 17.5px;
-  font-size: 1.75rem;
+  font-size: 20px;
+  font-size: 2rem;
 }
 
 /* line 80, ../sass/partials/_html-body.scss */

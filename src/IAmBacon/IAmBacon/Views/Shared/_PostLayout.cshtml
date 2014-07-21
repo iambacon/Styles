@@ -9,7 +9,6 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @RenderSection("meta", false)
-    <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
     <!--[if lte IE 8]>
         @RenderSection("iecss", false)
     <![endif]-->
@@ -27,6 +26,7 @@
             @RenderBody()
         </main>
     </div>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     @RenderSection("scripts", false)
     @Google.GetAnalyticsHtml()
     @MiniProfiler.RenderIncludes()
