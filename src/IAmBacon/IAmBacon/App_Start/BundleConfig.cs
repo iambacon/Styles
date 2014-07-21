@@ -51,6 +51,9 @@ namespace IAmBacon
             bundles.Add(new StyleBundle("~/bundles/tagIeCss")
                 .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/tag-ie.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/homeCss")
+                .Include("~/Content/stylesheets/pages/home/home.css", new CssRewriteUrlTransform()));
         }
 
         public static void LessBundles(BundleCollection bundles)
@@ -59,8 +62,7 @@ namespace IAmBacon
             var nullOrderer = new NullOrderer();
 
             var iambacon = new Bundle("~/bundles/iambacon")
-                .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/less/home/home.less");
+                .Include("~/Content/stylesheets/pages/home/home.css");
 
             iambacon.Transforms.Add(cssTransformer);
             iambacon.Transforms.Add(new CssMinify());
