@@ -4,21 +4,31 @@ using IAmBacon.Model.Entities;
 namespace IAmBacon.Domain.Services.Interfaces
 {
     /// <summary>
-    ///     The PostService interface.
+    /// The PostService interface.
     /// </summary>
     public interface IPostService : IService<Post>
     {
         /// <summary>
-        ///     Gets the post by the specified seo title.
+        /// Gets the post by the specified seo title.
         /// </summary>
         /// <param name="seoTitle">The seo title.</param>
-        /// <returns></returns>
+        /// <returns>The post object.</returns>
         Post Get(string seoTitle);
 
         /// <summary>
-        ///     Gets the latest posts.
+        /// Gets the latest active posts.
         /// </summary>
-        /// <returns></returns>
-        IEnumerable<Post> GetLatest();
+        /// <param name="number">The number of posts to return.</param>
+        /// <returns>
+        /// Returns the specified number of posts, ordered descending by id.
+        /// </returns>
+        IEnumerable<Post> GetLatest(int number);
+
+        /// <summary>
+        /// Gets the popular active posts.
+        /// </summary>
+        /// <param name="number">The number of posts to return.</param>
+        /// <returns>Returns the specified number of posts.</returns>
+        IEnumerable<Post> GetPopular(int number);
     }
 }

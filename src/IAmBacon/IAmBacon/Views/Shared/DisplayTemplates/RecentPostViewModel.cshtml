@@ -1,0 +1,4 @@
+﻿@model IAmBacon.ViewModels.Shared.RecentPostViewModel
+<li class="linksList-item">
+    @Html.RouteLink(Model.Title, "BlogPost", new { title = Model.SeoTitle }, new { @class = "linksList-link" })
+</li>

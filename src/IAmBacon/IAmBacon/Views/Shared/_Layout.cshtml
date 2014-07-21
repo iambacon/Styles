@@ -8,13 +8,20 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Colin Bacon - Web Developer.  Will develop for money and Bacon..." />
-    @RenderSection("css", required: false)
+    <!--[if lte IE 8]>
+        @RenderSection("iecss", false)
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        @RenderSection("css", false)
+    <!--<![endif]-->
 </head>
 <body>
-    <main class="main" role="main">
+    <main role="main">
         @RenderBody()
     </main>
-    @RenderSection("scripts", required: false)
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    @RenderSection("belowTheFoldCss", false)
+    @RenderSection("scripts", false)
     @Google.GetAnalyticsHtml()
 </body>
 </html>

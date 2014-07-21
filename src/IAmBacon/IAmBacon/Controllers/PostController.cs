@@ -59,6 +59,11 @@ namespace IAmBacon.Controllers
 
         #endregion
 
+        /// <summary>
+        /// The number of recent posts to retrieve.
+        /// </summary>
+        private const int recentPosts = 25;
+
         #region Constructors and Destructors
 
         /// <summary>
@@ -97,7 +102,7 @@ namespace IAmBacon.Controllers
         public ActionResult Index()
         {
             // TODO: Use automapper.
-            var posts = this.postService.GetLatest();
+            var posts = this.postService.GetLatest(recentPosts);
 
             var postModels = CreatePostModels(posts);
 
@@ -204,7 +209,7 @@ namespace IAmBacon.Controllers
             const string BlogUrl = "http://www.iambacon.co.uk/blog";
 
             // Create a collection of SyndicationItemobjects from the latest posts
-            var posts = this.postService.GetLatest().Select
+            var posts = this.postService.GetLatest(recentPosts).Select
             (
               p => new SyndicationItem
                   (

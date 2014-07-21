@@ -3,31 +3,53 @@
 // Imports all variables and reset styles.
 // --------------------------------------------------
 
+// Compass
+// ------------------------
+@import "compass";
+
 // Variables
 // ------------------------
 @import "colours";
 @import "typography";
 @import "grid";
+$ie-only: false !default;
 
 // Reset
 // ------------------------
 @import "normalize";
 
+// Mixins
+// ------------------------
+@import "mixins/base";
+
+// Functions
+// ------------------------
+@import "functions/functions";
+
 // putting my reset needs here for now, until I decide what to do.
-ul {
+ul,
+ol {
 	list-style-type: none;
 }
 
-ul {
+ul,
+ol {
 	padding: 0;
 }
 
-ul {
+ul,
+ol,
+h3,
+p {
 	margin: 0;
 }
 
+a {
+	text-decoration: none;
+}
+
 html {
-    font-size: $base-font-size;
+	font-size: 62.5%;
 }
 
 body {
@@ -35,7 +57,7 @@ body {
 	color: $base-color;
 	line-height: $base-line-height;
 	background-color: $base-background-color;
-	font-size: $base-font-size;
+	@include font-size;
 }
 
 blockquote {

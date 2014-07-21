@@ -67,22 +67,40 @@
         /// Gets the post by the specified seo title.
         /// </summary>
         /// <param name="seoTitle">The seo title.</param>
-        /// <returns></returns>
+        /// <returns>The post object.</returns>
         public Post Get(string seoTitle)
         {
+            // TODO: this should call Get.
             return this.Repository.Find(x => x.SeoTitle == seoTitle).FirstOrDefault();
         }
 
         /// <summary>
         /// Gets the latest active posts.
         /// </summary>
-        /// <returns>Top 25 posts, ordered descending by id.</returns>
-        public IEnumerable<Post> GetLatest()
+        /// <param name="number">The number of posts to return.</param>
+        /// <returns>
+        /// Returns the specified number of posts, ordered descending by id.
+        /// </returns>
+        public IEnumerable<Post> GetLatest(int number)
         {
             return this.GetAll()
                 .Where(x => x.Active)
                 .OrderByDescending(x => x.Id)
-                .Take(25);
+                .Take(number);
+        }
+
+        /// <summary>
+        /// Gets the popular active posts.
+        /// </summary>
+        /// <param name="number">The number of posts to return.</param>
+        /// <returns>
+        /// Returns the specified number of posts.
+        /// </returns>
+        public IEnumerable<Post> GetPopular(int number)
+        {
+            var postIdList = new List<int> { 10, 13, 14 };
+
+            return this.Get(x => postIdList.Contains(x.Id));
         }
 
         #endregion

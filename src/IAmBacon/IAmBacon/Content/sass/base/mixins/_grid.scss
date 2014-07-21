@@ -2,7 +2,7 @@
 // Grid mixins
 // Grid layout mixins to produce a semantic responsive layout.
 // --------------------------------------------------
-$column-width: 60px !default;
+$column-width: 65px !default;
 $gutter-width: 20px !default;
 $total-columns: 12;
 
@@ -13,12 +13,21 @@ $total-columns: 12;
 	margin-left: fluid-gutter();
 	box-sizing: border-box;
 
-	&:nth-child(odd) {
+	@if $span == 6 {
+		&:nth-of-type(odd) {					
+			margin-left: 0;
+		}
+	}
+
+	@if $span == 4 { 
+		&:first-child {		
+			margin-left: 0;
+		}
+	}
+
+	@if $span == $total-columns {
 		margin-left: 0;
 	}
-	/*&:first-child {
-		margin-left: 0;
-	}*/
 }
 
 // Grid container.

@@ -1,26 +1,34 @@
 ﻿//
 // Helper classes for typography.
 // --------------------------------------------------
+/// <reference path="../base/_typography.scss" />
+/// <reference path="../base/mixins/_base.scss" />
 
 .h1 {
-	font-size: $h1-font-size;
+	@include font-size($h1-font-size);
 	font-weight: 700;
 	@include line-height-proportional;
 }
 
 .h2 {
-	font-size: $h2-font-size;
+	@include font-size($h2-font-size);
 	font-weight: 700;
 	@include line-height-proportional;
 }
 
 .h3 {
-	font-size: $h3-font-size;
+	@include font-size($h3-font-size);
 	font-weight: 700;
 	@include line-height-proportional;
 }
 
 .h4 {
-	font-size: $h4-font-size;
+	@include font-size($h4-font-size);
 	@include line-height-proportional;
+}
+
+.hideText {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
 }

@@ -1,0 +1,14 @@
+﻿//
+// Vertical rhythm helper classes.
+// --------------------------------------------------
+/// <reference path="../base/_typography.scss" />
+
+.vr--full {
+	padding-top: $base-line-height;
+	padding-bottom: $base-line-height;
+}
+
+.vr--half {
+	padding-top: $base-line-height * 0.5;
+	padding-bottom: $base-line-height * 0.5;
+}

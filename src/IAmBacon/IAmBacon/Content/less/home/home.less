@@ -7,16 +7,6 @@
 
 @w1031px: 1031px;
 
-html {
-    font-size: 62.5%;
-}
-
-body {
-    font-family: 'Rokkitt', serif;
-    color: #333333;
-    .font-size(1.4);
-}
-
 h1 {
     .font-size(6);
 
@@ -29,14 +19,10 @@ h1 {
     }
 
     @media screen and (min-width: @w1031px) {
-        .font-size(15);
+        .font-size(12);
     }
 
     margin-bottom: 0;
-}
-
-a {
-    text-decoration: none;
 }
 
 .main {
@@ -50,6 +36,11 @@ a {
     
     @media screen and (min-width: @w721px) {
         .font-size(4.5);
+    }
+
+    span {
+        display: block;
+        line-height: 1.2;
     }
 }
 

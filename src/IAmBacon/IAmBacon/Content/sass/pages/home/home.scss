@@ -1,0 +1,120 @@
+﻿//
+// Home page.
+// --------------------------------------------------
+
+// Base
+// ------------------------
+@import "../../base/base";
+
+// Objects
+// ------------------------
+@import "../../objects/lists";
+
+// Utilities
+// ------------------------
+@import "../../utilities/colours";
+@import "../../utilities/typography";
+@import "../../utilities/floats";
+@import "../../utilities/social";
+@import "../../utilities/margin";
+
+// Page
+// ------------------------
+body {
+	@include respond-to(extra-small) {
+		@include font-size($base-font-size * 0.83);
+	}
+}
+
+.title {
+	@include font-size(90px);
+	@include line-height-proportional;
+	margin-top: $base-line-height * .5;
+	margin-bottom: $base-line-height * .5;
+
+	@include respond-to(extra-small) {
+		@include font-size(90px * 0.50);
+	}
+}
+
+.intro {
+	@include font-size(30px);
+	@include line-height-proportional;
+	margin-bottom: $base-line-height;
+
+	@include respond-to(extra-small) {
+		@include font-size(30px * 0.67);
+	}
+}
+
+.intro-block {
+	display: block;	
+	padding-left: 5px;
+}
+
+.intro-link {
+	text-decoration: underline;
+	color: $cursive;
+}
+
+.footer {
+	color: $marshmallow;
+}
+
+.footer-copyright {
+	text-align: center;
+}
+
+.layoutContainer {
+	max-width: 1000px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding-left: $base-line-height * 0.5;
+	padding-right: $base-line-height * 0.5;
+}
+
+.linksList {
+	@include container;
+}
+
+.linksList-items {
+	@include respond-to(extra-small) {
+		@include column(12);
+	}
+
+	@include respond-to(small) {
+		@include column(6);
+	}
+
+	@include respond-to(medium-large) {
+		@include column(4);
+	}
+}
+
+.linksList-items--posts {
+	@include respond-to(medium-large) {		
+		padding-left: $base-line-height * 0.5;
+		padding-right: $base-line-height * 0.5;
+
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+}
+
+.linksList-items--social {
+	@include respond-to(medium-large) {
+		text-align: right;
+	}
+}
+
+.linksList-item {
+	border-bottom: 1px solid rgba($nobel, .8);
+	padding-top: $base-line-height;
+	padding-bottom: $base-line-height; // TODO: Should this be a utility or mixin (padding)?
+}
+
+.linksList-link {
+	color: $marshmallow;
+}
+

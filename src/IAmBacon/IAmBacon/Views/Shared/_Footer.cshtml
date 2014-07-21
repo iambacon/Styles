@@ -1,0 +1,34 @@
+﻿@model IAmBacon.ViewModels.Shared.FooterViewModel
+<footer class="footer illStayHere co">
+    <div class="layoutContainer">
+        <div class="linksList">
+            <div class="linksList-items linksList-items--posts">
+                <h3 class="h3 m-t--full">Recent posts</h3>
+                <ol>
+                    @Html.DisplayFor(x => Model.RecentPosts)
+                </ol>
+            </div>
+            <div class="linksList-items linksList-items--posts">
+                <h3 class="h3 m-t--full">Popular posts</h3>
+                <ol>
+                    @Html.DisplayFor(x => Model.PopularPosts)
+                </ol>
+            </div>
+            <div class="linksList-items linksList-items--social">
+                <h3 class="h3 m-tb--full">Let's be social</h3>
+                <ul class="listInline m-b--full">
+                    <li>
+                        <a class="social linkedIn hideText m-r--full" rel="me" title="Connect with Colin Bacon on LinkedIn" href="http://uk.linkedin.com/pub/colin-bacon/32/1a1/776">LinkedIn</a>
+                    </li>
+                    <li>
+                        <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter" href="http://www.twitter.com/iambacon">Twitter</a>
+                    </li>
+                    <li>
+                        <a class="social google hideText" rel="me" title="Google + for Colin Bacon" href="https://plus.google.com/101905863606629791683?rel=author">Google +</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <p class="footer-copyright cursive">&copy; Copyright @DateTime.Now.Year Colin Bacon</p>
+</footer>

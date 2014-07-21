@@ -1,0 +1,22 @@
+﻿@model IAmBacon.ViewModels.HomeViewModel
+@section css
+{
+    @Styles.Render("~/bundles/homeCss")
+}
+@section iecss
+{
+    @Styles.Render("~/bundles/homeIeCss")
+}
+@section belowTheFoldCss
+{
+
+}
+<div class="layoutContainer">
+    <h1 class="title">I am Bacon.</h1>
+    <p class="intro">
+        <span class="intro-block">I am a web developer.</span> <span class="intro-block">I am a ski instructor.</span> <span class="intro-block">I am not related to Kevin Bacon.</span>
+        <span class="intro-block">This is my <a class="intro-link" title="Blog for Colin Bacon" href="/blog">blog.</a></span>
+    </p>
+</div>
+@{Html.RenderPartial("_Footer", Model.Footer);}
+

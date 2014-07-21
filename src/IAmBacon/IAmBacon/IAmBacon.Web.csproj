@@ -248,6 +248,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\Shared\FooterViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PopularPostViewModel.cs" />
+    <Compile Include="ViewModels\Shared\RecentPostViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\PostsViewModel.cs" />
     <Compile Include="ViewModels\PostViewModel.cs" />
@@ -264,6 +267,7 @@
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
     <Content Include="Content\font\icomoon\icomoon.svg" />
+    <Content Include="Content\images\social.png" />
     <Content Include="Content\less\blog\images\background.png" />
     <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
@@ -298,12 +302,14 @@
     <Content Include="Content\sass\base\mixins\_grid.scss" />
     <Content Include="Content\sass\base\mixins\_line-height.scss" />
     <Content Include="Content\sass\base\functions\_functions.scss" />
-    <Content Include="Content\sass\base\_base-all.scss" />
+    <Content Include="Content\sass\base\mixins\_font.scss" />
     <None Include="Content\sass\modules\README.txt" />
     <Content Include="Content\stylesheets\category-ie.css" />
     <Content Include="Content\stylesheets\category.css" />
     <Content Include="Content\stylesheets\landingpage-ie.css" />
     <Content Include="Content\stylesheets\landingpage.css" />
+    <Content Include="Content\stylesheets\pages\home\home-ie.css" />
+    <Content Include="Content\stylesheets\pages\home\home.css" />
     <Content Include="Content\stylesheets\pages\styleguide\styleguide.css" />
     <Content Include="Content\stylesheets\post-ie.css" />
     <Content Include="Content\stylesheets\post.css" />
@@ -355,6 +361,10 @@
     <Content Include="Views\Post\Category.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Styleguide\Styleguide.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PopularPostViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RecentPostViewModel.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -364,7 +374,6 @@
   <ItemGroup>
     <Content Include="Content\sass\partials\_header.scss" />
     <Content Include="Content\sass\pages\styleguide\styleguide.scss" />
-    <Content Include="Content\sass\objects\_grid.scss" />
     <Content Include="Content\sass\base\mixins\_clearfix.scss" />
     <Content Include="Content\sass\base\mixins\_base.scss" />
     <Content Include="Content\sass\objects\_lists.scss" />
@@ -375,10 +384,12 @@
     <Content Include="Content\sass\utilities\_responsive-widths.scss" />
     <Content Include="Content\sass\utilities\_floats.scss" />
     <Content Include="Content\sass\utilities\_typography.scss" />
+    <Content Include="Content\sass\pages\home\home.scss" />
+    <Content Include="Content\sass\utilities\_margin.scss" />
+    <Content Include="Content\sass\utilities\_social.scss" />
+    <Content Include="Content\sass\utilities\_vertical-rhythm.scss" />
+    <Content Include="Content\sass\pages\home\home-ie.scss" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IAmBacon.Data\IAmBacon.Data.csproj">
