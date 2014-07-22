@@ -1,0 +1,13 @@
+﻿<header class="header">
+    <div class="layoutContainer">
+        <h2 class="header-logo">@Html.ActionLink("I am Bacon.", "Index", "Home")</h2>
+        <p class="visuallyHidden"> Colin Bacon, web developer.</p>
+        <nav class="header-nav">
+            <h3 class="visuallyHidden">Site navigation</h3>
+            <ul class="listInline">
+                <li class="header-nav-link is-active">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="header-nav-link">@Html.ActionLink("Blog", "Index", "Post")</li>
+            </ul>
+        </nav>
+    </div>
+</header>

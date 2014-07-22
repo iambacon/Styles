@@ -12,10 +12,11 @@
         @RenderSection("iecss", false)
     <![endif]-->
     <!--[if gt IE 8]><!-->
-        @RenderSection("css", false)
+    @RenderSection("css", false)
     <!--<![endif]-->
 </head>
 <body>
+    @{Html.RenderPartial("_Header");}
     <main role="main">
         @RenderBody()
     </main>

@@ -26,35 +26,66 @@ body {
 	}
 }
 
-.title {
-	@include font-size(90px);
-	@include line-height-proportional;
-	margin-top: $base-line-height * .5;
-	margin-bottom: $base-line-height * .5;
-
-	@include respond-to(extra-small) {
-		@include font-size(90px * 0.50);
-	}
-}
-
 .intro {
-	@include font-size(30px);
+	@include font-size(50px);
 	@include line-height-proportional;
 	margin-bottom: $base-line-height;
+	margin-top: $base-line-height;
 
 	@include respond-to(extra-small) {
-		@include font-size(30px * 0.67);
+		@include font-size(40px * 0.67);
 	}
 }
 
 .intro-block {
-	display: block;	
+	display: block;
 	padding-left: 5px;
 }
 
 .intro-link {
 	text-decoration: underline;
 	color: $cursive;
+}
+
+.header {
+	border-bottom: 10px solid $ill-stay-here;
+
+	@include respond-to(extra-small) {
+		border-bottom-width: 5px;
+	}
+}
+
+.header-logo {
+	@include font-size($h2-font-size);
+	color: $ill-stay-here;
+	float: left;
+
+	@include respond-to(extra-small) {
+		@include font-size($h3-font-size);
+	}
+}
+
+.header-nav {
+	float: right;
+}
+
+.header-nav-link {
+	@include font-size(18px); // Todo this isn't a standard size.  Need to sort.
+	line-height: 4; // magic number need to sort.
+	color: $ill-stay-here;
+	margin-left: $base-line-height;
+
+	@include respond-to(extra-small) {
+		line-height: 2;
+	}
+
+	&.is-active {
+		color: $fern;
+	}
+
+	&:first-child {
+		margin-left: 0;
+	}
 }
 
 .footer {
@@ -92,7 +123,7 @@ body {
 }
 
 .linksList-items--posts {
-	@include respond-to(medium-large) {		
+	@include respond-to(medium-large) {
 		padding-left: $base-line-height * 0.5;
 		padding-right: $base-line-height * 0.5;
 
@@ -120,4 +151,3 @@ body {
 	display: inline-block;
 	height: $base-line-height * 2;
 }
-

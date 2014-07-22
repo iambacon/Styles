@@ -39,6 +39,7 @@ ol {
 
 ul,
 ol,
+h2,
 h3,
 p {
 	margin: 0;
@@ -46,6 +47,7 @@ p {
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
 
 html {
@@ -53,11 +55,11 @@ html {
 }
 
 body {
-	font-family: $base-font-family;
-	color: $base-color;
-	line-height: $base-line-height;
-	background-color: $base-background-color;
 	@include font-size;
+	@include line-height-proportional;
+	font-family: $base-font-family;
+	color: $base-color;	
+	background-color: $base-background-color;	
 }
 
 blockquote {

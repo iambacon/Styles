@@ -446,34 +446,36 @@ ol {
   padding: 0;
 }
 
-/* line 43, ../../../sass/base/_base.scss */
+/* line 44, ../../../sass/base/_base.scss */
 ul,
 ol,
+h2,
 h3,
 p {
   margin: 0;
 }
 
-/* line 47, ../../../sass/base/_base.scss */
+/* line 48, ../../../sass/base/_base.scss */
 a {
   text-decoration: none;
+  color: inherit;
 }
 
-/* line 51, ../../../sass/base/_base.scss */
+/* line 53, ../../../sass/base/_base.scss */
 html {
   font-size: 62.5%;
 }
 
-/* line 55, ../../../sass/base/_base.scss */
+/* line 57, ../../../sass/base/_base.scss */
 body {
+  font-size: 1.6rem;
+  line-height: 1.5;
   font-family: "Lato", sans-serif;
   color: black;
-  line-height: 24px;
   background-color: white;
-  font-size: 1.6rem;
 }
 
-/* line 63, ../../../sass/base/_base.scss */
+/* line 65, ../../../sass/base/_base.scss */
 blockquote {
   font-style: italic;
 }
@@ -550,11 +552,22 @@ blockquote {
   line-height: 1.5;
 }
 
-/* line 30, ../../../sass/utilities/_typography.scss */
+/* line 31, ../../../sass/utilities/_typography.scss */
 .hideText {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+}
+
+/* line 38, ../../../sass/utilities/_typography.scss */
+.visuallyHidden {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
 }
 
 /* line 17, ../../../sass/pages/styleguide/styleguide.scss */
