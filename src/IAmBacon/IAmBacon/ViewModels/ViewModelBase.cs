@@ -1,4 +1,6 @@
-﻿namespace IAmBacon.ViewModels
+﻿using IAmBacon.ViewModels.Shared;
+
+namespace IAmBacon.ViewModels
 {
     /// <summary>
     /// The base view model class.
@@ -14,6 +16,14 @@
         /// The page title.
         /// </value>
         public string PageTitle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the footer.
+        /// </summary>
+        /// <value>
+        /// The footer.
+        /// </value>
+        public FooterViewModel Footer { get; set; }
 
         #endregion
     }
