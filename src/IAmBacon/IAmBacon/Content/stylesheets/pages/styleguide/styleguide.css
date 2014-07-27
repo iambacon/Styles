@@ -480,29 +480,34 @@ blockquote {
   font-style: italic;
 }
 
-/* line 5, ../../../sass/utilities/_colours.scss */
+/* line 6, ../../../sass/utilities/_colours.scss */
 .takeYourDesire {
   background-color: #ff6766;
 }
 
-/* line 9, ../../../sass/utilities/_colours.scss */
+/* line 10, ../../../sass/utilities/_colours.scss */
 .illStayHere {
   background-color: #60646d;
 }
 
-/* line 13, ../../../sass/utilities/_colours.scss */
+/* line 14, ../../../sass/utilities/_colours.scss */
 .marshmallow {
   background-color: #fffff7;
 }
 
-/* line 17, ../../../sass/utilities/_colours.scss */
+/* line 18, ../../../sass/utilities/_colours.scss */
 .cursive {
   background-color: #83d6de;
 }
 
-/* line 21, ../../../sass/utilities/_colours.scss */
+/* line 22, ../../../sass/utilities/_colours.scss */
 .fern {
   background-color: #97ce68;
+}
+
+/* line 26, ../../../sass/utilities/_colours.scss */
+.cloudyBlue {
+  background-color: #ecf0f1;
 }
 
 /* line 7, ../../../sass/utilities/_floats.scss */

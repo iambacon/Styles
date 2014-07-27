@@ -22,7 +22,7 @@
 // ------------------------
 body {
 	@include respond-to(extra-small) {
-		@include font-size($base-font-size * 0.83);
+		@include font-size($h4-font-size);
 	}
 }
 
@@ -58,12 +58,34 @@ body {
 		border-width: 24px 24px 0;
 		border-style: solid;
 		border-color: $cursive transparent;
+		z-index: 1;
 
 		@include respond-to(extra-small) {
 			border-width: 18px 18px 0;
 			bottom: -18px;
 		}
 	}
+}
+
+.profile {
+	position: relative;
+}
+.profile-image {
+	height: 140px;
+	width: 140px;
+	border-radius: 100%;
+	position: absolute;
+	right: 0;
+	margin-top: -70px;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.profile-desc {
+	color: $nobel;	
+	padding-bottom: $base-line-height;
+	padding-top: $base-line-height;
 }
 
 .intro-desc {
@@ -82,7 +104,8 @@ body {
 	padding-left: 5px;
 }
 
-.intro-link {
+.intro-link,
+.link {
 	text-decoration: underline;
 	color: $cursive;
 }
