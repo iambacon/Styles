@@ -1,9 +1,5 @@
-﻿@model IAmBacon.ViewModels.ErrorViewModel
-@{
-    Layout = null;
-}
+﻿<% Response.StatusCode = 404; %>
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
