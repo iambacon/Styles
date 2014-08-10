@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using IAmBacon.Domain.Services.Interfaces;
 using IAmBacon.Model.Entities;
-using IAmBacon.ViewModels;
+using IAmBacon.ViewModels.Home;
 using IAmBacon.ViewModels.Shared;
 using WebGrease.Css.Extensions;
 
@@ -19,6 +20,11 @@ namespace IAmBacon.Controllers
         private readonly IPostService postService;
 
         /// <summary>
+        /// The latest posts count.
+        /// </summary>
+        private const int LatestPostsCount = 6;
+
+        /// <summary>
         /// The recent posts count.
         /// </summary>
         private const int RecentPostsCount = 3;
@@ -27,6 +33,11 @@ namespace IAmBacon.Controllers
         /// The popular posts count.
         /// </summary>
         private const int PopularPostsCount = 3;
+
+        /// <summary>
+        /// The latest posts.
+        /// </summary>
+        private IEnumerable<Post> latestPosts;
 
         /// <summary>
         /// The popular posts.
@@ -55,7 +66,13 @@ namespace IAmBacon.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            this.recentPosts = this.postService.GetLatest(RecentPostsCount);
+            this.latestPosts = this.postService.GetLatest(LatestPostsCount);
+
+            if (latestPosts != null)
+            {
+                this.recentPosts = this.latestPosts.Take(RecentPostsCount);
+            }
+
             this.popularPosts = this.postService.GetPopular(PopularPostsCount);
             var model = SetHomeViewModel();
 
@@ -89,6 +106,21 @@ namespace IAmBacon.Controllers
             {
                 Title = post.Title,
                 SeoTitle = post.SeoTitle
+            };
+        }
+
+        /// <summary>
+        /// Maps the post thumb view model.
+        /// </summary>
+        /// <param name="post">The post.</param>
+        /// <returns></returns>
+        private static PostThumbViewModel MapPostThumbViewModel(Post post)
+        {
+            return new PostThumbViewModel
+            {
+                Title = post.Title,
+                Description = post.Content,
+                Thumbnail = post.Image
             };
         }
 
@@ -135,6 +167,17 @@ namespace IAmBacon.Controllers
         }
 
         /// <summary>
+        /// Sets the blog posts.
+        /// </summary>
+        /// <returns>The list of post thumbs.</returns>
+        private IEnumerable<PostThumbViewModel> SetBlogPosts()
+        {
+            return this.latestPosts != null 
+                ? this.latestPosts.Select(MapPostThumbViewModel).ToList() 
+                : null;
+        }
+
+        /// <summary>
         /// Sets the home view model.
         /// </summary>
         /// <returns>
@@ -145,7 +188,8 @@ namespace IAmBacon.Controllers
             return new HomeViewModel
             {
                 PageTitle = "Colin Bacon, Web Developer - I am Bacon",
-                Footer = SetFooterViewModel()
+                Footer = SetFooterViewModel(),
+                BlogPosts = SetBlogPosts()
             };
         }
 
