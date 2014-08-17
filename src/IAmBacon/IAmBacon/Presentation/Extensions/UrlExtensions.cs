@@ -1,7 +1,5 @@
 ﻿namespace IAmBacon.Presentation.Extensions
 {
-    using System.Text.RegularExpressions;
-
     using IAmBacon.Domain.Utilities;
 
     /// <summary>
@@ -21,6 +19,18 @@
             const string GravatarUrl = "http://www.gravatar.com/avatar/";
 
             return GravatarUrl + hash;
+        }
+
+        /// <summary>
+        /// Creates an image URL.
+        /// </summary>
+        /// <param name="image">The image.</param>
+        /// <returns></returns>
+        public static string ToImageUrl(this string image)
+        {
+            const string ImageUrl = "http://images.iambacon.co.uk/blog/";
+
+            return ImageUrl + image;
         }
 
         /// <summary>

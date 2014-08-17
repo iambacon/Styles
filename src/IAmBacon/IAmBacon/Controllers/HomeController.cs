@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using IAmBacon.Domain.Services.Interfaces;
 using IAmBacon.Model.Entities;
+using IAmBacon.Presentation.Extensions;
 using IAmBacon.ViewModels.Home;
 using IAmBacon.ViewModels.Shared;
 using WebGrease.Css.Extensions;
@@ -22,7 +23,7 @@ namespace IAmBacon.Controllers
         /// <summary>
         /// The latest posts count.
         /// </summary>
-        private const int LatestPostsCount = 6;
+        private const int LatestPostsCount = 8;
 
         /// <summary>
         /// The recent posts count.
@@ -119,8 +120,12 @@ namespace IAmBacon.Controllers
             return new PostThumbViewModel
             {
                 Title = post.Title,
-                Description = post.Content,
-                Thumbnail = post.Image
+                Thumbnail = post.Image.ToImageUrl(),
+                DateTime = post.DateCreated.ToDateTimeFormat(),
+                DisplayDate = post.DateCreated.ToDisplayDate(),
+                Category = post.Category.Name,
+                SeoTitle = post.SeoTitle,
+                Author = post.User.FirstName + " " + post.User.LastName,
             };
         }
 

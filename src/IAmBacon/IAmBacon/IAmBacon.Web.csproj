@@ -372,6 +372,7 @@
     <Content Include="Views\Shared\DisplayTemplates\RecentPostViewModel.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PostThumbViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,6 +397,7 @@
     <Content Include="Content\sass\utilities\_social.scss" />
     <Content Include="Content\sass\utilities\_vertical-rhythm.scss" />
     <Content Include="Content\sass\pages\home\home-ie.scss" />
+    <Content Include="Content\sass\utilities\_tables.scss" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

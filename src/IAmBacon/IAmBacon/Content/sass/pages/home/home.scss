@@ -17,6 +17,7 @@
 @import "../../utilities/floats";
 @import "../../utilities/social";
 @import "../../utilities/margin";
+@import "../../utilities/tables";
 
 // Page
 // ------------------------
@@ -70,6 +71,7 @@ body {
 .profile {
 	position: relative;
 }
+
 .profile-image {
 	height: 140px;
 	width: 140px;
@@ -83,7 +85,7 @@ body {
 }
 
 .profile-desc {
-	color: $nobel;	
+	color: $nobel;
 	padding-bottom: $base-line-height;
 	padding-top: $base-line-height;
 }
@@ -213,4 +215,71 @@ body {
 	overflow: hidden;
 	display: inline-block;
 	height: $base-line-height * 2;
+}
+
+.pageSection {
+	padding-top: $base-line-height;
+	padding-bottom: $base-line-height * 3;
+}
+
+.pageSection-title {
+	color: $nobel;
+	@include font-size(48px);
+	@include line-height-proportional;
+	font-weight: 700;
+	text-align: center;
+}
+
+.articleThumb {
+	@include respond-to(extra-small) {
+		@include column(6);
+	}
+
+	@include respond-to(small) {
+		@include column(3);
+	}
+
+	@include respond-to(medium-large) {
+		@include column(3);
+	}
+
+	
+	background-color: $white;
+	border-radius: 3px;
+	margin-bottom: $base-line-height;
+}
+
+.articleThumb-title {
+	color: $nobel;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	height: $base-line-height * 2;
+	overflow: hidden;
+}
+
+.articleThumb-date,
+.articleThumb-category {
+	@include font-size(14px);
+	@include line-height-proportional;
+	color: $very-light-grey;
+}
+
+.articleThumb-meta {
+	padding-bottom: 5px;
+	overflow: hidden;
+}
+
+.articleThumb-date {
+	float: left;
+	padding-left: 5px;
+}
+
+.articleThumb-category {
+	float: right;
+	padding-right: 5px;
+}
+
+.articleThumb-image {
+	border-radius: 3px;
 }

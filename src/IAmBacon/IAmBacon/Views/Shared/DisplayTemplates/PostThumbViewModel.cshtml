@@ -1,0 +1,21 @@
+﻿@model IAmBacon.ViewModels.Home.PostThumbViewModel
+<article class="articleThumb dt">
+    <header class="dt-bottom">
+        <h3 class="articleThumb-title">@Html.RouteLink(Model.Title, "BlogPost", new { title = Model.SeoTitle })</h3>
+        <dl class="articleThumb-meta">
+            <dt class="visuallyHidden">Published:</dt>
+            <dd>
+                <time datetime="@Model.DateTime" class="articleThumb-date">@Model.DisplayDate</time>
+            </dd>
+            <dt class="visuallyHidden">Category:</dt>
+            <dd class="articleThumb-category">@Html.RouteLink(Model.Category, "Category", new { name = Model.Category.ToSeoUrl() })</dd>
+        </dl>
+    </header>
+    <img class="articleThumb-image dt-top" src="@Model.Thumbnail" alt="@Model.Title" />
+    <footer class="visuallyHidden">
+        <dl>
+            <dt>Author:</dt>
+            <dd>@Model.Author</dd>
+        </dl>
+    </footer>
+</article>

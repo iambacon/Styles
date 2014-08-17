@@ -25,11 +25,12 @@
         </p>
     </div>
 </div>
-<div class="layoutContainer">
-    <p class="intro-desc">
-        <span class="intro-block">I am a web developer.</span> <span class="intro-block">I am a ski instructor.</span> <span class="intro-block">I am not related to Kevin Bacon.</span>
-        <span class="intro-block">This is my <a class="intro-link" title="Blog for Colin Bacon" href="/blog">blog.</a></span>
-    </p>
-</div>
-
-
+@if (Model.ShowBlogPosts)
+{
+    <section class="alto co">
+        <div class="pageSection layoutContainer">
+            <h2 class="pageSection-title">Blog</h2>
+            @Html.DisplayFor(x => x.BlogPosts)
+        </div>
+    </section>
+}

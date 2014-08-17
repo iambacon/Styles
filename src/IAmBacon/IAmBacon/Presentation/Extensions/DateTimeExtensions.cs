@@ -20,6 +20,16 @@
         }
 
         /// <summary>
+        /// Creates a display date.
+        /// </summary>
+        /// <param name="dateTime">The date time.</param>
+        /// <returns></returns>
+        public static string ToDisplayDate(this DateTime dateTime)
+        {
+            return dateTime.ToString("dd MMM yyyy");
+        }
+
+        /// <summary>
         /// Creates a display date time.
         /// </summary>
         /// <param name="dateTime">The date time.</param>

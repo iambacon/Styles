@@ -446,27 +446,40 @@ ol {
   padding: 0;
 }
 
-/* line 44, ../../../sass/base/_base.scss */
+/* line 46, ../../../sass/base/_base.scss */
 ul,
 ol,
 h2,
 h3,
-p {
+p,
+dl,
+dd {
   margin: 0;
 }
 
-/* line 48, ../../../sass/base/_base.scss */
+/* line 50, ../../../sass/base/_base.scss */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* line 53, ../../../sass/base/_base.scss */
+/* line 56, ../../../sass/base/_base.scss */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* line 61, ../../../sass/base/_base.scss */
+h3 {
+  font-size: inherit;
+}
+
+/* line 65, ../../../sass/base/_base.scss */
 html {
   font-size: 62.5%;
 }
 
-/* line 57, ../../../sass/base/_base.scss */
+/* line 69, ../../../sass/base/_base.scss */
 body {
   font-size: 1.6rem;
   line-height: 1.5;
@@ -475,7 +488,7 @@ body {
   background-color: white;
 }
 
-/* line 65, ../../../sass/base/_base.scss */
+/* line 77, ../../../sass/base/_base.scss */
 blockquote {
   font-style: italic;
 }
@@ -508,6 +521,11 @@ blockquote {
 /* line 26, ../../../sass/utilities/_colours.scss */
 .cloudyBlue {
   background-color: #ecf0f1;
+}
+
+/* line 30, ../../../sass/utilities/_colours.scss */
+.alto {
+  background-color: #dfdfdf;
 }
 
 /* line 7, ../../../sass/utilities/_floats.scss */
@@ -603,7 +621,7 @@ blockquote {
   text-align: center;
   margin-bottom: 24px;
 }
-/* line 17, ../../../sass/base/mixins/_grid.scss */
+/* line 19, ../../../sass/base/mixins/_grid.scss */
 .colour-item:nth-of-type(odd) {
   margin-left: 0;
 }
