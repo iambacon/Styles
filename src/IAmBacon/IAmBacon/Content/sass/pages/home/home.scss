@@ -273,6 +273,10 @@ body {
 .articleThumb-date {
 	float: left;
 	padding-left: 5px;
+
+	@include respond-to(extra-small) {
+		@include visually-hidden;
+	}
 }
 
 .articleThumb-category {

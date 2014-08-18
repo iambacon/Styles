@@ -272,7 +272,6 @@
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="apple-touch-icon.png" />
     <Content Include="Content\font\icomoon\icomoon.svg" />
-    <Content Include="Content\images\colin-bacon.jpg" />
     <Content Include="Content\images\social.png" />
     <Content Include="Content\less\blog\images\background.png" />
     <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
@@ -309,6 +308,7 @@
     <Content Include="Content\sass\base\mixins\_line-height.scss" />
     <Content Include="Content\sass\base\functions\_functions.scss" />
     <Content Include="Content\sass\base\mixins\_font.scss" />
+    <Content Include="Content\sass\base\mixins\_typography.scss" />
     <None Include="Content\sass\modules\README.txt" />
     <Content Include="Content\stylesheets\category-ie.css" />
     <Content Include="Content\stylesheets\category.css" />
