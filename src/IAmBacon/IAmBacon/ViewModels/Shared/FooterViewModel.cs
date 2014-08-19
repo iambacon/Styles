@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace IAmBacon.ViewModels.Shared
 {
@@ -22,5 +23,34 @@ namespace IAmBacon.ViewModels.Shared
         /// The popular posts.
         /// </value>
         public IEnumerable<PopularPostViewModel> PopularPosts { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether [show recent posts].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [show recent posts]; otherwise, <c>false</c>.
+        /// </value>
+        public bool ShowRecentPosts
+        {
+            get
+            {
+                return this.RecentPosts != null && this.RecentPosts.Any();
+                
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether [show popular posts].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [show popular posts]; otherwise, <c>false</c>.
+        /// </value>
+        public bool ShowPopularPosts
+        {
+            get
+            {
+                return this.PopularPosts != null && this.PopularPosts.Any();
+            }
+        }
     }
 }

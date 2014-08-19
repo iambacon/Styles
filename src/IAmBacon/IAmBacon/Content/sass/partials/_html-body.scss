@@ -1,21 +1,23 @@
 html {
-    font-size: $html-font-size-percentage;
+	font-size: $html-font-size-percentage;
 }
 
 body {
 	font-family: $base-font-family;
 	color: $body-color;
-	line-height: $base-line-height;
 	background-color: $page-background-colour;
 	@include font-size($base-font-size);
+	@include line-height-proportional;
 }
 
 h1,
-.h1 {	
-	@include font-size($h1-font-size-mobile);
+.h1 {
+	font-size: 24px !important;
+	font-size: 2.4rem !important;
 
 	@include media-min($min-width-541px) {
-		@include font-size($h1-font-size);
+		font-size: 36px !important;
+		font-size: 3.6rem !important;
 	}
 }
 
@@ -25,6 +27,16 @@ h2 {
 	@include media-min($min-width-541px) {
 		@include font-size($h2-font-size);
 	}
+}
+
+img {
+	max-width: 100%;
+	vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
+}
+
+h2,
+ul {
+	margin: 0;
 }
 
 ul,
@@ -44,17 +56,16 @@ input[type=email],
 input[type=url],
 textarea {
 	width: 100%;
-	padding-left: 0.5em;		
+	padding-left: 0.5em;
 	padding-right: 0.5em;
 	@include box-sizing();
-}	
+}
 
 input[type=text],
 input[type=email],
 input[type=url] {
-	
 	height: 2em;
-}	
+}
 
 textarea {
 	height: 7em;
@@ -73,20 +84,14 @@ a {
 
 blockquote {
 	font-family: Georgia, serif;
-	font-style: italic;	
-	@include font-size($blockquote-font-size);		
+	font-style: italic;
+	@include font-size($blockquote-font-size);
 }
 
 .wrapper {
 	margin: 0 auto;
 	text-align: left;
 	max-width: 1440px;
-}
-
-.content,
-.header{
-	margin-left: $body-gutter;
-	margin-right: $body-gutter;
 }
 
 .link {

@@ -1,4 +1,5 @@
 ﻿@using IAmBacon.Presentation.HtmlHelpers;
+@using StackExchange.Profiling
 @model IAmBacon.ViewModels.ViewModelBase
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
     <title>@Model.PageTitle</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Colin Bacon - Web Developer.  Will develop for money and Bacon..." />
+    @RenderSection("meta", false)
     <!--[if lte IE 8]>
         @RenderSection("iecss", false)
     <![endif]-->
@@ -25,5 +26,6 @@
     @RenderSection("belowTheFoldCss", false)
     @RenderSection("scripts", false)
     @Google.GetAnalyticsHtml()
+    @MiniProfiler.RenderIncludes()
 </body>
 </html>

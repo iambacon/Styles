@@ -1,0 +1,16 @@
+﻿//
+// Helper classes for grids and layouts.
+// --------------------------------------------------
+/// <reference path="../base//_variables.scss" />
+
+.layoutContainer {
+	max-width: 1000px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding-left: $base-line-height * 0.5;
+	padding-right: $base-line-height * 0.5;
+}
+
+.layoutContainer--visible {
+	overflow: visible;
+}

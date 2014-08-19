@@ -1,0 +1,14 @@
+﻿//
+// Footer component.
+// The global footer for the site.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.footer {
+	color: $marshmallow;
+}
+
+.footer-copyright {
+	text-align: center;
+}

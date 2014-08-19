@@ -1,0 +1,43 @@
+// Modules and variables
+@import "../../base/variables";
+@import "../../base/mixins/base";
+@import "../../partials/base";
+
+// Objects
+@import "../../objects/lists";
+
+// Partials
+@import "../../partials/html-body";
+@import "../../partials/respond";
+@import "../../partials/code";
+
+// Components
+// ------------------------
+@import "../../components/header";
+@import "../../components/footer";
+@import "../../components/links-list";
+
+// Utilities
+// ------------------------
+@import "../../utilities/colours";
+@import "../../utilities/grid";
+@import "../../utilities/typography";
+@import "../../utilities/social";
+@import "../../utilities/margin";
+
+// General
+
+article {
+	a {
+		color: $article-link-colour;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}	
+}
+
+.image-center {
+	margin: 0 auto;
+	display: block;
+}

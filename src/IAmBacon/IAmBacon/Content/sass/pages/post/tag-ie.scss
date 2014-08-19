@@ -1,4 +1,4 @@
 $fix-media-min: 541px;
 $fix-media-max: 540px;
-
-@import "landingpage";
+$ie-only: true;
+@import "tag";

@@ -1,5 +1,5 @@
 @import "compass";
-
+$ie-only: false !default;
 $html-font-size-percentage: 62.5%;
 $body-gutter: 30px;
 
@@ -8,7 +8,8 @@ $base-font-family: 'Lato', sans-serif !default;
 $base-font-weight: normal;
 $base-font-size: 16px;
 
-$base-line-height: 2;
+$base-line-height: 24px;
+/*$base-line-height: 2;*/
 $base-padding: $base-font-size;
 $base-margin: $base-padding;
 
@@ -17,7 +18,7 @@ $h1-font-size-mobile: 1.5 * $base-font-size;
 $h2-font-size-mobile: 1.25 * $base-font-size;
 
 $h1-font-size: 2.25 * $base-font-size;
-$h2-font-size: 1.5 * $base-font-size;
+$h2-font-size: 3 * $base-font-size;
 
 $blockquote-font-size: 1.25 * $base-font-size;
 

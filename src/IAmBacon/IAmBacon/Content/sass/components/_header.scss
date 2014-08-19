@@ -1,0 +1,43 @@
+﻿//
+// Header component.
+// The global header for the site.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.header {
+	border-bottom: 10px solid $ill-stay-here;
+
+	@include respond-to(extra-small) {
+		border-bottom-width: 5px;
+	}
+}
+
+.header-logo {
+	@include font-size($h2-font-size);
+	color: $ill-stay-here;
+	float: left;
+
+	@include respond-to(extra-small) {
+		@include font-size($h3-font-size);
+	}
+}
+
+.header-nav {
+	float: right;
+}
+
+.header-nav-link {
+	@include font-size(18px); // Todo this isn't a standard size.  Need to sort.
+	line-height: 4; // magic number need to sort.
+	color: $ill-stay-here;
+	margin-left: $base-line-height;
+
+	@include respond-to(extra-small) {
+		line-height: 2;
+	}
+
+	&:first-child {
+		margin-left: 0;
+	}
+}

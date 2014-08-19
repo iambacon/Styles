@@ -22,35 +22,35 @@ namespace IAmBacon
         {
             bundles.Add(new StyleBundle("~/bundles/landingpageCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/landingpage.css"));
+                .Include("~/Content/stylesheets/pages/post/landingpage.css"));
 
             bundles.Add(new StyleBundle("~/bundles/landingpageIeCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/landingpage-ie.css"));
+                .Include("~/Content/stylesheets/pages/post/landingpage-ie.css"));
 
             bundles.Add(new StyleBundle("~/bundles/postCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/post.css"));
+                .Include("~/Content/stylesheets/pages/post/post.css"));
 
             bundles.Add(new StyleBundle("~/bundles/postIeCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/post-ie.css"));
+                .Include("~/Content/stylesheets/pages/post/post-ie.css"));
 
             bundles.Add(new StyleBundle("~/bundles/categoryCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/category.css"));
+                .Include("~/Content/stylesheets/pages/post/category.css"));
 
             bundles.Add(new StyleBundle("~/bundles/categoryIeCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/category-ie.css"));
+                .Include("~/Content/stylesheets/pages/post/category-ie.css"));
 
             bundles.Add(new StyleBundle("~/bundles/tagCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/tag.css"));
+                .Include("~/Content/stylesheets/pages/post/tag.css"));
 
             bundles.Add(new StyleBundle("~/bundles/tagIeCss")
                 .Include("~/Content/css/modules/normalize.css")
-                .Include("~/Content/stylesheets/tag-ie.css"));
+                .Include("~/Content/stylesheets/pages/post/tag-ie.css"));
 
             bundles.Add(new StyleBundle("~/bundles/homeCss")
                 .Include("~/Content/stylesheets/pages/home/home.css", new CssRewriteUrlTransform()));

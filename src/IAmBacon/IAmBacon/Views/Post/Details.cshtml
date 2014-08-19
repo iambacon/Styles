@@ -1,7 +1,4 @@
 ﻿@model IAmBacon.ViewModels.PostViewModel
-@{
-    this.Layout = "~/Views/Shared/_PostLayout.cshtml";
-}
 @section css
 {
     @if (!Model.NoCss)
@@ -16,72 +13,73 @@
         @Styles.Render("~/bundles/postIeCss")
     }
 }
-<article itemscope itemtype="http://schema.org/BlogPosting">
-    <header>
-        <h1 itemprop="name headline">@Model.Title</h1>
-        <ul>
-            <li>
-                <strong>Published:</strong>
-                <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>
-            </li>
-            <li>
-                <strong>Category:</strong>
-                @Html.RouteLink(Model.Category, "Category", new { name = Model.Category })
-            </li>
-        </ul>
-    </header>
-    @Model.Content
-    <footer>
-        <ul>
-            @if (Model.Tags != null && Model.Tags.Any())
-            {
+<div class="layoutContainer">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">@Model.Title</h1>
+            <ul>
                 <li>
-                    <strong>Tags:</strong>
-                    @Html.DisplayFor(x => x.Tags)
+                    <strong>Published:</strong>
+                    <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>
                 </li>
-            }
-            <li>
-                <strong>Author:</strong>
-                @*TODO: This needs to cater for other authors and should be driven from the db*@
-                @Html.ActionLink(@Model.Author, "Index", "Home", null, new { rel = "author", @class = "link" })
-            </li>
-            <li>
-                <strong>Social links:</strong>
-                <a class="link" href="http://www.twitter.com/iambacon" rel="me" title="Follow @Model.Author on Twitter">Twitter</a>
-                <a class="link" href="https://plus.google.com/101905863606629791683?rel=author" rel="me" title="Google + for @Model.Author">Google +</a>
-            </li>
-        </ul>
-        @* TODO: Social sharing links *@
-    </footer>
-    @if (@Model.Comments.Any())
-    {
-        <h2>@Model.Comments.Count() Comments</h2>
-        <ol class="comments">
-            @Html.DisplayFor(x => x.Comments)
-        </ol>
-    }
-</article>
-@if (@Model.CommentsActive)
-{
-    <section class="respond">
-        <h2 class="h1">Leave a Comment</h2>
-        @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
+                <li>
+                    <strong>Category:</strong>
+                    @Html.RouteLink(Model.Category, "Category", new { name = Model.Category })
+                </li>
+            </ul>
+        </header>
+        @Model.Content
+        <footer>
+            <ul>
+                @if (Model.Tags != null && Model.Tags.Any())
+                {
+                    <li>
+                        <strong>Tags:</strong>
+                        @Html.DisplayFor(x => x.Tags)
+                    </li>
+                }
+                <li>
+                    <strong>Author:</strong>
+                    @*TODO: This needs to cater for other authors and should be driven from the db*@
+                    @Html.ActionLink(@Model.Author, "Index", "Home", null, new { rel = "author", @class = "link" })
+                </li>
+                <li>
+                    <strong>Social links:</strong>
+                    <a class="link" href="http://www.twitter.com/iambacon" rel="me" title="Follow @Model.Author on Twitter">Twitter</a>
+                    <a class="link" href="https://plus.google.com/101905863606629791683?rel=author" rel="me" title="Google + for @Model.Author">Google +</a>
+                </li>
+            </ul>
+            @* TODO: Social sharing links *@
+        </footer>
+        @if (@Model.Comments.Any())
         {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(x => x.Id)
-            @Html.HiddenFor(x => x.Title)
-            @Html.LabelFor(x => x.NewComment.Name)
-            @Html.TextBoxFor(x => x.NewComment.Name, new { autocomplete = "off", required = "required" })
-            @Html.LabelFor(x => x.NewComment.Email)
-            @Html.TextBoxFor(x => x.NewComment.Email, new { type = "email" })
-            <em>This is only used for gravitar image</em>
-            @Html.LabelFor(x => x.NewComment.Url)
-            @Html.TextBoxFor(x => x.NewComment.Url, new { type = "url" })
-            @Html.LabelFor(x => x.NewComment.Content)
-            @Html.TextAreaFor(x => x.NewComment.Content, new { required = "required" })
-            <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
+            <h2>@Model.Comments.Count() Comments</h2>
+            <ol class="comments">
+                @Html.DisplayFor(x => x.Comments)
+            </ol>
         }
-    </section>
-}
-
+    </article>
+    @if (@Model.CommentsActive)
+    {
+        <section class="respond">
+            <h2 class="h1">Leave a Comment</h2>
+            @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.Title)
+                @Html.LabelFor(x => x.NewComment.Name)
+                @Html.TextBoxFor(x => x.NewComment.Name, new { autocomplete = "off", required = "required" })
+                @Html.LabelFor(x => x.NewComment.Email)
+                @Html.TextBoxFor(x => x.NewComment.Email, new { type = "email" })
+                <em>This is only used for gravitar image</em>
+                @Html.LabelFor(x => x.NewComment.Url)
+                @Html.TextBoxFor(x => x.NewComment.Url, new { type = "url" })
+                @Html.LabelFor(x => x.NewComment.Content)
+                @Html.TextAreaFor(x => x.NewComment.Content, new { required = "required" })
+                <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
+            }
+        </section>
+    }
+</div>
 

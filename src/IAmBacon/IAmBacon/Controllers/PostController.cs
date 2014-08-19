@@ -2,6 +2,7 @@
 using IAmBacon.Domain.Smtp.Interfaces;
 using IAmBacon.Domain.Utilities.Interfaces;
 using IAmBacon.Presentation.Builders;
+using IAmBacon.ViewModels.Shared;
 
 namespace IAmBacon.Controllers
 {
@@ -106,8 +107,13 @@ namespace IAmBacon.Controllers
 
             var postModels = CreatePostModels(posts);
 
-            var model = new PostsViewModel { Posts = postModels, PageTitle = "I am Blog - I am Bacon" };
-            
+            var model = new PostsViewModel
+            {
+                Posts = postModels,
+                PageTitle = "I am Blog - I am Bacon",
+                Footer = new FooterViewModel()
+            };
+
             return this.View(model);
         }
 
@@ -132,7 +138,8 @@ namespace IAmBacon.Controllers
                 {
                     PageTitle = string.Format("Category: {0}  - I am Bacon", name),
                     Posts = postModels,
-                    Title = category.Name
+                    Title = category.Name,
+                    Footer = new FooterViewModel()
                 };
 
             return this.View(model);
@@ -188,10 +195,11 @@ namespace IAmBacon.Controllers
                     Comments = comments.ToList(),
                     NoCss = post.NoCss,
                     Id = post.Id,
-                    PageTitle = post.Title + " - I am Bacon"
+                    PageTitle = post.Title + " - I am Bacon",
+                    Footer = new FooterViewModel()
                 };
 
-            
+
             // TODO: Temporary until we sort out spam
             model.CommentsActive = false;
 
@@ -271,7 +279,7 @@ namespace IAmBacon.Controllers
                     this.commentService.Create(entity);
 
                     // Send email notification to me.
-                    var commentUrl = Url.Action("Index", "Comment", new {area = "Admin"}, Request.Url.Scheme);
+                    var commentUrl = Url.Action("Index", "Comment", new { area = "Admin" }, Request.Url.Scheme);
                     var post = this.postService.Get(id);
                     var emailTemplate = EmailTemplateBuilder.NewCommentEmail(entity, post.Title, commentUrl,
                         "View comment");
@@ -301,7 +309,8 @@ namespace IAmBacon.Controllers
                     {
                         Posts = postModels,
                         PageTitle = string.Format("Tag: {0}  - I am Bacon", name),
-                        Title = tag.Name
+                        Title = tag.Name,
+                        Footer = new FooterViewModel()
                     };
 
                 return this.View(model);

@@ -2,18 +2,24 @@
 <footer class="footer illStayHere co">
     <div class="layoutContainer">
         <div class="linksList">
-            <div class="linksList-items linksList-items--posts">
-                <h3 class="h3 m-t--full">Recent posts</h3>
-                <ol>
-                    @Html.DisplayFor(x => Model.RecentPosts)
-                </ol>
-            </div>
-            <div class="linksList-items linksList-items--posts">
-                <h3 class="h3 m-t--full">Popular posts</h3>
-                <ol>
-                    @Html.DisplayFor(x => Model.PopularPosts)
-                </ol>
-            </div>
+            @if (Model.ShowRecentPosts)
+            {
+                <div class="linksList-items linksList-items--posts">
+                    <h3 class="h3 m-t--full">Recent posts</h3>
+                    <ol>
+                        @Html.DisplayFor(x => Model.RecentPosts)
+                    </ol>
+                </div>
+            }
+            @if (Model.ShowPopularPosts)
+            {
+                <div class="linksList-items linksList-items--posts">
+                    <h3 class="h3 m-t--full">Popular posts</h3>
+                    <ol>
+                        @Html.DisplayFor(x => Model.PopularPosts)
+                    </ol>
+                </div>
+            }
             <div class="linksList-items linksList-items--social">
                 <h3 class="h3 m-tb--full">Let's be social</h3>
                 <ul class="listInline m-b--full">
