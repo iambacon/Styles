@@ -67,7 +67,7 @@ namespace IAmBacon
             iambacon.Transforms.Add(cssTransformer);
             iambacon.Transforms.Add(new CssMinify());
             iambacon.Orderer = nullOrderer;
-
+            
             bundles.Add(iambacon);
         }
 
@@ -86,10 +86,6 @@ namespace IAmBacon
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
             //            "~/Scripts/jquery-ui*"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-            //            "~/Scripts/jquery.unobtrusive*",
-            //            "~/Scripts/jquery.validate*"));
 
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/modernizr-*"));
