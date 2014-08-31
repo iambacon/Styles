@@ -70,7 +70,7 @@ namespace IAmBacon
             
             bundles.Add(iambacon);
         }
-
+        
         public static void ScriptBundles(BundleCollection bundles)
         {
             ////bundles.UseCdn = true;

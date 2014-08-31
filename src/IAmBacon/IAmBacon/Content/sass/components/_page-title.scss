@@ -1,0 +1,57 @@
+﻿//
+// Page title component.
+// Used to style the title of each page.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.pageTitle {
+	background-color: $cursive;
+	position: relative;
+}
+
+.pageTitle-headline {
+	@include font-size($h1-font-size);
+	@include line-height-proportional;
+	color: $marshmallow;
+	font-weight: 700;
+	margin: 0;
+	padding-top: $base-line-height;
+	padding-bottom: $base-line-height;
+	text-align: center;
+	display: block;
+
+	@include respond-to(extra-small) {
+		@include font-size($h2-font-size);
+	}
+}
+
+.pageTitle-subline {
+    @include font-size($h3-font-size);
+    margin-top: 0;  
+    margin-bottom: 0;
+    padding-bottom: $base-line-height;
+    text-align: center;
+    color: $white;
+}
+
+// State
+.has-triangle {
+	position: relative;
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: -24px;
+		left: 80px;
+		border-width: 24px 24px 0;
+		border-style: solid;
+		border-color: $cursive transparent;
+		z-index: 1;
+
+		@include respond-to(extra-small) {
+			border-width: 18px 18px 0;
+			bottom: -18px;
+		}
+	}
+}

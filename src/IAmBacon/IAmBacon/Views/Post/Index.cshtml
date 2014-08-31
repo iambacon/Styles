@@ -11,10 +11,14 @@
 {
     @Styles.Render("~/bundles/landingpageIeCss")
 }
+<div class="pageTitle">
+    <div class="layoutContainer layoutContainer--visible has-triangle">
+        <h1 class="pageTitle-headline">I am blog</h1>
+        <p class="pageTitle-subline">These are the things I write about</p>
+    </div>
+</div>
 <div class="layoutContainer">
-    <h1 class="page-title">@Html.ActionLink("I am Blog.", "Index", "Post")</h1>
-
-    <h2>Recent Posts</h2>
+    <h2 class="subTitle">Recent Posts</h2>
 
     @Html.DisplayFor(x => x.Posts)    
 </div>
