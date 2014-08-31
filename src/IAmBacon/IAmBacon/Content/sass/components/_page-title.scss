@@ -33,6 +33,10 @@
     padding-bottom: $base-line-height;
     text-align: center;
     color: $white;
+
+    @include respond-to(extra-small) {
+		@include font-size($h4-font-size);
+	}
 }
 
 // State
