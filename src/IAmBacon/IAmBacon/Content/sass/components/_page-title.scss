@@ -26,6 +26,12 @@
 	}
 }
 
+.pageTitle-headline--post {
+    @include respond-to(extra-small) {
+		@include font-size($h3-font-size);
+	}
+}
+
 .pageTitle-subline {
     @include font-size($h3-font-size);
     margin-top: 0;  

@@ -666,7 +666,14 @@ blockquote {
   }
 }
 
-/* line 29, ../../../sass/components/_page-title.scss */
+@media only screen and (max-width: 767px) {
+  /* line 29, ../../../sass/components/_page-title.scss */
+  .pageTitle-headline--post {
+    font-size: 2.4rem;
+  }
+}
+
+/* line 35, ../../../sass/components/_page-title.scss */
 .pageTitle-subline {
   font-size: 2.4rem;
   margin-top: 0;
@@ -676,17 +683,17 @@ blockquote {
   color: white;
 }
 @media only screen and (max-width: 767px) {
-  /* line 29, ../../../sass/components/_page-title.scss */
+  /* line 35, ../../../sass/components/_page-title.scss */
   .pageTitle-subline {
     font-size: 1.6rem;
   }
 }
 
-/* line 43, ../../../sass/components/_page-title.scss */
+/* line 49, ../../../sass/components/_page-title.scss */
 .has-triangle {
   position: relative;
 }
-/* line 46, ../../../sass/components/_page-title.scss */
+/* line 52, ../../../sass/components/_page-title.scss */
 .has-triangle:after {
   content: "";
   position: absolute;
@@ -698,7 +705,7 @@ blockquote {
   z-index: 1;
 }
 @media only screen and (max-width: 767px) {
-  /* line 46, ../../../sass/components/_page-title.scss */
+  /* line 52, ../../../sass/components/_page-title.scss */
   .has-triangle:after {
     border-width: 18px 18px 0;
     bottom: -18px;
