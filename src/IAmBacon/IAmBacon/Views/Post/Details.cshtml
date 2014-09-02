@@ -1,4 +1,5 @@
-﻿@model IAmBacon.ViewModels.PostViewModel
+﻿@using System.Linq
+@model IAmBacon.ViewModels.PostViewModel
 @section css
 {
     @if (!Model.NoCss)
@@ -16,8 +17,10 @@
 <div class="layoutContainer">
     <article itemscope itemtype="http://schema.org/BlogPosting">
         <header>
-            <h1 itemprop="name headline">@Model.Title</h1>
-            <ul>
+            <div class="pageTitle layoutContainer layoutContainer--visible has-triangle">
+                <h1 class="pageTitle-headline" itemprop="name headline">@Model.Title</h1>
+            </div>
+            <ul class="metaData">
                 <li>
                     <strong>Published:</strong>
                     <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>

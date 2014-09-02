@@ -29,7 +29,6 @@ namespace IAmBacon
                 .Include("~/Content/stylesheets/pages/post/landingpage-ie.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/postCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/post.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/postIeCss")

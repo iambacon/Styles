@@ -44,6 +44,12 @@ namespace IAmBacon.Data.Context
 
         #endregion
 
+        public BaconContext()
+        {
+            // TODO: Remove this once it is working correctly on laptop
+            Database.SetInitializer<BaconContext>(null);
+        }
+
         #region Public Methods and Operators
 
         /// <summary>

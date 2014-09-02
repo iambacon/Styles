@@ -1,7 +1,30 @@
-// Modules and variables
-@import "../../base/variables";
-@import "../../base/mixins/base";
-@import "../../partials/base";
+//
+// Blog post page.
+// --------------------------------------------------
+
+// Base
+// ------------------------
+@import "../../base/base";
+
+$link-hover-colour: #63B7F6;
+$article-link-colour: $link-hover-colour;
+$html-font-size-percentage: 62.5%;
+$body-color: #333333;
+$page-background-colour: #FFFFFF;
+
+$blockquote-font-size: 1.25 * $base-font-size;
+$base-padding: $base-font-size;
+$base-margin: $base-padding;
+
+// Font sizes for h1-h6
+$h1-font-size-mobile: 1.5 * $base-font-size;
+$h2-font-size-mobile: 1.25 * $base-font-size;
+
+// Media queries breakpoints
+$min-width-541px: 541px;
+$max-width-540px: 540px;
+@import "../../modules/mediaqueries";
+@import "../../modules/mixins";
 
 // Objects
 @import "../../objects/lists";
@@ -16,6 +39,7 @@
 @import "../../components/header";
 @import "../../components/footer";
 @import "../../components/links-list";
+@import "../../components/page-title";
 
 // Utilities
 // ------------------------
@@ -40,4 +64,9 @@ article {
 .image-center {
 	margin: 0 auto;
 	display: block;
+}
+
+.metaData {
+    padding-top: $base-line-height * 2;
+    padding-bottom: $base-line-height;
 }
