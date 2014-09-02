@@ -14,23 +14,24 @@
         @Styles.Render("~/bundles/postIeCss")
     }
 }
-<div class="layoutContainer">
-    <article itemscope itemtype="http://schema.org/BlogPosting">
-        <header>
-            <div class="pageTitle layoutContainer layoutContainer--visible has-triangle">
-                <h1 class="pageTitle-headline" itemprop="name headline">@Model.Title</h1>
-            </div>
-            <ul class="metaData">
-                <li>
-                    <strong>Published:</strong>
-                    <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>
-                </li>
-                <li>
-                    <strong>Category:</strong>
-                    @Html.RouteLink(Model.Category, "Category", new { name = Model.Category })
-                </li>
-            </ul>
-        </header>
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <div class="pageTitle layoutContainer layoutContainer--visible has-triangle">
+            <h1 class="pageTitle-headline" itemprop="name headline">@Model.Title</h1>
+        </div>
+        <ul class="layoutContainer metaData">
+            <li>
+                <strong>Published:</strong>
+                <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>
+            </li>
+            <li>
+                <strong>Category:</strong>
+                @Html.RouteLink(Model.Category, "Category", new { name = Model.Category })
+            </li>
+        </ul>
+    </header>
+    <div class="layoutContainer">
         @Model.Content
         <footer>
             <ul>
@@ -61,28 +62,28 @@
                 @Html.DisplayFor(x => x.Comments)
             </ol>
         }
-    </article>
-    @if (@Model.CommentsActive)
-    {
-        <section class="respond">
-            <h2 class="h1">Leave a Comment</h2>
-            @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.HiddenFor(x => x.Id)
-                @Html.HiddenFor(x => x.Title)
-                @Html.LabelFor(x => x.NewComment.Name)
-                @Html.TextBoxFor(x => x.NewComment.Name, new { autocomplete = "off", required = "required" })
-                @Html.LabelFor(x => x.NewComment.Email)
-                @Html.TextBoxFor(x => x.NewComment.Email, new { type = "email" })
-                <em>This is only used for gravitar image</em>
-                @Html.LabelFor(x => x.NewComment.Url)
-                @Html.TextBoxFor(x => x.NewComment.Url, new { type = "url" })
-                @Html.LabelFor(x => x.NewComment.Content)
-                @Html.TextAreaFor(x => x.NewComment.Content, new { required = "required" })
-                <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
-            }
-        </section>
-    }
-</div>
+    </div>
+</article>
+@if (@Model.CommentsActive)
+{
+    <section class="respond">
+        <h2 class="h1">Leave a Comment</h2>
+        @using (Html.BeginForm("SaveComment", "Post", FormMethod.Post, new { @class = "comment-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.Title)
+            @Html.LabelFor(x => x.NewComment.Name)
+            @Html.TextBoxFor(x => x.NewComment.Name, new { autocomplete = "off", required = "required" })
+            @Html.LabelFor(x => x.NewComment.Email)
+            @Html.TextBoxFor(x => x.NewComment.Email, new { type = "email" })
+            <em>This is only used for gravitar image</em>
+            @Html.LabelFor(x => x.NewComment.Url)
+            @Html.TextBoxFor(x => x.NewComment.Url, new { type = "url" })
+            @Html.LabelFor(x => x.NewComment.Content)
+            @Html.TextAreaFor(x => x.NewComment.Content, new { required = "required" })
+            <input class="button" type="submit" id="submit" value="Submit Comment" name="submit">
+        }
+    </section>
+}
 
