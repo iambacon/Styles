@@ -63,7 +63,7 @@ namespace IAmBacon.Controllers
         /// <summary>
         /// The number of recent posts to retrieve.
         /// </summary>
-        private const int recentPosts = 25;
+        private const int RecentPosts = 25;
 
         #region Constructors and Destructors
 
@@ -102,11 +102,20 @@ namespace IAmBacon.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            // TODO: Use automapper.
-            var posts = this.postService.GetLatest(recentPosts);
-
+            var posts = this.postService.GetLatest(RecentPosts);
             var postModels = CreatePostModels(posts);
 
+            var categories = this.categoryService.GetAll();
+
+            var result = from c in categories
+                group c by c.Name
+                into g
+                select new
+                {
+                    Name = g.Key,
+                    Count = g.Count()
+                };
+            ////var bacon = categories.GroupBy(x => x.Name).Select(y => new {y.Key, })
             var model = new PostsViewModel
             {
                 Posts = postModels,
@@ -217,7 +226,7 @@ namespace IAmBacon.Controllers
             const string BlogUrl = "http://www.iambacon.co.uk/blog";
 
             // Create a collection of SyndicationItemobjects from the latest posts
-            var posts = this.postService.GetLatest(recentPosts).Select
+            var posts = this.postService.GetLatest(RecentPosts).Select
             (
               p => new SyndicationItem
                   (

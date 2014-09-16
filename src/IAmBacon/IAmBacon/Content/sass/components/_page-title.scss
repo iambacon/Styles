@@ -26,7 +26,7 @@
 	}
 }
 
-.pageTitle-headline--post {
+.pageTitle-headline--sm {
     @include respond-to(extra-small) {
 		@include font-size($h3-font-size);
 	}

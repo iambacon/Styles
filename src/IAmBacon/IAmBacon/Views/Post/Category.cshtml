@@ -7,8 +7,11 @@
 {
     @Styles.Render("~/bundles/categoryIeCss")
 }
-<div class="layoutContainer">
-    <h1>Recent posts for category '@Model.Title'</h1>
-
+<div class="pageTitle">
+    <div class="layoutContainer layoutContainer--visible has-triangle">
+        <h1 class="pageTitle-headline pageTitle-headline--sm">Recent posts for category '@Model.Title'</h1>
+    </div>
+</div>
+<div class="layoutContainer content">
     @Html.DisplayFor(x => x.Posts)
 </div>

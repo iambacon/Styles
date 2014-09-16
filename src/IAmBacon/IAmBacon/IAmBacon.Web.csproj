@@ -314,6 +314,7 @@
     <Content Include="Content\sass\components\_footer.scss" />
     <Content Include="Content\sass\components\_links-list.scss" />
     <Content Include="Content\sass\components\_page-title.scss" />
+    <Content Include="Content\sass\components\_aside-header.scss" />
     <None Include="Content\sass\modules\README.txt" />
     <Content Include="Content\stylesheets\pages\home\home-ie.css" />
     <Content Include="Content\stylesheets\pages\home\home.css" />

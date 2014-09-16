@@ -52,18 +52,35 @@ $max-width-540px: 540px;
 // General
 
 article {
-	a {
-		color: $article-link-colour;
+    a {
+        color: $article-link-colour;
 
-		&:hover {
-			text-decoration: underline;
-		}
-	}	
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    h2,
+    h3,
+    footer {
+        margin: {
+            top: $base-line-height;
+            bottom: $base-line-height;
+        }
+    }
+
+    h2 {
+        @include font-size($h2-font-size-mobile);
+
+        @include media-min($min-width-541px) {
+            @include font-size($h3-font-size);
+        }
+    }
 }
 
 .image-center {
-	margin: 0 auto;
-	display: block;
+    margin: 0 auto;
+    display: block;
 }
 
 .metaData {

@@ -1,19 +1,21 @@
-// Modules and variables
-@import "../../base/variables";
-@import "../../base/mixins/base";
-@import "../../partials/base";
+//
+// Tag page.
+// --------------------------------------------------
+
+// Base
+// ------------------------
+@import "../../base/base";
 
 // Objects
+// ------------------------
 @import "../../objects/lists";
-
-// Partials
-@import "../../partials/html-body";
 
 // Components
 // ------------------------
 @import "../../components/header";
 @import "../../components/footer";
 @import "../../components/links-list";
+@import "../../components/page-title";
 
 // Utilities
 // ------------------------
@@ -22,3 +24,50 @@
 @import "../../utilities/typography";
 @import "../../utilities/social";
 @import "../../utilities/margin";
+
+
+// Old stuff 
+$link-hover-colour: #63B7F6;
+// Media queries breakpoints
+$min-width-541px: 541px;
+$max-width-540px: 540px;
+@import "../../modules/mediaqueries";
+@import "../../modules/mixins";
+
+a {
+	text-decoration: none;
+	color: inherit;
+
+	&:hover {
+		color: $link-hover-colour;
+	}
+}
+
+.link {
+	text-decoration: underline;
+}
+
+.h1 {
+	font-size: 24px !important;
+	font-size: 2.4rem !important;
+    margin: {
+        top: 1em;
+        bottom: 1em;
+    }
+
+	@include media-min($min-width-541px) {
+		font-size: 36px !important;
+		font-size: 3.6rem !important;
+	}
+}
+
+.content {
+    padding-top: $base-line-height * 2;
+}
+
+article p {
+    margin: {
+        top: 1em;
+        bottom: 1em;
+    }
+}
