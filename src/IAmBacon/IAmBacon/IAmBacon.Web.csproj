@@ -201,6 +201,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\StyleguideController.cs" />
+    <Compile Include="Framework\Mvc\IUrlHelper.cs" />
+    <Compile Include="Framework\Mvc\UrlHelperAdapter.cs" />
     <Compile Include="Models\EmailTemplateModel.cs" />
     <Compile Include="Presentation\Builders\EmailTemplateBuilder.cs" />
     <Compile Include="Presentation\Extensions\SelectListItemExtensions.cs" />
@@ -249,6 +251,7 @@
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\PostThumbViewModel.cs" />
+    <Compile Include="ViewModels\Post\CategoryCountViewModel.cs" />
     <Compile Include="ViewModels\Shared\FooterViewModel.cs" />
     <Compile Include="ViewModels\Shared\PopularPostViewModel.cs" />
     <Compile Include="ViewModels\Shared\RecentPostViewModel.cs" />

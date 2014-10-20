@@ -1,30 +1,106 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web.Mvc;
+using IAmBacon.Controllers;
+using IAmBacon.Domain.Services.Interfaces;
+using IAmBacon.Domain.Smtp.Interfaces;
+using IAmBacon.Domain.Utilities.Interfaces;
+using IAmBacon.Framework.Mvc;
+using IAmBacon.Model.Entities;
+using IAmBacon.ViewModels;
+using IAmBacon.ViewModels.Post;
 using Machine.Specifications;
+using Machine.Specifications.Mvc;
+using Moq;
+using It = Machine.Specifications.It;
+using MoqIt = Moq.It;
 
 namespace IAmBacon.Web.Tests.Controllers
 {
-    class PostControllerTests
+    public class PostControllerTests
     {
-        [Subject("Categories")]
-        public class When_I_browse_to_the_landing_page
+        public class Post_controller_context
         {
-            It should_show_a_list_of_categories = null;
-            It should_show_the_amount_of_posts_per_category = null;
+            protected static PostController postController;
+
+            private static Mock<IPostService> postServiceMock;
+
+            private static Mock<ICommentService> commentServiceMock;
+
+            private static Mock<ITagService> tagServiceMock;
+
+            protected static Mock<ICategoryService> categoryServiceMock;
+
+            private static Mock<ISpamManager> spamManagerMock;
+
+            private static Mock<IEmailManager> emailManagerMock;
+
+            Establish context = () =>
+            {
+                postServiceMock = new Mock<IPostService>(MockBehavior.Strict);
+                commentServiceMock = new Mock<ICommentService>(MockBehavior.Strict);
+                tagServiceMock = new Mock<ITagService>(MockBehavior.Strict);
+                categoryServiceMock = new Mock<ICategoryService>(MockBehavior.Strict);
+                spamManagerMock = new Mock<ISpamManager>(MockBehavior.Strict);
+                emailManagerMock = new Mock<IEmailManager>(MockBehavior.Strict);
+
+                postServiceMock.Setup(x => x.GetLatest(MoqIt.IsAny<int>())).Returns(new List<Post>());
+
+                postController =
+                    new PostController(postServiceMock.Object,
+                        commentServiceMock.Object,
+                        tagServiceMock.Object,
+                        categoryServiceMock.Object,
+                        spamManagerMock.Object,
+                        emailManagerMock.Object)
+                    {
+                        Url =
+                            Mock.Of<IUrlHelper>(
+                                x => x.Action(MoqIt.IsAny<string>(), MoqIt.IsAny<object>()) == "http://www.test.com")
+                    };
+
+                // TODO: Trying to Moq UrlHelper
+            };
+
+            Because of = () => result = postController.Index();
+
+            protected static ActionResult result;
         }
 
         [Subject("Categories")]
-        public class When_I_click_on_a_category_link
+        public class When_I_browse_to_the_landing_page : Post_controller_context
         {
-            It should_redirect_to_the_category_page = null;
-        }
+            Establish context = () =>
+            {
+                var categories = new List<Category>
+                {
+                    new Category{Name = "Category 1"},
+                    new Category{Name = "Category 1"},
+                    new Category{Name = "Category 1"},
+                    new Category{Name = "Category 2"}
+                };
 
+                categoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
+            };
+
+            It should_show_a_list_of_categories = () =>
+                result.Model<PostsViewModel>().CategorySummaries.ShouldBeOfExactType<List<CategoryCountViewModel>>();
+
+            It should_show_the_amount_of_posts_per_category = () =>
+                result.Model<PostsViewModel>().CategorySummaries.First().Count.ShouldEqual(ExpectedCategoryCount);
+
+            private const int ExpectedCategoryCount = 3;
+        }
+        
         [Subject("Categories")]
-        public class When_there_are_no_categories
+        public class When_there_are_no_categories : Post_controller_context
         {
-            It should_display_no_categories = null;
+            Establish context = () => categoryServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Category>());
+
+            It should_display_no_categories = () =>
+                result.Model<PostsViewModel>().DisplayCategories.ShouldEqual(ExpectedResult);
+
+            private const bool ExpectedResult = false;
         }
     }
 }

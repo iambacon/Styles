@@ -1,4 +1,6 @@
-﻿namespace IAmBacon.Areas.Admin.ViewModels
+﻿using IAmBacon.ViewModels.Post;
+
+namespace IAmBacon.Areas.Admin.ViewModels
 {
     using System.Collections.Generic;
 
@@ -13,6 +15,14 @@
         /// Gets or sets the posts.
         /// </summary>
         public IEnumerable<PostViewModel> Posts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the categories.
+        /// </summary>
+        /// <value>
+        /// The categories.
+        /// </value>
+        public IEnumerable<CategoryCountViewModel> Categories { get; set; }
 
         #endregion
     }

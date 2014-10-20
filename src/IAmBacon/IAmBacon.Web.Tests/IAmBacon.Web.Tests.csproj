@@ -42,6 +42,9 @@
     <Reference Include="Machine.Specifications.Clr4">
       <HintPath>..\packages\Machine.Specifications.0.8.3\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
     </Reference>
+    <Reference Include="Machine.Specifications.Mvc">
+      <HintPath>..\packages\Machine.Specifications.Mvc4.1.5.11.0\lib\Machine.Specifications.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>

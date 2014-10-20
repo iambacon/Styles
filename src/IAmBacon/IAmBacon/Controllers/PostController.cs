@@ -1,7 +1,6 @@
-﻿
-using IAmBacon.Domain.Smtp.Interfaces;
+﻿using IAmBacon.Domain.Smtp.Interfaces;
 using IAmBacon.Domain.Utilities.Interfaces;
-using IAmBacon.Presentation.Builders;
+using IAmBacon.ViewModels.Post;
 using IAmBacon.ViewModels.Shared;
 
 namespace IAmBacon.Controllers
@@ -107,20 +106,24 @@ namespace IAmBacon.Controllers
 
             var categories = this.categoryService.GetAll();
 
-            var result = from c in categories
-                group c by c.Name
-                into g
-                select new
+            var categorySummaries =
+                categories
+                .GroupBy(x => x.Name)
+                .Select(x => new CategoryCountViewModel
                 {
-                    Name = g.Key,
-                    Count = g.Count()
-                };
-            ////var bacon = categories.GroupBy(x => x.Name).Select(y => new {y.Key, })
+                    Name = x.Key,
+                    Count = x.Count(),
+                    Url = Url.Action("Category", new { name = x.Key })
+                })
+                .ToList();
+
             var model = new PostsViewModel
             {
                 Posts = postModels,
                 PageTitle = "I am Blog - I am Bacon",
-                Footer = new FooterViewModel()
+                Footer = new FooterViewModel(),
+                CategorySummaries = categorySummaries,
+                DisplayCategories = (categorySummaries.Any())
             };
 
             return this.View(model);
@@ -288,12 +291,12 @@ namespace IAmBacon.Controllers
                     this.commentService.Create(entity);
 
                     // Send email notification to me.
-                    var commentUrl = Url.Action("Index", "Comment", new { area = "Admin" }, Request.Url.Scheme);
-                    var post = this.postService.Get(id);
-                    var emailTemplate = EmailTemplateBuilder.NewCommentEmail(entity, post.Title, commentUrl,
-                        "View comment");
-                    this.emailManager.SendNewCommentEmail(emailTemplate.Subject, emailTemplate.Body,
-                        emailTemplate.IsHtml);
+                    ////var commentUrl = Url.Action("Index", "Comment", new { area = "Admin" }, Request.Url.Scheme);
+                    ////var post = this.postService.Get(id);
+                    ////var emailTemplate = EmailTemplateBuilder.NewCommentEmail(entity, post.Title, commentUrl,
+                    ////    "View comment");
+                    ////this.emailManager.SendNewCommentEmail(emailTemplate.Subject, emailTemplate.Body,
+                    ////    emailTemplate.IsHtml);
                 }
             }
 
