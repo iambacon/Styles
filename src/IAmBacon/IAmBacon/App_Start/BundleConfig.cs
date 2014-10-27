@@ -32,23 +32,18 @@ namespace IAmBacon
                 .Include("~/Content/stylesheets/pages/post/post.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/postIeCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/post-ie.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/categoryCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/category.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/categoryIeCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/category-ie.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/tagCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/tag.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/tagIeCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/tag-ie.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/homeCss")

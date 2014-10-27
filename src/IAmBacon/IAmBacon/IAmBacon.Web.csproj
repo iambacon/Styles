@@ -297,7 +297,6 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="config.rb" />
     <None Include="Content\less\blog\post.less" />
     <Content Include="Content\less\blog\images\diamond-small.png" />
     <Content Include="Content\less\blog\images\diamond.png" />
@@ -333,6 +332,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googleb300e47449e1527f.html" />
+    <Content Include="gruntfile.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.9.0-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
@@ -405,6 +405,17 @@
     <Content Include="Content\sass\pages\home\home-ie.scss" />
     <Content Include="Content\sass\utilities\_tables.scss" />
     <Content Include="Content\sass\utilities\_grid.scss" />
+    <Content Include="Content\stylesheets\pages\home\home-ie.css.map" />
+    <Content Include="Content\stylesheets\pages\home\home.css.map" />
+    <Content Include="Content\stylesheets\pages\post\category-ie.css.map" />
+    <Content Include="Content\stylesheets\pages\post\category.css.map" />
+    <Content Include="Content\stylesheets\pages\post\landingpage-ie.css.map" />
+    <Content Include="Content\stylesheets\pages\post\landingpage.css.map" />
+    <Content Include="Content\stylesheets\pages\post\post-ie.css.map" />
+    <Content Include="Content\stylesheets\pages\post\post.css.map" />
+    <Content Include="Content\stylesheets\pages\post\tag-ie.css.map" />
+    <Content Include="Content\stylesheets\pages\post\tag.css.map" />
+    <Content Include="Content\stylesheets\pages\styleguide\styleguide.css.map" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -485,6 +496,7 @@
     <None Include="Content\sass\pages\post\tag.scss" />
     <None Include="Content\sass\pages\post\tag-ie.scss" />
     <None Include="Content\sass\partials\_state.scss" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\PublishToLiveFolder.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />

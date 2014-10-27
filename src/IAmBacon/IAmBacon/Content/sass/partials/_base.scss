@@ -1,4 +1,4 @@
-@import "compass";
+
 $ie-only: false !default;
 $html-font-size-percentage: 62.5%;
 $body-gutter: 30px;
@@ -27,4 +27,4 @@ $min-width-541px: 541px;
 $max-width-540px: 540px;
 
 // Modules
-@import "modules/all";
+@import "../modules/all";

@@ -172,3 +172,5 @@ src\IAmBacon\IAmBacon\.sass-cache
 
 # Files
 src\IAmBacon\IAmBacon\Web.Release.config
+*.map
+/src/IAmBacon/IAmBacon/node_modules

@@ -1,0 +1,11 @@
+﻿{
+    "name": "IAmBacon.Web",
+    "version": "0.0.1",
+    "description": "Compiles SASS using grunt-sass and grunt-autoprefixer",
+    "devDependencies": {
+        "grunt": "0.4.5",
+        "grunt-cli": "0.1.13",
+        "grunt-sass": "~0.14.2",
+        "grunt-autoprefixer": "1.0.0"
+    }
+}
