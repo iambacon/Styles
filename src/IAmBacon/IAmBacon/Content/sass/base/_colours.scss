@@ -14,6 +14,7 @@
 
  // Core
  $black:		#000000;
+ $mine-shaft:   #333333;
  $white:		#FFFFFF;
  $white-smoke:	#EEEEEE;
 
@@ -21,6 +22,7 @@
  $nobel:			#999999;
  $alto:				#DFDFDF;
  $very-light-grey:	#CCCCCC;
+ $desert-storm:     #F5F4F3;
 
  // Examined Living - http://www.colourlovers.com/palette/3175417/Examined_Living
  $yeah-right:	#A0F601;
@@ -28,3 +30,12 @@
  $steel-real:	#768A92;
  $have-a-go:	#687E87;
  $examined:		#5E7078;
+
+
+// Global colours. 
+// Globally used colour variables.
+// ------------------------
+$base-color:            $mine-shaft;
+$base-background-color: $white; 
+$link-hover-colour:     $cursive;
+	

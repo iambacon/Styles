@@ -115,6 +115,10 @@ body {
 	padding-top: 5px;
 	height: $base-line-height * 2;
 	overflow: hidden;
+    margin:{
+        top: 0;
+        bottom: 0;
+    }
 }
 
 .articleThumb-date,

@@ -325,12 +325,15 @@ ul, ol {
 ul, ol {
   padding: 0; }
 
-ul, ol, h1, h2, h3, p, dl, dd {
+ul, ol, h1, h2, p, dl, dd {
   margin: 0; }
 
 a {
   text-decoration: none;
-  color: inherit; }
+  color: inherit;
+  display: inline-block; }
+  a:hover {
+    color: #83D6DE; }
 
 img {
   max-width: 100%;
@@ -346,11 +349,25 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
-  color: #000000;
+  color: #333333;
   background-color: #FFFFFF; }
 
 blockquote {
   font-style: italic; }
+
+meter {
+  -webkit-appearance: none;
+  display: block;
+  width: 100%; }
+
+meter::-webkit-meter-bar {
+  background: #F5F4F3;
+  height: 7px;
+  width: 100%; }
+
+meter::-webkit-meter-optimum-value {
+  background-image: none;
+  background-color: #83D6DE; }
 
 .listInline > li {
   display: inline-block; }
@@ -630,9 +647,13 @@ code {
   line-height: 1.5; }
 
 .h2 {
-  font-size: 4.8rem;
-  font-weight: 700;
-  line-height: 1.5; }
+  font-size: 2.4rem;
+  line-height: 1.5;
+  font-weight: 700; }
+  @media only screen and (min-width: 768px) {
+    .h2 {
+      font-size: 4.8rem;
+      line-height: 1.5; } }
 
 .h3 {
   font-size: 2.4rem;
@@ -657,6 +678,9 @@ code {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; }
 
+.link {
+  text-decoration: underline; }
+
 .social {
   background-image: url(../../../images/social.png);
   background-repeat: no-repeat;
@@ -677,6 +701,9 @@ code {
 
 .m-b--full {
   margin-bottom: 24px; }
+
+.m-b--none {
+  margin-bottom: 0; }
 
 .m-t--full {
   margin-top: 24px; }

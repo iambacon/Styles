@@ -21,11 +21,9 @@ namespace IAmBacon
         public static void CssBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/bundles/landingpageCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/landingpage.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/landingpageIeCss")
-                .Include("~/Content/css/modules/normalize.css")
                 .Include("~/Content/stylesheets/pages/post/landingpage-ie.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/postCss")

@@ -5,7 +5,7 @@
             @if (Model.ShowRecentPosts)
             {
                 <div class="linksList-items linksList-items--posts">
-                    <h3 class="h3 m-t--full">Recent posts</h3>
+                    <h3 class="h3 m-b--none">Recent posts</h3>
                     <ol>
                         @Html.DisplayFor(x => Model.RecentPosts)
                     </ol>
@@ -14,14 +14,14 @@
             @if (Model.ShowPopularPosts)
             {
                 <div class="linksList-items linksList-items--posts">
-                    <h3 class="h3 m-t--full">Popular posts</h3>
+                    <h3 class="h3 m-b--none">Popular posts</h3>
                     <ol>
                         @Html.DisplayFor(x => Model.PopularPosts)
                     </ol>
                 </div>
             }
             <div class="linksList-items linksList-items--social">
-                <h3 class="h3 m-tb--full">Let's be social</h3>
+                <h3 class="h3">Let's be social</h3>
                 <ul class="listInline m-b--full">
                     <li>
                         <a class="social linkedIn hideText m-r--full" rel="me" title="Connect with Colin Bacon on LinkedIn" href="http://uk.linkedin.com/pub/colin-bacon/32/1a1/776">LinkedIn</a>

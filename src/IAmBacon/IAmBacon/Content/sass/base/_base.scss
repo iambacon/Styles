@@ -35,7 +35,6 @@ ul,
 ol,
 h1,
 h2,
-h3,
 p,
 dl,
 dd {
@@ -45,6 +44,11 @@ dd {
 a {
 	text-decoration: none;
 	color: inherit;
+    display: inline-block;
+
+    &:hover {
+		color: $link-hover-colour;
+	}
 }
 
 // Set images to be responsive by default
@@ -71,4 +75,21 @@ body {
 
 blockquote {
 	font-style: italic;
+}
+
+meter {
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+}
+
+meter::-webkit-meter-bar {
+    background: $desert-storm;    
+    height: 7px;
+    width: 100%;
+}
+
+meter::-webkit-meter-optimum-value {    
+    background-image: none;
+    background-color: $cursive;
 }

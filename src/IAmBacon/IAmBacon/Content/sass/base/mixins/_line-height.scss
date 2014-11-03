@@ -2,9 +2,12 @@
 // line height mixins
 // For calculating line height values
 // --------------------------------------------------
+/// <reference path="../_variables.scss" />
 
 // Sets the line-height in proportion to the font-size.
+// Note: The line-height variable is the pixel height of your vertical rhythm e.g. 24px;
 @mixin line-height-proportional($line-height: $base-line-height, $font-size: $base-font-size) {	
+    // OBSOLETE.  Use vertical rhythm instead.
 	line-height: $line-height / $font-size;
 }
 

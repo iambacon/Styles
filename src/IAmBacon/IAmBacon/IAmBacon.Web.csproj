@@ -316,7 +316,8 @@
     <Content Include="Content\sass\components\_footer.scss" />
     <Content Include="Content\sass\components\_links-list.scss" />
     <Content Include="Content\sass\components\_page-title.scss" />
-    <Content Include="Content\sass\components\_aside-header.scss" />
+    <Content Include="Content\sass\base\mixins\_vertical-rhythm.scss" />
+    <Content Include="Content\sass\components\_aside-nav.scss" />
     <None Include="Content\sass\modules\README.txt" />
     <Content Include="Content\stylesheets\pages\home\home-ie.css" />
     <Content Include="Content\stylesheets\pages\home\home.css" />
@@ -332,7 +333,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googleb300e47449e1527f.html" />
-    <Content Include="gruntfile.js" />
+    <None Include="gruntfile.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.9.0-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
@@ -381,6 +382,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\PostThumbViewModel.cshtml" />
+    <Content Include="Views\Post\DisplayTemplates\CategoryCountViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -416,6 +418,7 @@
     <Content Include="Content\stylesheets\pages\post\tag-ie.css.map" />
     <Content Include="Content\stylesheets\pages\post\tag.css.map" />
     <Content Include="Content\stylesheets\pages\styleguide\styleguide.css.map" />
+    <Content Include="Content\sass\utilities\_display.scss" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -433,7 +436,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Landing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
@@ -496,7 +499,7 @@
     <None Include="Content\sass\pages\post\tag.scss" />
     <None Include="Content\sass\pages\post\tag-ie.scss" />
     <None Include="Content\sass\partials\_state.scss" />
-    <Content Include="package.json" />
+    <None Include="package.json" />
     <None Include="Properties\PublishProfiles\PublishToLiveFolder.pubxml" />
     <None Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />

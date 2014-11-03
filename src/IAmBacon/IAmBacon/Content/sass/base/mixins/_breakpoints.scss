@@ -2,7 +2,7 @@
 // Breakpoint mixins.
 // media query mixins, use to wrap content blocks.
 // --------------------------------------------------
-
+/// <reference path="../_variables.scss" />
 
 // Media query to be used with custom breakpoint.
 @mixin breakpoint($query) {
@@ -22,10 +22,16 @@
   @else if $media == small-medium {
     @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-md-max) { @content; }
   }
+  @else if $media == small-up {
+    @media only screen and (min-width: $screen-sm-min) { @content; }
+  }
   @else if $media == medium {
     @media only screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; }
   }
   @else if $media == medium-large {
+    @media only screen and (min-width: $screen-md-min) { @content; }
+  }
+  @else if $media == medium-up {
     @media only screen and (min-width: $screen-md-min) { @content; }
   }
   @else if $media == large {

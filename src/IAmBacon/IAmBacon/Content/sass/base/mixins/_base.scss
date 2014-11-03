@@ -2,9 +2,11 @@
 // Base
 // Imports all mixins.
 // --------------------------------------------------
-@import "clearfix";
-@import "breakpoints";
-@import "grid";
-@import "line-height";
-@import "font";
-@import "typography";
+@import 
+    "clearfix", 
+    "breakpoints", 
+    "grid", 
+    "line-height", 
+    "font", 
+    "vertical-rhythm",
+    "typography";

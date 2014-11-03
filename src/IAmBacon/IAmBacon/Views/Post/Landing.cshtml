@@ -1,8 +1,4 @@
 ﻿@model IAmBacon.ViewModels.PostsViewModel
-@section meta
-{
-    <meta name="description" content="Blog site for Colin Bacon - Web Developer.  Push button, receive blog." />
-}
 @section css
 {
     @Styles.Render("~/bundles/landingpageCss")
@@ -18,14 +14,17 @@
     </div>
 </div>
 <div class="layoutContainer">
-    <h2 class="subTitle">Recent Posts</h2>
-
-    @Html.DisplayFor(x => x.Posts)    
-    <aside>
-        <h2>Categories</h2>
-    </aside>
-    <aside>
-        
-    </aside>
+    <div class="g-landing-content">
+        <h2 class="h2">Recent posts</h2>
+        @Html.DisplayFor(x => x.Posts)
+    </div>
+    <div class="g-landing-aside">
+        <aside class="asideNav">
+            <h2 class="asideNav-title">Categories</h2>
+            <ol class="asideNav-items">
+                @Html.DisplayFor(x => x.CategorySummaries)
+            </ol>
+        </aside>
+    </div>
 </div>
 

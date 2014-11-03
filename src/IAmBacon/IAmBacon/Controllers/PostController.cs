@@ -101,19 +101,19 @@ namespace IAmBacon.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var posts = this.postService.GetLatest(RecentPosts);
-            var postModels = CreatePostModels(posts);
-
+            var posts = this.postService.GetAll().ToList();
+            var postModels = CreatePostModels(posts.Take(RecentPosts));
             var categories = this.categoryService.GetAll();
-
+            
             var categorySummaries =
-                categories
-                .GroupBy(x => x.Name)
+                posts
+                .GroupBy(x => x.Category.Name)
                 .Select(x => new CategoryCountViewModel
                 {
                     Name = x.Key,
                     Count = x.Count(),
-                    Url = Url.Action("Category", new { name = x.Key })
+                    Url = Url.Action("Category", new { name = x.Key }),
+                    Percent = ((double)x.Count() / categories.Count())
                 })
                 .ToList();
 
@@ -126,7 +126,7 @@ namespace IAmBacon.Controllers
                 DisplayCategories = (categorySummaries.Any())
             };
 
-            return this.View(model);
+            return this.View("Landing", model);
         }
 
         /// <summary>

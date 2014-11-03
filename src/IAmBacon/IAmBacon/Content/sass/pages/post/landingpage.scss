@@ -2,33 +2,71 @@
 // Blog landing page.
 // --------------------------------------------------
 
-// Modules and variables
-@import "../../base/variables";
-@import "../../base/mixins/base";
-@import "../../partials/base";
+// Base
+// ------------------------
+@import "../../base/base";
 
 // Objects
 // ------------------------
 @import "../../objects/lists";
 
-// Partials
-@import "../../partials/html-body";
-
 // Components
 // ------------------------
-@import "../../components/header";
-@import "../../components/footer";
-@import "../../components/links-list";
-@import "../../components/page-title";
+@import 
+    "../../components/header",
+    "../../components/footer",
+    "../../components/links-list",
+    "../../components/aside-nav",
+    "../../components/page-title";
 
 // Utilities
 // ------------------------
-@import "../../utilities/colours";
-@import "../../utilities/grid";
-@import "../../utilities/typography";
-@import "../../utilities/social";
-@import "../../utilities/margin";
+@import 
+    "../../utilities/colours",
+    "../../utilities/grid",
+    "../../utilities/typography",
+    "../../utilities/social",
+    "../../utilities/display",
+    "../../utilities/margin";
 
-.subTitle {
-    padding-top: $base-line-height * 2;
+// Page
+// ------------------------
+.g-landing {
+    @include container;
+
+    &-content {
+        padding-top: vr-space(1.5);
+
+        @include respond-to(extra-small) {
+            @include column(12);
+        }
+
+        @include respond-to(medium-up) {
+            @include column-no-gutter(7);        
+        }
+    }
+
+    &-aside {       
+        margin-bottom: vr-space(1);
+
+        @include respond-to(extra-small) {
+            @include column(12);
+        }
+
+        @include respond-to(medium-up) {
+            @include column(5);
+            margin-top: vr-space(4.5);
+        }
+    }
+}
+
+.post {
+    margin-bottom: vr-space(1);
+
+    p {
+        margin: {
+            top: 1em;
+            bottom: 1em;
+        }
+    }
 }

@@ -23,7 +23,7 @@ namespace IAmBacon.Web.Tests.Controllers
         {
             protected static PostController postController;
 
-            private static Mock<IPostService> postServiceMock;
+            protected static Mock<IPostService> postServiceMock;
 
             private static Mock<ICommentService> commentServiceMock;
 
@@ -80,7 +80,16 @@ namespace IAmBacon.Web.Tests.Controllers
                     new Category{Name = "Category 2"}
                 };
 
+                var posts = new List<Post>
+                {
+                    new Post{Category = new Category{Name = "Category 1"}},
+                    new Post{Category = new Category{Name = "Category 1"}},
+                    new Post{Category = new Category{Name = "Category 1"}},
+                    new Post{Category = new Category{Name = "Category 2"}}
+                };
+
                 categoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
+                postServiceMock.Setup(x => x.GetAll()).Returns(posts);
             };
 
             It should_show_a_list_of_categories = () =>
@@ -89,9 +98,13 @@ namespace IAmBacon.Web.Tests.Controllers
             It should_show_the_amount_of_posts_per_category = () =>
                 result.Model<PostsViewModel>().CategorySummaries.First().Count.ShouldEqual(ExpectedCategoryCount);
 
+            private It should_show_the_amount_of_posts_per_category_as_a_percentage = () =>
+                result.Model<PostsViewModel>().CategorySummaries.First().Percent.ShouldEqual(ExpectedPercent);
+
             private const int ExpectedCategoryCount = 3;
+            private const double ExpectedPercent = 0.75;
         }
-        
+
         [Subject("Categories")]
         public class When_there_are_no_categories : Post_controller_context
         {
