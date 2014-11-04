@@ -481,6 +481,18 @@ meter::-webkit-meter-optimum-value {
     float: right;
     color: #999999; }
 
+.meter {
+  display: block;
+  background: #F5F4F3;
+  height: 7px;
+  width: 100%; }
+  .meter-gauge {
+    display: inherit;
+    background-color: #83D6DE;
+    text-indent: -9999px;
+    height: inherit;
+    overflow: hidden; }
+
 .pageTitle {
   background-color: #83D6DE;
   position: relative; }

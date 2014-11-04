@@ -2,6 +2,10 @@
 <li class="asideNav-item">
     <a class="block" href="@Model.Url">
         @Model.Name <span class="asideNav-item-count">@Model.Count</span>
-        <meter value="@Model.Percent">@Model.PercentDisplayText</meter>
-    </a>
+        <meter value="@Model.Percent">
+            <span class="meter">
+                <span style="width: @Model.PercentDisplayText;" class="meter-gauge">@Model.PercentDisplayText</span>
+            </span>
+        </meter>
+</a>
 </li>
