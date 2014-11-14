@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using IAmBacon.Controllers;
@@ -9,6 +10,7 @@ using IAmBacon.Framework.Mvc;
 using IAmBacon.Model.Entities;
 using IAmBacon.ViewModels;
 using IAmBacon.ViewModels.Post;
+using IAmBacon.Web.Tests.Helpers;
 using Machine.Specifications;
 using Machine.Specifications.Mvc;
 using Moq;
@@ -58,8 +60,6 @@ namespace IAmBacon.Web.Tests.Controllers
                             Mock.Of<IUrlHelper>(
                                 x => x.Action(MoqIt.IsAny<string>(), MoqIt.IsAny<object>()) == "http://www.test.com")
                     };
-
-                // TODO: Trying to Moq UrlHelper
             };
 
             Because of = () => result = postController.Index();
@@ -80,12 +80,44 @@ namespace IAmBacon.Web.Tests.Controllers
                     new Category{Name = "Category 2"}
                 };
 
-                var posts = new List<Post>
+                posts = new List<Post>
                 {
-                    new Post{Category = new Category{Name = "Category 1"}},
-                    new Post{Category = new Category{Name = "Category 1"}},
-                    new Post{Category = new Category{Name = "Category 1"}},
-                    new Post{Category = new Category{Name = "Category 2"}}
+                    new Post
+                    {
+                        Category = new Category{Name = "Category 1"}, 
+                        DateCreated = DateTime.Today, 
+                        Content = string.Empty, 
+                        Tags = new List<Tag>(), 
+                        User = new User(),
+                        Title = "Post 1"
+                    },
+                    new Post
+                    {
+                        Category = new Category{Name = "Category 1"}, 
+                        DateCreated = DateTime.Today.AddDays(-5), 
+                        Content = string.Empty, 
+                        Tags = new List<Tag>(), 
+                        User = new User(),
+                        Title = "Post 2"
+                    },
+                    new Post
+                    {
+                        Category = new Category{Name = "Category 2"}, 
+                        DateCreated = DateTime.Today.AddDays(-2), 
+                        Content = string.Empty, 
+                        Tags = new List<Tag>(), 
+                        User = new User(),
+                        Title = "Post 3"
+                    },
+                    new Post
+                    {
+                        Category = new Category{Name = "Category 1"}, 
+                        DateCreated = DateTime.Today.AddDays(-3), 
+                        Content = string.Empty, 
+                        Tags = new List<Tag>(), 
+                        User = new User(),
+                        Title = "Post 4"
+                    }
                 };
 
                 categoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
@@ -98,9 +130,13 @@ namespace IAmBacon.Web.Tests.Controllers
             It should_show_the_amount_of_posts_per_category = () =>
                 result.Model<PostsViewModel>().CategorySummaries.First().Count.ShouldEqual(ExpectedCategoryCount);
 
-            private It should_show_the_amount_of_posts_per_category_as_a_percentage = () =>
+            It should_show_the_amount_of_posts_per_category_as_a_percentage = () =>
                 result.Model<PostsViewModel>().CategorySummaries.First().Percent.ShouldEqual(ExpectedPercent);
 
+            It should_order_posts_by_date_created_desc = () =>
+                result.Model<PostsViewModel>().Posts.ShouldBeSortedByDateInDescendingOrder();
+
+            private static List<Post> posts;
             private const int ExpectedCategoryCount = 3;
             private const double ExpectedPercent = 0.75;
         }

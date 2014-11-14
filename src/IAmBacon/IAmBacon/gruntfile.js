@@ -1,9 +1,10 @@
-/// <vs BeforeBuild='default' SolutionOpened='default' />
+/// <vs SolutionOpened='dev' />
 module.exports = function (grunt) {
     'use strict';
 
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -36,8 +37,20 @@ module.exports = function (grunt) {
             multiple_files: {
                 src: 'Content/stylesheets/pages/**/*.css'
             },
+        },
+
+        // Watch
+        watch: {
+            css: {
+                files: ['Content/sass/**/*.scss'],
+                tasks: ['sass', 'autoprefixer'],
+                options: {
+                    spawn: false
+                }
+            }
         }
     });
 
-    grunt.registerTask('default', ['sass', 'autoprefixer']);
+    grunt.registerTask('dev', ['watch']);
+    grunt.registerTask('prod', ['sass', 'autoprefixer']);
 };

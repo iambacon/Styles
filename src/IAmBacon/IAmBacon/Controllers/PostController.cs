@@ -343,7 +343,9 @@ namespace IAmBacon.Controllers
         private static IEnumerable<PostViewModel> CreatePostModels(IEnumerable<Post> posts)
         {
             var postModels =
-                posts.Select(
+                posts
+                .OrderByDescending(x => x.DateCreated)
+                .Select(
                     x =>
                     new PostViewModel
                         {
