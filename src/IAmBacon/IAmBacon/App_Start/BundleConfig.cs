@@ -2,17 +2,12 @@
 
 namespace IAmBacon
 {
-    using BundleTransformer.Core.Orderers;
-    using BundleTransformer.Core.Transformers;
-
     public class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
             CssBundles(bundles);
-            LessBundles(bundles);
-            ScriptBundles(bundles);
-
+            
             // If you'd like to test the optimization locally,
             // you can use this line to force it.
             ////BundleTable.EnableOptimizations = true;
@@ -46,41 +41,6 @@ namespace IAmBacon
 
             bundles.Add(new StyleBundle("~/bundles/homeCss")
                 .Include("~/Content/stylesheets/pages/home/home.css", new CssRewriteUrlTransform()));
-        }
-
-        public static void LessBundles(BundleCollection bundles)
-        {
-            var cssTransformer = new CssTransformer();
-            var nullOrderer = new NullOrderer();
-
-            var iambacon = new Bundle("~/bundles/iambacon")
-                .Include("~/Content/stylesheets/pages/home/home.css");
-
-            iambacon.Transforms.Add(cssTransformer);
-            iambacon.Transforms.Add(new CssMinify());
-            iambacon.Orderer = nullOrderer;
-            
-            bundles.Add(iambacon);
-        }
-        
-        public static void ScriptBundles(BundleCollection bundles)
-        {
-            ////bundles.UseCdn = true;
-
-            ////var jquery =
-            ////    new ScriptBundle("~/bundles/jquery",
-            ////    "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-            ////        .Include("~/Scripts/jquery-1.9.0.js");
-
-            ////jquery.CdnFallbackExpression = "window.jQuery";
-
-            ////bundles.Add(jquery);
-
-            //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-            //            "~/Scripts/jquery-ui*"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-            //            "~/Scripts/modernizr-*"));
         }
     }
 }

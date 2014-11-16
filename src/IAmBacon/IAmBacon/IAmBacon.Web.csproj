@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <IsCompassProject>True</IsCompassProject>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,18 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="BundleTransformer.Core">
-      <HintPath>..\packages\BundleTransformer.Core.1.7.21\lib\net40\BundleTransformer.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="BundleTransformer.Less">
-      <HintPath>..\packages\BundleTransformer.Less.1.7.22\lib\net40\BundleTransformer.Less.dll</HintPath>
-    </Reference>
-    <Reference Include="dotless.Core">
-      <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
@@ -70,9 +62,6 @@
     <Reference Include="MiniProfiler.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MiniProfiler.EF.2.1.0\lib\net40\MiniProfiler.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MsieJavaScriptEngine">
-      <HintPath>..\packages\MsieJavaScriptEngine.1.1.2\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -110,7 +99,7 @@
     </Reference>
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.0\lib\net40\System.Web.Optimization.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -169,7 +158,7 @@
     </Reference>
     <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -207,7 +196,6 @@
     <Compile Include="Presentation\Builders\EmailTemplateBuilder.cs" />
     <Compile Include="Presentation\Extensions\SelectListItemExtensions.cs" />
     <Compile Include="Framework\Mvc\FeedResult.cs" />
-    <Compile Include="Framework\Optimization\LessTransform.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,7 +264,6 @@
     <Content Include="apple-touch-icon.png" />
     <Content Include="Content\font\icomoon\icomoon.svg" />
     <Content Include="Content\images\social.png" />
-    <Content Include="Content\less\blog\images\background.png" />
     <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
@@ -294,13 +281,6 @@
     <Content Include="Areas\Admin\Views\Comment\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\CommentViewModel.cshtml" />
-    <None Include="BundleTransformer.Configuration.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Content\less\blog\post.less" />
-    <Content Include="Content\less\blog\images\diamond-small.png" />
-    <Content Include="Content\less\blog\images\diamond.png" />
-    <Content Include="Content\css\modules\normalize.css" />
     <Content Include="Content\sass\base\_base.scss" />
     <Content Include="Content\sass\base\_colours.scss" />
     <Content Include="Content\sass\base\_grid.scss" />
@@ -336,17 +316,6 @@
     <Content Include="googleb300e47449e1527f.html" />
     <None Include="gruntfile.js" />
     <Content Include="humans.txt" />
-    <Content Include="Scripts\html5shiv.js" />
-    <Content Include="Scripts\jquery-1.9.0-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.9.0.js" />
-    <Content Include="Scripts\jquery-1.9.0.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <None Include="Areas\Admin\Views\Template\LandingPage.cshtml" />
     <None Include="Areas\Admin\Views\Template\Post.cshtml" />
     <Content Include="Web.config">
@@ -359,7 +328,6 @@
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -480,8 +448,6 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
-    <Content Include="Content\less\shared\mixins.less" />
-    <Content Include="Content\less\home\home.less" />
     <None Include="Content\sass\pages\post\landingpage.scss" />
     <None Include="Content\sass\partials\_base.scss" />
     <None Include="Content\sass\modules\_mixins.scss" />
@@ -503,8 +469,6 @@
     <None Include="Content\sass\partials\_state.scss" />
     <None Include="package.json" />
     <None Include="Properties\PublishProfiles\PublishToLiveFolder.pubxml" />
-    <None Include="Scripts\jquery-1.9.0.min.map" />
-    <Content Include="Views\Shared\_html5shiv.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
