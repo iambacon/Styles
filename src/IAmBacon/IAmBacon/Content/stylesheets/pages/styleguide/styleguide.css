@@ -442,6 +442,10 @@ meter::-webkit-meter-optimum-value {
 .link {
   text-decoration: underline; }
 
+.linkTitle:hover {
+  text-decoration: underline;
+  color: inherit; }
+
 .colour-container {
   -moz-box-sizing: border-box;
        box-sizing: border-box;

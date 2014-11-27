@@ -2,12 +2,19 @@
 // Margin helper classes.
 // Based on line height for vertical rythym
 // --------------------------------------------------
-.m-r--full {
-	margin-right: $base-line-height;
+/// <reference path="../base/_variables.scss" />
+.m-r {
+    &--full {
+        margin-right: $base-line-height;
+    }
+
+    &--half {
+        margin-right: vr-space(.5);
+    }
 }
 
 .m-b--full {
-	margin-bottom: $base-line-height;
+    margin-bottom: $base-line-height;
 }
 
 .m-b--none {
@@ -15,10 +22,10 @@
 }
 
 .m-t--full {
-	margin-top: $base-line-height;
+    margin-top: $base-line-height;
 }
 
 .m-tb--full {
-	margin-top: $base-line-height;
-	margin-bottom: $base-line-height;
+    margin-top: $base-line-height;
+    margin-bottom: $base-line-height;
 }

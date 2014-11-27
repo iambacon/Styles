@@ -473,7 +473,8 @@ meter::-webkit-meter-optimum-value {
 .asideNav-items {
   padding-left: 20px;
   padding-right: 20px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 48px; }
 .asideNav-item {
   line-height: 1.5;
   margin-top: 12px; }
@@ -492,6 +493,22 @@ meter::-webkit-meter-optimum-value {
     text-indent: -9999px;
     height: inherit;
     overflow: hidden; }
+
+.btn {
+  border-radius: 10px;
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px; }
+  .btn--tag {
+    background-color: #83D6DE;
+    color: #FFFFF7;
+    -webkit-transition: background-color 0.1s linear;
+            transition: background-color 0.1s linear; }
+    .btn--tag:hover, .btn--tag:active {
+      background-color: #5bc9d3;
+      color: #FFFFF7; }
 
 .pageTitle {
   background-color: #83D6DE;
@@ -613,6 +630,10 @@ meter::-webkit-meter-optimum-value {
 .link {
   text-decoration: underline; }
 
+.linkTitle:hover {
+  text-decoration: underline;
+  color: inherit; }
+
 .social {
   background-image: url(../../../images/social.png);
   background-repeat: no-repeat;
@@ -631,8 +652,13 @@ meter::-webkit-meter-optimum-value {
 .block {
   display: block; }
 
+.inlineBlock {
+  display: inline-block; }
+
 .m-r--full {
   margin-right: 24px; }
+.m-r--half {
+  margin-right: 12px; }
 
 .m-b--full {
   margin-bottom: 24px; }

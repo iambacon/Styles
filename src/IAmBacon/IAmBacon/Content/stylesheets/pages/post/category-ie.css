@@ -584,6 +584,10 @@ meter::-webkit-meter-optimum-value {
 .link {
   text-decoration: underline; }
 
+.linkTitle:hover {
+  text-decoration: underline;
+  color: inherit; }
+
 .social {
   background-image: url(../../../images/social.png);
   background-repeat: no-repeat;
@@ -601,6 +605,8 @@ meter::-webkit-meter-optimum-value {
 
 .m-r--full {
   margin-right: 24px; }
+.m-r--half {
+  margin-right: 12px; }
 
 .m-b--full {
   margin-bottom: 24px; }

@@ -28,7 +28,7 @@
 {
     <section class="alto co">
         <div class="pageSection layoutContainer">
-            <h2 class="pageSection-title">Blog</h2>
+            <h2 class="pageSection-title">@Html.ActionLink("Blog", "Index", "Post", new { @class = "linkTitle" })</h2>
             @Html.DisplayFor(x => x.BlogPosts)
         </div>
     </section>
