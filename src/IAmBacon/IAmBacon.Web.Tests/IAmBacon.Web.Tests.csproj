@@ -54,6 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\packages\AutoFixture.3.21.1\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -73,9 +76,11 @@
   <ItemGroup>
     <Compile Include="Areas\Controllers\Controllers.Tests.cs" />
     <Compile Include="Areas\Controllers\BaseController.Tests.cs" />
+    <Compile Include="Context\PostContext.cs" />
     <Compile Include="Controllers\HomeController.Tests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Features\TagCloud.cs" />
     <Compile Include="Helpers\Assertions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

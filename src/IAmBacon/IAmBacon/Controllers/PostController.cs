@@ -104,7 +104,8 @@ namespace IAmBacon.Controllers
             var posts = this.postService.GetAll().ToList();
             var postModels = CreatePostModels(posts.Take(RecentPosts));
             var categories = this.categoryService.GetAll();
-            
+            var tags = this.tagService.GetAll();
+
             var categorySummaries =
                 posts
                 .GroupBy(x => x.Category.Name)
@@ -117,13 +118,20 @@ namespace IAmBacon.Controllers
                 })
                 .ToList();
 
+            IEnumerable<TagViewModel> tagViewModels = tags.OrderBy(x => x.Name).Select(x => new TagViewModel
+            {
+                Name = x.Name,
+                Url = Url.Action("Tag", new { name = x.SeoName })
+            });
+
             var model = new PostsViewModel
             {
                 Posts = postModels,
                 PageTitle = "I am Blog - I am Bacon",
                 Footer = new FooterViewModel(),
                 CategorySummaries = categorySummaries,
-                DisplayCategories = (categorySummaries.Any())
+                DisplayCategories = (categorySummaries.Any()),
+                Tags = tagViewModels.ToList()
             };
 
             return this.View("Landing", model);

@@ -30,7 +30,13 @@ namespace IAmBacon.Web.Tests.Controllers
         {
             // Arrange
             const int expectedResult = 6;
-            var latestPosts = Enumerable.Repeat(new Post(), expectedResult);
+            var post = new Post
+            {
+                Category = new Category(),
+                User = new User(),
+                Image = "http://some.url"
+            };
+            var latestPosts = Enumerable.Repeat(post, expectedResult);
 
             this.postService
                 .Setup(x => x.GetLatest(It.IsAny<int>()))
@@ -66,9 +72,9 @@ namespace IAmBacon.Web.Tests.Controllers
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             var viewResult = (ViewResult)result;
-            
+
             Assert.IsInstanceOfType(viewResult.Model, typeof(HomeViewModel));
-            var model = (HomeViewModel) viewResult.Model;
+            var model = (HomeViewModel)viewResult.Model;
 
             Assert.IsFalse(model.ShowBlogPosts);
         }

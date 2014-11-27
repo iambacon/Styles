@@ -14,6 +14,10 @@ namespace IAmBacon.Controllers
         /// </summary>
         public new IUrlHelper Url { get; set; }
 
+        /// <summary>
+        /// Initializes data that might not be available when the constructor is called.
+        /// </summary>
+        /// <param name="requestContext">The HTTP context and route data.</param>
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);

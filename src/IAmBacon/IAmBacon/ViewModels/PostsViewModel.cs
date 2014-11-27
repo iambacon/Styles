@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using IAmBacon.ViewModels.Post;
 
 namespace IAmBacon.ViewModels
@@ -25,6 +26,25 @@ namespace IAmBacon.ViewModels
         public bool DisplayCategories { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether [display tags].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [display tags]; otherwise, <c>false</c>.
+        /// </value>
+        public bool DisplayTags
+        {
+            get
+            {
+                return Tags != null && Tags.Any();
+            }
+        }
+
+        /// <summary>
+        /// The posts.
+        /// </summary>
+        public IEnumerable<PostViewModel> Posts { get; set; }
+
+        /// <summary>
         /// Gets or sets the title.
         /// </summary>
         /// <value>
@@ -33,8 +53,8 @@ namespace IAmBacon.ViewModels
         public string Title { get; set; }
 
         /// <summary>
-        /// The posts.
+        /// Gets or sets the tags.
         /// </summary>
-        public IEnumerable<PostViewModel> Posts;
+        public IEnumerable<TagViewModel> Tags { get; set; }
     }
 }

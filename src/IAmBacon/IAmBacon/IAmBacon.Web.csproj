@@ -240,6 +240,7 @@
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\PostThumbViewModel.cs" />
     <Compile Include="ViewModels\Post\CategoryCountViewModel.cs" />
+    <Compile Include="ViewModels\Post\TagViewModel.cs" />
     <Compile Include="ViewModels\Shared\FooterViewModel.cs" />
     <Compile Include="ViewModels\Shared\PopularPostViewModel.cs" />
     <Compile Include="ViewModels\Shared\RecentPostViewModel.cs" />
