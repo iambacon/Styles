@@ -335,6 +335,9 @@ a {
   a:hover {
     color: #83D6DE; }
 
+address {
+  font-style: normal; }
+
 img {
   max-width: 100%;
   vertical-align: middle; }
@@ -349,7 +352,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
-  color: #333333;
+  color: #555555;
   background-color: #FFFFFF; }
 
 blockquote {
@@ -532,6 +535,9 @@ meter::-webkit-meter-optimum-value {
   .pageTitle-headline--sm {
     font-size: 2.4rem; } }
 
+.pageTitle-headline--post {
+  text-align: left; }
+
 .pageTitle-subline {
   font-size: 2.4rem;
   margin-top: 0;
@@ -585,10 +591,26 @@ meter::-webkit-meter-optimum-value {
   margin: 0 auto;
   overflow: hidden;
   padding-left: 12px;
-  padding-right: 12px; }
+  padding-right: 12px;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box; }
+
+@media only screen and (min-width: 768px) {
+  .articleLayoutContainer {
+    margin-left: 8.5249042146%;
+    margin-right: 8.5249042146%; } }
 
 .layoutContainer--visible {
   overflow: visible; }
+
+.container {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box; }
+  .container:before, .container:after {
+    content: " ";
+    display: table; }
+  .container:after {
+    clear: both; }
 
 .h1 {
   font-size: 6rem;
@@ -633,6 +655,9 @@ meter::-webkit-meter-optimum-value {
 .linkTitle:hover {
   text-decoration: underline;
   color: inherit; }
+
+.textUpper {
+  text-transform: uppercase; }
 
 .social {
   background-image: url(../../../images/social.png);

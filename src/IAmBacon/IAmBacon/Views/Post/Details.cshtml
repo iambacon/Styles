@@ -18,50 +18,54 @@
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <header>
         <div class="pageTitle">
-            <h1 class="layoutContainer layoutContainer--visible has-triangle pageTitle-headline pageTitle-headline--sm" itemprop="name headline">@Model.Title</h1>
+            <h1 class="layoutContainer layoutContainer--visible has-triangle pageTitle-headline pageTitle-headline--sm pageTitle-headline--post" itemprop="name headline">@Model.Title</h1>
         </div>
-        <ul class="layoutContainer metaData">
-            <li>
-                <strong>Published:</strong>
-                <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>
-            </li>
-            <li>
-                <strong>Category:</strong>
-                @Html.RouteLink(Model.Category, "Category", new { name = Model.Category })
-            </li>
-        </ul>
-    </header>
-    <div class="layoutContainer">
-        @Model.Content
-        <footer>
-            <ul>
-                @if (Model.Tags != null && Model.Tags.Any())
-                {
-                    <li>
-                        <strong>Tags:</strong>
-                        @Html.DisplayFor(x => x.Tags)
-                    </li>
-                }
-                <li>
-                    <strong>Author:</strong>
-                    @*TODO: This needs to cater for other authors and should be driven from the db*@
-                    @Html.ActionLink(@Model.Author, "Index", "Home", null, new { rel = "author", @class = "link" })
+        <div class="layoutContainer">
+            <ul class="articleLayoutContainer metaData listInline">
+                <li class="m-r--half">
+                    <strong>Published:</strong>
+                    <time datetime="@Model.DateTime" itemprop="datePublished">@Model.DateCreated</time>
                 </li>
                 <li>
-                    <strong>Social links:</strong>
-                    <a class="link" href="http://www.twitter.com/iambacon" rel="me" title="Follow @Model.Author on Twitter">Twitter</a>
-                    <a class="link" href="https://plus.google.com/101905863606629791683?rel=author" rel="me" title="Google + for @Model.Author">Google +</a>
+                    <strong>Category:</strong>
+                    @Html.RouteLink(Model.Category, "Category", new { name = Model.Category })
                 </li>
             </ul>
-            @* TODO: Social sharing links *@
-        </footer>
-        @if (@Model.Comments.Any())
-        {
-            <h2>@Model.Comments.Count() Comments</h2>
-            <ol class="comments">
-                @Html.DisplayFor(x => x.Comments)
-            </ol>
-        }
+        </div>
+    </header>
+    <div class="layoutContainer">
+        <div class="articleLayoutContainer">
+            @Model.Content
+        </div>
+            <footer>
+                <address class="illStayHere container">
+                    <div class="author cf">
+                        <strong class="visuallyHidden">Author:</strong>
+                        <img class="author-image" src="~/Content/images/avatar.jpg" alt="Profile picture for Colin Bacon" />
+                        @Html.ActionLink(@Model.Author, "Index", "Home", null, new { rel = "author", @class = "author-title" })
+                        <p class="author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating compelling frontend experiences with HTML and CSS.  In his free time he can be found teaching skiing at his local slope.</p>
+                        <div class="author-links">
+                            @{Html.RenderPartial("_SocialLinks");}
+                        </div>
+                    </div>
+                </address>
+                @if (Model.DisplayTags)
+                {
+                    <section>
+                        <h4 class="textUpper inlineBlock m-r--half">Tags</h4>
+                        <ul class="listInline inlineBlock">
+                            @Html.DisplayFor(x => x.Tags)
+                        </ul>
+                    </section>
+                }
+            </footer>
+            @if (@Model.Comments.Any())
+            {
+                <h2>@Model.Comments.Count() Comments</h2>
+                <ol class="comments">
+                    @Html.DisplayFor(x => x.Comments)
+                </ol>
+            }
     </div>
 </article>
 @if (@Model.CommentsActive)

@@ -32,9 +32,13 @@
 	}
 }
 
+.pageTitle-headline--post {
+    text-align: left;
+}
+
 .pageTitle-subline {
     @include font-size($h3-font-size);
-    margin-top: 0;  
+    margin-top: 0;
     margin-bottom: 0;
     padding-bottom: $base-line-height;
     text-align: center;

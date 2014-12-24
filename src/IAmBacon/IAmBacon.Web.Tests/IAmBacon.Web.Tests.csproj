@@ -80,6 +80,7 @@
     <Compile Include="Controllers\HomeController.Tests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Features\BlogPost.cs" />
     <Compile Include="Features\TagCloud.cs" />
     <Compile Include="Helpers\Assertions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

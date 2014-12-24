@@ -23,5 +23,8 @@ $h4-font-size: 1    * $base-font-size !default; //16px
 $h5-font-size: 0.87 * $base-font-size !default; //14px
 $h6-font-size: 0.69 * $base-font-size !default; //11px
 
+// Post article font size
+$article-base-font-size:    $base-font-size * 1.125; //18px
+
 // The amount lists and blockquotes are indented.
 $indent-amount: 40px !default;

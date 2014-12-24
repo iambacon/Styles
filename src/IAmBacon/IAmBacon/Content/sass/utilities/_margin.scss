@@ -5,7 +5,7 @@
 /// <reference path="../base/_variables.scss" />
 .m-r {
     &--full {
-        margin-right: $base-line-height;
+        margin-right: vr-space(1);
     }
 
     &--half {
@@ -14,7 +14,7 @@
 }
 
 .m-b--full {
-    margin-bottom: $base-line-height;
+    margin-bottom: vr-space(1);
 }
 
 .m-b--none {
@@ -22,10 +22,10 @@
 }
 
 .m-t--full {
-    margin-top: $base-line-height;
+    margin-top: vr-space(1);
 }
 
 .m-tb--full {
-    margin-top: $base-line-height;
-    margin-bottom: $base-line-height;
+    margin-top: vr-space(1);
+    margin-bottom: vr-space(1);
 }

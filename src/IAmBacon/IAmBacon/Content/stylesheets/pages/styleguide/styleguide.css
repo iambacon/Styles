@@ -335,6 +335,9 @@ a {
   a:hover {
     color: #83D6DE; }
 
+address {
+  font-style: normal; }
+
 img {
   max-width: 100%;
   vertical-align: middle; }
@@ -349,7 +352,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
-  color: #333333;
+  color: #555555;
   background-color: #FFFFFF; }
 
 blockquote {
@@ -446,12 +449,15 @@ meter::-webkit-meter-optimum-value {
   text-decoration: underline;
   color: inherit; }
 
+.textUpper {
+  text-transform: uppercase; }
+
 .colour-container {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
   padding-top: 24px;
   padding-bottom: 24px;
-  background-color: #EEEEEE; }
+  background-color: #F5F5F5; }
   .colour-container:before, .colour-container:after {
     content: " ";
     display: table; }

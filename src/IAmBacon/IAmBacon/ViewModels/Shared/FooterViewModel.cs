@@ -35,7 +35,6 @@ namespace IAmBacon.ViewModels.Shared
             get
             {
                 return this.RecentPosts != null && this.RecentPosts.Any();
-                
             }
         }
 

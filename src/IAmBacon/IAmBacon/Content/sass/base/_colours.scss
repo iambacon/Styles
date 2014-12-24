@@ -16,7 +16,8 @@
  $black:		#000000;
  $mine-shaft:   #333333;
  $white:		#FFFFFF;
- $white-smoke:	#EEEEEE;
+ $white-smoke:	#F5F5F5;
+ $davys-grey:   #555555;
 
  // Grey pallette
  $nobel:			#999999;
@@ -32,10 +33,9 @@
  $examined:		#5E7078;
 
 
-// Global colours. 
+// Global colours.
 // Globally used colour variables.
 // ------------------------
-$base-color:            $mine-shaft;
-$base-background-color: $white; 
+$base-color:            $davys-grey;
+$base-background-color: $white;
 $link-hover-colour:     $cursive;
-	

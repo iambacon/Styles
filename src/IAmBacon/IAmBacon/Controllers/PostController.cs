@@ -116,6 +116,7 @@ namespace IAmBacon.Controllers
                     Url = Url.Action("Category", new { name = x.Key }),
                     Percent = ((double)x.Count() / categories.Count())
                 })
+                .OrderByDescending(x => x.Count)
                 .ToList();
 
             IEnumerable<TagViewModel> tagViewModels = tags.OrderBy(x => x.Name).Select(x => new TagViewModel
@@ -199,9 +200,8 @@ namespace IAmBacon.Controllers
                     DateCreated = x.DateCreated.ToDisplayDateTime()
                 }).OrderByDescending(x => x.DateCreated);
 
-            // TODO: Use automapper
-            // TODO: Don't use entities in presentation layer
-            // TODO: Need a better way of doing page titles
+            var tags = MapToTagViewModel(post.Tags);
+
             var model = new PostViewModel
                 {
                     Title = post.Title,
@@ -209,7 +209,7 @@ namespace IAmBacon.Controllers
                     Content = new HtmlString(post.Content),
                     DateTime = post.DateCreated.ToDateTimeFormat(),
                     DateCreated = post.DateCreated.ToDisplayDateTime(),
-                    Tags = post.Tags,
+                    Tags = tags,
                     Author = post.User.FirstName + " " + post.User.LastName,
                     Category = post.Category.SeoName,
                     Comments = comments.ToList(),
@@ -348,7 +348,7 @@ namespace IAmBacon.Controllers
         /// </summary>
         /// <param name="posts">The posts.</param>
         /// <returns>IEnumerable of PostViewModel.</returns>
-        private static IEnumerable<PostViewModel> CreatePostModels(IEnumerable<Post> posts)
+        private IEnumerable<PostViewModel> CreatePostModels(IEnumerable<Post> posts)
         {
             var postModels =
                 posts
@@ -362,12 +362,26 @@ namespace IAmBacon.Controllers
                             Content = x.Content.GetFirstParagraph(),
                             DateCreated = x.DateCreated.ToDisplayDateTime(),
                             DateTime = x.DateCreated.ToDateTimeFormat(),
-                            Tags = x.Tags,
+                            Tags = MapToTagViewModel(x.Tags),
                             Author = x.User.FirstName + " " + x.User.LastName,
                             Category = x.Category.Name,
                             Id = x.Id
                         });
             return postModels;
+        }
+
+        /// <summary>
+        /// Maps <see cref="Tag"/> to <see cref="TagViewModel"/>.
+        /// </summary>
+        /// <param name="tags">The <see cref="Tag"/>.</param>
+        /// <returns>The <see cref="TagViewModel"/>.</returns>
+        private IEnumerable<TagViewModel> MapToTagViewModel(IEnumerable<Tag> tags)
+        {
+            return tags.Select(x => new TagViewModel
+            {
+                Name = x.Name,
+                Url = Url.Action("Tag", new { name = x.SeoName })
+            });
         }
 
         #endregion

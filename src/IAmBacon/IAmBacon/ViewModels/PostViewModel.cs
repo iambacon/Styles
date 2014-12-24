@@ -1,9 +1,10 @@
-﻿namespace IAmBacon.ViewModels
+﻿using System.Linq;
+using IAmBacon.ViewModels.Post;
+
+namespace IAmBacon.ViewModels
 {
     using System.Collections.Generic;
     using System.Web;
-
-    using Model.Entities;
     using Models;
 
     /// <summary>
@@ -58,6 +59,14 @@
         public string DateCreated { get; set; }
 
         /// <summary>
+        /// Gets a value indicating whether [display tags].
+        /// </summary>
+        public bool DisplayTags
+        {
+            get { return Tags != null && Tags.Any(); }
+        }
+
+        /// <summary>
         /// Gets or sets the post id.
         /// </summary>
         public int Id { get; set; }
@@ -89,7 +98,7 @@
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        public IEnumerable<Tag> Tags { get; set; }
+        public IEnumerable<TagViewModel> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the title.

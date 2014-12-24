@@ -102,7 +102,6 @@ body {
 		@include column(3);
 	}
 
-	
 	background-color: $white;
 	border-radius: 3px;
 	margin-bottom: $base-line-height;
@@ -119,6 +118,7 @@ body {
         top: 0;
         bottom: 0;
     }
+    display: inline-block;
 }
 
 .articleThumb-date,

@@ -7,10 +7,6 @@
 {
     @Styles.Render("~/bundles/homeIeCss")
 }
-@section belowTheFoldCss
-{
-
-}
 <div class="pageTitle">
     <h1 class="layoutContainer layoutContainer--visible has-triangle">
         <span class="pageTitle-headline">Hi I'm Colin</span>
@@ -28,7 +24,7 @@
 {
     <section class="alto co">
         <div class="pageSection layoutContainer">
-            <h2 class="pageSection-title">@Html.ActionLink("Blog", "Index", "Post", new { @class = "linkTitle" })</h2>
+            <h2 class="pageSection-title">@Html.ActionLink("Blog", "Index", "Post", null, new { @class = "linkTitle" })</h2>
             @Html.DisplayFor(x => x.BlogPosts)
         </div>
     </section>

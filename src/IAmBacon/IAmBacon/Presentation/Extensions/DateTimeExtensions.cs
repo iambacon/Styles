@@ -36,7 +36,7 @@
         /// <returns></returns>
         public static string ToDisplayDateTime(this DateTime dateTime)
         {
-            return dateTime.ToString("yyyy-MM-dd H:mm");
+            return dateTime.ToString("yyyy-MM-dd");
         }
 
         #endregion

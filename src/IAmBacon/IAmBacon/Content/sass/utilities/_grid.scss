@@ -1,7 +1,8 @@
 ﻿//
 // Helper classes for grids and layouts.
 // --------------------------------------------------
-/// <reference path="../base//_variables.scss" />
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_grid.scss" />
 
 .layoutContainer {
 	max-width: 1000px;
@@ -9,8 +10,21 @@
 	overflow: hidden;
 	padding-left: $base-line-height * 0.5;
 	padding-right: $base-line-height * 0.5;
+    box-sizing: border-box;
+}
+
+.articleLayoutContainer {
+    @include respond-to(small-up){
+        @include push;
+        @include pull;
+    }
 }
 
 .layoutContainer--visible {
 	overflow: visible;
+}
+
+// Helper class for a grid container.
+.container {
+    @include container;
 }

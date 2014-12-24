@@ -4,61 +4,40 @@
 
 // Base
 // ------------------------
-@import "../../base/base";
-
-$link-hover-colour: #63B7F6;
-$article-link-colour: $link-hover-colour;
-$html-font-size-percentage: 62.5%;
-$body-color: #333333;
-$page-background-colour: #FFFFFF;
-
-$blockquote-font-size: 1.25 * $base-font-size;
-$base-padding: $base-font-size;
-$base-margin: $base-padding;
-
-// Font sizes for h1-h6
-$h1-font-size-mobile: 1.5 * $base-font-size;
-$h2-font-size-mobile: 1.25 * $base-font-size;
-
-// Media queries breakpoints
-$min-width-541px: 541px;
-$max-width-540px: 540px;
-@import "../../modules/mediaqueries";
-@import "../../modules/mixins";
+@import
+    "../../base/base",
+    "../../base/code";
 
 // Objects
+// ------------------------
 @import "../../objects/lists";
-
-// Partials
-@import "../../partials/html-body";
-@import "../../partials/respond";
-@import "../../partials/code";
 
 // Components
 // ------------------------
-@import "../../components/header";
-@import "../../components/footer";
-@import "../../components/links-list";
-@import "../../components/page-title";
+@import
+    "../../components/header",
+    "../../components/footer",
+    "../../components/links-list",
+    "../../components/author",
+    "../../components/buttons",
+    "../../components/page-title";
 
 // Utilities
 // ------------------------
-@import "../../utilities/colours";
-@import "../../utilities/grid";
-@import "../../utilities/typography";
-@import "../../utilities/social";
-@import "../../utilities/margin";
+@import
+    "../../utilities/colours",
+    "../../utilities/grid",
+    "../../utilities/typography",
+    "../../utilities/social",
+    "../../utilities/floats",
+    "../../utilities/display",
+    "../../utilities/margin";
 
-// General
-
+// Post article styling.
+// We must style elements.
 article {
-    a {
-        color: $article-link-colour;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+    @include vr-line-height($factor: 1.2);
+    font-size: $article-base-font-size;
 
     h2,
     h3,
@@ -69,11 +48,25 @@ article {
         }
     }
 
-    h2 {
-        @include font-size($h2-font-size-mobile);
+    p {
+        margin: {
+            top: 1em;
+            bottom: 1em;
+        }
+    }
 
-        @include media-min($min-width-541px) {
-            @include font-size($h3-font-size);
+    h2,
+    h3,
+    h4 {
+        text-transform: uppercase;
+    }
+
+    a {
+        color: $cursive;
+
+        &:hover {
+            text-decoration: underline;
+            color: $cursive;
         }
     }
 }
@@ -85,5 +78,4 @@ article {
 
 .metaData {
     padding-top: $base-line-height * 2;
-    padding-bottom: $base-line-height;
 }

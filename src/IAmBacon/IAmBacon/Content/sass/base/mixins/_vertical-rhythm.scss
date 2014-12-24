@@ -10,6 +10,8 @@
     line-height: vertical-rhythm-ratio($font-size, $line-height);
 }
 
+// Returns the vertical rhythm space.
+// Used for padding and margins.
 @function vr-space($factor: 1) {
     @return $base-line-height * $factor;
 }

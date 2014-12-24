@@ -51,6 +51,10 @@ a {
 	}
 }
 
+address {
+    font-style: normal;
+}
+
 // Set images to be responsive by default
 img {
 	max-width: 100%;
@@ -67,10 +71,10 @@ html {
 
 body {
 	@include font-size;
-	@include line-height-proportional;
+	@include vr-line-height;
 	font-family: $base-font-family;
-	color: $base-color;	
-	background-color: $base-background-color;	
+	color: $base-color;
+	background-color: $base-background-color;
 }
 
 blockquote {
@@ -84,12 +88,12 @@ meter {
 }
 
 meter::-webkit-meter-bar {
-    background: $desert-storm;    
+    background: $desert-storm;
     height: 7px;
     width: 100%;
 }
 
-meter::-webkit-meter-optimum-value {    
+meter::-webkit-meter-optimum-value {
     background-image: none;
     background-color: $cursive;
 }
