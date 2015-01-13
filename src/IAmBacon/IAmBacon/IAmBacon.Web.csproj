@@ -320,7 +320,7 @@
     <Content Include="humans.txt" />
     <None Include="Areas\Admin\Views\Template\LandingPage.cshtml" />
     <None Include="Areas\Admin\Views\Template\Post.cshtml" />
-    <Content Include="pinterest-10707.html" />
+    <Content Include="pinterest-78f13.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
