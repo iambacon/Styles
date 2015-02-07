@@ -21,7 +21,7 @@
     <main role="main">
         @RenderBody()
     </main>
-    @{Html.RenderPartial("_Footer", Model.Footer);}
+    @{Html.RenderAction("Footer");}
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     @RenderSection("belowTheFoldCss", false)
     @RenderSection("scripts", false)

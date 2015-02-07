@@ -79,7 +79,7 @@ namespace IAmBacon.Controllers
             ITagService tagService,
             ICategoryService categoryService,
             ISpamManager spamManager,
-            IEmailManager emailManager)
+            IEmailManager emailManager) : base(postService)
         {
             this.postService = postService;
             this.commentService = commentService;
