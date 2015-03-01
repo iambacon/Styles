@@ -303,7 +303,6 @@
     <Content Include="Content\sass\components\_meter.scss" />
     <Content Include="Content\sass\components\_buttons.scss" />
     <Content Include="Content\sass\components\_author.scss" />
-    <None Include="Content\sass\modules\README.txt" />
     <Content Include="Content\stylesheets\pages\home\home-ie.css" />
     <Content Include="Content\stylesheets\pages\home\home.css" />
     <Content Include="Content\stylesheets\pages\post\category-ie.css" />
@@ -372,15 +371,11 @@
     <Content Include="Content\sass\objects\_lists.scss" />
     <Content Include="Content\sass\base\mixins\_breakpoints.scss" />
     <Content Include="Content\sass\utilities\_colours.scss" />
-    <Content Include="Content\sass\utilities\_padding.scss" />
-    <Content Include="Content\sass\utilities\_widths.scss" />
-    <Content Include="Content\sass\utilities\_responsive-widths.scss" />
     <Content Include="Content\sass\utilities\_floats.scss" />
     <Content Include="Content\sass\utilities\_typography.scss" />
     <Content Include="Content\sass\pages\home\home.scss" />
     <Content Include="Content\sass\utilities\_margin.scss" />
     <Content Include="Content\sass\utilities\_social.scss" />
-    <Content Include="Content\sass\utilities\_vertical-rhythm.scss" />
     <Content Include="Content\sass\pages\home\home-ie.scss" />
     <Content Include="Content\sass\utilities\_tables.scss" />
     <Content Include="Content\sass\utilities\_grid.scss" />
@@ -456,16 +451,7 @@
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
     <None Include="Content\sass\pages\post\landingpage.scss" />
-    <None Include="Content\sass\partials\_base.scss" />
-    <None Include="Content\sass\modules\_mixins.scss" />
-    <None Include="Content\sass\partials\README.txt" />
-    <None Include="Content\sass\partials\_html-body.scss" />
-    <None Include="Content\sass\modules\_all.scss" />
-    <None Include="Content\sass\modules\_functions.scss" />
     <None Include="Content\sass\pages\post\post.scss" />
-    <None Include="Content\sass\modules\_colours.scss" />
-    <None Include="Content\sass\modules\_mediaqueries.scss" />
-    <None Include="Content\sass\partials\_respond.scss" />
     <None Include="Content\sass\pages\post\landingpage-ie.scss" />
     <None Include="Content\sass\pages\post\post-ie.scss" />
     <None Include="Content\sass\base\_code.scss" />
@@ -473,7 +459,6 @@
     <None Include="Content\sass\pages\post\category-ie.scss" />
     <None Include="Content\sass\pages\post\tag.scss" />
     <None Include="Content\sass\pages\post\tag-ie.scss" />
-    <None Include="Content\sass\partials\_state.scss" />
     <None Include="package.json" />
     <None Include="Properties\PublishProfiles\PublishToLiveFolder.pubxml" />
   </ItemGroup>

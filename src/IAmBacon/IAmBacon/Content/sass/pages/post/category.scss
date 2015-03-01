@@ -25,39 +25,53 @@
 @import "../../utilities/social";
 @import "../../utilities/margin";
 
-// Old stuff 
+// Old stuff
 $link-hover-colour: #63B7F6;
 // Media queries breakpoints
 $min-width-541px: 541px;
 $max-width-540px: 540px;
-@import "../../modules/mediaqueries";
-@import "../../modules/mixins";
+
+
+$fix-media-min: false !default;
+@mixin media-min($width) {
+    @if $fix-media-min {
+        @if $fix-media-min >= $width {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (min-width: rem($width)) {
+            @content;
+        }
+    }
+}
 
 a {
-	text-decoration: none;
-	color: inherit;
+    text-decoration: none;
+    color: inherit;
 
-	&:hover {
-		color: $link-hover-colour;
-	}
+    &:hover {
+        color: $link-hover-colour;
+    }
 }
 
 .link {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .h1 {
-	font-size: 24px !important;
-	font-size: 2.4rem !important;
+    font-size: 24px !important;
+    font-size: 2.4rem !important;
+
     margin: {
         top: 1em;
         bottom: 1em;
     }
 
-	@include media-min($min-width-541px) {
-		font-size: 36px !important;
-		font-size: 3.6rem !important;
-	}
+    @include media-min($min-width-541px) {
+        font-size: 36px !important;
+        font-size: 3.6rem !important;
+    }
 }
 
 article p {
