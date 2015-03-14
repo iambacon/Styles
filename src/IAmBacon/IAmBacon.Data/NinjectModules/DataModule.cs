@@ -1,8 +1,8 @@
 ﻿namespace IAmBacon.Data.NinjectModules
 {
-    using IAmBacon.Data.Infrastructure;
-    using IAmBacon.Data.Repositories;
-    using IAmBacon.Model.Entities;
+    using Infrastructure;
+    using Repositories;
+    using Model.Entities;
 
     using Ninject.Modules;
     using Ninject.Web.Common;

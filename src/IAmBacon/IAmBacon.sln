@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web", "IAmBacon\IAmBacon.Web.csproj", "{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}"
 EndProject
@@ -9,11 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Data", "IAmBacon.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4B10E62F-D0BA-438B-B460-DAD37476A2D6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99CED37A-195A-434F-9455-82B04371B82F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01BF24B8-A611-4D04-8DC8-952534E0977D}"
 	ProjectSection(SolutionItems) = preProject
 		IAmBacon.vsmdi = IAmBacon.vsmdi
 		Local.testsettings = Local.testsettings
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Model", "IAmBacon.Model\IAmBacon.Model.csproj", "{683844A9-988F-4BB2-83A5-2043D499A3A2}"
@@ -24,6 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web.Tests", "IAmBa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01BF24B8-A611-4D04-8DC8-952534E0977D}"
 	ProjectSection(SolutionItems) = preProject
+		IAmBacon.vsmdi = IAmBacon.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject

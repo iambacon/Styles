@@ -1,6 +1,5 @@
 ﻿namespace IAmBacon
 {
-    using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Routing;
 
@@ -32,7 +31,7 @@
                 "rss",
                 new { controller = "Post", action = "feed" },
                 new[] { "IAmBacon.Controllers" });
-            
+
             routes.MapRoute(
                 "BlogPostLegacy",
                 "blog/{title}-{id}",
@@ -45,7 +44,7 @@
                 "blog/{title}",
                 new { controller = "Post", action = "Details" },
                 new[] { "IAmBacon.Controllers" });
-            
+
             routes.MapRoute(
                 "Category",
                 "blog/category/{name}",
@@ -62,12 +61,6 @@
                 "BlogHome",
                 "blog",
                 new { controller = "Post", action = "Index" },
-                new[] { "IAmBacon.Controllers" });
-
-            routes.MapHttpRoute(
-                "DefaultApi",
-                "api/{controller}/{id}",
-                new { id = RouteParameter.Optional },
                 new[] { "IAmBacon.Controllers" });
 
             routes.MapRoute(

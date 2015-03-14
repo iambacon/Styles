@@ -14,9 +14,9 @@ namespace IAmBacon.Web.Tests.Areas.Controllers
             // Arrange
 
             // Act
-            var attribute = Attribute.GetCustomAttribute(typeof (HomeController),
-                typeof (AuthorizeAttribute));
-            
+            var attribute = Attribute.GetCustomAttribute(typeof(HomeController),
+                typeof(AuthorizeAttribute));
+
             // Assert
             Assert.IsNotNull(attribute);
         }

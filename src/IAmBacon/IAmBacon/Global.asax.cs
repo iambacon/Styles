@@ -4,8 +4,8 @@
     using System.Web.Optimization;
     using System.Web.Routing;
 
-    using IAmBacon.Data.NinjectModules;
-    using IAmBacon.Domain.NinjectModules;
+    using Data.NinjectModules;
+    using Domain.NinjectModules;
 
     using Ninject;
     using Ninject.Modules;

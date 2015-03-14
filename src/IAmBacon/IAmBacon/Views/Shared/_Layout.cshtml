@@ -1,5 +1,4 @@
 ﻿@using IAmBacon.Presentation.HtmlHelpers;
-@using StackExchange.Profiling
 @model IAmBacon.ViewModels.ViewModelBase
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +25,5 @@
     @RenderSection("belowTheFoldCss", false)
     @RenderSection("scripts", false)
     @Google.GetAnalyticsHtml()
-    @MiniProfiler.RenderIncludes()
 </body>
 </html>
