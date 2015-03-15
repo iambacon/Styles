@@ -182,6 +182,7 @@
     <Compile Include="Areas\Admin\ViewModels\LoginViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PostViewModel.cs" />
     <Compile Include="Attributes\CanonicalUrlAttribute.cs" />
+    <Compile Include="Attributes\TwitterMetaTagsAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\PostThumbViewModel.cs" />
+    <Compile Include="ViewModels\ITwitterMetadata.cs" />
     <Compile Include="ViewModels\Post\CategoryCountViewModel.cs" />
     <Compile Include="ViewModels\Post\TagViewModel.cs" />
     <Compile Include="ViewModels\Shared\FooterViewModel.cs" />
@@ -356,6 +358,7 @@
     <Content Include="Views\Post\DisplayTemplates\CategoryCountViewModel.cshtml" />
     <Content Include="Views\Post\DisplayTemplates\TagViewModel.cshtml" />
     <Content Include="Views\Shared\_SocialLinks.cshtml" />
+    <Content Include="Views\Shared\_TwitterMetaTags.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

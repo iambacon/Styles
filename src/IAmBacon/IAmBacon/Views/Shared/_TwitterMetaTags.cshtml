@@ -1,0 +1,19 @@
+﻿@model IAmBacon.ViewModels.ITwitterMetadata
+@if (Model != null)
+{
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@Model.Site" />
+
+    @*Open Graph meta tags*@
+    <meta property="og:url" content="@Model.Url" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+
+    if (string.IsNullOrEmpty(Model.Image))
+    {
+        <meta property="og:image" content="@Model.Image" />
+    }
+    @*
+        Twitter image must be a minium size of 120px by 120px and less than 1mb in file size.
+    *@
+}

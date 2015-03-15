@@ -6,7 +6,7 @@ namespace IAmBacon.ViewModels.Home
     /// <summary>
     /// View model for home page.
     /// </summary>
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase, ITwitterMetadata
     {
         /// <summary>
         /// Gets or sets the blog posts.
@@ -22,11 +22,27 @@ namespace IAmBacon.ViewModels.Home
         /// <value>
         ///   <c>true</c> if [show blog posts]; otherwise, <c>false</c>.
         /// </value>
-        public bool ShowBlogPosts {
+        public bool ShowBlogPosts
+        {
             get
             {
                 return this.BlogPosts != null && this.BlogPosts.Any();
             }
         }
+
+        ///<inheritdoc />
+        public string Site { get; set; }
+
+        ///<inheritdoc />
+        public string Url { get; set; }
+
+        ///<inheritdoc />
+        public string Description { get; set; }
+
+        ///<inheritdoc />
+        public string Image { get; set; }
+
+        ///<inheritdoc />
+        public string Title { get; set; }
     }
 }

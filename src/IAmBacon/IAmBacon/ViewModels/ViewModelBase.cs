@@ -7,8 +7,6 @@ namespace IAmBacon.ViewModels
     /// </summary>
     public abstract class ViewModelBase
     {
-        #region Public Properties
-
         /// <summary>
         /// Gets or sets the page title.
         /// </summary>
@@ -24,7 +22,5 @@ namespace IAmBacon.ViewModels
         /// The footer.
         /// </value>
         public FooterViewModel Footer { get; set; }
-
-        #endregion
     }
 }

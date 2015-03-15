@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Features\BlogPost.cs" />
     <Compile Include="Features\TagCloud.cs" />
+    <Compile Include="Features\TwitterCard.cs" />
     <Compile Include="Helpers\Assertions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

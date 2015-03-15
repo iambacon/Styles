@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using IAmBacon.Attributes;
 using IAmBacon.Domain.Services.Interfaces;
 using IAmBacon.Model.Entities;
 using IAmBacon.Presentation.Extensions;
@@ -49,9 +50,10 @@ namespace IAmBacon.Controllers
         /// The home page.
         /// </summary>
         /// <returns></returns>
+        [TwitterMetaTags("The tech blog for Colin Bacon. Tech with a Bacon flavour.")]
         public ActionResult Index()
         {
-            this.latestPosts = this.postService.GetLatest(LatestPostsCount);
+            latestPosts = postService.GetLatest(LatestPostsCount);
 
             var model = SetHomeViewModel();
 
