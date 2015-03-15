@@ -23,14 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Domain", "IAmBacon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web.Tests", "IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj", "{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01BF24B8-A611-4D04-8DC8-952534E0977D}"
-	ProjectSection(SolutionItems) = preProject
-		IAmBacon.vsmdi = IAmBacon.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-		WebEssentials-Settings.json = WebEssentials-Settings.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
