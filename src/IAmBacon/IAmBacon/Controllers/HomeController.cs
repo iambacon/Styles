@@ -50,7 +50,7 @@ namespace IAmBacon.Controllers
         /// The home page.
         /// </summary>
         /// <returns></returns>
-        [TwitterMetaTags("The tech blog for Colin Bacon. Tech with a Bacon flavour.")]
+        [TwitterMetaTags("The tech blog for Colin Bacon. Tech with a Bacon flavour.", "twitter-card.png")]
         public ActionResult Index()
         {
             latestPosts = postService.GetLatest(LatestPostsCount);

@@ -34,7 +34,8 @@ namespace IAmBacon.Web.Tests.Features
                     Site = "@iambacon",
                     Url = "http://www.iambacon.co.uk/",
                     Description = "This is the description.",
-                    Image = "http://images.iambacon.co.uk/twitter-card.png"
+                    Image = "http://images.iambacon.co.uk/twitter-card.png",
+                    HasImage = true
                 };
 
                 var httpRequest = new Mock<HttpRequestBase>();
@@ -53,7 +54,7 @@ namespace IAmBacon.Web.Tests.Features
 
                 _filterContextMock.SetupGet(c => c.HttpContext).Returns(httpContext.Object);
 
-                _sut = new TwitterMetaTagsAttribute("This is the description.");
+                _sut = new TwitterMetaTagsAttribute("This is the description.", "twitter-card.png");
             };
 
             Because of = () => _sut.OnActionExecuted(_filterContextMock.Object);
@@ -71,6 +72,7 @@ namespace IAmBacon.Web.Tests.Features
                     StringComparison.OrdinalIgnoreCase));
                 Assert.IsTrue(viewModel.Image.Equals(_expectedMetadata.Image,
                     StringComparison.OrdinalIgnoreCase));
+                Assert.IsTrue(viewModel.HasImage);
             };
         }
     }

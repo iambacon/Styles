@@ -31,6 +31,9 @@ namespace IAmBacon.ViewModels.Home
         }
 
         ///<inheritdoc />
+        public bool HasImage { get; set; }
+
+        ///<inheritdoc />
         public string Site { get; set; }
 
         ///<inheritdoc />

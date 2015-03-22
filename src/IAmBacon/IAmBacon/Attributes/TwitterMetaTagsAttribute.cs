@@ -20,22 +20,24 @@ namespace IAmBacon.Attributes
         private const string TwitterSiteUsername = "@iambacon";
 
         /// <summary>
-        /// The twitter image name.
-        /// </summary>
-        private const string TwitterImageName = "twitter-card.png";
-
-        /// <summary>
         /// The page description field.
         /// </summary>
         private readonly string _description;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TwitterMetaTagsAttribute"/> class.
+        /// The image field.
+        /// </summary>
+        private readonly string _image;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitterMetaTagsAttribute" /> class.
         /// </summary>
         /// <param name="description">The description.</param>
-        public TwitterMetaTagsAttribute(string description)
+        /// <param name="image">The image.</param>
+        public TwitterMetaTagsAttribute(string description, string image = null)
         {
             _description = description;
+            _image = image;
         }
 
         /// <summary>
@@ -67,7 +69,8 @@ namespace IAmBacon.Attributes
                 metadata.Site = TwitterSiteUsername;
                 metadata.Url = canonicalUrl;
                 metadata.Description = _description;
-                metadata.Image = string.Format("{0}/{1}", BaseImageUrl, TwitterImageName);
+                metadata.HasImage = _image != null;
+                if (_image != null) metadata.Image = string.Format("{0}/{1}", BaseImageUrl, _image);
                 if (viewModel != null) metadata.Title = viewModel.PageTitle;
             }
             base.OnActionExecuted(filterContext);

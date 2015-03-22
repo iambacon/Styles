@@ -6,6 +6,14 @@
     public interface ITwitterMetadata
     {
         /// <summary>
+        /// Gets or sets a value indicating whether this instance has a twitter image.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance has image; otherwise, <c>false</c>.
+        /// </value>
+        bool HasImage { get; set; }
+
+        /// <summary>
         /// Gets or sets the site.
         /// The Twitter @username the card should be attributed to.
         /// </summary>
