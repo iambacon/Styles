@@ -1,5 +1,6 @@
 ﻿@using IAmBacon.Presentation.HtmlHelpers;
-@model IAmBacon.ViewModels.ViewModelBase
+@using IAmBacon.ViewModels
+@model ViewModelBase
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,10 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @RenderSection("meta", false)
-    @Html.Partial("_TwitterMetaTags")
+    @if (Model as ITwitterMetadata != null)
+    {
+        @Html.Partial("_TwitterMetaTags")
+    }
     <!--[if lte IE 8]>
         @RenderSection("iecss", false)
     <![endif]-->
