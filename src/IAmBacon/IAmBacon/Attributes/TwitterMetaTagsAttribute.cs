@@ -12,7 +12,7 @@ namespace IAmBacon.Attributes
         /// <summary>
         /// The base URL for the image CDN.
         /// </summary>
-        private const string BaseImageUrl = "http://images.iambacon.co.uk";
+        private const string BaseImageUrl = "http://images.iambacon.co.uk/blog";
 
         /// <summary>
         /// The twitter site username.

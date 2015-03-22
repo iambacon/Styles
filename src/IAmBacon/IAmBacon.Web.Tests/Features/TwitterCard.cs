@@ -34,7 +34,7 @@ namespace IAmBacon.Web.Tests.Features
                     Site = "@iambacon",
                     Url = "http://www.iambacon.co.uk/",
                     Description = "This is the description.",
-                    Image = "http://images.iambacon.co.uk/twitter-card.png",
+                    Image = "http://images.iambacon.co.uk/blog/twitter-card.png",
                     HasImage = true
                 };
 
