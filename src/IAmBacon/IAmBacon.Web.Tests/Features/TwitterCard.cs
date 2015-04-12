@@ -7,7 +7,6 @@ using IAmBacon.ViewModels.Home;
 using IAmBacon.Web.Tests.Context;
 using Machine.Specifications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using It = Machine.Specifications.It;
 
 namespace IAmBacon.Web.Tests.Features
@@ -15,11 +14,6 @@ namespace IAmBacon.Web.Tests.Features
     [Subject("Twitter card")]
     public class TwitterCard
     {
-        public class When_I_browse_to_a_page
-        {
-            It should_contain_twitter_metadata;
-        }
-
         public class Given_TwitterMetaTagsAttribute_is_implemented : OnActionExecutedContext
         {
             static TwitterMetaTagsAttribute _sut;
@@ -60,10 +54,70 @@ namespace IAmBacon.Web.Tests.Features
                     StringComparison.OrdinalIgnoreCase));
                 Assert.IsTrue(viewModel.HasImage);
             };
+        }
 
-            It should_return_the_canonical_url;
+        public class TwitterMetaTagsAttribute_image : OnActionExecutedContext
+        {
+            static TwitterMetaTagsAttribute _sut;
 
-            It should_allow_the_image_to_be_optional;
+            static ITwitterMetadata _expectedMetadata;
+
+            Establish context = () =>
+            {
+                _expectedMetadata = new HomeViewModel
+                {
+                    Image = null
+                };
+
+                var viewModel = new HomeViewModel { PageTitle = "Colin Bacon - Web Developer" };
+                ViewResultMock.Object.ViewData.Model = viewModel;
+
+                _sut = new TwitterMetaTagsAttribute("This is the description.");
+            };
+
+            Because of = () => _sut.OnActionExecuted(FilterContextMock.Object);
+
+            It should_allow_the_image_to_be_optional = () =>
+            {
+                var viewResult = FilterContextMock.Object.Result as ViewResultBase;
+                viewResult.ShouldNotBeNull();
+
+                var viewModel = viewResult.Model as HomeViewModel;
+                viewModel.Image.ShouldBeNull();
+            };
+        }
+
+        public class TwitterMetaTagsAttribute_url : OnActionExecutedContext
+        {
+            static TwitterMetaTagsAttribute _sut;
+
+            static ITwitterMetadata _expectedMetadata;
+
+            Establish context = () =>
+            {
+                _expectedMetadata = new HomeViewModel
+                {
+                    Url = "http://www.iambacon.co.uk/"
+                };
+
+                HttpRequest.SetupGet(r => r.Url).Returns(new Uri("http://www.iambacon.co.uk?query=param"));
+
+                var viewModel = new HomeViewModel { PageTitle = "Colin Bacon - Web Developer" };
+                ViewResultMock.Object.ViewData.Model = viewModel;
+
+                _sut = new TwitterMetaTagsAttribute("This is the description.", "twitter-card.png");
+            };
+
+            Because of = () => _sut.OnActionExecuted(FilterContextMock.Object);
+
+            It should_return_the_canonical_url = () =>
+            {
+                var viewResult = FilterContextMock.Object.Result as ViewResultBase;
+                viewResult.ShouldNotBeNull();
+
+                var viewModel = viewResult.Model as HomeViewModel;
+                Assert.IsTrue(viewModel.Url.Equals(_expectedMetadata.Url, StringComparison.OrdinalIgnoreCase));
+            };
         }
 
         public class Given_PostTwitterMetaTagsAttribute : OnActionExecutedContext
@@ -100,17 +154,15 @@ namespace IAmBacon.Web.Tests.Features
             It should_contain_correctly_formatted_metadata = () =>
             {
                 var viewResult = FilterContextMock.Object.Result as ViewResultBase;
-                Assert.IsNotNull(viewResult);
+                viewResult.ShouldNotBeNull();
 
                 var viewModel = viewResult.Model as PostViewModel;
-                Assert.AreSame(viewModel.Title, viewModel.PageTitle);
-                Assert.AreSame(viewModel.Site, _expectedMetadata.Site);
-                Assert.IsTrue(viewModel.Url.Equals(_expectedMetadata.Url, StringComparison.OrdinalIgnoreCase));
-                Assert.IsTrue(viewModel.Description.Equals(_expectedMetadata.Description,
-                    StringComparison.OrdinalIgnoreCase));
-                Assert.IsTrue(viewModel.Image.Equals(_expectedMetadata.Image,
-                    StringComparison.OrdinalIgnoreCase));
-                Assert.IsTrue(viewModel.HasImage);
+                viewModel.Title.ShouldEqual(viewModel.PageTitle);
+                viewModel.Site.ShouldBeTheSameAs(_expectedMetadata.Site);
+                viewModel.Url.ShouldEqual(_expectedMetadata.Url);
+                viewModel.Description.ShouldEqual(_expectedMetadata.Description);
+                viewModel.Image.ShouldEqual(_expectedMetadata.Image);
+                viewModel.HasImage.ShouldBeTrue();
             };
         }
     }

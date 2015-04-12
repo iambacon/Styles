@@ -12,13 +12,15 @@ namespace IAmBacon.Web.Tests.Context
 
         protected static Mock<ViewResultBase> ViewResultMock;
 
+        protected static Mock<HttpRequestBase> HttpRequest;
+
         Establish context = () =>
         {
-            var httpRequest = new Mock<HttpRequestBase>();
-            httpRequest.SetupGet(r => r.Url).Returns(new Uri("http://www.iambacon.co.uk"));
+            HttpRequest = new Mock<HttpRequestBase>();
+            HttpRequest.SetupGet(r => r.Url).Returns(new Uri("http://www.iambacon.co.uk"));
 
             var httpContext = new Mock<HttpContextBase>();
-            httpContext.SetupGet(c => c.Request).Returns(httpRequest.Object);
+            httpContext.SetupGet(c => c.Request).Returns(HttpRequest.Object);
 
             FilterContextMock = new Mock<ActionExecutedContext>();
             ViewResultMock = new Mock<ViewResultBase>();
