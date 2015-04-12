@@ -1,4 +1,5 @@
-﻿using IAmBacon.Domain.Smtp.Interfaces;
+﻿using IAmBacon.Attributes;
+using IAmBacon.Domain.Smtp.Interfaces;
 using IAmBacon.Domain.Utilities.Interfaces;
 using IAmBacon.ViewModels.Post;
 using IAmBacon.ViewModels.Shared;
@@ -175,6 +176,7 @@ namespace IAmBacon.Controllers
         /// <returns>
         /// The <see cref="ActionResult" />.
         /// </returns>
+        [PostTwitterMetaTags]
         public ActionResult Details(string title, int id = 0)
         {
             var post = this.postService.Get(title);
@@ -216,7 +218,8 @@ namespace IAmBacon.Controllers
                     NoCss = post.NoCss,
                     Id = post.Id,
                     PageTitle = post.Title + " - I am Bacon",
-                    Footer = new FooterViewModel()
+                    Footer = new FooterViewModel(),
+                    Image = post.Image
                 };
 
 

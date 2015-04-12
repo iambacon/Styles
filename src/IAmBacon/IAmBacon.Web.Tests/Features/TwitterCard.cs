@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using IAmBacon.Attributes;
 using IAmBacon.ViewModels;
 using IAmBacon.ViewModels.Home;
+using IAmBacon.Web.Tests.Context;
 using Machine.Specifications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -19,11 +20,9 @@ namespace IAmBacon.Web.Tests.Features
             It should_contain_twitter_metadata;
         }
 
-        public class Given_TwitterMetaTagsAttribute_is_implemented
+        public class Given_TwitterMetaTagsAttribute_is_implemented : OnActionExecutedContext
         {
             static TwitterMetaTagsAttribute _sut;
-
-            static Mock<ActionExecutedContext> _filterContextMock;
 
             static ITwitterMetadata _expectedMetadata;
 
@@ -38,33 +37,72 @@ namespace IAmBacon.Web.Tests.Features
                     HasImage = true
                 };
 
-                var httpRequest = new Mock<HttpRequestBase>();
-                httpRequest.SetupGet(r => r.Url).Returns(new Uri("http://www.iambacon.co.uk"));
-
-                var httpContext = new Mock<HttpContextBase>();
-                httpContext.SetupGet(c => c.Request).Returns(httpRequest.Object);
-
-                _filterContextMock = new Mock<ActionExecutedContext>();
-                var viewResultMock = new Mock<ViewResultBase>();
-
-                _filterContextMock.Object.Result = viewResultMock.Object;
-
                 var viewModel = new HomeViewModel { PageTitle = "Colin Bacon - Web Developer" };
-                viewResultMock.Object.ViewData.Model = viewModel;
-
-                _filterContextMock.SetupGet(c => c.HttpContext).Returns(httpContext.Object);
+                ViewResultMock.Object.ViewData.Model = viewModel;
 
                 _sut = new TwitterMetaTagsAttribute("This is the description.", "twitter-card.png");
             };
 
-            Because of = () => _sut.OnActionExecuted(_filterContextMock.Object);
+            Because of = () => _sut.OnActionExecuted(FilterContextMock.Object);
 
             It should_contain_correctly_formatted_metadata = () =>
             {
-                var viewResult = _filterContextMock.Object.Result as ViewResultBase;
+                var viewResult = FilterContextMock.Object.Result as ViewResultBase;
                 Assert.IsNotNull(viewResult);
 
                 var viewModel = viewResult.Model as HomeViewModel;
+                Assert.AreSame(viewModel.Title, viewModel.PageTitle);
+                Assert.AreSame(viewModel.Site, _expectedMetadata.Site);
+                Assert.IsTrue(viewModel.Url.Equals(_expectedMetadata.Url, StringComparison.OrdinalIgnoreCase));
+                Assert.IsTrue(viewModel.Description.Equals(_expectedMetadata.Description,
+                    StringComparison.OrdinalIgnoreCase));
+                Assert.IsTrue(viewModel.Image.Equals(_expectedMetadata.Image,
+                    StringComparison.OrdinalIgnoreCase));
+                Assert.IsTrue(viewModel.HasImage);
+            };
+
+            It should_return_the_canonical_url;
+
+            It should_allow_the_image_to_be_optional;
+        }
+
+        public class Given_PostTwitterMetaTagsAttribute : OnActionExecutedContext
+        {
+            static PostTwitterMetaTagsAttribute _sut;
+
+            static ITwitterMetadata _expectedMetadata;
+
+            private Establish context = () =>
+            {
+                _expectedMetadata = new PostViewModel
+                {
+                    Site = "@iambacon",
+                    Url = "http://www.iambacon.co.uk/",
+                    Description = "First paragraph",
+                    Image = "http://images.iambacon.co.uk/blog/test.png",
+                    HasImage = true
+                };
+
+                var viewModel = new PostViewModel
+                {
+                    PageTitle = "Colin Bacon - Web Developer",
+                    Content = new HtmlString("<p>First paragraph</p><p>second paragraph</p>"),
+                    Image = "test.png"
+                };
+
+                ViewResultMock.Object.ViewData.Model = viewModel;
+
+                _sut = new PostTwitterMetaTagsAttribute();
+            };
+
+            Because of = () => _sut.OnActionExecuted(FilterContextMock.Object);
+
+            It should_contain_correctly_formatted_metadata = () =>
+            {
+                var viewResult = FilterContextMock.Object.Result as ViewResultBase;
+                Assert.IsNotNull(viewResult);
+
+                var viewModel = viewResult.Model as PostViewModel;
                 Assert.AreSame(viewModel.Title, viewModel.PageTitle);
                 Assert.AreSame(viewModel.Site, _expectedMetadata.Site);
                 Assert.IsTrue(viewModel.Url.Equals(_expectedMetadata.Url, StringComparison.OrdinalIgnoreCase));

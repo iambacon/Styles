@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Areas\Controllers\Controllers.Tests.cs" />
     <Compile Include="Areas\Controllers\BaseController.Tests.cs" />
+    <Compile Include="Context\OnActionExecutedContext.cs" />
     <Compile Include="Context\PostContext.cs" />
     <Compile Include="Controllers\HomeController.Tests.cs">
       <SubType>Code</SubType>

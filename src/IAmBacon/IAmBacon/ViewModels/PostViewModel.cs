@@ -10,7 +10,7 @@ namespace IAmBacon.ViewModels
     /// <summary>
     /// The post view model.
     /// </summary>
-    public class PostViewModel : ViewModelBase
+    public class PostViewModel : ViewModelBase, ITwitterMetadata
     {
         #region Public Properties
 
@@ -70,6 +70,23 @@ namespace IAmBacon.ViewModels
         /// Gets or sets the post id.
         /// </summary>
         public int Id { get; set; }
+
+        ///<inheritdoc />
+        public bool HasImage { get; set; }
+
+        ///<inheritdoc />
+        public string Site { get; set; }
+
+        ///<inheritdoc />
+        public string Url { get; set; }
+
+        ///<inheritdoc />
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the post image.
+        /// </summary>
+        public string Image { get; set; }
 
         /// <summary>
         /// Gets or sets the new comment.

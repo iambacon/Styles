@@ -8,8 +8,6 @@
     /// </summary>
     public static class StringExtensions
     {
-        #region Public Methods and Operators
-
         /// <summary>
         /// Gets the first paragraph of html text.
         /// </summary>
@@ -17,9 +15,21 @@
         /// <returns>Returns the paragraph if successful, else returns the whole string.</returns>
         public static IHtmlString GetFirstParagraph(this string htmlText)
         {
-            var match = Regex.Match(htmlText, @"<p>\s*(.+?)\s*</p>");
+            var match = MatchHtmlText(htmlText);
 
             return match.Success ? new HtmlString(match.Groups[1].Value.Trim()) : new HtmlString(htmlText);
+        }
+
+        /// <summary>
+        /// Gets the first paragraph of html text.
+        /// </summary>
+        /// <param name="htmlText">The HTML text.</param>
+        /// <returns>Returns the paragraph if successful, else returns the whole string.</returns>
+        public static string GetFirstParagraph(this IHtmlString htmlText)
+        {
+            var match = MatchHtmlText(htmlText.ToString());
+
+            return match.Success ? match.Groups[1].Value.Trim() : htmlText.ToString();
         }
 
         /// <summary>
@@ -42,6 +52,15 @@
             return result;
         }
 
-        #endregion
+        /// <summary>
+        /// Tries to match the first paragraph of HTML text.
+        /// </summary>
+        /// <param name="htmlText">The HTML text.</param>
+        /// <returns>The <see cref="Match"/>.</returns>
+        private static Match MatchHtmlText(string htmlText)
+        {
+            var match = Regex.Match(htmlText, @"<p>\s*(.+?)\s*</p>");
+            return match;
+        }
     }
 }
