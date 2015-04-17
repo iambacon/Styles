@@ -40,6 +40,6 @@
         /// Gets or sets the page title.
         /// Title truncated at 70 characters.
         /// </summary>
-        string Title { get; set; }
+        string MetaTitle { get; set; }
     }
 }

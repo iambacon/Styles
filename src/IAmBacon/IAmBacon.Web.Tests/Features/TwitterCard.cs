@@ -45,7 +45,7 @@ namespace IAmBacon.Web.Tests.Features
                 Assert.IsNotNull(viewResult);
 
                 var viewModel = viewResult.Model as HomeViewModel;
-                Assert.AreSame(viewModel.Title, viewModel.PageTitle);
+                Assert.AreSame(viewModel.MetaTitle, viewModel.PageTitle);
                 Assert.AreSame(viewModel.Site, _expectedMetadata.Site);
                 Assert.IsTrue(viewModel.Url.Equals(_expectedMetadata.Url, StringComparison.OrdinalIgnoreCase));
                 Assert.IsTrue(viewModel.Description.Equals(_expectedMetadata.Description,
@@ -157,7 +157,7 @@ namespace IAmBacon.Web.Tests.Features
                 viewResult.ShouldNotBeNull();
 
                 var viewModel = viewResult.Model as PostViewModel;
-                viewModel.Title.ShouldEqual(viewModel.PageTitle);
+                viewModel.MetaTitle.ShouldEqual(viewModel.PageTitle);
                 viewModel.Site.ShouldBeTheSameAs(_expectedMetadata.Site);
                 viewModel.Url.ShouldEqual(_expectedMetadata.Url);
                 viewModel.Description.ShouldEqual(_expectedMetadata.Description);

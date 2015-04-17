@@ -46,6 +46,6 @@ namespace IAmBacon.ViewModels.Home
         public string Image { get; set; }
 
         ///<inheritdoc />
-        public string Title { get; set; }
+        public string MetaTitle { get; set; }
     }
 }

@@ -88,6 +88,9 @@ namespace IAmBacon.ViewModels
         /// </summary>
         public string Image { get; set; }
 
+        ///<inheritdoc />
+        public string MetaTitle { get; set; }
+
         /// <summary>
         /// Gets or sets the new comment.
         /// </summary>

@@ -48,7 +48,7 @@ namespace IAmBacon.Attributes
                 metadata.Description = viewModel.Content.GetFirstParagraph();
                 metadata.HasImage = viewModel.Image != null;
                 if (viewModel.Image != null) metadata.Image = string.Format("{0}/{1}", BaseImageUrl, viewModel.Image);
-                metadata.Title = viewModel.PageTitle;
+                metadata.MetaTitle = viewModel.PageTitle;
             }
 
             base.OnActionExecuted(filterContext);
