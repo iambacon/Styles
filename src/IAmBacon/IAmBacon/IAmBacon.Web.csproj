@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\StyleguideController.cs" />
+    <Compile Include="Presentation\Extensions\UrlHelperExtension.cs" />
     <Compile Include="Framework\Mvc\IUrlHelper.cs" />
     <Compile Include="Framework\Mvc\UrlHelperAdapter.cs" />
     <Compile Include="Models\EmailTemplateModel.cs" />

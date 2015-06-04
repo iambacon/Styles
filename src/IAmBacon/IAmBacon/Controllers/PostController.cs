@@ -80,7 +80,8 @@ namespace IAmBacon.Controllers
             ITagService tagService,
             ICategoryService categoryService,
             ISpamManager spamManager,
-            IEmailManager emailManager) : base(postService)
+            IEmailManager emailManager)
+            : base(postService)
         {
             this.postService = postService;
             this.commentService = commentService;
@@ -235,26 +236,25 @@ namespace IAmBacon.Controllers
         /// <returns></returns>
         public ActionResult Feed()
         {
-            const string BlogTitle = "I am Blog";
-            const string BlogDescription = "The blog feed for Colin Bacon - web developer.";
-            const string BlogUrl = "http://www.iambacon.co.uk/blog";
+            const string blogTitle = "I am Blog";
+            const string blogDescription = "The blog feed for Colin Bacon - web developer.";
+            const string blogUrl = "http://www.iambacon.co.uk/blog";
 
             // Create a collection of SyndicationItemobjects from the latest posts
-            var posts = this.postService.GetLatest(RecentPosts).Select
-            (
-              p => new SyndicationItem
-                  (
-                      p.Title,
-                      p.Content,
-                  // TODO: Url generation needs to be a LOT better.
-                      new Uri(string.Concat(BlogUrl, "/", p.SeoTitle, "-", p.Id))
-                  )
-            );
+            var posts = postService.GetLatest(RecentPosts).Select
+                (
+                    p => new SyndicationItem
+                        (
+                        p.Title,
+                        p.Content,
+                        new Uri(Url.Post(p.SeoTitle))
+                        )
+                );
 
             // Create an instance of SyndicationFeed class passing the SyndicationItem collection
-            var feed = new SyndicationFeed(BlogTitle, BlogDescription, new Uri(BlogUrl), posts)
+            var feed = new SyndicationFeed(blogTitle, blogDescription, new Uri(blogUrl), posts)
             {
-                Copyright = new TextSyndicationContent(String.Format("Copyright © {0}", BlogTitle)),
+                Copyright = new TextSyndicationContent(String.Format("Copyright © {0}", blogTitle)),
                 Language = "en-GB"
             };
 
@@ -311,8 +311,7 @@ namespace IAmBacon.Controllers
                 }
             }
 
-            // TODO: Url generation needs improving, so we don't forget to sanitise the title.
-            return this.RedirectToRoute("BlogPost", new { title = title.ToSeoUrl() });
+            return RedirectToRoute(Url.Post(title));
         }
 
         /// <summary>

@@ -139,7 +139,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.AutoPropertiesTarget.GetEnumerator">
             <summary>Returns the decorated builder as a sequence.</summary>
-            <returns><see cref="P:Ploeh.AutoFixture.AutoPropertiesTarget.Builder"/> wrappen in an Iterator.</returns>
+            <returns><see cref="P:Ploeh.AutoFixture.AutoPropertiesTarget.Builder"/> wrapped in an Iterator.</returns>
             <seealso cref="P:Ploeh.AutoFixture.AutoPropertiesTarget.Builder"/>
         </member>
         <member name="M:Ploeh.AutoFixture.AutoPropertiesTarget.System#Collections#IEnumerable#GetEnumerator">
@@ -215,7 +215,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.BehaviorRoot.GetEnumerator">
             <summary>Returns the decorated builder as a sequence.</summary>
-            <returns><see cref="P:Ploeh.AutoFixture.BehaviorRoot.Builder"/> wrappen in an Iterator.</returns>
+            <returns><see cref="P:Ploeh.AutoFixture.BehaviorRoot.Builder"/> wrapped in an Iterator.</returns>
             <seealso cref="P:Ploeh.AutoFixture.BehaviorRoot.Builder"/>
         </member>
         <member name="M:Ploeh.AutoFixture.BehaviorRoot.System#Collections#IEnumerable#GetEnumerator">
@@ -266,13 +266,13 @@
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.CompositeSpecimenCommand.#ctor(System.Collections.Generic.IEnumerable{Ploeh.AutoFixture.Kernel.ISpecimenCommand})">
             <summary>
-            Initializes a new instance of <see cref="T:Ploeh.AutoFixture.Kernel.CompositeSpecimenCommand"/> class with the supplised set of commands.
+            Initializes a new instance of <see cref="T:Ploeh.AutoFixture.Kernel.CompositeSpecimenCommand"/> class with the supplied set of commands.
             </summary>
             <param name="commands">The child commands.</param>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.CompositeSpecimenCommand.#ctor(Ploeh.AutoFixture.Kernel.ISpecimenCommand[])">
             <summary>
-            Initializes a new instance of <see cref="T:Ploeh.AutoFixture.Kernel.CompositeSpecimenCommand"/> class with the supplised set of commands.
+            Initializes a new instance of <see cref="T:Ploeh.AutoFixture.Kernel.CompositeSpecimenCommand"/> class with the supplied set of commands.
             </summary>
             <param name="commands">The child commands.</param>
         </member>
@@ -582,7 +582,7 @@
             from a <see cref="T:System.Reflection.MethodInfo"/>.
             </summary>
             <param name="methodInfo">
-            The <see cref="T:System.Reflection.MethodInfo"/> that cannot have its type arguments infered.
+            The <see cref="T:System.Reflection.MethodInfo"/> that cannot have its type arguments inferred.
             </param>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.TypeArgumentsCannotBeInferredException.#ctor(System.String)">
@@ -608,7 +608,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.TypeArgumentsCannotBeInferredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
-            Ininitalizes a new instance of the <see cref="T:Ploeh.AutoFixture.Kernel.TypeArgumentsCannotBeInferredException"/> class with
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.Kernel.TypeArgumentsCannotBeInferredException"/> class with
             serialized data.
             </summary>
             <param name="info">The object that holds the serialized object data.</param>
@@ -619,7 +619,7 @@
         <member name="T:Ploeh.AutoFixture.LazyRelay">
             <summary>
             Relays a request for an <see cref="T:System.Func`1"/> to a request for a
-            <see cref="T:System.Lazy`1"/> and retuns the result.
+            <see cref="T:System.Lazy`1"/> and returns the result.
             </summary>
         </member>
         <member name="M:Ploeh.AutoFixture.LazyRelay.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -1195,7 +1195,7 @@
             sequence.
             </para>
             <para>
-            If you want to change this default behaviour, you can use this
+            If you want to change this default behavior, you can use this
             customization.
             </para>
             </remarks>
@@ -1213,7 +1213,7 @@
             <para>
             Customizes a <see cref="T:Ploeh.AutoFixture.IFixture"/> so that
             <see cref="M:Ploeh.AutoFixture.SpecimenFactory.CreateMany``1(Ploeh.AutoFixture.Kernel.ISpecimenBuilder)"/>
-            exhibits the same behaviour as a request to create
+            exhibits the same behavior as a request to create
             <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
             </para>
             </remarks>
@@ -1709,7 +1709,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.CustomizationNode.GetEnumerator">
             <summary>Returns the decorated builder as a sequence.</summary>
-            <returns><see cref="P:Ploeh.AutoFixture.CustomizationNode.Builder"/> wrappen in an Iterator.</returns>
+            <returns><see cref="P:Ploeh.AutoFixture.CustomizationNode.Builder"/> wrapped in an Iterator.</returns>
             <seealso cref="P:Ploeh.AutoFixture.CustomizationNode.Builder"/>
         </member>
         <member name="M:Ploeh.AutoFixture.CustomizationNode.System#Collections#IEnumerable#GetEnumerator">
@@ -1740,7 +1740,7 @@
             an automaton are reachable from its initial state.)
             </li>
             <li>
-            Automata are always reduced (see method Rreduce()) and have no transitions to dead states
+            Automata are always reduced (see method Reduce()) and have no transitions to dead states
             (see RemoveDeadTransitions() method).
             </li>
             <li>
@@ -2079,7 +2079,7 @@
             the given interval.
             </summary>
             <param name="min">The minimum value of interval.</param>
-            <param name="max">The maximum value of inverval (both end points are included in the 
+            <param name="max">The maximum value of interval (both end points are included in the 
             interval).</param>
             <param name="digits">If f >0, use fixed number of digits (strings must be prefixed by 0's 
             to obtain the right length) otherwise, the number of digits is not fixed.</param>
@@ -3920,7 +3920,7 @@
             Although the default behavior of <see cref="T:Ploeh.AutoFixture.Fixture"/> may make
             this method seem redundant, the purpose of this method is to enable
             an explicit opt-in for certain types, in the case where a Fixture
-            instance has been configured to <em>not</em> auto-fille properties
+            instance has been configured to <em>not</em> auto-fill properties
             by default (e.g. if <see cref="P:Ploeh.AutoFixture.Fixture.OmitAutoProperties"/> is
             set to <see langword="true"/>).
             </para>
@@ -4465,8 +4465,8 @@
             <remarks>
             <para>
             It may seem a little strange that any <see cref="T:Ploeh.AutoFixture.Kernel.OmitSpecimen"/> instance is equal to
-            any other instance of that type, but the class is a pure signal type thatcarries no
-            state, so there's no reason to distinguish between instances. In essense, it could just
+            any other instance of that type, but the class is a pure signal type that carries no
+            state, so there's no reason to distinguish between instances. In essence, it could just
             as well have been modeled as a Singleton, but wasn't because it seems to bring no
             particular extra benefit.
             </para>
@@ -4836,7 +4836,7 @@
             for a specific range of dates.
             </summary>
             <param name="minDate">The lower bound of the date range.</param>
-            <param name="maxDate">The uppder bound of the date range.</param>
+            <param name="maxDate">The upper bound of the date range.</param>
             <exception cref="T:System.ArgumentException">
             <paramref name="minDate"/> is greater than <paramref name="maxDate"/>.
             </exception>
@@ -4859,7 +4859,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.RandomBooleanSequenceCustomization.Customize(Ploeh.AutoFixture.IFixture)">
             <summary>
-            Customizes specified fixture by adding <see cref="T:Ploeh.AutoFixture.RandomBooleanSequenceGenerator"/> as a default stragety for 
+            Customizes specified fixture by adding <see cref="T:Ploeh.AutoFixture.RandomBooleanSequenceGenerator"/> as a default strategy for 
             creating new <see cref="T:System.Boolean"/>.
             </summary>
             <param name="fixture">The fixture to customize.</param>
@@ -5084,7 +5084,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.ResidueCollectorNode.GetEnumerator">
             <summary>Returns the decorated builder as a sequence.</summary>
-            <returns><see cref="P:Ploeh.AutoFixture.ResidueCollectorNode.Builder"/> wrappen in an Iterator.</returns>
+            <returns><see cref="P:Ploeh.AutoFixture.ResidueCollectorNode.Builder"/> wrapped in an Iterator.</returns>
             <seealso cref="P:Ploeh.AutoFixture.ResidueCollectorNode.Builder"/>
         </member>
         <member name="M:Ploeh.AutoFixture.ResidueCollectorNode.System#Collections#IEnumerable#GetEnumerator">
@@ -5151,7 +5151,7 @@
             <remarks>
             <para>
             The <paramref name="transformations"/> and subsequent
-            tranformations added to the instance are applied to a base graph.
+            transformations added to the instance are applied to a base graph.
             The base graph is found by looking for a node within the graph
             where <paramref name="wrappedGraphPredicate"/> returns true.
             </para>
@@ -5257,7 +5257,7 @@
             <paramref name="second"/>.
             </param>
             <param name="second">
-            An <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilderNode"/> to cmpare against
+            An <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilderNode"/> to compare against
             <paramref name="first"/>.
             </param>
             <returns>
@@ -5286,7 +5286,7 @@
             <paramref name="second"/>.
             </param>
             <param name="second">
-            An <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilderNode"/> to cmpare against
+            An <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilderNode"/> to compare against
             <paramref name="first"/>.
             </param>
             <param name="comparer">
@@ -6346,7 +6346,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.FixtureRegistrar.Register``1(Ploeh.AutoFixture.IFixture,System.Func{``0})">
             <summary>
-            Registers a creation function for a specifc type.
+            Registers a creation function for a specific type.
             </summary>
             <typeparam name="T">
             The type for which <paramref name="creator"/> should be registered.
@@ -6563,7 +6563,7 @@
             <para>
             Note to implementers: the returned <see cref="T:Ploeh.AutoFixture.IFixture"/> is expected to have
             <paramref name="customization"/> applied. Whether the return value is the same instance
-            as the current instance, or a copy is unspecfied.
+            as the current instance, or a copy is unspecified.
             </para>
             </remarks>
         </member>
@@ -6607,7 +6607,7 @@
             </summary>
             <remarks>
             <para>
-            It is expected that residue collectors provide fallback mechanisms if no ealier
+            It is expected that residue collectors provide fallback mechanisms if no earlier
             <see cref="T:Ploeh.AutoFixture.Kernel.ISpecimenBuilder"/> can handle a request.
             </para>
             </remarks>
@@ -6671,7 +6671,7 @@
         <member name="T:Ploeh.AutoFixture.Kernel.CollectionRelay">
             <summary>
             Relays a request for an <see cref="T:System.Collections.Generic.ICollection`1"/> to a request for a
-            <see cref="T:System.Collections.Generic.List`1"/> and retuns the result.
+            <see cref="T:System.Collections.Generic.List`1"/> and returns the result.
             </summary>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.CollectionRelay.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -6870,7 +6870,7 @@
         <member name="T:Ploeh.AutoFixture.Kernel.DictionaryRelay">
             <summary>
             Relays a request for an <see cref="T:System.Collections.Generic.IDictionary`2"/> to a request for a
-            <see cref="T:System.Collections.Generic.Dictionary`2"/> and retuns the result.
+            <see cref="T:System.Collections.Generic.Dictionary`2"/> and returns the result.
             </summary>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.DictionaryRelay.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -6929,7 +6929,7 @@
             <param name="builder">The decorated builder.</param>
             <remarks>
             <para>
-            After initilization, <paramref name="builder"/> is availble through the
+            After initialization, <paramref name="builder"/> is available through the
             <see cref="P:Ploeh.AutoFixture.Kernel.DisposableTracker.Builder"/> property.
             </para>
             </remarks>
@@ -7342,7 +7342,7 @@
         <member name="T:Ploeh.AutoFixture.Kernel.ListRelay">
             <summary>
             Relays a request for an <see cref="T:System.Collections.Generic.IList`1"/> to a request for a
-            <see cref="T:System.Collections.Generic.List`1"/> and retuns the result.
+            <see cref="T:System.Collections.Generic.List`1"/> and returns the result.
             </summary>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.ListRelay.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -7436,7 +7436,7 @@
         </member>
         <member name="T:Ploeh.AutoFixture.Kernel.IllegalRequestException">
             <summary>
-            Indicates that an illigal request was detected.
+            Indicates that an illegal request was detected.
             </summary>
             <remarks>
             <para>
@@ -7513,7 +7513,7 @@
             <param name="context">A context that can be used to create other specimens.</param>
             <returns>
             A <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance, unless <paramref name="request"/> is a request for
-            <see cref="T:System.IntPtr"/> in which case an exceptoin is thrown.
+            <see cref="T:System.IntPtr"/> in which case an exception is thrown.
             </returns>
             <exception cref="T:Ploeh.AutoFixture.Kernel.IllegalRequestException">
             <paramref name="request"/> is the <see cref="T:System.IntPtr"/> <see cref="T:System.Type"/>.
@@ -8012,7 +8012,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.Kernel.FiniteSequenceRequest"/> class.
             </summary>
-            <param name="request">The underlying request to muliply.</param>
+            <param name="request">The underlying request to multiply.</param>
             <param name="count">The number of instances requested.</param>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.FiniteSequenceRequest.Equals(System.Object)">
@@ -8748,7 +8748,7 @@
             Encapsulates a command that binds a property or a field to a value.
             </summary>
             <typeparam name="T">
-            The type of the specimn on which the property or value will be set.
+            The type of the specimen on which the property or value will be set.
             </typeparam>
             <typeparam name="TProperty">The type of property or field.</typeparam>
         </member>
@@ -9169,13 +9169,13 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for a numeric value; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
         <member name="T:Ploeh.AutoFixture.NumericSequencePerTypeCustomization">
             <summary>
-            A customization that enables numeric specimens to be unique within a specifc numeric <see cref="T:System.Type"/>.
+            A customization that enables numeric specimens to be unique within a specific numeric <see cref="T:System.Type"/>.
             </summary>
             <remarks>
             <para>
@@ -9215,7 +9215,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.SupportMutableValueTypesCustomization.Customize(Ploeh.AutoFixture.IFixture)">
             <summary>
-            Customizes specified fixture by adding <see cref="T:Ploeh.AutoFixture.MutableValueTypeGenerator"/> as a default stragety for 
+            Customizes specified fixture by adding <see cref="T:Ploeh.AutoFixture.MutableValueTypeGenerator"/> as a default strategy for 
             creating new custom <see langword="struct"/> that has only default constructor.
             </summary>
             <param name="fixture">The fixture to customize.</param>
@@ -9227,7 +9227,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.MutableValueTypeGenerator.#ctor">
             <summary>
-            Creates new isntance.
+            Creates new instance.
             </summary>
         </member>
         <member name="M:Ploeh.AutoFixture.MutableValueTypeGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -9551,7 +9551,7 @@
             A <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance to compare with this instance.
             </param>
             <returns>
-            <see langword="true"/> if the current instanec is equal to the <paramref name="other"/>
+            <see langword="true"/> if the current instance is equal to the <paramref name="other"/>
             parameter; otherwise, <see langword="false"/>.
             </returns>
         </member>
@@ -9681,7 +9681,7 @@
         </member>
         <member name="P:Ploeh.AutoFixture.Kernel.RequestTraceEventArgs.Request">
             <summary>
-            Gets the original request for a speciman
+            Gets the original request for a specimen
             </summary>
         </member>
         <member name="M:Ploeh.AutoFixture.Kernel.SpecimenCreatedEventArgs.#ctor(System.Object,System.Object,System.Int32)">
@@ -9890,13 +9890,13 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.ByteSequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.ByteSequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
         </member>
         <member name="M:Ploeh.AutoFixture.ByteSequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -9906,7 +9906,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next byte in a consequtive sequence, if <paramref name="request"/> is a request
+            The next byte in a consecutive sequence, if <paramref name="request"/> is a request
             for a byte; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -9924,13 +9924,13 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.DecimalSequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.DecimalSequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
         </member>
         <member name="M:Ploeh.AutoFixture.DecimalSequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -9940,7 +9940,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for a decimal number; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -9958,13 +9958,13 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.DoubleSequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.DoubleSequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
         </member>
         <member name="M:Ploeh.AutoFixture.DoubleSequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -9974,7 +9974,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for a <see cref="T:System.Double"/>; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -10197,13 +10197,13 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.Int16SequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
             /// <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.Int16SequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
         </member>
         <member name="M:Ploeh.AutoFixture.Int16SequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -10213,7 +10213,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for a 16-bit integer; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -10231,14 +10231,14 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.Int32SequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.Int32SequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.Int32SequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
             <summary>
@@ -10247,7 +10247,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for an integer; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -10265,14 +10265,14 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.Int64SequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.Int64SequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.Int64SequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
             <summary>
@@ -10281,7 +10281,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for an 64-bit integer; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -10352,7 +10352,7 @@
         </member>
         <member name="M:Ploeh.AutoFixture.ObjectCreationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
-            Ininitalizes a new instance of the <see cref="T:Ploeh.AutoFixture.ObjectCreationException"/> class with
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.ObjectCreationException"/> class with
             serialized data.
             </summary>
             <param name="info">The object that holds the serialized object data.</param>
@@ -10374,13 +10374,13 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.SByteSequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.SByteSequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
         </member>
         <member name="M:Ploeh.AutoFixture.SByteSequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -10390,7 +10390,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next <see cref="T:System.SByte"/> in a consequtive sequence, if <paramref name="request"/>
+            The next <see cref="T:System.SByte"/> in a consecutive sequence, if <paramref name="request"/>
             is a request for an SByte; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -10456,13 +10456,13 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.SingleSequenceGenerator.CreateAnonymous">
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
             <remarks>Obsolete: Please move over to using <see cref="M:Ploeh.AutoFixture.SingleSequenceGenerator.Create">Create()</see> as this method will be removed in the next release</remarks>
         </member>
         <member name="M:Ploeh.AutoFixture.SingleSequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
@@ -10472,7 +10472,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for a <see cref="T:System.Single"/>; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -10606,7 +10606,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10629,7 +10629,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10652,7 +10652,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             <para>
@@ -10684,7 +10684,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10711,7 +10711,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10737,7 +10737,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10761,7 +10761,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10785,7 +10785,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             <para>
@@ -10818,7 +10818,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10846,7 +10846,7 @@
             IEnumerable&lt;T&gt;.
             </para>
             <para>
-            However, you can change this behaviour, for example by applying the
+            However, you can change this behavior, for example by applying the
             <see cref="T:Ploeh.AutoFixture.MapCreateManyToEnumerable"/> customization.
             </para>
             </remarks>
@@ -10996,7 +10996,7 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.UInt16SequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
             <summary>
@@ -11005,7 +11005,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for an unsigned 16-bit integer; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -11023,7 +11023,7 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.UInt32SequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
             <summary>
@@ -11032,7 +11032,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for an unsigned integer; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
@@ -11050,7 +11050,7 @@
             <summary>
             Creates an anonymous number.
             </summary>
-            <returns>The next number in a consequtive sequence.</returns>
+            <returns>The next number in a consecutive sequence.</returns>
         </member>
         <member name="M:Ploeh.AutoFixture.UInt64SequenceGenerator.Create(System.Object,Ploeh.AutoFixture.Kernel.ISpecimenContext)">
             <summary>
@@ -11059,7 +11059,7 @@
             <param name="request">The request that describes what to create.</param>
             <param name="context">Not used.</param>
             <returns>
-            The next number in a consequtive sequence, if <paramref name="request"/> is a request
+            The next number in a consecutive sequence, if <paramref name="request"/> is a request
             for an unsigned 64-bit integer; otherwise, a <see cref="T:Ploeh.AutoFixture.Kernel.NoSpecimen"/> instance.
             </returns>
         </member>
