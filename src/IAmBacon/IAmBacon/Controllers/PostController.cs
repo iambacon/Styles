@@ -170,23 +170,16 @@ namespace IAmBacon.Controllers
         }
 
         /// <summary>
-        /// Retrieves the post by the specified id.
+        /// Retrieves the post by the specified title.
         /// </summary>
         /// <param name="title">The title.</param>
-        /// <param name="id">The id.</param>
         /// <returns>
         /// The <see cref="ActionResult" />.
         /// </returns>
         [PostTwitterMetaTags]
-        public ActionResult Details(string title, int id = 0)
+        public ActionResult Details(string title)
         {
             var post = this.postService.Get(title);
-
-            if (post == null && id > 0)
-            {
-                // This is here for legacy routes.
-                post = this.postService.Get(id);
-            }
 
             if (post == null || !post.Active)
             {

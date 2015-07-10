@@ -33,13 +33,6 @@
                 new[] { "IAmBacon.Controllers" });
 
             routes.MapRoute(
-                "BlogPostLegacy",
-                "blog/{title}-{id}",
-                new { controller = "Post", action = "Details" },
-                new { id = @"\d+" },
-                new[] { "IAmBacon.Controllers" });
-
-            routes.MapRoute(
                 "BlogPost",
                 "blog/{title}",
                 new { controller = "Post", action = "Details" },
