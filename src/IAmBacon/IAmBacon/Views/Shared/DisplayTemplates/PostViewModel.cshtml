@@ -6,9 +6,7 @@
         <strong>Category:</strong>
         @Html.RouteLink(Model.Category, "Category", new { name = Model.Category.ToSeoUrl() }, new { @class = "link" })
     </header>
-    <p>
-        @Model.Content
-    </p>
+    @Model.Content
     <footer>
         <ul>
             @if (Model.Tags != null && Model.Tags.Any())

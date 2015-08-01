@@ -15,6 +15,9 @@ namespace IAmBacon.Controllers
 
     using Domain.Services.Interfaces;
     using Framework.Mvc;
+
+    using IAmBacon.Presentation.Mappers;
+
     using Model.Entities;
     using Models;
     using Presentation.Extensions;
@@ -103,8 +106,12 @@ namespace IAmBacon.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            var posts = this.postService.GetAll().ToList();
-            var postModels = CreatePostModels(posts.Take(RecentPosts));
+            List<Post> posts = this.postService.GetAll().ToList();
+            IEnumerable<Post> recentPosts =
+                posts.Take(RecentPosts).OrderByDescending(x => x.DateCreated);
+
+            IEnumerable<PostViewModel> postViewModels = recentPosts.ToViewModelList(Url);
+
             var categories = this.categoryService.GetAll();
             var tags = this.tagService.GetAll();
 
@@ -116,7 +123,7 @@ namespace IAmBacon.Controllers
                     Name = x.Key,
                     Count = x.Count(),
                     Url = Url.Action("Category", new { name = x.Key }),
-                    Percent = ((double)x.Count() / categories.Count())
+                    Percent = (double)x.Count() / categories.Count()
                 })
                 .OrderByDescending(x => x.Count)
                 .ToList();
@@ -129,11 +136,11 @@ namespace IAmBacon.Controllers
 
             var model = new PostsViewModel
             {
-                Posts = postModels,
+                Posts = postViewModels,
                 PageTitle = "I am Blog - I am Bacon",
                 Footer = new FooterViewModel(),
                 CategorySummaries = categorySummaries,
-                DisplayCategories = (categorySummaries.Any()),
+                DisplayCategories = categorySummaries.Any(),
                 Tags = tagViewModels.ToList()
             };
 

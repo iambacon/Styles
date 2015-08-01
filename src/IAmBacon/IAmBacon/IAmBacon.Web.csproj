@@ -235,6 +235,8 @@
     <Compile Include="Presentation\Extensions\UrlExtensions.cs" />
     <Compile Include="Presentation\Helpers\EncryptionHelper.cs" />
     <Compile Include="Presentation\HtmlHelpers\Google.cs" />
+    <Compile Include="Presentation\Mappers\PostMapper.cs" />
+    <Compile Include="Presentation\Mappers\TagMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
