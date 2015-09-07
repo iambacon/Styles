@@ -98,7 +98,7 @@
         /// </returns>
         public IEnumerable<Post> GetPopular(int number)
         {
-            var postIdList = new List<int> { 10, 13, 14 };
+            var postIdList = new List<int> { 15, 18, 10 };
 
             return this.Get(x => postIdList.Contains(x.Id));
         }
