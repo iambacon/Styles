@@ -108,7 +108,7 @@ namespace IAmBacon.Controllers
         {
             List<Post> posts = this.postService.GetAll().ToList();
             IEnumerable<Post> recentPosts =
-                posts.Take(RecentPosts).OrderByDescending(x => x.DateCreated);
+                posts.OrderByDescending(x => x.DateCreated).Take(RecentPosts);
 
             IEnumerable<PostViewModel> postViewModels = recentPosts.ToViewModelList(Url);
 
