@@ -106,7 +106,7 @@ namespace IAmBacon.Controllers
         /// </returns>
         public ActionResult Index()
         {
-            List<Post> posts = this.postService.GetAll().ToList();
+            List<Post> posts = this.postService.GetAllActive().ToList();
             IEnumerable<Post> recentPosts =
                 posts.OrderByDescending(x => x.DateCreated).Take(RecentPosts);
 

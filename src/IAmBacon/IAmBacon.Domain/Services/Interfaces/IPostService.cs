@@ -16,6 +16,12 @@ namespace IAmBacon.Domain.Services.Interfaces
         Post Get(string seoTitle);
 
         /// <summary>
+        /// Returns a list of type <see cref="Post"/> that are active.
+        /// </summary>
+        /// <returns>A list of type <see cref="Post"/> that are active.</returns>
+        IEnumerable<Post> GetAllActive();
+
+            /// <summary>
         /// Gets the latest active posts.
         /// </summary>
         /// <param name="number">The number of posts to return.</param>

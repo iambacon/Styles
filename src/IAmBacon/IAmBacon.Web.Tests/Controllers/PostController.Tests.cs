@@ -40,37 +40,37 @@ namespace IAmBacon.Web.Tests.Controllers
                 {
                     new Post
                     {
-                        Category = new Category{Name = "Category 1"}, 
-                        DateCreated = DateTime.Today, 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 1"},
+                        DateCreated = DateTime.Today,
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 1"
                     },
                     new Post
                     {
-                        Category = new Category{Name = "Category 1"}, 
-                        DateCreated = DateTime.Today.AddDays(-5), 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 1"},
+                        DateCreated = DateTime.Today.AddDays(-5),
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 2"
                     },
                     new Post
                     {
-                        Category = new Category{Name = "Category 2"}, 
-                        DateCreated = DateTime.Today.AddDays(-2), 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 2"},
+                        DateCreated = DateTime.Today.AddDays(-2),
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 3"
                     },
                     new Post
                     {
-                        Category = new Category{Name = "Category 1"}, 
-                        DateCreated = DateTime.Today.AddDays(-3), 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 1"},
+                        DateCreated = DateTime.Today.AddDays(-3),
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 4"
                     }
@@ -84,7 +84,7 @@ namespace IAmBacon.Web.Tests.Controllers
                 };
 
                 categoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
-                postServiceMock.Setup(x => x.GetAll()).Returns(posts);
+                postServiceMock.Setup(x => x.GetAllActive()).Returns(posts);
                 tagServiceMock.Setup(x => x.GetAll()).Returns(tags);
             };
 
@@ -110,7 +110,7 @@ namespace IAmBacon.Web.Tests.Controllers
         {
             Establish context = () =>
             {
-                postServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Post>);
+                postServiceMock.Setup(x => x.GetAllActive()).Returns(Enumerable.Empty<Post>);
                 categoryServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Category>());
                 tagServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Tag>);
             };
@@ -119,6 +119,22 @@ namespace IAmBacon.Web.Tests.Controllers
                 result.Model<PostsViewModel>().DisplayCategories.ShouldEqual(ExpectedResult);
 
             private const bool ExpectedResult = false;
+        }
+
+        [Subject("Blog posts")]
+        public class When_there_are_posts : Post_controller_context
+        {
+            private Establish context = () =>
+                {
+                    postServiceMock.Setup(x => x.GetAllActive()).Returns(new List<Post>());
+                    categoryServiceMock.Setup(x => x.GetAll()).Returns(new List<Category>());
+                    tagServiceMock.Setup(x => x.GetAll()).Returns(new List<Tag>());
+                };
+
+            private It should_only_display_active_posts = () =>
+                {
+                    postServiceMock.Verify(x => x.GetAllActive());
+                };
         }
     }
 }

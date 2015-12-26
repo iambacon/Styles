@@ -74,6 +74,12 @@
             return this.Repository.Find(x => x.SeoTitle == seoTitle).FirstOrDefault();
         }
 
+        ///<inheritdoc />
+        public IEnumerable<Post> GetAllActive()
+        {
+            return this.GetAll().Where(x => x.Active);
+        }
+
         /// <summary>
         /// Gets the latest active posts.
         /// </summary>
