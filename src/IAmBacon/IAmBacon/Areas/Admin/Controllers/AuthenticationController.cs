@@ -9,6 +9,7 @@
     /// <summary>
     /// The authentication controller.
     /// </summary>
+    [RequireHttps]
     public class AuthenticationController : BaseController
     {
         #region Fields
