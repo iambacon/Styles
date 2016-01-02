@@ -68,6 +68,18 @@
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Helpers">
       <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.3\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
@@ -97,6 +109,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -159,6 +172,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
     </Reference>
+    <Reference Include="X.PagedList, Version=1.24.1.31653, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.1.24.1.320\lib\net451\X.PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -190,7 +207,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\StyleguideController.cs" />
-    <Compile Include="Presentation\Extensions\UrlHelperExtension.cs" />
+    <Compile Include="Presentation\Builders\PaginationBuilder.cs" />
+    <Compile Include="Presentation\Enumerations\PaginationItemType.cs" />
+    <Compile Include="Presentation\Extensions\PagedListExtensions.cs" />
+    <Compile Include="Presentation\Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Framework\Mvc\IUrlHelper.cs" />
     <Compile Include="Framework\Mvc\UrlHelperAdapter.cs" />
     <Compile Include="Models\EmailTemplateModel.cs" />
@@ -246,6 +266,8 @@
     <Compile Include="ViewModels\Post\CategoryCountViewModel.cs" />
     <Compile Include="ViewModels\Post\TagViewModel.cs" />
     <Compile Include="ViewModels\Shared\FooterViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PaginationItemViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PaginationViewModel.cs" />
     <Compile Include="ViewModels\Shared\PopularPostViewModel.cs" />
     <Compile Include="ViewModels\Shared\RecentPostViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -322,6 +344,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="googleb300e47449e1527f.html" />
+    <Content Include="Content\sass\components\_pagination.scss" />
     <None Include="gruntfile.js" />
     <Content Include="humans.txt" />
     <None Include="Areas\Admin\Views\Template\LandingPage.cshtml" />
@@ -365,6 +388,8 @@
     <Content Include="Views\Post\DisplayTemplates\TagViewModel.cshtml" />
     <Content Include="Views\Shared\_SocialLinks.cshtml" />
     <Content Include="Views\Shared\_TwitterMetaTags.cshtml" />
+    <Content Include="Views\Post\DisplayTemplates\PaginationItemViewModel.cshtml" />
+    <Content Include="Views\Post\_Pagination.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -498,6 +523,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

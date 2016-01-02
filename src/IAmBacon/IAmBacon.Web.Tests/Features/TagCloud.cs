@@ -36,37 +36,37 @@ namespace IAmBacon.Web.Tests.Features
                 {
                     new Post
                     {
-                        Category = new Category{Name = "Category 1"}, 
-                        DateCreated = DateTime.Today, 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 1"},
+                        DateCreated = DateTime.Today,
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 1"
                     },
                     new Post
                     {
-                        Category = new Category{Name = "Category 1"}, 
-                        DateCreated = DateTime.Today.AddDays(-5), 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 1"},
+                        DateCreated = DateTime.Today.AddDays(-5),
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 2"
                     },
                     new Post
                     {
-                        Category = new Category{Name = "Category 2"}, 
-                        DateCreated = DateTime.Today.AddDays(-2), 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 2"},
+                        DateCreated = DateTime.Today.AddDays(-2),
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 3"
                     },
                     new Post
                     {
-                        Category = new Category{Name = "Category 1"}, 
-                        DateCreated = DateTime.Today.AddDays(-3), 
-                        Content = string.Empty, 
-                        Tags = new List<Tag>(), 
+                        Category = new Category{Name = "Category 1"},
+                        DateCreated = DateTime.Today.AddDays(-3),
+                        Content = string.Empty,
+                        Tags = new List<Tag>(),
                         User = new User(),
                         Title = "Post 4"
                     }
@@ -79,12 +79,12 @@ namespace IAmBacon.Web.Tests.Features
                     new Tag{Name = "aTag3", SeoName = "tag-3"}
                 };
 
-                postServiceMock.Setup(x => x.GetAll()).Returns(_posts);
-                categoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
-                tagServiceMock.Setup(x => x.GetAll()).Returns(_tags);
+                PostServiceMock.Setup(x => x.GetAll()).Returns(_posts);
+                CategoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
+                TagServiceMock.Setup(x => x.GetAll()).Returns(_tags);
             };
 
-            Because of = () => _result = postController.Index();
+            Because of = () => _result = PostController.Index();
 
             It should_show_a_list_of_all_the_tags = () =>
                 _result.Model<PostsViewModel>().Tags.ShouldBeOfExactType<List<TagViewModel>>();
@@ -105,12 +105,12 @@ namespace IAmBacon.Web.Tests.Features
 
             Establish context = () =>
             {
-                postServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Post>);
-                categoryServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Category>);
-                tagServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Tag>);
+                PostServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Post>);
+                CategoryServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Category>);
+                TagServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Tag>);
             };
 
-            Because of = () => _result = postController.Index();
+            Because of = () => _result = PostController.Index();
 
             It should_display_no_tags = () => _result.Model<PostsViewModel>().DisplayTags.ShouldEqual(false);
         }

@@ -7,8 +7,20 @@
     /// <summary>
     /// Extension methods to encapsulate <see cref="UrlHelper"/> for generating URLs.
     /// </summary>
-    public static class UrlHelperExtension
+    public static class UrlHelperExtensions
     {
+        /// <summary>
+        /// Returns the blog landing page URL by the specified page no.
+        /// </summary>
+        /// <param name="helper">The helper.</param>
+        /// <param name="pageNo">The page no.</param>
+        /// <param name="protocol">The protocol.</param>
+        /// <returns>The blog landing page URL by the specified page no.</returns>
+        public static string Blog(this IUrlHelper helper, int pageNo, string protocol = "http")
+        {
+            return helper.RouteUrl("BlogHome", new { page = pageNo }, protocol);
+        }
+
         /// <summary>
         /// Returns the blog post URL for the specified title.
         /// </summary>

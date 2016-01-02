@@ -12,8 +12,6 @@ namespace IAmBacon.ViewModels
     /// </summary>
     public class PostViewModel : ViewModelBase, ITwitterMetadata
     {
-        #region Public Properties
-
         /// <summary>
         /// Gets or sets the author.
         /// </summary>
@@ -63,7 +61,10 @@ namespace IAmBacon.ViewModels
         /// </summary>
         public bool DisplayTags
         {
-            get { return Tags != null && Tags.Any(); }
+            get
+            {
+                return this.Tags != null && this.Tags.Any();
+            }
         }
 
         /// <summary>
@@ -124,7 +125,5 @@ namespace IAmBacon.ViewModels
         /// Gets or sets the title.
         /// </summary>
         public string Title { get; set; }
-
-        #endregion
     }
 }

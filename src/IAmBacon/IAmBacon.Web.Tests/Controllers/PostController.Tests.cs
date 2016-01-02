@@ -10,7 +10,6 @@ using IAmBacon.Web.Tests.Helpers;
 using Machine.Specifications;
 using Machine.Specifications.Mvc;
 using It = Machine.Specifications.It;
-using MoqIt = Moq.It;
 
 namespace IAmBacon.Web.Tests.Controllers
 {
@@ -20,7 +19,7 @@ namespace IAmBacon.Web.Tests.Controllers
         {
             protected static ActionResult result;
 
-            Because of = () => result = postController.Index();
+            Because of = () => result = PostController.Index();
         }
 
         [Subject("Categories")]
@@ -83,9 +82,9 @@ namespace IAmBacon.Web.Tests.Controllers
                     new Tag{Name = "Tag3", SeoName = "tag-3"}
                 };
 
-                categoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
-                postServiceMock.Setup(x => x.GetAllActive()).Returns(posts);
-                tagServiceMock.Setup(x => x.GetAll()).Returns(tags);
+                CategoryServiceMock.Setup(x => x.GetAll()).Returns(categories);
+                PostServiceMock.Setup(x => x.GetAllActive()).Returns(posts);
+                TagServiceMock.Setup(x => x.GetAll()).Returns(tags);
             };
 
             It should_show_a_list_of_categories = () =>
@@ -110,9 +109,9 @@ namespace IAmBacon.Web.Tests.Controllers
         {
             Establish context = () =>
             {
-                postServiceMock.Setup(x => x.GetAllActive()).Returns(Enumerable.Empty<Post>);
-                categoryServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Category>());
-                tagServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Tag>);
+                PostServiceMock.Setup(x => x.GetAllActive()).Returns(Enumerable.Empty<Post>);
+                CategoryServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Category>());
+                TagServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Tag>);
             };
 
             It should_display_no_categories = () =>
@@ -124,16 +123,16 @@ namespace IAmBacon.Web.Tests.Controllers
         [Subject("Blog posts")]
         public class When_there_are_posts : Post_controller_context
         {
-            private Establish context = () =>
+            Establish context = () =>
                 {
-                    postServiceMock.Setup(x => x.GetAllActive()).Returns(new List<Post>());
-                    categoryServiceMock.Setup(x => x.GetAll()).Returns(new List<Category>());
-                    tagServiceMock.Setup(x => x.GetAll()).Returns(new List<Tag>());
+                    PostServiceMock.Setup(x => x.GetAllActive()).Returns(new List<Post>());
+                    CategoryServiceMock.Setup(x => x.GetAll()).Returns(new List<Category>());
+                    TagServiceMock.Setup(x => x.GetAll()).Returns(new List<Tag>());
                 };
 
-            private It should_only_display_active_posts = () =>
+            It should_only_display_active_posts = () =>
                 {
-                    postServiceMock.Verify(x => x.GetAllActive());
+                    PostServiceMock.Verify(x => x.GetAllActive());
                 };
         }
     }

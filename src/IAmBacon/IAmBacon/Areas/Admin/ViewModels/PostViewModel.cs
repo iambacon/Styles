@@ -7,10 +7,8 @@
 
     public class PostViewModel
     {
-        #region Public Properties
-
         /// <summary>
-        ///     Gets or sets the author.
+        ///  Gets or sets the author.
         /// </summary>
         /// <value>
         ///     The author.
@@ -57,7 +55,5 @@
         ///     Gets or sets the title.
         /// </summary>
         public string Title { get; set; }
-
-        #endregion
     }
 }

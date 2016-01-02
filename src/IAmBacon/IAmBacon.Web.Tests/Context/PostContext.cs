@@ -11,17 +11,20 @@ using MoqIt = Moq.It;
 
 namespace IAmBacon.Web.Tests.Context
 {
+    /// <summary>
+    /// Context class for the <see cref="PostController"/>.
+    /// </summary>
     public class PostContext
     {
-        protected static PostController postController;
+        protected static PostController PostController;
 
-        protected static Mock<IPostService> postServiceMock;
+        protected static Mock<IPostService> PostServiceMock;
 
         private static Mock<ICommentService> commentServiceMock;
 
-        protected static Mock<ITagService> tagServiceMock;
+        protected static Mock<ITagService> TagServiceMock;
 
-        protected static Mock<ICategoryService> categoryServiceMock;
+        protected static Mock<ICategoryService> CategoryServiceMock;
 
         private static Mock<ISpamManager> spamManagerMock;
 
@@ -29,20 +32,20 @@ namespace IAmBacon.Web.Tests.Context
 
         Establish context = () =>
         {
-            postServiceMock = new Mock<IPostService>(MockBehavior.Strict);
+            PostServiceMock = new Mock<IPostService>();
             commentServiceMock = new Mock<ICommentService>(MockBehavior.Strict);
-            tagServiceMock = new Mock<ITagService>(MockBehavior.Strict);
-            categoryServiceMock = new Mock<ICategoryService>(MockBehavior.Strict);
+            TagServiceMock = new Mock<ITagService>(MockBehavior.Strict);
+            CategoryServiceMock = new Mock<ICategoryService>(MockBehavior.Strict);
             spamManagerMock = new Mock<ISpamManager>(MockBehavior.Strict);
             emailManagerMock = new Mock<IEmailManager>(MockBehavior.Strict);
 
-            postServiceMock.Setup(x => x.GetLatest(MoqIt.IsAny<int>())).Returns(new List<Post>());
+            PostServiceMock.Setup(x => x.GetLatest(MoqIt.IsAny<int>())).Returns(new List<Post>());
 
-            postController =
-                new PostController(postServiceMock.Object,
+            PostController =
+                new PostController(PostServiceMock.Object,
                     commentServiceMock.Object,
-                    tagServiceMock.Object,
-                    categoryServiceMock.Object,
+                    TagServiceMock.Object,
+                    CategoryServiceMock.Object,
                     spamManagerMock.Object,
                     emailManagerMock.Object)
                 {

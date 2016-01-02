@@ -4,6 +4,11 @@ using IAmBacon.ViewModels.Post;
 
 namespace IAmBacon.ViewModels
 {
+    using IAmBacon.Presentation.Extensions;
+    using IAmBacon.ViewModels.Shared;
+
+    using PagedList;
+
     /// <summary>
     /// The posts view model. Used for tag and category results.
     /// </summary>
@@ -18,12 +23,32 @@ namespace IAmBacon.ViewModels
         public IEnumerable<CategoryCountViewModel> CategorySummaries { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [display categories].
+        /// Gets a value indicating whether [display categories].
         /// </summary>
         /// <value>
         ///   <c>true</c> if [display categories]; otherwise, <c>false</c>.
         /// </value>
-        public bool DisplayCategories { get; set; }
+        public bool DisplayCategories
+        {
+            get
+            {
+                return this.CategorySummaries != null && this.CategorySummaries.Any();
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether [display pagination].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [display pagination]; otherwise, <c>false</c>.
+        /// </value>
+        public bool DisplayPagination
+        {
+            get
+            {
+                return this.Posts.DisplayPagination();
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [display tags].
@@ -35,14 +60,19 @@ namespace IAmBacon.ViewModels
         {
             get
             {
-                return Tags != null && Tags.Any();
+                return this.Tags != null && this.Tags.Any();
             }
         }
 
         /// <summary>
-        /// The posts.
+        /// Gets or sets the pagination.
         /// </summary>
-        public IEnumerable<PostViewModel> Posts { get; set; }
+        public PaginationViewModel Pagination { get; set; }
+
+        /// <summary>
+        /// The paginated list of blog posts.
+        /// </summary>
+        public IPagedList<PostViewModel> Posts { get; set; }
 
         /// <summary>
         /// Gets or sets the title.

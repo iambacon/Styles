@@ -12,27 +12,57 @@
 
 // Components
 // ------------------------
-@import 
+@import
     "../../components/header",
     "../../components/footer",
     "../../components/links-list",
     "../../components/aside-nav",
     "../../components/meter",
     "../../components/buttons",
+    "../../components/pagination",
     "../../components/page-title";
 
 // Utilities
 // ------------------------
-@import 
+@import
     "../../utilities/colours",
     "../../utilities/grid",
     "../../utilities/typography",
     "../../utilities/social",
     "../../utilities/display",
+    "../../utilities/floats",
     "../../utilities/margin";
 
 // Page
 // ------------------------
+.g {
+    &-paging {
+        @include container;
+        margin-bottom: vr-space(1);
+
+        @include respond-to(extra-small) {
+            @include column(12);
+        }
+
+        @include respond-to(medium-up) {
+            @include column-no-gutter(6);
+        }
+
+        &-more {
+            @include container;
+            margin-bottom: vr-space(1);
+
+            @include respond-to(extra-small) {
+                @include column(12);
+            }
+
+            @include respond-to(medium-up) {
+                @include column-no-gutter(6);
+            }
+        }
+    }
+}
+
 .g-landing {
     @include container;
 
@@ -44,11 +74,11 @@
         }
 
         @include respond-to(medium-up) {
-            @include column-no-gutter(7);        
+            @include column-no-gutter(7);
         }
     }
 
-    &-aside {       
+    &-aside {
         margin-bottom: vr-space(1);
 
         @include respond-to(extra-small) {

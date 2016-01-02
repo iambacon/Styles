@@ -1,0 +1,12 @@
+﻿@model IAmBacon.ViewModels.Shared.PaginationViewModel
+<nav class="pagination">
+    <div class="g-paging">
+        @Html.DisplayFor(x => x.Pages)
+    </div>
+    @if (Model.NextPage != null)
+    {
+        <div class="g-paging-more">
+            <a class="pagination-more" href="@Model.NextPage.Href">Show more</a>
+        </div>
+    }
+</nav>

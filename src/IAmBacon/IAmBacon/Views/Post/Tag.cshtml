@@ -14,4 +14,8 @@
 </div>
 <div class="layoutContainer">
     @Html.DisplayFor(x => x.Posts)
+    @if (Model.DisplayPagination)
+    {
+        @Html.Partial("_Pagination", Model.Pagination)
+    }
 </div>

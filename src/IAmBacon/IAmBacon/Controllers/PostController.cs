@@ -1,13 +1,8 @@
-﻿using IAmBacon.Attributes;
-using IAmBacon.Domain.Smtp.Interfaces;
-using IAmBacon.Domain.Utilities.Interfaces;
-using IAmBacon.ViewModels.Post;
-using IAmBacon.ViewModels.Shared;
-
-namespace IAmBacon.Controllers
+﻿namespace IAmBacon.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Migrations.Builders;
     using System.Linq;
     using System.ServiceModel.Syndication;
     using System.Web;
@@ -17,9 +12,19 @@ namespace IAmBacon.Controllers
     using Framework.Mvc;
 
     using IAmBacon.Presentation.Mappers;
+    using IAmBacon.Attributes;
+    using IAmBacon.Domain.Smtp.Interfaces;
+    using IAmBacon.Domain.Utilities.Interfaces;
+    using IAmBacon.Presentation.Builders;
+    using IAmBacon.Presentation.Enumerations;
+    using IAmBacon.ViewModels.Post;
+    using IAmBacon.ViewModels.Shared;
 
     using Model.Entities;
     using Models;
+
+    using PagedList;
+
     using Presentation.Extensions;
     using Presentation.Helpers;
     using ViewModels;
@@ -29,8 +34,6 @@ namespace IAmBacon.Controllers
     /// </summary>
     public class PostController : BaseController
     {
-        #region Fields
-
         /// <summary>
         /// The post service.
         /// </summary>
@@ -52,6 +55,11 @@ namespace IAmBacon.Controllers
         private readonly IEmailManager emailManager;
 
         /// <summary>
+        /// The maximum page numbers to display for pagination.
+        /// </summary>
+        private const int MaxPageNumbersToDisplay = 5;
+
+        /// <summary>
         /// The spam manager.
         /// </summary>
         private readonly ISpamManager spamManager;
@@ -61,12 +69,10 @@ namespace IAmBacon.Controllers
         /// </summary>
         private readonly ITagService tagService;
 
-        #endregion
-
         /// <summary>
-        /// The number of recent posts to retrieve.
+        /// The number of posts per page.
         /// </summary>
-        private const int RecentPosts = 25;
+        private const int PageSize = 5;
 
         #region Constructors and Destructors
 
@@ -96,52 +102,29 @@ namespace IAmBacon.Controllers
 
         #endregion
 
-        #region Public Methods and Operators
-
         /// <summary>
         /// The index.
         /// </summary>
         /// <returns>
         /// The <see cref="ActionResult"/>.
         /// </returns>
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            List<Post> posts = this.postService.GetAllActive().ToList();
-            IEnumerable<Post> recentPosts =
-                posts.OrderByDescending(x => x.DateCreated).Take(RecentPosts);
-
-            IEnumerable<PostViewModel> postViewModels = recentPosts.ToViewModelList(Url);
-
-            var categories = this.categoryService.GetAll();
-            var tags = this.tagService.GetAll();
-
-            var categorySummaries =
-                posts
-                .GroupBy(x => x.Category.Name)
-                .Select(x => new CategoryCountViewModel
-                {
-                    Name = x.Key,
-                    Count = x.Count(),
-                    Url = Url.Action("Category", new { name = x.Key }),
-                    Percent = (double)x.Count() / categories.Count()
-                })
-                .OrderByDescending(x => x.Count)
-                .ToList();
-
-            IEnumerable<TagViewModel> tagViewModels = tags.OrderBy(x => x.Name).Select(x => new TagViewModel
-            {
-                Name = x.Name,
-                Url = Url.Action("Tag", new { name = x.SeoName })
-            });
+            IEnumerable<Post> postEntities = this.postService.GetAllActive().OrderByDescending(x => x.DateCreated);
+            IPagedList<PostViewModel> pagedPosts = postEntities.ToPagedViewModelList(this.Url, PageSize, page);
+            IEnumerable<Category> categories = this.categoryService.GetAll();
+            IEnumerable<Tag> tags = this.tagService.GetAll();
+            List<CategoryCountViewModel> categorySummaries = this.GetCategorySummaries(postEntities, categories);
+            IEnumerable<TagViewModel> tagViewModels = tags.ToTagViewModelList(this.Url);
 
             var model = new PostsViewModel
             {
-                Posts = postViewModels,
+                Posts = pagedPosts,
                 PageTitle = "I am Blog - I am Bacon",
                 Footer = new FooterViewModel(),
                 CategorySummaries = categorySummaries,
-                DisplayCategories = categorySummaries.Any(),
-                Tags = tagViewModels.ToList()
+                Tags = tagViewModels,
+                Pagination = this.BuildPagination(pagedPosts)
             };
 
             return this.View("Landing", model);
@@ -151,8 +134,9 @@ namespace IAmBacon.Controllers
         /// Retrieves the category by the specified name.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <returns></returns>
-        public ActionResult Category(string name)
+        /// <param name="page">The page.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
+        public ActionResult Category(string name, int page = 1)
         {
             var category = this.categoryService.Get(x => x.SeoName == name).FirstOrDefault();
 
@@ -161,16 +145,17 @@ namespace IAmBacon.Controllers
                 return this.RedirectToAction("NotFound", "Error");
             }
 
-            var posts = this.postService.Get(x => x.CategoryId == category.Id).Where(x => x.Active);
-            var postModels = CreatePostModels(posts);
+            IEnumerable<Post> posts = this.postService.Get(x => x.CategoryId == category.Id).Where(x => x.Active);
+            var pagedPosts = posts.ToPagedViewModelList(this.Url, PageSize, page);
 
             var model = new PostsViewModel
-                {
-                    PageTitle = string.Format("Category: {0}  - I am Bacon", name),
-                    Posts = postModels,
-                    Title = category.Name,
-                    Footer = new FooterViewModel()
-                };
+            {
+                PageTitle = string.Format("Category: {0}  - I am Bacon", name),
+                Posts = pagedPosts,
+                Title = category.Name,
+                Footer = new FooterViewModel(),
+                Pagination = this.BuildPagination(pagedPosts)
+            };
 
             return this.View(model);
 
@@ -203,25 +188,25 @@ namespace IAmBacon.Controllers
                     DateCreated = x.DateCreated.ToDisplayDateTime()
                 }).OrderByDescending(x => x.DateCreated);
 
-            var tags = MapToTagViewModel(post.Tags);
+            var tags = this.MapToTagViewModel(post.Tags);
 
             var model = new PostViewModel
-                {
-                    Title = post.Title,
-                    SeoTitle = post.SeoTitle,
-                    Content = new HtmlString(post.Content),
-                    DateTime = post.DateCreated.ToDateTimeFormat(),
-                    DateCreated = post.DateCreated.ToDisplayDateTime(),
-                    Tags = tags,
-                    Author = post.User.FirstName + " " + post.User.LastName,
-                    Category = post.Category.SeoName,
-                    Comments = comments.ToList(),
-                    NoCss = post.NoCss,
-                    Id = post.Id,
-                    PageTitle = post.Title + " - I am Bacon",
-                    Footer = new FooterViewModel(),
-                    Image = post.Image
-                };
+            {
+                Title = post.Title,
+                SeoTitle = post.SeoTitle,
+                Content = new HtmlString(post.Content),
+                DateTime = post.DateCreated.ToDateTimeFormat(),
+                DateCreated = post.DateCreated.ToDisplayDateTime(),
+                Tags = tags,
+                Author = post.User.FirstName + " " + post.User.LastName,
+                Category = post.Category.SeoName,
+                Comments = comments.ToList(),
+                NoCss = post.NoCss,
+                Id = post.Id,
+                PageTitle = post.Title + " - I am Bacon",
+                Footer = new FooterViewModel(),
+                Image = post.Image
+            };
 
 
             // TODO: Temporary until we sort out spam
@@ -241,13 +226,13 @@ namespace IAmBacon.Controllers
             const string blogUrl = "http://www.iambacon.co.uk/blog";
 
             // Create a collection of SyndicationItemobjects from the latest posts
-            var posts = postService.GetLatest(RecentPosts).Select
+            var posts = postService.GetLatest(PageSize).Select
                 (
                     p => new SyndicationItem
                         (
                         p.Title,
                         p.Content,
-                        new Uri(Url.Post(p.SeoTitle))
+                        new Uri(this.Url.Post(p.SeoTitle))
                         )
                 );
 
@@ -311,65 +296,64 @@ namespace IAmBacon.Controllers
                 }
             }
 
-            return RedirectToRoute(Url.Post(title));
+            return this.RedirectToRoute(Url.Post(title));
         }
 
         /// <summary>
         /// Gets the posts by the specified tag name.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <returns></returns>
-        public ActionResult Tag(string name)
+        /// <param name="page">The page.</param>
+        /// <returns>The <see cref="ActionResult"/>.</returns>
+        public ActionResult Tag(string name, int page = 1)
         {
-            var tag = this.tagService.Get(x => x.SeoName == name).FirstOrDefault();
+            Tag tag = this.tagService.Get(x => x.SeoName == name).FirstOrDefault();
 
-            if (tag != null)
+            if (tag == null)
             {
-                var postModels = CreatePostModels(tag.Posts.Where(x => x.Active));
-
-                var model = new PostsViewModel
-                    {
-                        Posts = postModels,
-                        PageTitle = string.Format("Tag: {0}  - I am Bacon", name),
-                        Title = tag.Name,
-                        Footer = new FooterViewModel()
-                    };
-
-                return this.View(model);
+                return this.RedirectToAction("Index");
             }
 
-            return this.RedirectToAction("Index");
+            IPagedList<PostViewModel> pagedPosts = tag.Posts.Where(x => x.Active)
+                .ToPagedViewModelList(this.Url, PageSize, page);
+
+            var model = new PostsViewModel
+            {
+                Posts = pagedPosts,
+                PageTitle = string.Format("Tag: {0}  - I am Bacon", name),
+                Title = tag.Name,
+                Footer = new FooterViewModel(),
+                Pagination = this.BuildPagination(pagedPosts)
+            };
+
+            return this.View(model);
         }
 
-        #endregion
-
-        #region Methods
-
         /// <summary>
-        /// Creates a list of post view models.
+        /// Gets the category summaries.
         /// </summary>
-        /// <param name="posts">The posts.</param>
-        /// <returns>IEnumerable of PostViewModel.</returns>
-        private IEnumerable<PostViewModel> CreatePostModels(IEnumerable<Post> posts)
+        /// <param name="postEntities">The post entities.</param>
+        /// <param name="categories">The categories.</param>
+        /// <returns>The list of <see cref="CategoryCountViewModel"/>.</returns>
+        private List<CategoryCountViewModel> GetCategorySummaries(
+            IEnumerable<Post> postEntities,
+            IEnumerable<Category> categories)
         {
-            var postModels =
-                posts
-                .OrderByDescending(x => x.DateCreated)
-                .Select(
-                    x =>
-                    new PostViewModel
+            List<CategoryCountViewModel> categorySummaries =
+                postEntities.GroupBy(x => x.Category.Name)
+                    .Select(
+                        x =>
+                        new CategoryCountViewModel
                         {
-                            Title = x.Title,
-                            SeoTitle = x.SeoTitle,
-                            Content = x.Content.GetFirstParagraph(),
-                            DateCreated = x.DateCreated.ToDisplayDateTime(),
-                            DateTime = x.DateCreated.ToDateTimeFormat(),
-                            Tags = MapToTagViewModel(x.Tags),
-                            Author = x.User.FirstName + " " + x.User.LastName,
-                            Category = x.Category.Name,
-                            Id = x.Id
-                        });
-            return postModels;
+                            Name = x.Key,
+                            Count = x.Count(),
+                            Url = this.Url.Action("Category", new { name = x.Key }),
+                            Percent = (double)x.Count() / categories.Count()
+                        })
+                    .OrderByDescending(x => x.Count)
+                    .ToList();
+
+            return categorySummaries;
         }
 
         /// <summary>
@@ -382,11 +366,21 @@ namespace IAmBacon.Controllers
             return tags.Select(x => new TagViewModel
             {
                 Name = x.Name,
-                Url = Url.Action("Tag", new { name = x.SeoName })
+                Url = this.Url.Action("Tag", new { name = x.SeoName })
             });
         }
 
-        #endregion
+        /// <summary>
+        /// Builds the pagination.
+        /// </summary>
+        /// <param name="pagedPosts">The paged posts.</param>
+        /// <returns>The <see cref="PaginationViewModel"/>.</returns>
+        private PaginationViewModel BuildPagination(IPagedList<PostViewModel> pagedPosts)
+        {
+            var builder = new PaginationBuilder(pagedPosts, MaxPageNumbersToDisplay, this.Url);
+            builder.Build();
 
+            return builder.GetResult();
+        }
     }
 }
