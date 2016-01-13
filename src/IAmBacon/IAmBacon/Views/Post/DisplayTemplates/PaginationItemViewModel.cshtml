@@ -1,9 +1,17 @@
-﻿@model IAmBacon.ViewModels.Shared.PaginationItemViewModel
+﻿@using IAmBacon.Presentation.Enumerations
+@model IAmBacon.ViewModels.Shared.PaginationItemViewModel
 
 @if (Model.IsCurrentPage)
 {
     <a class="pagination-page pagination-page--current" href="@Model.Href">@Model.Text</a>
 }
 else {
-    <a class="pagination-page" href="@Model.Href">@Model.Text</a>
+    if (Model.Type == PaginationItemType.Ellipsis)
+    {
+        <span class="pagination-page">@Html.Raw(Model.Text)</span>
+    }
+    else
+    {
+        <a class="pagination-page" href="@Model.Href">@Model.Text</a>
+    }
 }
