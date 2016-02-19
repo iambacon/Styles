@@ -58,6 +58,7 @@ address {
 
 // Set images to be responsive by default
 img {
+    width: 100%;
     max-width: 100%;
     vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
 }
