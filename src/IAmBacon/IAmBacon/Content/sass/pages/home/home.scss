@@ -12,10 +12,13 @@
 
 // Components
 // ------------------------
-@import "../../components/header";
-@import "../../components/footer";
-@import "../../components/links-list";
-@import "../../components/page-title";
+@import
+    "../../components/header",
+    "../../components/footer",
+    "../../components/links-list",
+    "../../components/page-title",
+    "../../components/category-tag",
+    "../../components/article";
 
 // Utilities
 // ------------------------
@@ -23,9 +26,9 @@
 @import "../../utilities/typography";
 @import "../../utilities/floats";
 @import "../../utilities/social";
-@import "../../utilities/margin";
 @import "../../utilities/tables";
 @import "../../utilities/grid";
+@import "../../utilities/margin"; // Margin must go after grid to avoid specificity problems
 
 // Page
 // ------------------------
@@ -83,70 +86,17 @@ body {
 
 .pageSection-title {
 	color: $nobel;
-	@include font-size(48px);
-	@include line-height-proportional;
-	font-weight: 700;
-	text-align: center;
+	@include h3;
+    text-transform: uppercase;
+    display:inline-block;
 }
 
-.articleThumb {
+.g-article {
 	@include respond-to(extra-small) {
+		@include column(12);
+	}
+
+	@include respond-to(small-up) {
 		@include column(6);
 	}
-
-	@include respond-to(small) {
-		@include column(3);
-	}
-
-	@include respond-to(medium-large) {
-		@include column(3);
-	}
-
-	background-color: $white;
-	border-radius: 3px;
-	margin-bottom: $base-line-height;
-}
-
-.articleThumb-title {
-	color: $nobel;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 5px;
-	height: $base-line-height * 2;
-	overflow: hidden;
-    margin:{
-        top: 0;
-        bottom: 0;
-    }
-    display: inline-block;
-}
-
-.articleThumb-date,
-.articleThumb-category {
-	@include font-size(14px);
-	@include line-height-proportional;
-	color: $very-light-grey;
-}
-
-.articleThumb-meta {
-	padding-bottom: 5px;
-	overflow: hidden;
-}
-
-.articleThumb-date {
-	float: left;
-	padding-left: 5px;
-
-	@include respond-to(extra-small) {
-		@include visually-hidden;
-	}
-}
-
-.articleThumb-category {
-	float: right;
-	padding-right: 5px;
-}
-
-.articleThumb-image {
-	border-radius: 3px;
 }

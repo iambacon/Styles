@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                       cwd: "Content/sass/pages", // The startup directory
                       src: ["**/*.scss"], // Source files
                       dest: "Content/stylesheets/pages", // Destination
-                      ext: ".css" // File extension 
+                      ext: ".css" // File extension
                   }
                 ]
             }
@@ -30,13 +30,15 @@ module.exports = function (grunt) {
         // Autoprefixer
         autoprefixer: {
             options: {
-                map: true // Update source map (creates one if it can't find an existing map)
+                map: {
+                    inline: false
+                }
             },
 
             // Prefix all files
             multiple_files: {
                 src: 'Content/stylesheets/pages/**/*.css'
-            },
+            }
         },
 
         // Watch

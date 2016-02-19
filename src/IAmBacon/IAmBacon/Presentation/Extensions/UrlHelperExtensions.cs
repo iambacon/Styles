@@ -10,6 +10,17 @@
     public static class UrlHelperExtensions
     {
         /// <summary>
+        /// Returns the URL for the blog landing page.
+        /// </summary>
+        /// <param name="helper">The helper.</param>
+        /// <param name="protocol">The protocol.</param>
+        /// <returns>The URL for the blog landing page.</returns>
+        public static string Blog(this IUrlHelper helper, string protocol = "http")
+        {
+            return helper.RouteUrl("BlogHome", null, protocol);
+        }
+
+        /// <summary>
         /// Returns the blog landing page URL by the specified page no.
         /// </summary>
         /// <param name="helper">The helper.</param>
@@ -20,6 +31,19 @@
         {
             return helper.RouteUrl("BlogHome", new { page = pageNo }, protocol);
         }
+
+        /// <summary>
+        /// Returns the category URL for the specified category name.
+        /// </summary>
+        /// <param name="helper">The helper.</param>
+        /// <param name="name">The name of the category.</param>
+        /// <param name="protocol">The protocol.</param>
+        /// <returns>The URL.</returns>
+        public static string Category(this IUrlHelper helper, string name, string protocol = "http")
+        {
+            return helper.RouteUrl("Category", new { name }, protocol);
+        }
+
 
         /// <summary>
         /// Returns the blog post URL for the specified title.

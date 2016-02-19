@@ -23,12 +23,12 @@ $ie-only: false !default;
 // putting my reset needs here for now, until I decide what to do.
 ul,
 ol {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 ul,
 ol {
-	padding: 0;
+    padding: 0;
 }
 
 ul,
@@ -38,17 +38,18 @@ h2,
 p,
 dl,
 dd {
-	margin: 0;
+    margin: 0;
 }
 
 a {
-	text-decoration: none;
-	color: inherit;
+    text-decoration: none;
+    color: inherit;
     display: inline-block;
+    transition: color 0.25s ease-out;
 
     &:hover {
-		color: $link-hover-colour;
-	}
+        color: $link-hover-colour;
+    }
 }
 
 address {
@@ -57,28 +58,28 @@ address {
 
 // Set images to be responsive by default
 img {
-	max-width: 100%;
-	vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
+    max-width: 100%;
+    vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
 }
 
 h3 {
-	font-size: inherit;
+    @include h3;
 }
 
 html {
-	font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-	@include font-size;
-	@include vr-line-height;
-	font-family: $base-font-family;
-	color: $base-color;
-	background-color: $base-background-color;
+    @include font-size;
+    @include vr-line-height;
+    font-family: $base-font-family;
+    color: $base-color;
+    background-color: $base-background-color;
 }
 
 blockquote {
-	font-style: italic;
+    font-style: italic;
 }
 
 meter {

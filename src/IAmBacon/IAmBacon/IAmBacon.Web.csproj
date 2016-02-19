@@ -211,6 +211,8 @@
     <Compile Include="Presentation\Enumerations\PaginationItemType.cs" />
     <Compile Include="Presentation\Extensions\PagedListExtensions.cs" />
     <Compile Include="Presentation\Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Framework\Mvc\CustomViewPage%271.cs" />
+    <Compile Include="Framework\Mvc\CustomViewPage.cs" />
     <Compile Include="Framework\Mvc\IUrlHelper.cs" />
     <Compile Include="Framework\Mvc\UrlHelperAdapter.cs" />
     <Compile Include="Models\EmailTemplateModel.cs" />
@@ -345,6 +347,8 @@
     <Content Include="Global.asax" />
     <Content Include="googleb300e47449e1527f.html" />
     <Content Include="Content\sass\components\_pagination.scss" />
+    <Content Include="Content\sass\components\_article.scss" />
+    <Content Include="Content\sass\components\_category-tag.scss" />
     <None Include="gruntfile.js" />
     <Content Include="humans.txt" />
     <None Include="Areas\Admin\Views\Template\LandingPage.cshtml" />

@@ -23,9 +23,14 @@
 @if (Model.ShowBlogPosts)
 {
     <section class="alto co">
-        <div class="pageSection layoutContainer">
-            <h2 class="pageSection-title">@Html.ActionLink("Blog", "Index", "Post", null, new { @class = "linkTitle" })</h2>
-            @Html.DisplayFor(x => x.BlogPosts)
+        <div class="pageSection">
+            <div class="layoutContainer m-b--full">
+                <h2 class="pageSection-title m-r--half">Latest posts</h2>
+                <a href="@Url.Blog()" class="linkTitle">View all posts</a>
+            </div>
+            <div class="layoutContainer">
+                @Html.DisplayFor(x => x.BlogPosts)
+            </div>
         </div>
     </section>
 }

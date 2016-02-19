@@ -22,17 +22,12 @@ namespace IAmBacon.Controllers
         /// <summary>
         /// The latest posts count.
         /// </summary>
-        private const int LatestPostsCount = 8;
+        private const int LatestPostsCount = 4;
 
         /// <summary>
         /// The latest posts.
         /// </summary>
         private IEnumerable<Post> latestPosts;
-
-        /// <summary>
-        /// The popular posts.
-        /// </summary>
-        private IEnumerable<Post> popularPosts;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
@@ -44,8 +39,6 @@ namespace IAmBacon.Controllers
             this.postService = postService;
         }
 
-        #region Public Methods and Operators
-
         /// <summary>
         /// The home page.
         /// </summary>
@@ -53,16 +46,12 @@ namespace IAmBacon.Controllers
         [TwitterMetaTags("The tech blog for Colin Bacon. Tech with a Bacon flavour.", "twitter-card.png")]
         public ActionResult Index()
         {
-            latestPosts = postService.GetLatest(LatestPostsCount);
+            this.latestPosts = this.postService.GetLatest(LatestPostsCount);
 
-            var model = SetHomeViewModel();
+            var model = this.SetHomeViewModel();
 
-            return View("Home", model);
+            return this.View("Home", model);
         }
-
-        #endregion
-
-        #region Private Methods
 
         /// <summary>
         /// Maps the post thumb view model.
@@ -105,10 +94,8 @@ namespace IAmBacon.Controllers
             return new HomeViewModel
             {
                 PageTitle = "Colin Bacon, Web Developer - I am Bacon",
-                BlogPosts = SetBlogPosts()
+                BlogPosts = this.SetBlogPosts()
             };
         }
-
-        #endregion
     }
 }
