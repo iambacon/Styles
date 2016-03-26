@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity.Migrations.Builders;
     using System.Linq;
     using System.ServiceModel.Syndication;
     using System.Web;
@@ -16,7 +15,6 @@
     using IAmBacon.Domain.Smtp.Interfaces;
     using IAmBacon.Domain.Utilities.Interfaces;
     using IAmBacon.Presentation.Builders;
-    using IAmBacon.Presentation.Enumerations;
     using IAmBacon.ViewModels.Post;
     using IAmBacon.ViewModels.Shared;
 
@@ -74,8 +72,6 @@
         /// </summary>
         private const int PageSize = 5;
 
-        #region Constructors and Destructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="PostController" /> class.
         /// </summary>
@@ -100,8 +96,6 @@
             this.emailManager = emailManager;
         }
 
-        #endregion
-
         /// <summary>
         /// The index.
         /// </summary>
@@ -124,7 +118,7 @@
                 Footer = new FooterViewModel(),
                 CategorySummaries = categorySummaries,
                 Tags = tagViewModels,
-                Pagination = this.BuildPagination(pagedPosts)
+                Pagination = this.BuildPagination(pagedPosts, this.Url.Blog())
             };
 
             return this.View("Landing", model);
@@ -145,7 +139,11 @@
                 return this.RedirectToAction("NotFound", "Error");
             }
 
-            IEnumerable<Post> posts = this.postService.Get(x => x.CategoryId == category.Id).Where(x => x.Active);
+            IEnumerable<Post> posts =
+                this.postService.Get(x => x.CategoryId == category.Id)
+                    .Where(x => x.Active)
+                    .OrderByDescending(x => x.DateCreated);
+
             var pagedPosts = posts.ToPagedViewModelList(this.Url, PageSize, page);
 
             var model = new PostsViewModel
@@ -154,7 +152,7 @@
                 Posts = pagedPosts,
                 Title = category.Name,
                 Footer = new FooterViewModel(),
-                Pagination = this.BuildPagination(pagedPosts)
+                Pagination = this.BuildPagination(pagedPosts, this.Url.Category(name))
             };
 
             return this.View(model);
@@ -314,8 +312,10 @@
                 return this.RedirectToAction("Index");
             }
 
-            IPagedList<PostViewModel> pagedPosts = tag.Posts.Where(x => x.Active)
-                .ToPagedViewModelList(this.Url, PageSize, page);
+            IPagedList<PostViewModel> pagedPosts =
+                tag.Posts.Where(x => x.Active)
+                    .OrderByDescending(x => x.DateCreated)
+                    .ToPagedViewModelList(this.Url, PageSize, page);
 
             var model = new PostsViewModel
             {
@@ -323,7 +323,7 @@
                 PageTitle = string.Format("Tag: {0}  - I am Bacon", name),
                 Title = tag.Name,
                 Footer = new FooterViewModel(),
-                Pagination = this.BuildPagination(pagedPosts)
+                Pagination = this.BuildPagination(pagedPosts, this.Url.Tag(name))
             };
 
             return this.View(model);
@@ -374,10 +374,11 @@
         /// Builds the pagination.
         /// </summary>
         /// <param name="pagedPosts">The paged posts.</param>
-        /// <returns>The <see cref="PaginationViewModel"/>.</returns>
-        private PaginationViewModel BuildPagination(IPagedList<PostViewModel> pagedPosts)
+        /// <param name="baseUrl">The base URL.</param>
+        /// <returns>The <see cref="PaginationViewModel" />.</returns>
+        private PaginationViewModel BuildPagination(IPagedList<PostViewModel> pagedPosts, string baseUrl)
         {
-            var builder = new PaginationBuilder(pagedPosts, MaxPageNumbersToDisplay, this.Url);
+            var builder = new PaginationBuilder(pagedPosts, MaxPageNumbersToDisplay, new Uri(baseUrl));
             builder.Build();
 
             return builder.GetResult();

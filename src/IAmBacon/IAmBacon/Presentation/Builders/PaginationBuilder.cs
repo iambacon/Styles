@@ -1,14 +1,13 @@
 ﻿namespace IAmBacon.Presentation.Builders
 {
+    using System;
     using System.Collections.Generic;
+    using System.Web;
 
     using IAmBacon.ViewModels;
     using PagedList;
 
-    using Framework.Mvc;
-
     using IAmBacon.Presentation.Enumerations;
-    using IAmBacon.Presentation.Extensions;
     using IAmBacon.ViewModels.Shared;
 
     /// <summary>
@@ -27,9 +26,9 @@
         private readonly IPagedList<PostViewModel> pagedList;
 
         /// <summary>
-        /// The URL.
+        /// The URI.
         /// </summary>
-        private readonly IUrlHelper url;
+        private readonly Uri uri;
 
         /// <summary>
         /// The pagination list.
@@ -41,12 +40,12 @@
         /// </summary>
         /// <param name="pagedList">The paged list.</param>
         /// <param name="maxPageNumbersToDisplay">The maximum page numbers to display.</param>
-        /// <param name="url">The URL.</param>
-        public PaginationBuilder(IPagedList<PostViewModel> pagedList, int maxPageNumbersToDisplay, IUrlHelper url)
+        /// <param name="uri">The URI.</param>
+        public PaginationBuilder(IPagedList<PostViewModel> pagedList, int maxPageNumbersToDisplay, Uri uri)
         {
             this.pagedList = pagedList;
             this.maxPageNumbersToDisplay = maxPageNumbersToDisplay;
-            this.url = url;
+            this.uri = uri;
             this.pagination = new PaginationViewModel { Pages = new List<PaginationItemViewModel>() };
         }
 
@@ -113,11 +112,17 @@
         /// <returns>The <see cref="PaginationItemViewModel"/> of type Link.</returns>
         private PaginationItemViewModel PaginationLink(int pageNo)
         {
+            // Build the URL.
+            var uriBuilder = new UriBuilder(this.uri);
+            var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+            query["page"] = pageNo.ToString();
+            uriBuilder.Query = query.ToString();
+
             return new PaginationItemViewModel
             {
                 PageNumber = pageNo,
                 Text = pageNo.ToString(),
-                Href = this.url.Blog(pageNo)
+                Href = uriBuilder.ToString()
             };
         }
 
