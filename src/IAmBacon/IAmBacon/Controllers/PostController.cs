@@ -70,7 +70,7 @@
         /// <summary>
         /// The number of posts per page.
         /// </summary>
-        private const int PageSize = 5;
+        private const int PageSize = 10;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PostController" /> class.
