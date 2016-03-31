@@ -86,13 +86,13 @@ IF !ERRORLEVEL! NEQ 0 goto error
 IF /I "src\IAmBacon\IAmBacon\gruntfile.js" NEQ "" (
     pushd %DEPLOYMENT_TEMP%
     echo Installing Grunt packages
+    call npm install rimraf
     call npm install
     IF !ERRORLEVEL! NEQ 0 goto error
     echo Running Grunt tasks
     call grunt prod
     echo cleaning up...
-    rd node_modules Content\sass /S /Q
-    del package.json gruntfile.js
+    call rimraf node_modules Content\sass package.json gruntfile.js
     IF !ERRORLEVEL! NEQ 0 goto error
 )
 
