@@ -465,15 +465,15 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
-    <None Include="Content\sass\pages\post\landingpage.scss" />
-    <None Include="Content\sass\pages\post\post.scss" />
-    <None Include="Content\sass\pages\post\landingpage-ie.scss" />
-    <None Include="Content\sass\pages\post\post-ie.scss" />
-    <None Include="Content\sass\base\_code.scss" />
-    <None Include="Content\sass\pages\post\category.scss" />
-    <None Include="Content\sass\pages\post\category-ie.scss" />
-    <None Include="Content\sass\pages\post\tag.scss" />
-    <None Include="Content\sass\pages\post\tag-ie.scss" />
+    <Content Include="Content\sass\pages\post\landingpage.scss" />
+    <Content Include="Content\sass\pages\post\post.scss" />
+    <Content Include="Content\sass\pages\post\landingpage-ie.scss" />
+    <Content Include="Content\sass\pages\post\post-ie.scss" />
+    <Content Include="Content\sass\base\_code.scss" />
+    <Content Include="Content\sass\pages\post\category.scss" />
+    <Content Include="Content\sass\pages\post\category-ie.scss" />
+    <Content Include="Content\sass\pages\post\tag.scss" />
+    <Content Include="Content\sass\pages\post\tag-ie.scss" />
     <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\PublishToLiveFolder.pubxml" />
   </ItemGroup>
