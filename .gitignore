@@ -166,9 +166,13 @@ pip-log.txt
 ## Custom
 #############
 
-# Directories
-live
+# NDepend
+*.ndproj
+src/IAmBacon/NDependOut
+
+# Node
+/src/IAmBacon/IAmBacon/node_modules
 
 # Files
 src\IAmBacon\IAmBacon\Web.Release.config
-/src/IAmBacon/IAmBacon/node_modules
+
