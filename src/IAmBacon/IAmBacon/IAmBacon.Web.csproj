@@ -338,7 +338,7 @@
     <Content Include="Content\sass\components\_pagination.scss" />
     <Content Include="Content\sass\components\_article.scss" />
     <Content Include="Content\sass\components\_category-tag.scss" />
-    <None Include="gruntfile.js" />
+    <Content Include="gruntfile.js" />
     <Content Include="humans.txt" />
     <None Include="Areas\Admin\Views\Template\LandingPage.cshtml" />
     <None Include="Areas\Admin\Views\Template\Post.cshtml" />
@@ -474,7 +474,7 @@
     <None Include="Content\sass\pages\post\category-ie.scss" />
     <None Include="Content\sass\pages\post\tag.scss" />
     <None Include="Content\sass\pages\post\tag-ie.scss" />
-    <None Include="package.json" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\PublishToLiveFolder.pubxml" />
   </ItemGroup>
   <PropertyGroup>

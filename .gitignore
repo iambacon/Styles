@@ -173,6 +173,9 @@ src/IAmBacon/NDependOut
 # Node
 /src/IAmBacon/IAmBacon/node_modules
 
+# Folders
+src/IAmBacon/IAmBacon/Content/stylesheets
+
 # Files
 src\IAmBacon\IAmBacon\Web.Release.config
 
