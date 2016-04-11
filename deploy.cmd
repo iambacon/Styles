@@ -82,19 +82,17 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
-:: 3. Restore Grunt packages and run Grunt taks
-IF /I "src\IAmBacon\IAmBacon\gruntfile.js" NEQ "" (
-    pushd %DEPLOYMENT_TEMP%
-    echo Installing Grunt packages
-    call npm install rimraf -g
-    call npm install
-    IF !ERRORLEVEL! NEQ 0 goto error
-    echo Running Grunt tasks
-    call grunt prod
-    echo cleaning up...
-    call rimraf node_modules Content\sass package.json gruntfile.js
-    IF !ERRORLEVEL! NEQ 0 goto error
-)
+:: 3. Restore Grunt packages and run Grunt tasks
+pushd %DEPLOYMENT_TEMP%
+echo Installing Grunt packages
+call npm install rimraf -g
+call npm install
+IF !ERRORLEVEL! NEQ 0 goto error
+echo Running Grunt tasks
+call grunt prod
+echo cleaning up...
+call rimraf node_modules Content\sass package.json gruntfile.js
+IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
