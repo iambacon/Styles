@@ -22,7 +22,7 @@ $total-columns: 12;
     }
 
     @if $span == 4 {
-        &:first-child {
+        &:nth-of-type(3n+1) {
             margin-left: 0;
         }
     }
