@@ -3,17 +3,16 @@
 {
     @Styles.Render("~/bundles/tagCss")
 }
-@section iecss
-{
-    @Styles.Render("~/bundles/tagIeCss")
-}
 <div class="pageTitle">
     <div class="layoutContainer layoutContainer--visible has-triangle">
         <h1 class="pageTitle-headline pageTitle-headline--sm">Recent posts for tag '@Model.Title'</h1>
     </div>
 </div>
 <div class="layoutContainer">
-    @Html.DisplayFor(x => x.Posts)
+    <section class="pageSection co m-t--full">
+        <h2 class="visuallyHidden">Articles</h2>
+        @Html.DisplayFor(x => x.Posts)
+    </section>
     @if (Model.DisplayPagination)
     {
         @Html.Partial("_Pagination", Model.Pagination)

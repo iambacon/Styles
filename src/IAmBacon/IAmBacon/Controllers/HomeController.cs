@@ -4,11 +4,13 @@ using System.Web.Mvc;
 using IAmBacon.Attributes;
 using IAmBacon.Domain.Services.Interfaces;
 using IAmBacon.Model.Entities;
-using IAmBacon.Presentation.Extensions;
 using IAmBacon.ViewModels.Home;
 
 namespace IAmBacon.Controllers
 {
+    using IAmBacon.Presentation.Mappers;
+    using IAmBacon.ViewModels.Shared;
+
     /// <summary>
     /// The home controller.
     /// </summary>
@@ -54,32 +56,13 @@ namespace IAmBacon.Controllers
         }
 
         /// <summary>
-        /// Maps the post thumb view model.
-        /// </summary>
-        /// <param name="post">The post.</param>
-        /// <returns></returns>
-        private static PostThumbViewModel MapPostThumbViewModel(Post post)
-        {
-            return new PostThumbViewModel
-            {
-                Title = post.Title,
-                Thumbnail = post.Image.ToImageUrl(),
-                DateTime = post.DateCreated.ToDateTimeFormat(),
-                DisplayDate = post.DateCreated.ToDisplayDate(),
-                Category = post.Category.Name,
-                SeoTitle = post.SeoTitle,
-                Author = post.User.FirstName + " " + post.User.LastName,
-            };
-        }
-
-        /// <summary>
         /// Sets the blog posts.
         /// </summary>
         /// <returns>The list of post thumbs.</returns>
         private IEnumerable<PostThumbViewModel> SetBlogPosts()
         {
             return this.latestPosts != null
-                ? this.latestPosts.Select(MapPostThumbViewModel).ToList()
+                ? this.latestPosts.Select(x => x.ToViewModel()).ToList()
                 : null;
         }
 

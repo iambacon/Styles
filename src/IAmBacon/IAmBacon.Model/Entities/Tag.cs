@@ -11,8 +11,6 @@
     /// </summary>
     public class Tag : ITag
     {
-        #region Public Properties
-
         /// <summary>
         /// Gets or sets the date created.
         /// </summary>
@@ -49,7 +47,5 @@
         [Required]
         [MaxLength(255)]
         public string SeoName { get; set; }
-
-        #endregion
     }
 }

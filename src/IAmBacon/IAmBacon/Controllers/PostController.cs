@@ -10,13 +10,13 @@
     using Domain.Services.Interfaces;
     using Framework.Mvc;
 
-    using IAmBacon.Presentation.Mappers;
-    using IAmBacon.Attributes;
-    using IAmBacon.Domain.Smtp.Interfaces;
-    using IAmBacon.Domain.Utilities.Interfaces;
-    using IAmBacon.Presentation.Builders;
-    using IAmBacon.ViewModels.Post;
-    using IAmBacon.ViewModels.Shared;
+    using Presentation.Mappers;
+    using Attributes;
+    using Domain.Smtp.Interfaces;
+    using Domain.Utilities.Interfaces;
+    using Presentation.Builders;
+    using ViewModels.Post;
+    using ViewModels.Shared;
 
     using Model.Entities;
     using Models;
@@ -26,6 +26,8 @@
     using Presentation.Extensions;
     using Presentation.Helpers;
     using ViewModels;
+
+    using WebGrease.Css.Extensions;
 
     /// <summary>
     /// The post controller.
@@ -105,7 +107,7 @@
         public ActionResult Index(int page = 1)
         {
             IEnumerable<Post> postEntities = this.postService.GetAllActive().OrderByDescending(x => x.DateCreated);
-            IPagedList<PostViewModel> pagedPosts = postEntities.ToPagedViewModelList(this.Url, PageSize, page);
+            IPagedList<PostThumbViewModel> pagedPosts = postEntities.ToPagedViewModelList(this.Url, PageSize, page);
             IEnumerable<Category> categories = this.categoryService.GetAll();
             IEnumerable<Tag> tags = this.tagService.GetAll();
             List<CategoryCountViewModel> categorySummaries = this.GetCategorySummaries(postEntities, categories);
@@ -132,7 +134,7 @@
         /// <returns>The <see cref="ActionResult"/>.</returns>
         public ActionResult Category(string name, int page = 1)
         {
-            var category = this.categoryService.Get(x => x.SeoName == name).FirstOrDefault();
+            Category category = this.categoryService.Get(x => x.SeoName == name).FirstOrDefault();
 
             if (category == null)
             {
@@ -144,7 +146,13 @@
                     .Where(x => x.Active)
                     .OrderByDescending(x => x.DateCreated);
 
-            var pagedPosts = posts.ToPagedViewModelList(this.Url, PageSize, page);
+            IPagedList<PostThumbViewModel> pagedPosts = posts.ToPagedViewModelList(this.Url, PageSize, page);
+
+            foreach (var postThumbViewModel in pagedPosts)
+            {
+                postThumbViewModel.DisplayCategory = false;
+                postThumbViewModel.DisplayTags = true;
+            }
 
             var model = new PostsViewModel
             {
@@ -312,7 +320,7 @@
                 return this.RedirectToAction("Index");
             }
 
-            IPagedList<PostViewModel> pagedPosts =
+            IPagedList<PostThumbViewModel> pagedPosts =
                 tag.Posts.Where(x => x.Active)
                     .OrderByDescending(x => x.DateCreated)
                     .ToPagedViewModelList(this.Url, PageSize, page);
@@ -376,7 +384,7 @@
         /// <param name="pagedPosts">The paged posts.</param>
         /// <param name="baseUrl">The base URL.</param>
         /// <returns>The <see cref="PaginationViewModel" />.</returns>
-        private PaginationViewModel BuildPagination(IPagedList<PostViewModel> pagedPosts, string baseUrl)
+        private PaginationViewModel BuildPagination(IPagedList<PostThumbViewModel> pagedPosts, string baseUrl)
         {
             var builder = new PaginationBuilder(pagedPosts, MaxPageNumbersToDisplay, new Uri(baseUrl));
             builder.Build();

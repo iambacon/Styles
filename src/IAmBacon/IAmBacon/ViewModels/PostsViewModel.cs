@@ -4,8 +4,8 @@ using IAmBacon.ViewModels.Post;
 
 namespace IAmBacon.ViewModels
 {
-    using IAmBacon.Presentation.Extensions;
-    using IAmBacon.ViewModels.Shared;
+    using Presentation.Extensions;
+    using Shared;
 
     using PagedList;
 
@@ -72,7 +72,7 @@ namespace IAmBacon.ViewModels
         /// <summary>
         /// The paginated list of blog posts.
         /// </summary>
-        public IPagedList<PostViewModel> Posts { get; set; }
+        public IPagedList<PostThumbViewModel> Posts { get; set; }
 
         /// <summary>
         /// Gets or sets the title.

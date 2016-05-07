@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace IAmBacon.ViewModels.Home
 {
+    using IAmBacon.ViewModels.Shared;
+
     /// <summary>
     /// View model for home page.
     /// </summary>

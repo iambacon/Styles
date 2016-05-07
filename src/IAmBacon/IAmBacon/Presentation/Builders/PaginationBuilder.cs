@@ -8,6 +8,8 @@
     using PagedList;
 
     using IAmBacon.Presentation.Enumerations;
+    using IAmBacon.Presentation.Extensions;
+    using IAmBacon.ViewModels.Home;
     using IAmBacon.ViewModels.Shared;
 
     /// <summary>
@@ -23,7 +25,7 @@
         /// <summary>
         /// The paged list.
         /// </summary>
-        private readonly IPagedList<PostViewModel> pagedList;
+        private readonly IPagedList<PostThumbViewModel> pagedList;
 
         /// <summary>
         /// The URI.
@@ -41,7 +43,7 @@
         /// <param name="pagedList">The paged list.</param>
         /// <param name="maxPageNumbersToDisplay">The maximum page numbers to display.</param>
         /// <param name="uri">The URI.</param>
-        public PaginationBuilder(IPagedList<PostViewModel> pagedList, int maxPageNumbersToDisplay, Uri uri)
+        public PaginationBuilder(IPagedList<PostThumbViewModel> pagedList, int maxPageNumbersToDisplay, Uri uri)
         {
             this.pagedList = pagedList;
             this.maxPageNumbersToDisplay = maxPageNumbersToDisplay;

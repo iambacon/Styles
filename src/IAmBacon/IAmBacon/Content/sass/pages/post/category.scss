@@ -16,71 +16,21 @@
 @import "../../components/footer";
 @import "../../components/links-list",
         "../../components/pagination",
+        "../../components/page-section",
+        "../../components/tag",
+        "../../components/article",
         "../../components/page-title";
 
 // Utilities
 // ------------------------
-@import "../../utilities/colours";
-@import "../../utilities/grid";
-@import "../../utilities/typography";
-@import "../../utilities/social";
-@import "../../utilities/margin";
-
-// Old stuff
-$link-hover-colour: #63B7F6;
-// Media queries breakpoints
-$min-width-541px: 541px;
-$max-width-540px: 540px;
-
-
-$fix-media-min: false !default;
-@mixin media-min($width) {
-    @if $fix-media-min {
-        @if $fix-media-min >= $width {
-            @content;
-        }
-    }
-    @else {
-        @media screen and (min-width: rem($width)) {
-            @content;
-        }
-    }
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-        color: $link-hover-colour;
-    }
-}
-
-.link {
-    text-decoration: underline;
-}
-
-.h1 {
-    font-size: 24px !important;
-    font-size: 2.4rem !important;
-
-    margin: {
-        top: 1em;
-        bottom: 1em;
-    }
-
-    @include media-min($min-width-541px) {
-        font-size: 36px !important;
-        font-size: 3.6rem !important;
-    }
-}
-
-article p {
-    margin: {
-        top: 1em;
-        bottom: 1em;
-    }
-}
+@import "../../utilities/colours",
+        "../../utilities/grid",
+        "../../utilities/typography",
+        "../../utilities/social",
+        "../../utilities/floats",
+        "../../utilities/display",
+        "../../utilities/grid",
+        "../../utilities/margin"; // Margin must go after grid to avoid specificity problems
 
 // Page
 // ------------------------
@@ -108,6 +58,16 @@ article p {
             @include respond-to(medium-up) {
                 @include column-no-gutter(6);
             }
+        }
+    }
+
+    &-article {
+        @include respond-to(extra-small) {
+            @include column(12);
+        }
+
+        @include respond-to(small-up) {
+            @include column(6);
         }
     }
 }

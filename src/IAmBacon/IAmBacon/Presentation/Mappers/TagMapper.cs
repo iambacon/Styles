@@ -3,10 +3,10 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using IAmBacon.Framework.Mvc;
-    using IAmBacon.Model.Entities;
-    using IAmBacon.Presentation.Extensions;
-    using IAmBacon.ViewModels.Post;
+    using Framework.Mvc;
+    using Model.Entities;
+    using Extensions;
+    using ViewModels.Post;
 
     /// <summary>
     /// Mapping class to map <see cref="Tag"/> to other models.

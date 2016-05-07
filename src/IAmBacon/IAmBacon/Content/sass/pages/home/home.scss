@@ -12,13 +12,13 @@
 
 // Components
 // ------------------------
-@import
-    "../../components/header",
-    "../../components/footer",
-    "../../components/links-list",
-    "../../components/page-title",
-    "../../components/category-tag",
-    "../../components/article";
+@import "../../components/header",
+        "../../components/footer",
+        "../../components/links-list",
+        "../../components/page-title",
+        "../../components/tag",
+        "../../components/page-section",
+        "../../components/article";
 
 // Utilities
 // ------------------------
@@ -33,70 +33,58 @@
 // Page
 // ------------------------
 body {
-	@include respond-to(extra-small) {
-		@include font-size($h4-font-size);
-	}
+    @include respond-to(extra-small) {
+        @include font-size($h4-font-size);
+    }
 }
 
 .profile {
-	position: relative;
+    position: relative;
 }
 
 .profile-image {
-	height: 140px;
-	width: 140px;
-	border-radius: 100%;
-	position: absolute;
-	right: 0;
-	margin-top: -70px;
+    height: 140px;
+    width: 140px;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    margin-top: -70px;
 }
 
 .profile-desc {
-	color: $nobel;
-	padding-bottom: $base-line-height;
-	padding-top: $base-line-height;
+    color: $nobel;
+    padding-bottom: $base-line-height;
+    padding-top: $base-line-height;
 }
 
 .intro-desc {
-	@include font-size(50px);
-	@include line-height-proportional;
-	margin-bottom: $base-line-height;
-	margin-top: $base-line-height;
+    @include font-size(50px);
+    @include line-height-proportional;
+    margin-bottom: $base-line-height;
+    margin-top: $base-line-height;
 
-	@include respond-to(extra-small) {
-		@include font-size(40px * 0.67);
-	}
+    @include respond-to(extra-small) {
+        @include font-size(40px * 0.67);
+    }
 }
 
 .intro-block {
-	display: block;
-	padding-left: 5px;
+    display: block;
+    padding-left: 5px;
 }
 
 .intro-link,
 .link {
-	text-decoration: underline;
-	color: $cursive;
-}
-
-.pageSection {
-	padding-top: $base-line-height;
-	padding-bottom: $base-line-height * 3;
-}
-
-.pageSection-title {
-	color: $nobel;
-	@include h3;
-    text-transform: uppercase;
-    display:inline-block;
+    text-decoration: underline;
+    color: $cursive;
 }
 
 .g-article {
-	@include respond-to(extra-small) {
-		@include column(12);
-	}
+    @include respond-to(extra-small) {
+        @include column(12);
+    }
 
-	@include respond-to(small-up) {
-		@include column(6);
-	}
+    @include respond-to(small-up) {
+        @include column(6);
+    }
 }
