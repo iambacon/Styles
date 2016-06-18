@@ -35,37 +35,43 @@
     </header>
     <div class="layoutContainer">
         <div class="articleLayoutContainer">
+            @if (@Model.HasImage)
+            {
+                <p>
+                    <img alt="@Model.Title" src="@Model.Image" />
+                </p>
+            }
             @Model.Content
         </div>
-            <footer>
-                <address class="illStayHere container">
-                    <div class="author cf">
-                        <strong class="visuallyHidden">Author:</strong>
-                        <img class="author-image" src="~/Content/images/avatar.jpg" alt="Profile picture for Colin Bacon" />
-                        @Html.ActionLink(@Model.Author, "Index", "Home", null, new { rel = "author", @class = "author-title" })
-                        <p class="author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating compelling frontend experiences with HTML and CSS.  In his free time he can be found teaching skiing at his local slope.</p>
-                        <div class="author-links">
-                            @{Html.RenderPartial("_SocialLinks");}
-                        </div>
+        <footer>
+            <address class="illStayHere container">
+                <div class="author cf">
+                    <strong class="visuallyHidden">Author:</strong>
+                    <img class="author-image" src="~/Content/images/avatar.jpg" alt="Profile picture for Colin Bacon" />
+                    @Html.ActionLink(@Model.Author, "Index", "Home", null, new { rel = "author", @class = "author-title" })
+                    <p class="author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating compelling frontend experiences with HTML and CSS.  In his free time he can be found teaching skiing at his local slope.</p>
+                    <div class="author-links">
+                        @{Html.RenderPartial("_SocialLinks");}
                     </div>
-                </address>
-                @if (Model.DisplayTags)
-                {
-                    <section>
-                        <h4 class="textUpper inlineBlock m-r--half">Tags</h4>
-                        <ul class="listInline inlineBlock">
-                            @Html.DisplayFor(x => x.Tags)
-                        </ul>
-                    </section>
-                }
-            </footer>
-            @if (@Model.Comments.Any())
+                </div>
+            </address>
+            @if (Model.DisplayTags)
             {
-                <h2>@Model.Comments.Count() Comments</h2>
+                <section>
+                    <h4 class="textUpper inlineBlock m-r--half">Tags</h4>
+                    <ul class="listInline inlineBlock">
+                        @Html.DisplayFor(x => x.Tags)
+                    </ul>
+                </section>
+            }
+        </footer>
+        @if (@Model.Comments.Any())
+            {
+            <h2>@Model.Comments.Count() Comments</h2>
                 <ol class="comments">
                     @Html.DisplayFor(x => x.Comments)
                 </ol>
-            }
+        }
     </div>
 </article>
 @if (@Model.CommentsActive)
