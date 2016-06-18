@@ -37,9 +37,9 @@
         <div class="articleLayoutContainer">
             @if (@Model.HasImage)
             {
-                <p>
+                <figure>
                     <img alt="@Model.Title" src="@Model.Image" />
-                </p>
+                </figure>
             }
             @Model.Content
         </div>
