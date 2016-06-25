@@ -7,14 +7,6 @@
         @Styles.Render("~/bundles/postCss")
     }
 }
-@section iecss
-{
-    @if (!Model.NoCss)
-    {
-        @Styles.Render("~/bundles/postIeCss")
-    }
-}
-
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <header>
         <div class="pageTitle">

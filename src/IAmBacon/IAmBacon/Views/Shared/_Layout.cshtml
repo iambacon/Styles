@@ -13,12 +13,7 @@
     {
         @Html.Partial("_TwitterMetaTags")
     }
-    <!--[if lte IE 8]>
-        @RenderSection("iecss", false)
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
     @RenderSection("css", false)
-    <!--<![endif]-->
 </head>
 <body>
     @{Html.RenderPartial("_Header");}

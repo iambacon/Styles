@@ -401,7 +401,6 @@
     <Content Include="Content\sass\pages\home\home.scss" />
     <Content Include="Content\sass\utilities\_margin.scss" />
     <Content Include="Content\sass\utilities\_social.scss" />
-    <Content Include="Content\sass\pages\home\home-ie.scss" />
     <Content Include="Content\sass\utilities\_tables.scss" />
     <Content Include="Content\sass\utilities\_grid.scss" />
     <Content Include="Content\sass\utilities\_display.scss" />
@@ -468,8 +467,6 @@
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Content\sass\pages\post\landingpage.scss" />
     <Content Include="Content\sass\pages\post\post.scss" />
-    <Content Include="Content\sass\pages\post\landingpage-ie.scss" />
-    <Content Include="Content\sass\pages\post\post-ie.scss" />
     <Content Include="Content\sass\base\_code.scss" />
     <Content Include="Content\sass\pages\post\category.scss" />
     <Content Include="Content\sass\pages\post\tag.scss" />
