@@ -8,8 +8,6 @@
     /// </summary>
     public class RouteConfig
     {
-        #region Public Methods and Operators
-
         /// <summary>
         /// The application routes.
         /// </summary>
@@ -19,6 +17,7 @@
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.LowercaseUrls = true;
 
             routes.MapRoute(
                 "Feed",
@@ -62,7 +61,5 @@
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "IAmBacon.Controllers" });
         }
-
-        #endregion
     }
 }
