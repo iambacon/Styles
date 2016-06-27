@@ -18,6 +18,7 @@
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.LowercaseUrls = true;
+            routes.AppendTrailingSlash = false;
 
             routes.MapRoute(
                 "Feed",
