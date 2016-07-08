@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IAmBacon.Web.Tests</RootNamespace>
     <AssemblyName>IAmBacon.Web.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -147,20 +147,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IAmBacon.Domain\IAmBacon.Domain.csproj">
-      <Project>{F742ECC4-400A-4859-A055-220975DD9962}</Project>
-      <Name>IAmBacon.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IAmBacon.Model\IAmBacon.Model.csproj">
-      <Project>{683844A9-988F-4BB2-83A5-2043D499A3A2}</Project>
-      <Name>IAmBacon.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IAmBacon\IAmBacon.Web.csproj">
-      <Project>{428f9eec-af70-45e6-bcc3-a1b245198ac7}</Project>
-      <Name>IAmBacon.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -168,7 +154,20 @@
     <None Include="packages.config" />
     <Compile Include="Presentation\Extensions\PagedListExtensions.Tests.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IAmBacon.Domain\IAmBacon.Domain.csproj">
+      <Project>{f742ecc4-400a-4859-a055-220975dd9962}</Project>
+      <Name>IAmBacon.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAmBacon.Model\IAmBacon.Model.csproj">
+      <Project>{683844a9-988f-4bb2-83a5-2043d499a3a2}</Project>
+      <Name>IAmBacon.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAmBacon\IAmBacon.Web.csproj">
+      <Project>{428f9eec-af70-45e6-bcc3-a1b245198ac7}</Project>
+      <Name>IAmBacon.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
