@@ -133,6 +133,8 @@
   <ItemGroup>
     <Compile Include="Areas\Controllers\Controllers.Tests.cs" />
     <Compile Include="Areas\Controllers\BaseController.Tests.cs" />
+    <Compile Include="Attributes\NoTrailingSlashAttribute.Tests.cs" />
+    <Compile Include="Context\OnAuthorizationContext.cs" />
     <Compile Include="Context\OnActionExecutedContext.cs" />
     <Compile Include="Context\PostContext.cs" />
     <Compile Include="Controllers\HomeController.Tests.cs">
