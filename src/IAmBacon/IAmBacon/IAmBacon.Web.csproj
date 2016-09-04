@@ -204,8 +204,10 @@
     <Compile Include="Areas\Admin\ViewModels\PostsViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\LoginViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PostViewModel.cs" />
+    <Compile Include="Attributes\NoLowercaseQueryStringAttribute.cs" />
     <Compile Include="Attributes\NoTrailingSlashAttribute.cs" />
     <Compile Include="Attributes\PostTwitterMetaTagsAttribute.cs" />
+    <Compile Include="Attributes\RedirectToCanonicalUrlAttribute.cs" />
     <Compile Include="Attributes\TwitterMetaTagsAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
