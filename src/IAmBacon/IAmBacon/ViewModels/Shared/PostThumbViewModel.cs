@@ -1,7 +1,6 @@
 ﻿namespace IAmBacon.ViewModels.Shared
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Web;
 
     using Post;
@@ -42,6 +41,14 @@
         ///   <c>true</c> if [display category]; otherwise, <c>false</c>.
         /// </value>
         public bool DisplayCategory { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [display content].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [display content]; otherwise, <c>false</c>.
+        /// </value>
+        public bool DisplayContent { get; set; }
 
         /// <summary>
         /// Gets or sets the display date.

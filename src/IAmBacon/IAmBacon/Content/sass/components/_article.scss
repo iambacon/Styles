@@ -55,4 +55,13 @@
     &-image {
         border-radius: 3px;
     }
+
+    > p {
+        @include article-content;
+
+        margin: {
+            top: 1em;
+            bottom: 1em;
+        }
+    }
 }

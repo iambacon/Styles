@@ -4,12 +4,6 @@
 // --------------------------------------------------
 
 // Sets the font size.
-// Font size unit depends on value of ie-only.
 @mixin font-size($size: $base-font-size) {
-	@if $ie-only {
-		font-size: $size;
-	}
-	@else {
-		font-size: rem($size);
-	}
+    font-size: rem($size);
 }

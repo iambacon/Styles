@@ -36,12 +36,13 @@
         }
 
         /// <summary>
-        /// Maps <see cref="Post"/> to <see cref="PostThumbViewModel"/>.
+        /// Maps <see cref="Post" /> to <see cref="PostThumbViewModel" />.
         /// </summary>
-        /// <param name="post">The <see cref="Post"/>.</param>
+        /// <param name="post">The <see cref="Post" />.</param>
         /// <param name="urlHelper">The URL helper.</param>
-        /// <returns>The <see cref="PostThumbViewModel"/>.</returns>
-        public static PostThumbViewModel ToViewModel(this Post post, IUrlHelper urlHelper)
+        /// <param name="displayContent">if set to <c>true</c> [display content].</param>
+        /// <returns>The <see cref="PostThumbViewModel" />.</returns>
+        public static PostThumbViewModel ToViewModel(this Post post, IUrlHelper urlHelper, bool displayContent = false)
         {
             return new PostThumbViewModel
             {
@@ -54,7 +55,8 @@
                 Category = post.Category.Name,
                 Thumbnail = post.Image.ToImageUrl(),
                 DisplayCategory = true,
-                DisplayTags = false
+                DisplayTags = false,
+                DisplayContent = displayContent
             };
         }
 
@@ -73,6 +75,23 @@
             int pageNumber)
         {
             return posts.Select(x => x.ToViewModel(urlHelper)).ToPagedList(pageNumber, pageSize);
+        }
+
+        /// <summary>
+        /// Maps a list of <see cref="Post" /> to a paged list of <see cref="PostThumbViewModel" /> with content displayed.
+        /// </summary>
+        /// <param name="posts">The posts.</param>
+        /// <param name="urlHelper">The URL helper.</param>
+        /// <param name="pageSize">Size of the page.</param>
+        /// <param name="pageNumber">The page number.</param>
+        /// <returns></returns>
+        public static IPagedList<PostThumbViewModel> ToPagedViewModelListWithContent(
+            this IEnumerable<Post> posts,
+            IUrlHelper urlHelper,
+            int pageSize,
+            int pageNumber)
+        {
+            return posts.Select(x => x.ToViewModel(urlHelper, true)).ToPagedList(pageNumber, pageSize);
         }
     }
 }

@@ -6,6 +6,10 @@
     <h3 class="article-title">
         <a href="@Url.Post(@Model.SeoTitle)">@Model.Title</a>
     </h3>
+    @if (Model.DisplayContent)
+    {
+        @Model.Content
+    }
     <dl class="article-meta">
         @if (Model.DisplayCategory)
         {

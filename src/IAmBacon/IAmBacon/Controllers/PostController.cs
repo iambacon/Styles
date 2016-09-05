@@ -27,8 +27,6 @@
     using Presentation.Helpers;
     using ViewModels;
 
-    using WebGrease.Css.Extensions;
-
     /// <summary>
     /// The post controller.
     /// </summary>
@@ -107,7 +105,7 @@
         public ActionResult Index(int page = 1)
         {
             IEnumerable<Post> postEntities = this.postService.GetAllActive().OrderByDescending(x => x.DateCreated);
-            IPagedList<PostThumbViewModel> pagedPosts = postEntities.ToPagedViewModelList(this.Url, PageSize, page);
+            IPagedList<PostThumbViewModel> pagedPosts = postEntities.ToPagedViewModelListWithContent(this.Url, PageSize, page);
             IEnumerable<Category> categories = this.categoryService.GetAll();
             IEnumerable<Tag> tags = this.tagService.GetAll();
             List<CategoryCountViewModel> categorySummaries = this.GetCategorySummaries(postEntities, categories);
