@@ -57,8 +57,8 @@ address {
 
 // Set images to be responsive by default
 img {
-    width: 100%;
-    max-width: 100%;
+    max-width: 100%; //Set a maximum relative to the parent
+    height: auto; // Override the height to auto, otherwise images will be stretched when setting a width and height attribute on the img element.
     vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
 }
 
