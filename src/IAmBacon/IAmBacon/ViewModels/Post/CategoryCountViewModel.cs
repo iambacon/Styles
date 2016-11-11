@@ -31,10 +31,5 @@
         {
             get { return string.Format("{0}%", (int)(this.Percent * 100)); }
         }
-
-        /// <summary>
-        ///     Gets or sets the category URL.
-        /// </summary>
-        public string Url { get; set; }
     }
 }

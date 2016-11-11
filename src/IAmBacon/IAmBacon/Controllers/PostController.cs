@@ -353,7 +353,6 @@
                         {
                             Name = x.Key,
                             Count = x.Count(),
-                            Url = this.Url.Action("Category", new { name = x.Key }),
                             Percent = (double)x.Count() / categories.Count()
                         })
                     .OrderByDescending(x => x.Count)

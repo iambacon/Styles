@@ -1,6 +1,6 @@
 ﻿@model IAmBacon.ViewModels.Post.CategoryCountViewModel
 <li class="asideNav-item">
-    <a class="block" href="@Model.Url">
+    <a class="block" href="@Url.Category(Model.Name.ToSeoUrl())">
         @Model.Name <span class="asideNav-item-count">@Model.Count</span>
         <meter value="@Model.Percent">
             <span class="meter">
