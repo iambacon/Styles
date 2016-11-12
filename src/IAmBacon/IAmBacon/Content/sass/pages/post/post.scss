@@ -4,9 +4,9 @@
 
 // Base
 // ------------------------
-@import
-    "../../base/base",
-    "../../base/code";
+@import 
+        "../../base/base", 
+        "../../base/code";
 
 // Objects
 // ------------------------
@@ -14,24 +14,24 @@
 
 // Components
 // ------------------------
-@import
-    "../../components/header",
-    "../../components/footer",
-    "../../components/links-list",
-    "../../components/author",
-    "../../components/buttons",
-    "../../components/page-title";
+@import 
+        "../../components/header", 
+        "../../components/footer", 
+        "../../components/links-list", 
+        "../../components/author", 
+        "../../components/buttons", 
+        "../../components/page-title";
 
 // Utilities
 // ------------------------
-@import
-    "../../utilities/colours",
-    "../../utilities/grid",
-    "../../utilities/typography",
-    "../../utilities/social",
-    "../../utilities/floats",
-    "../../utilities/display",
-    "../../utilities/margin";
+@import 
+        "../../utilities/colours", 
+        "../../utilities/grid", 
+        "../../utilities/typography", 
+        "../../utilities/social", 
+        "../../utilities/floats", 
+        "../../utilities/display", 
+         "../../utilities/margin";
 
 // Post article styling.
 // We must style elements.
@@ -67,6 +67,22 @@ article {
         &:hover {
             text-decoration: underline;
             color: $cursive;
+        }
+    }
+
+    // This needs to be replaced with something better!
+    // Added in haste for "My desktop build" post
+    table {
+        tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
+
+        tr td:first-child {
+            width: 150px;
+        }
+
+        td {
+            padding: 5px;
         }
     }
 }
