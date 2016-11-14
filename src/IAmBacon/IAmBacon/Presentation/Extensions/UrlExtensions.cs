@@ -7,8 +7,6 @@
     /// </summary>
     public static class UrlExtensions
     {
-        #region Public Methods and Operators
-
         /// <summary>
         /// Creates a Gravatar URL.
         /// </summary>
@@ -28,9 +26,7 @@
         /// <returns></returns>
         public static string ToImageUrl(this string image)
         {
-            const string ImageUrl = "http://images.iambacon.co.uk/blog/";
-
-            return ImageUrl + image;
+            return Constants.ContentDeliveryNetwork.Images.ImageUrl + image;
         }
 
         /// <summary>
@@ -42,7 +38,5 @@
         {
             return Seo.SeoUrl(url);
         }
-
-        #endregion
     }
 }

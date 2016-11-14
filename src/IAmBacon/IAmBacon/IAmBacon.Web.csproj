@@ -198,6 +198,7 @@
     <Compile Include="Attributes\PostTwitterMetaTagsAttribute.cs" />
     <Compile Include="Attributes\RedirectToCanonicalUrlAttribute.cs" />
     <Compile Include="Attributes\TwitterMetaTagsAttribute.cs" />
+    <Compile Include="Constants\ContentDeliveryNetwork.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -487,7 +488,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49926</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49926/</IISUrl>
+          <IISUrl>https://localhost:44300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -15,7 +15,7 @@
         /// <param name="helper">The helper.</param>
         /// <param name="protocol">The protocol.</param>
         /// <returns>The URL for the blog landing page.</returns>
-        public static string Blog(this IUrlHelper helper, string protocol = "http")
+        public static string Blog(this IUrlHelper helper, string protocol = "https")
         {
             return helper.RouteUrl("BlogHome", null, protocol);
         }
@@ -27,7 +27,7 @@
         /// <param name="pageNo">The page no.</param>
         /// <param name="protocol">The protocol.</param>
         /// <returns>The blog landing page URL by the specified page no.</returns>
-        public static string Blog(this IUrlHelper helper, int pageNo, string protocol = "http")
+        public static string Blog(this IUrlHelper helper, int pageNo, string protocol = "https")
         {
             return helper.RouteUrl("BlogHome", new { page = pageNo }, protocol);
         }
@@ -39,7 +39,7 @@
         /// <param name="name">The name of the category.</param>
         /// <param name="protocol">The protocol.</param>
         /// <returns>The URL.</returns>
-        public static string Category(this IUrlHelper helper, string name, string protocol = "http")
+        public static string Category(this IUrlHelper helper, string name, string protocol = "https")
         {
             return helper.RouteUrl("Category", new { name }, protocol);
         }
@@ -52,7 +52,7 @@
         /// <param name="title">The title.</param>
         /// <param name="protocol">The protocol, such as "http" or "https".</param>
         /// <returns>The URL.</returns>
-        public static string Post(this IUrlHelper helper, string title, string protocol = "http")
+        public static string Post(this IUrlHelper helper, string title, string protocol = "https")
         {
             return helper.RouteUrl("BlogPost", new { title = title.ToSeoUrl() }, protocol);
         }
@@ -64,7 +64,7 @@
         /// <param name="name">The name of the tag.</param>
         /// <param name="protocol">The protocol.</param>
         /// <returns>The URL.</returns>
-        public static string Tag(this IUrlHelper helper, string name, string protocol = "http")
+        public static string Tag(this IUrlHelper helper, string name, string protocol = "https")
         {
             return helper.RouteUrl("Tag", new { name }, protocol);
         }

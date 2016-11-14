@@ -10,11 +10,6 @@ namespace IAmBacon.Attributes
     public class TwitterMetaTagsAttribute : ActionFilterAttribute
     {
         /// <summary>
-        /// The base URL for the image CDN.
-        /// </summary>
-        private const string BaseImageUrl = "http://images.iambacon.co.uk/blog";
-
-        /// <summary>
         /// The twitter site username.
         /// </summary>
         private const string TwitterSiteUsername = "@iambacon";
@@ -70,7 +65,7 @@ namespace IAmBacon.Attributes
                 metadata.Url = canonicalUrl;
                 metadata.Description = _description;
                 metadata.HasImage = _image != null;
-                if (_image != null) metadata.Image = string.Format("{0}/{1}", BaseImageUrl, _image);
+                if (_image != null) metadata.Image = string.Format("{0}{1}", Constants.ContentDeliveryNetwork.Images.ImageUrl, _image);
                 if (viewModel != null) metadata.MetaTitle = viewModel.PageTitle;
             }
             base.OnActionExecuted(filterContext);

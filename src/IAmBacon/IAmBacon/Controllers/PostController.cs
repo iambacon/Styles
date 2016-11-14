@@ -227,8 +227,7 @@
         {
             const string blogTitle = "I am Blog";
             const string blogDescription = "The blog feed for Colin Bacon - web developer.";
-            const string blogUrl = "http://www.iambacon.co.uk/blog";
-
+            
             // Create a collection of SyndicationItemobjects from the latest posts
             var posts = postService.GetLatest(PageSize).Select
                 (
@@ -241,7 +240,7 @@
                 );
 
             // Create an instance of SyndicationFeed class passing the SyndicationItem collection
-            var feed = new SyndicationFeed(blogTitle, blogDescription, new Uri(blogUrl), posts)
+            var feed = new SyndicationFeed(blogTitle, blogDescription, new Uri(this.Url.Blog()), posts)
             {
                 Copyright = new TextSyndicationContent(String.Format("Copyright © {0}", blogTitle)),
                 Language = "en-GB"
