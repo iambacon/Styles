@@ -14,9 +14,7 @@
         /// <returns></returns>
         public static string ToGravatarUrl(this string hash)
         {
-            const string GravatarUrl = "http://www.gravatar.com/avatar/";
-
-            return GravatarUrl + hash;
+            return Constants.ContentDeliveryNetwork.Images.GravitarUrl + hash;
         }
 
         /// <summary>
