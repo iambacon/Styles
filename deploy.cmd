@@ -82,6 +82,15 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
+:: 2a. Build test project to temporary path
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj
+IF !ERRORLEVEL! NEQ 0 goto error
+
+:: 2b. Run unit tests
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\bin\Debug\IAmBacon.Web.Tests.dll
+
+IF !ERRORLEVEL! NEQ 0 goto error
+
 :: 3. Restore Grunt packages and run Grunt tasks
 pushd %DEPLOYMENT_TEMP%
 echo Installing Grunt packages
@@ -89,9 +98,10 @@ call npm install rimraf -g
 call npm install
 IF !ERRORLEVEL! NEQ 0 goto error
 echo Running Grunt tasks
-call grunt prod
+call :ExecuteCmd grunt prod
+IF !ERRORLEVEL! NEQ 0 goto error
 echo cleaning up...
-call rimraf node_modules Content\sass package.json gruntfile.js
+call :ExecuteCmd rimraf node_modules Content\sass package.json gruntfile.js
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. KuduSync
