@@ -20,6 +20,7 @@
         "../../components/links-list", 
         "../../components/author", 
         "../../components/buttons", 
+        "../../components/article-content", 
         "../../components/page-title";
 
 // Utilities
@@ -33,14 +34,10 @@
         "../../utilities/display", 
          "../../utilities/margin";
 
-// Post article styling.
-// We must style elements.
 article {
     @include vr-line-height($factor: 1.2);
     font-size: $article-base-font-size;
 
-    h2,
-    h3,
     footer {
         margin: {
             top: $base-line-height;
@@ -48,21 +45,8 @@ article {
         }
     }
 
-    p {
-        margin: {
-            top: 1em;
-            bottom: 1em;
-        }
-    }
-
-    h2,
-    h3,
-    h4 {
-        text-transform: uppercase;
-    }
-
     a {
-        color: $cursive;
+        color: $article-link;
 
         &:hover {
             text-decoration: underline;
@@ -70,39 +54,10 @@ article {
         }
     }
 
-    // This needs to be replaced with something better!
-    // Added in haste for "My desktop build" post
-    table {
-        tr:nth-child(2n) {
-            background-color: #f8f8f8;
-        }
-
-        tr td:first-child {
-            width: 120px;
-        }
-
-        td {
-            padding: 5px;
-        }
-    }
-        
-    ul {
-        margin-left: 25px;
-
-        li {
-            position: relative;
-
-            &:before {
-                content: "";
-                position: absolute;                
-                top: 50%;
-                right: 100%;
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background-color: $cursive;                
-                margin-right: 13px;                
-            }
+    p {
+        margin: {
+            top: 1em;
+            bottom: 1em;
         }
     }
 }

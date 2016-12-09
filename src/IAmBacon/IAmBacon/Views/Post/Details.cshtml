@@ -33,7 +33,9 @@
                     <img alt="@Model.Title" src="@Model.Image" />
                 </figure>
             }
-            @Model.Content
+            <div class="articleContent">
+                @Model.Content
+            </div>
         </div>
         <footer>
             <address class="illStayHere container">
@@ -60,9 +62,9 @@
         @if (@Model.Comments.Any())
             {
             <h2>@Model.Comments.Count() Comments</h2>
-                <ol class="comments">
-                    @Html.DisplayFor(x => x.Comments)
-                </ol>
+            <ol class="comments">
+                @Html.DisplayFor(x => x.Comments)
+            </ol>
         }
     </div>
 </article>

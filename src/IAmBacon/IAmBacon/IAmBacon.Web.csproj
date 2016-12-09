@@ -399,6 +399,7 @@
     <Content Include="Content\sass\utilities\_tables.scss" />
     <Content Include="Content\sass\utilities\_grid.scss" />
     <Content Include="Content\sass\utilities\_display.scss" />
+    <Content Include="Content\sass\components\_article-content.scss" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
