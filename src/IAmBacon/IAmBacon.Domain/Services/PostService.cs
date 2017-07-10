@@ -15,8 +15,6 @@
     /// </summary>
     public class PostService : ServiceBase<Post>, IPostService
     {
-        #region Constructors and Destructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="PostService"/> class.
         /// </summary>
@@ -30,11 +28,7 @@
             : base(postRepository, unitOfWork)
         {
         }
-
-        #endregion
-
-        #region Public Methods and Operators
-
+        
         /// <summary>
         /// The save.
         /// </summary>
@@ -108,11 +102,7 @@
 
             return this.Get(x => postIdList.Contains(x.Id));
         }
-
-        #endregion
-
-        #region Methods
-
+        
         /// <summary>
         /// Transforms the markdown.
         /// </summary>
@@ -126,7 +116,5 @@
             var markdown = new Markdown();
             return markdown.Transform(markdownText);
         }
-
-        #endregion
     }
 }

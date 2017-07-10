@@ -1,7 +1,7 @@
 ﻿namespace IAmBacon.Domain.Services
 {
     using Data.Infrastructure;
-    using Interfaces;
+
     using Utilities;
     using Model.Common;
     using Model.Entities;
@@ -9,10 +9,8 @@
     /// <summary>
     /// The Tag service.
     /// </summary>
-    public class TagService : ServiceBase<Tag>, ITagService
+    public class TagService : ServiceBase<Tag>
     {
-        #region Constructors and Destructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TagService"/> class.
         /// </summary>
@@ -26,10 +24,6 @@
             : base(repository, unitOfWork)
         {
         }
-
-        #endregion
-
-        #region Public Methods and Operators
         
         /// <summary>
         /// The save method.
@@ -57,7 +51,5 @@
 
             return new Result(true);
         }
-
-        #endregion
     }
 }

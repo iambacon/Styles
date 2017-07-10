@@ -16,12 +16,10 @@
     /// </summary>
     public class PostController : BaseController
     {
-        #region Fields
-
         /// <summary>
         /// The category service.
         /// </summary>
-        private readonly ICategoryService categoryService;
+        private readonly IService<Category> categoryService;
 
         /// <summary>
         ///     The post service.
@@ -31,17 +29,13 @@
         /// <summary>
         ///     The tag service.
         /// </summary>
-        private readonly ITagService tagService;
+        private readonly IService<Tag> tagService;
 
         /// <summary>
         ///     The user service.
         /// </summary>
         private readonly IUserService userService;
-
-        #endregion
-
-        #region Constructors and Destructors
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="PostController" /> class.
         /// </summary>
@@ -50,16 +44,14 @@
         /// <param name="categoryService">The category service.</param>
         /// <param name="tagService">The tag service.</param>
         public PostController(
-            IPostService postService, IUserService userService, ICategoryService categoryService, ITagService tagService)
+            IPostService postService, IUserService userService, IService<Category> categoryService, IService<Tag> tagService)
         {
             this.postService = postService;
             this.userService = userService;
             this.categoryService = categoryService;
             this.tagService = tagService;
         }
-
-        #endregion
-
+        
         #region Public Methods and Operators
 
         /// <summary>

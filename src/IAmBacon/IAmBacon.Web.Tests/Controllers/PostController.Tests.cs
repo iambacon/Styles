@@ -114,10 +114,7 @@ namespace IAmBacon.Web.Tests.Controllers
                 TagServiceMock.Setup(x => x.GetAll()).Returns(Enumerable.Empty<Tag>);
             };
 
-            It should_display_no_categories = () =>
-                result.Model<PostsViewModel>().DisplayCategories.ShouldEqual(ExpectedResult);
-
-            private const bool ExpectedResult = false;
+            It should_display_no_categories = () => result.Model<PostsViewModel>().DisplayCategories.ShouldBeFalse();
         }
 
         [Subject("Blog posts")]

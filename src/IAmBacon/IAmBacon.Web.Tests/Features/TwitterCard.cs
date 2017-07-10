@@ -25,9 +25,9 @@ namespace IAmBacon.Web.Tests.Features
                 _expectedMetadata = new HomeViewModel
                 {
                     Site = "@iambacon",
-                    Url = "http://www.iambacon.co.uk/",
+                    Url = "https://www.iambacon.co.uk/",
                     Description = "This is the description.",
-                    Image = "http://images.iambacon.co.uk/blog/twitter-card.png",
+                    Image = "https://az720974.vo.msecnd.net/blog/twitter-card.png",
                     HasImage = true
                 };
 
@@ -47,7 +47,7 @@ namespace IAmBacon.Web.Tests.Features
                 var viewModel = viewResult.Model as HomeViewModel;
                 Assert.AreSame(viewModel.MetaTitle, viewModel.PageTitle);
                 Assert.AreSame(viewModel.Site, _expectedMetadata.Site);
-                Assert.IsTrue(viewModel.Url.Equals(_expectedMetadata.Url, StringComparison.OrdinalIgnoreCase));
+                viewModel.Url.ShouldEqual(_expectedMetadata.Url);
                 Assert.IsTrue(viewModel.Description.Equals(_expectedMetadata.Description,
                     StringComparison.OrdinalIgnoreCase));
                 Assert.IsTrue(viewModel.Image.Equals(_expectedMetadata.Image,
@@ -131,9 +131,9 @@ namespace IAmBacon.Web.Tests.Features
                 _expectedMetadata = new PostViewModel
                 {
                     Site = "@iambacon",
-                    Url = "http://www.iambacon.co.uk/",
+                    Url = "https://www.iambacon.co.uk/",
                     Description = "First paragraph",
-                    Image = "http://images.iambacon.co.uk/blog/test.png",
+                    Image = "https://az720974.vo.msecnd.net/blog/test.png",
                     HasImage = true
                 };
 
@@ -157,6 +157,7 @@ namespace IAmBacon.Web.Tests.Features
                 viewResult.ShouldNotBeNull();
 
                 var viewModel = viewResult.Model as PostViewModel;
+                viewModel.ShouldNotBeNull();
                 viewModel.MetaTitle.ShouldEqual(viewModel.PageTitle);
                 viewModel.Site.ShouldBeTheSameAs(_expectedMetadata.Site);
                 viewModel.Url.ShouldEqual(_expectedMetadata.Url);

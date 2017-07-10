@@ -9,7 +9,7 @@
     /// <summary>
     /// The Category service.
     /// </summary>
-    public class CategoryService : ServiceBase<Category>, ICategoryService
+    public class CategoryService : ServiceBase<Category>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CategoryService"/> class.
@@ -20,9 +20,7 @@
             : base(repository, unitOfWork)
         {
         }
-
-        #region Implementation of IService<Category>
-
+        
         /// <summary>
         /// The save method.
         /// </summary>
@@ -49,7 +47,5 @@
 
             return new Result(true);
         }
-
-        #endregion
     }
 }

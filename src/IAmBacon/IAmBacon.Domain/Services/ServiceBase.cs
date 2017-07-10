@@ -15,8 +15,6 @@ namespace IAmBacon.Domain.Services
     /// </typeparam>
     public abstract class ServiceBase<TEntity> : IService<TEntity> where TEntity : class
     {
-        #region Constructors and Destructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceBase{TEntity}"/> class.
         /// </summary>
@@ -26,34 +24,28 @@ namespace IAmBacon.Domain.Services
         {
             if (repository == null)
             {
-                throw new ArgumentNullException("repository");
+                throw new ArgumentNullException(nameof(repository));
             }
 
             if (unitOfWork == null)
             {
-                throw new ArgumentException("unitOfWork");
+                throw new ArgumentNullException(nameof(unitOfWork));
             }
 
             this.Repository = repository;
             this.UnitOfWork = unitOfWork;
         }
-
-        #endregion
-
-        #region Properties
-
+        
         /// <summary>
         /// Gets the repository.
         /// </summary>
-        protected IRepository<TEntity> Repository { get; private set; }
+        protected IRepository<TEntity> Repository { get; }
 
         /// <summary>
         /// Gets the unit of work.
         /// </summary>
-        protected IUnitOfWork UnitOfWork { get; private set; }
-
-        #endregion
-
+        protected IUnitOfWork UnitOfWork { get; }
+        
         /// <summary>
         /// The create method.
         /// </summary>

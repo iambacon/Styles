@@ -17,7 +17,7 @@ namespace IAmBacon.Web.Tests.Context
         Establish context = () =>
         {
             HttpRequest = new Mock<HttpRequestBase>();
-            HttpRequest.SetupGet(r => r.Url).Returns(new Uri("http://www.iambacon.co.uk"));
+            HttpRequest.SetupGet(r => r.Url).Returns(new Uri("https://www.iambacon.co.uk"));
 
             var httpContext = new Mock<HttpContextBase>();
             httpContext.SetupGet(c => c.Request).Returns(HttpRequest.Object);

@@ -11,32 +11,22 @@
     /// </summary>
     public class CategoryController : BaseController
     {
-        #region Fields
-
         /// <summary>
         /// The category service.
         /// </summary>
-        private readonly ICategoryService categoryService;
-
-        #endregion
-
-        #region Constructors and Destructors
-
+        private readonly IService<Category> categoryService;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="CategoryController"/> class.
         /// </summary>
         /// <param name="categoryService">
         /// The category service.
         /// </param>
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(IService<Category> categoryService)
         {
             this.categoryService = categoryService;
         }
-
-        #endregion
-
-        #region Public Methods and Operators
-
+        
         /// <summary>
         /// The create.
         /// </summary>
@@ -171,7 +161,5 @@
             var categories = this.categoryService.GetAll();
             return this.View(categories);
         }
-
-        #endregion
     }
 }

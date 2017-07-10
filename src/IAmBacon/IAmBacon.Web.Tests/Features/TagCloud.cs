@@ -87,7 +87,7 @@ namespace IAmBacon.Web.Tests.Features
             Because of = () => _result = PostController.Index();
 
             It should_show_a_list_of_all_the_tags = () =>
-                _result.Model<PostsViewModel>().Tags.ShouldBeOfExactType<List<TagViewModel>>();
+                _result.Model<PostsViewModel>().Tags.Count().ShouldEqual(3);
 
             It should_order_tags_alphabetically = () =>
             {

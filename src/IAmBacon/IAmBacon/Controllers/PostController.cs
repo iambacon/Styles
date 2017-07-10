@@ -13,7 +13,6 @@
     using Presentation.Mappers;
     using Attributes;
     using Domain.Smtp.Interfaces;
-    using Domain.Utilities.Interfaces;
     using Presentation.Builders;
     using ViewModels.Post;
     using ViewModels.Shared;
@@ -40,12 +39,12 @@
         /// <summary>
         /// The category service.
         /// </summary>
-        private readonly ICategoryService categoryService;
+        private readonly IService<Category> categoryService;
 
         /// <summary>
         /// The comment service.
         /// </summary>
-        private readonly ICommentService commentService;
+        private readonly IService<Comment> commentService;
 
         /// <summary>
         /// The email manager.
@@ -56,16 +55,11 @@
         /// The maximum page numbers to display for pagination.
         /// </summary>
         private const int MaxPageNumbersToDisplay = 5;
-
-        /// <summary>
-        /// The spam manager.
-        /// </summary>
-        private readonly ISpamManager spamManager;
-
+        
         /// <summary>
         /// The tag service.
         /// </summary>
-        private readonly ITagService tagService;
+        private readonly IService<Tag> tagService;
 
         /// <summary>
         /// The number of posts per page.
@@ -79,12 +73,12 @@
         /// <param name="commentService">The comment service.</param>
         /// <param name="tagService">The tag service.</param>
         /// <param name="categoryService">The category service.</param>
-        /// <param name="spamManager">The spam manager.</param>
         /// <param name="emailManager">The email manager.</param>
-        public PostController(IPostService postService, ICommentService commentService,
-            ITagService tagService,
-            ICategoryService categoryService,
-            ISpamManager spamManager,
+        public PostController(
+            IPostService postService,
+            IService<Comment> commentService,
+            IService<Tag> tagService,
+            IService<Category> categoryService,
             IEmailManager emailManager)
             : base(postService)
         {
@@ -92,7 +86,6 @@
             this.commentService = commentService;
             this.tagService = tagService;
             this.categoryService = categoryService;
-            this.spamManager = spamManager;
             this.emailManager = emailManager;
         }
 
@@ -109,7 +102,7 @@
             IEnumerable<Category> categories = this.categoryService.GetAll();
             IEnumerable<Tag> tags = this.tagService.GetAll();
             List<CategoryCountViewModel> categorySummaries = this.GetCategorySummaries(postEntities, categories);
-            IEnumerable<TagViewModel> tagViewModels = tags.ToTagViewModelList(this.Url);
+            IEnumerable<TagViewModel> tagViewModels = tags.ToTagViewModelList(this.Url).OrderBy(x => x.Name);
 
             var model = new PostsViewModel
             {
@@ -283,9 +276,9 @@
                     };
 
                     // TODO: Should this be in the comment service? Controller shouldn't have to know about it.
-                    var isActive = this.spamManager.VerifyComment(entity);
+                    ////var isActive = this.spamManager.VerifyComment(entity);
 
-                    entity.Active = isActive;
+                    ////entity.Active = isActive;
 
                     this.commentService.Create(entity);
 

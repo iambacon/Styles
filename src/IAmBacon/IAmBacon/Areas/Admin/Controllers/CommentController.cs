@@ -13,31 +13,21 @@ namespace IAmBacon.Areas.Admin.Controllers
     public class CommentController : BaseController
     {
         private const int TruncateLength = 300;
-
-        #region Fields
-
+        
         /// <summary>
         ///     The comment service.
         /// </summary>
-        private readonly ICommentService commentService;
-
-        #endregion
-
-        #region Constructors and Destructors
-
+        private readonly IService<Comment> commentService;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="CommentController" /> class.
         /// </summary>
         /// <param name="commentService">The comment service.</param>
-        public CommentController(ICommentService commentService)
+        public CommentController(IService<Comment> commentService)
         {
             this.commentService = commentService;
         }
-
-        #endregion
-
-        #region Public Methods and Operators
-
+        
         /// <summary>
         ///     Deletes the specified unique identifier.
         /// </summary>
@@ -107,11 +97,7 @@ namespace IAmBacon.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
-        #endregion
-
-        #region Private Methods
-
+        
         /// <summary>
         /// Builds the comments view model.
         /// </summary>
@@ -148,7 +134,5 @@ namespace IAmBacon.Areas.Admin.Controllers
 
             return model;
         }
-
-        #endregion
     }
 }

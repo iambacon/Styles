@@ -12,32 +12,22 @@
     /// </summary>
     public class TagController : BaseController
     {
-        #region Fields
-
         /// <summary>
         /// The tag service.
         /// </summary>
-        private readonly ITagService tagService;
-
-        #endregion
-
-        #region Constructors and Destructors
-
+        private readonly IService<Tag> tagService;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="TagController"/> class.
         /// </summary>
         /// <param name="tagService">
         /// The tag service.
         /// </param>
-        public TagController(ITagService tagService)
+        public TagController(IService<Tag> tagService)
         {
             this.tagService = tagService;
         }
-
-        #endregion
-
-        #region Public Methods and Operators
-
+        
         /// <summary>
         /// The create.
         /// </summary>
@@ -176,7 +166,5 @@
             IEnumerable<Tag> tags = this.tagService.GetAll();
             return this.View(tags);
         }
-
-        #endregion
     }
 }

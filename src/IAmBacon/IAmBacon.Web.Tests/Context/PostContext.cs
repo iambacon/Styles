@@ -2,7 +2,6 @@
 using IAmBacon.Controllers;
 using IAmBacon.Domain.Services.Interfaces;
 using IAmBacon.Domain.Smtp.Interfaces;
-using IAmBacon.Domain.Utilities.Interfaces;
 using IAmBacon.Framework.Mvc;
 using IAmBacon.Model.Entities;
 using Machine.Specifications;
@@ -25,24 +24,21 @@ namespace IAmBacon.Web.Tests.Context
 
         protected static Mock<IPostService> PostServiceMock;
 
-        private static Mock<ICommentService> commentServiceMock;
+        private static Mock<IService<Comment>> commentServiceMock;
 
-        protected static Mock<ITagService> TagServiceMock;
+        protected static Mock<IService<Tag>> TagServiceMock;
 
-        protected static Mock<ICategoryService> CategoryServiceMock;
-
-        private static Mock<ISpamManager> spamManagerMock;
-
+        protected static Mock<IService<Category>> CategoryServiceMock;
+        
         private static Mock<IEmailManager> emailManagerMock;
 
         private Establish context = () =>
         {
             Fixture = new Fixture().Customize(new AutoConfiguredMoqCustomization());
             PostServiceMock = new Mock<IPostService>();
-            commentServiceMock = new Mock<ICommentService>(MockBehavior.Strict);
-            TagServiceMock = new Mock<ITagService>(MockBehavior.Strict);
-            CategoryServiceMock = new Mock<ICategoryService>(MockBehavior.Strict);
-            spamManagerMock = new Mock<ISpamManager>(MockBehavior.Strict);
+            commentServiceMock = new Mock<IService<Comment>>(MockBehavior.Strict);
+            TagServiceMock = new Mock<IService<Tag>>(MockBehavior.Strict);
+            CategoryServiceMock = new Mock<IService<Category>>(MockBehavior.Strict);
             emailManagerMock = new Mock<IEmailManager>(MockBehavior.Strict);
 
             PostServiceMock.Setup(x => x.GetLatest(MoqIt.IsAny<int>())).Returns(new List<Post>());
@@ -61,7 +57,6 @@ namespace IAmBacon.Web.Tests.Context
                     commentServiceMock.Object,
                     TagServiceMock.Object,
                     CategoryServiceMock.Object,
-                    spamManagerMock.Object,
                     emailManagerMock.Object)
                 {
                     Url = url

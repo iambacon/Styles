@@ -1,14 +1,14 @@
 ﻿namespace IAmBacon.Domain.Services
 {
     using Data.Infrastructure;
-    using Interfaces;
+
     using Model.Common;
     using Model.Entities;
 
     /// <summary>
     /// The Comment service.
     /// </summary>
-    public class CommentService : ServiceBase<Comment>, ICommentService
+    public class CommentService : ServiceBase<Comment>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CommentService" /> class.
