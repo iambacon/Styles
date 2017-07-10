@@ -6,7 +6,6 @@ using IAmBacon.Model.Entities;
 using IAmBacon.ViewModels;
 using IAmBacon.ViewModels.Post;
 using IAmBacon.Web.Tests.Context;
-using IAmBacon.Web.Tests.Helpers;
 using Machine.Specifications;
 using Machine.Specifications.Mvc;
 using It = Machine.Specifications.It;
@@ -125,16 +124,19 @@ namespace IAmBacon.Web.Tests.Controllers
         public class When_there_are_posts : Post_controller_context
         {
             Establish context = () =>
+            {
+                var posts = new List<Post>
                 {
-                    PostServiceMock.Setup(x => x.GetAllActive()).Returns(new List<Post>());
-                    CategoryServiceMock.Setup(x => x.GetAll()).Returns(new List<Category>());
-                    TagServiceMock.Setup(x => x.GetAll()).Returns(new List<Tag>());
+                    new Post {DateCreated = DateTime.Now, Active = false, Tags = new List<Tag> {new Tag()}, Category = new Category()},
+                    new Post {DateCreated = DateTime.Now, Active = true, Tags = new List<Tag> {new Tag()}, Category = new Category()}
                 };
 
-            It should_only_display_active_posts = () =>
-                {
-                    PostServiceMock.Verify(x => x.GetAllActive());
-                };
+                PostServiceMock.Setup(x => x.GetAllActive()).Returns(posts);
+                CategoryServiceMock.Setup(x => x.GetAll()).Returns(new List<Category>());
+                TagServiceMock.Setup(x => x.GetAll()).Returns(new List<Tag>());
+            };
+
+            It should_only_display_active_posts = () => PostServiceMock.Verify(x => x.GetAllActive());
         }
     }
 }

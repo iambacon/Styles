@@ -11,11 +11,16 @@ using MoqIt = Moq.It;
 
 namespace IAmBacon.Web.Tests.Context
 {
+    using Ploeh.AutoFixture;
+    using Ploeh.AutoFixture.AutoMoq;
+
     /// <summary>
     /// Context class for the <see cref="PostController"/>.
     /// </summary>
     public class PostContext
     {
+        protected static IFixture Fixture;
+
         protected static PostController PostController;
 
         protected static Mock<IPostService> PostServiceMock;
@@ -30,8 +35,9 @@ namespace IAmBacon.Web.Tests.Context
 
         private static Mock<IEmailManager> emailManagerMock;
 
-        Establish context = () =>
+        private Establish context = () =>
         {
+            Fixture = new Fixture().Customize(new AutoConfiguredMoqCustomization());
             PostServiceMock = new Mock<IPostService>();
             commentServiceMock = new Mock<ICommentService>(MockBehavior.Strict);
             TagServiceMock = new Mock<ITagService>(MockBehavior.Strict);
@@ -41,6 +47,15 @@ namespace IAmBacon.Web.Tests.Context
 
             PostServiceMock.Setup(x => x.GetLatest(MoqIt.IsAny<int>())).Returns(new List<Post>());
 
+            IUrlHelper url = Mock.Of<IUrlHelper>();
+
+            Mock.Get(url)
+                .Setup(x => x.Action(MoqIt.IsAny<string>(), MoqIt.IsAny<object>())).Returns("http://www.iambacon.co.uk/Action");
+
+            Mock.Get(url)
+                .Setup(x => x.RouteUrl(MoqIt.IsAny<string>(), MoqIt.IsAny<object>(), MoqIt.IsAny<string>()))
+                .Returns("http://www.iambacon.co.uk/Route");
+
             PostController =
                 new PostController(PostServiceMock.Object,
                     commentServiceMock.Object,
@@ -49,9 +64,7 @@ namespace IAmBacon.Web.Tests.Context
                     spamManagerMock.Object,
                     emailManagerMock.Object)
                 {
-                    Url =
-                        Mock.Of<IUrlHelper>(
-                            x => x.Action(MoqIt.IsAny<string>(), MoqIt.IsAny<object>()) == "http://www.test.com")
+                    Url = url
                 };
         };
     }
