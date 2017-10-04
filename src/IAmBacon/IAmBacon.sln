@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web", "IAmBacon\IAmBacon.Web.csproj", "{428F9EEC-AF70-45E6-BCC3-A1B245198AC7}"
 EndProject
@@ -29,6 +29,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Application", "IAmBacon.Core.Application\IAmBacon.Core.Application.csproj", "{0A2830B8-0B11-4FF3-B88B-D9935F068CD9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Core.Application.Tests", "..\..\test\IAmBacon.Core.Application.Tests\IAmBacon.Core.Application.Tests.csproj", "{923A0F59-F043-4249-B3CD-3DF6AFF353DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Domain.Tests", "..\..\test\IAmBacon.Core.Domain.Tests\IAmBacon.Core.Domain.Tests.csproj", "{18F99930-0771-48D3-A502-29C2121C7398}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{923A0F59-F043-4249-B3CD-3DF6AFF353DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{923A0F59-F043-4249-B3CD-3DF6AFF353DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{923A0F59-F043-4249-B3CD-3DF6AFF353DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F99930-0771-48D3-A502-29C2121C7398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F99930-0771-48D3-A502-29C2121C7398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F99930-0771-48D3-A502-29C2121C7398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F99930-0771-48D3-A502-29C2121C7398}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9} = {4B10E62F-D0BA-438B-B460-DAD37476A2D6}
 		{9A14A9BC-75DA-4D87-B1FE-111961E14A66} = {4B10E62F-D0BA-438B-B460-DAD37476A2D6}
 		{923A0F59-F043-4249-B3CD-3DF6AFF353DA} = {4B10E62F-D0BA-438B-B460-DAD37476A2D6}
+		{18F99930-0771-48D3-A502-29C2121C7398} = {4B10E62F-D0BA-438B-B460-DAD37476A2D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85304508-4E13-4A55-B469-E2C5F90C3C3F}
