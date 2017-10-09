@@ -22,15 +22,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Domain", "IAmBacon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Web.Tests", "IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj", "{8CA4DCA2-8052-40D7-8E87-03FA494FB4C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Domain", "IAmBacon.Core.Domain\IAmBacon.Core.Domain.csproj", "{CB08EBBA-B815-480B-BC97-65542D70388C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Core.Domain", "IAmBacon.Core.Domain\IAmBacon.Core.Domain.csproj", "{CB08EBBA-B815-480B-BC97-65542D70388C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Domain.Tests", "IAmBacon.Domain.Tests\IAmBacon.Domain.Tests.csproj", "{9A14A9BC-75DA-4D87-B1FE-111961E14A66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Application", "IAmBacon.Core.Application\IAmBacon.Core.Application.csproj", "{0A2830B8-0B11-4FF3-B88B-D9935F068CD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Core.Application", "IAmBacon.Core.Application\IAmBacon.Core.Application.csproj", "{0A2830B8-0B11-4FF3-B88B-D9935F068CD9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Application.Tests", "..\..\test\IAmBacon.Core.Application.Tests\IAmBacon.Core.Application.Tests.csproj", "{923A0F59-F043-4249-B3CD-3DF6AFF353DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Domain.Tests", "..\..\test\IAmBacon.Core.Domain.Tests\IAmBacon.Core.Domain.Tests.csproj", "{18F99930-0771-48D3-A502-29C2121C7398}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Core.Domain.Tests", "..\..\test\IAmBacon.Core.Domain.Tests\IAmBacon.Core.Domain.Tests.csproj", "{18F99930-0771-48D3-A502-29C2121C7398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAmBacon.Core.Infrastructure", "IAmBacon.Core.Infrastructure\IAmBacon.Core.Infrastructure.csproj", "{349A40F9-3976-475B-8ABA-B89A3C8748AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAmBacon.Core.Infrastructure", "IAmBacon.Core.Infrastructure\IAmBacon.Core.Infrastructure.csproj", "{349A40F9-3976-475B-8ABA-B89A3C8748AE}"
 EndProject
