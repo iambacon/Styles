@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using IAmBacon.Core.Domain.Interfaces;
 using IAmBacon.Core.Domain.PostCategory;
 using Microsoft.EntityFrameworkCore;
