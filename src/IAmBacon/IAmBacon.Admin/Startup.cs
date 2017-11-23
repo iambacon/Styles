@@ -1,23 +1,63 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using IAmBacon.Core.Application.AutofacModules;
+using IAmBacon.Core.Infrastructure.AutofacModules;
+using IAmBacon.Core.Infrastructure.PostCategory;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IAmBacon.Admin
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
-            services.Configure<MvcOptions>(options =>
-            {
-                options.Filters.Add(new RequireHttpsAttribute());
-            });
+            services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
+
+            ////services.Configure<MvcOptions>(options =>
+            ////{
+            ////    options.Filters.Add(new RequireHttpsAttribute());
+            ////});
+
+            //configure autofac
+
+            var builder = new ContainerBuilder();
+
+            // Register dependencies, populate the services from
+            // the collection, and build the container. If you want
+            // to dispose of the container at the end of the app,
+            // be sure to keep a reference to it as a property or field.
+            //
+            // Note that Populate is basically a foreach to add things
+            // into Autofac that are in the collection. If you register
+            // things in Autofac BEFORE Populate then the stuff in the
+            // ServiceCollection can override those things; if you register
+            // AFTER Populate those registrations can override things
+            // in the ServiceCollection. Mix and match as needed.
+            builder.Populate(services);
+
+            builder.RegisterModule(new CategoryModule());
+            builder.RegisterModule(new CategoryCommandModule());
+
+            //var assembliesInAppDomain = AppDomain.CurrentDomain.GetAssemblies().ToArray();
+            //builder.RegisterAssemblyModules(assembliesInAppDomain);
+
+            return new AutofacServiceProvider(builder.Build());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,10 +68,10 @@ namespace IAmBacon.Admin
                 app.UseDeveloperExceptionPage();
             }
 
-            var options = new RewriteOptions()
-                .AddRedirectToHttps();
+            ////var options = new RewriteOptions()
+            ////    .AddRedirectToHttps();
 
-            app.UseRewriter(options);
+            ////app.UseRewriter(options);
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

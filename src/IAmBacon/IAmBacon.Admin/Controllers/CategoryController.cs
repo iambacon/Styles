@@ -16,7 +16,7 @@ namespace IAmBacon.Admin.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         [HttpPost]
@@ -31,7 +31,7 @@ namespace IAmBacon.Admin.Controllers
 
                 await _handler.HandleAsync(command);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {
