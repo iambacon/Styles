@@ -4,9 +4,9 @@ using IAmBacon.Core.Domain.PostCategory;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : ICategoryRepository
     {
-        private CategoryContext _context;
+        private readonly CategoryContext _context;
 
         public CategoryRepository(CategoryContext context)
         {
@@ -14,5 +14,10 @@ namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
         }
 
         public IUnitOfWork UnitOfWork => _context;
+
+        public void Add(Category entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
