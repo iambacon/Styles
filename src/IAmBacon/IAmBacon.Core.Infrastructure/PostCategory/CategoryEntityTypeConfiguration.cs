@@ -1,0 +1,27 @@
+﻿using System;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace IAmBacon.Core.Infrastructure.PostCategory
+{
+    public class CategoryEntityTypeConfiguration: IEntityTypeConfiguration<Category>
+    {
+        public void Configure(EntityTypeBuilder<Category> builder)
+        {
+            // May not need this but have added to be explicit
+            builder.HasKey(o => o.Id);
+
+            // This seems to be required to get properties to map but I would have thought there is a setting
+            // to do this automatically rather than specifying each column and field
+            //
+            // I've added the required and max length properties as they were on the old class
+            // as data annotations. I'm guessing I need them for when the db is created
+            // Need to test this!!
+            builder.Property<DateTime>("DateCreated").HasField("_dateCreated").IsRequired();
+            builder.Property<DateTime>("DateModified").HasField("_dateModified").IsRequired();
+            builder.Property<string>("Name").HasField("_name").IsRequired().HasMaxLength(150);
+            builder.Property<string>("SeoName").HasField("_seoName").HasMaxLength(255);
+        }
+    }
+}

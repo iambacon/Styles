@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using IAmBacon.Core.Domain.Interfaces;
-using IAmBacon.Core.Domain.PostCategory;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
+using IAmBacon.Core.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory
@@ -16,6 +16,11 @@ namespace IAmBacon.Core.Infrastructure.PostCategory
         public async Task CommitAsync()
         {
             int result = await base.SaveChangesAsync();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
         }
     }
 }

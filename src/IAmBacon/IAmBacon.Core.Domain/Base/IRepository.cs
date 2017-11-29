@@ -1,4 +1,4 @@
-﻿namespace IAmBacon.Core.Domain.Interfaces
+﻿namespace IAmBacon.Core.Domain.Base
 {
     public interface IRepository<in T> where T : IAggregateRoot
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using IAmBacon.Core.Domain.PostCategory;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.PostCategory.Commands
 {

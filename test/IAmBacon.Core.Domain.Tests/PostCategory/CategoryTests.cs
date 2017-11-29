@@ -1,5 +1,5 @@
 ﻿using System;
-using IAmBacon.Core.Domain.PostCategory;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using Machine.Specifications;
 
 namespace IAmBacon.Core.Domain.Tests.PostCategory

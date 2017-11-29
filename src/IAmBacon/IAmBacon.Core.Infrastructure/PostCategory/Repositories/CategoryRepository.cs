@@ -1,6 +1,6 @@
 ﻿using System;
-using IAmBacon.Core.Domain.Interfaces;
-using IAmBacon.Core.Domain.PostCategory;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
+using IAmBacon.Core.Domain.Base;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
 {
@@ -10,14 +10,14 @@ namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
 
         public CategoryRepository(CategoryContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public void Add(Category entity)
+        public Category Add(Category entity)
         {
-            throw new NotImplementedException();
+            return _context.Categories.Add(entity).Entity;
         }
     }
 }

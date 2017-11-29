@@ -1,8 +1,8 @@
 ﻿using System;
-using IAmBacon.Core.Domain.Interfaces;
+using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Domain.Utilities;
 
-namespace IAmBacon.Core.Domain.PostCategory
+namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
 {
     /// <summary>
     /// This is the Category Entity.
@@ -10,13 +10,11 @@ namespace IAmBacon.Core.Domain.PostCategory
     /// This is an Aggregate Root as well because it is this Entity that will added to the DB.
     /// If this Entity had child Entities they would not be Aggregate roots
     /// </summary>
-    public class Category : IAggregateRoot
+    public class Category : Entity, IAggregateRoot
     {
         private DateTime _dateCreated;
 
         private DateTime _dateModified;
-
-        private int _id;
 
         private string _name;
 

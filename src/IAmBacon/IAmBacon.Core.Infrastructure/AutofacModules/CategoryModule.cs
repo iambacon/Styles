@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using IAmBacon.Core.Domain.PostCategory;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Infrastructure.PostCategory.Repositories;
 
 namespace IAmBacon.Core.Infrastructure.AutofacModules
