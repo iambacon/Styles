@@ -2,7 +2,7 @@
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using Machine.Specifications;
 
-namespace IAmBacon.Core.Domain.Tests.PostCategory
+namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
 {
     [Subject("Category")]
     public class When_argument_null
