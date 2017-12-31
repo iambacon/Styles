@@ -1,20 +1,20 @@
 ﻿using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels;
-using IAmBacon.Core.Admin.Tests.Stubs;
+using IAmBacon.Core.Application.PostCategory.Commands;
+using IAmBacon.Core.Infrastructure.PostCategory.Repositories.Fakes;
 using Machine.Specifications;
 using Microsoft.AspNetCore.Mvc;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoMoq;
 
 namespace IAmBacon.Core.Admin.Tests.Controllers
 {
     [Subject("Category controller Create")]
     public class When_get
     {
-        Establish context = () =>
+        Establish context = () => 
         {
-            _fixture = AutoFixtureFactory.CreateOmitOnRecursionFixture().Customize(new AutoConfiguredMoqCustomization());
-            _sut = _fixture.Create<CategoryController>();
+            var repo = new CategoryRepositoryFake();
+            var handler = new CategoryCommandHandler(repo);
+            _sut = new CategoryController(handler);
         };
 
         Because of = () => _result = _sut.Create();
@@ -23,7 +23,6 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
         static CategoryController _sut;
         static IActionResult _result;
-        static IFixture _fixture;
     }
 
     [Subject("Category controller Create")]
@@ -31,8 +30,9 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     {
         Establish context = () =>
         {
-            _fixture = AutoFixtureFactory.CreateOmitOnRecursionFixture().Customize(new AutoConfiguredMoqCustomization());
-            _sut = _fixture.Create<CategoryController>();
+            var repo = new CategoryRepositoryFake();
+            var handler = new CategoryCommandHandler(repo);
+            _sut = new CategoryController(handler);
             _sut.ModelState.AddModelError("Name", "Required");
         };
 
@@ -40,10 +40,9 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
         It should_return_a_view_result = () => _result.ShouldBeOfExactType<ViewResult>();
 
-        It should_return_a_model_state_error = () => ()
+        It should_return_a_model_state_error;
 
         static CategoryController _sut;
         static IActionResult _result;
-        static IFixture _fixture;
     }
 }

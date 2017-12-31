@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="PostCategory\Repositories\" />
+    <Folder Include="PostCategory\Repositories\Fakes\" />
+    <Folder Include="Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IAmBacon.Core.Domain\IAmBacon.Core.Domain.csproj" />
