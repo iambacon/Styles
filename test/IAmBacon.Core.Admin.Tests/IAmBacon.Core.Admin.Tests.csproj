@@ -17,10 +17,4 @@
     <ProjectReference Include="..\..\src\IAmBacon\IAmBacon.Admin\IAmBacon.Admin.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Ploeh.AutoFixture.AutoMoq">
-      <HintPath>..\..\src\IAmBacon\packages\AutoFixture.AutoMoq.3.50.3\lib\net40\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
