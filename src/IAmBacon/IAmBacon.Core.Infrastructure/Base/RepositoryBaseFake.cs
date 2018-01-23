@@ -1,23 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace IAmBacon.Core.Infrastructure.Base
 {
     public class RepositoryBaseFake<T>
     {
-        private readonly HashSet<T> _data;
-
-        protected IQueryable<T> Data
-        {
-            get
-            {
-                return _data.AsQueryable();
-            }
-        }
+        protected HashSet<T> Data { get; }
 
         public RepositoryBaseFake()
         {
-            _data = new HashSet<T>();
+            Data = new HashSet<T>();
         }
     }
 }

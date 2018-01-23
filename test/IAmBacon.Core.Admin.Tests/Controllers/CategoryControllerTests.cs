@@ -1,48 +1,62 @@
 ﻿using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels;
 using IAmBacon.Core.Application.PostCategory.Commands;
+using IAmBacon.Core.Infrastructure.PostCategory.Fakes;
 using IAmBacon.Core.Infrastructure.PostCategory.Repositories.Fakes;
 using Machine.Specifications;
 using Microsoft.AspNetCore.Mvc;
+using It = Machine.Specifications.It;
 
 namespace IAmBacon.Core.Admin.Tests.Controllers
 {
     [Subject("Category controller Create")]
-    public class When_get
+    public class When_get : Category_controller_context
     {
-        Establish context = () => 
-        {
-            var repo = new CategoryRepositoryFake();
-            var handler = new CategoryCommandHandler(repo);
-            _sut = new CategoryController(handler);
-        };
+        Because of = () => Result = Sut.Create();
 
-        Because of = () => _result = _sut.Create();
-
-        It should_return_a_view_result = () => _result.ShouldBeOfExactType<ViewResult>();
-
-        static CategoryController _sut;
-        static IActionResult _result;
+        It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
     }
 
     [Subject("Category controller Create")]
-    public class When_post_and_modelState_is_invalid
+    public class When_post_and_modelState_is_invalid : Category_controller_context
     {
         Establish context = () =>
         {
-            var repo = new CategoryRepositoryFake();
-            var handler = new CategoryCommandHandler(repo);
-            _sut = new CategoryController(handler);
-            _sut.ModelState.AddModelError("Name", "Required");
+            Sut.ModelState.AddModelError("Name", "Required");
         };
 
-        Because of = async () => _result = await _sut.Create(new CreateCategoryViewModel());
+        Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel());
 
-        It should_return_a_view_result = () => _result.ShouldBeOfExactType<ViewResult>();
+        It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+    }
 
-        It should_return_a_model_state_error;
+    [Subject("Category controller Create")]
+    public class When_post_and_modelState_is_valid : Category_controller_context
+    {
+        Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel { Name = "bacon" });
 
-        static CategoryController _sut;
-        static IActionResult _result;
+        It should_return_a_redirect = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+    }
+
+    [Subject("Category controller Create")]
+    public class When_post_throws_exception : Category_controller_context
+    {
+        Because of = async () => Result = await Sut.Create(null);
+
+        It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+    }
+
+    public abstract class Category_controller_context
+    {
+        Establish context = () =>
+        {
+            var categoryContext = new CategoryContextFake();
+            var repo = new CategoryRepositoryFake(categoryContext);
+            var handler = new CategoryCommandHandler(repo);
+            Sut = new CategoryController(handler);
+        };
+
+        protected static CategoryController Sut;
+        protected static IActionResult Result;
     }
 }

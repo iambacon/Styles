@@ -1,20 +1,27 @@
-﻿using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
+﻿using System;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Infrastructure.Base;
+using IAmBacon.Core.Infrastructure.PostCategory.Fakes;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories.Fakes
 {
     public class CategoryRepositoryFake : RepositoryBaseFake<Category>, ICategoryRepository
     {
-        public CategoryRepositoryFake()
+        private readonly CategoryContextFake _context;
+
+        public CategoryRepositoryFake(CategoryContextFake context)
         {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IUnitOfWork UnitOfWork => throw new System.NotImplementedException();
+        public IUnitOfWork UnitOfWork => _context;
 
         public Category Add(Category entity)
         {
-            throw new System.NotImplementedException();
+            Data.Add(entity);
+
+            return entity;
         }
     }
 }
