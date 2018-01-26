@@ -10,40 +10,40 @@ using It = Machine.Specifications.It;
 namespace IAmBacon.Core.Admin.Tests.Controllers
 {
     [Subject("Category controller Create")]
-    public class When_get : Category_controller_context
+    public class CategoryControllerTests
     {
-        Because of = () => Result = Sut.Create();
-
-        It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
-    }
-
-    [Subject("Category controller Create")]
-    public class When_post_and_modelState_is_invalid : Category_controller_context
-    {
-        Establish context = () =>
+        public class When_get : Category_controller_context
         {
-            Sut.ModelState.AddModelError("Name", "Required");
-        };
+            Because of = () => Result = Sut.Create();
 
-        Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel());
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
 
-        It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
-    }
+        public class When_post_and_modelState_is_invalid : Category_controller_context
+        {
+            Establish context = () =>
+            {
+                Sut.ModelState.AddModelError("Name", "Required");
+            };
 
-    [Subject("Category controller Create")]
-    public class When_post_and_modelState_is_valid : Category_controller_context
-    {
-        Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel { Name = "bacon" });
+            Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel());
 
-        It should_return_a_redirect = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
-    }
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
 
-    [Subject("Category controller Create")]
-    public class When_post_throws_exception : Category_controller_context
-    {
-        Because of = async () => Result = await Sut.Create(null);
+        public class When_post_and_modelState_is_valid : Category_controller_context
+        {
+            Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel { Name = "bacon" });
 
-        It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+            It should_return_a_redirect = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+        }
+
+        public class When_post_throws_exception : Category_controller_context
+        {
+            Because of = async () => Result = await Sut.Create(null);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
     }
 
     public abstract class Category_controller_context
