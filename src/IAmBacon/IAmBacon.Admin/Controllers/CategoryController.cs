@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using IAmBacon.Admin.ViewModels;
 using IAmBacon.Core.Application.PostCategory.Commands;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,13 @@ namespace IAmBacon.Admin.Controllers
             {
                 return View(model);
             }
+        }
+
+        public IActionResult Delete(int id)
+        {
+            // Get category from db and return to view
+            // if not found go to 404 page
+            return View(new DeleteCategoryViewModel());
         }
     }
 }
