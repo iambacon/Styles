@@ -22,6 +22,7 @@ namespace IAmBacon.Core.Infrastructure.PostCategory
             builder.Property<DateTime>("DateModified").HasField("_dateModified").IsRequired();
             builder.Property<string>("Name").HasField("_name").IsRequired().HasMaxLength(150);
             builder.Property<string>("SeoName").HasField("_seoName").HasMaxLength(255);
+            builder.Property<bool>("Active").HasField("_active");
         }
     }
 }
