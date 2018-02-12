@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Infrastructure.Base;
@@ -22,6 +24,12 @@ namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories.Fakes
             Data.Add(entity);
 
             return entity;
+        }
+
+        public Task<Category> GetAsync(int categoryId)
+        {
+            var entity = Data.FirstOrDefault(x => x.Id == categoryId);
+            return Task.FromResult(entity);
         }
     }
 }

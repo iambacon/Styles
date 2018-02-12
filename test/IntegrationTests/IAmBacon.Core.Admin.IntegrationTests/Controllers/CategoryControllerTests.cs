@@ -3,6 +3,7 @@ using System.Linq;
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels;
 using IAmBacon.Core.Application.PostCategory.Commands;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using IAmBacon.Core.Infrastructure.PostCategory.Repositories;
 using Machine.Specifications;
@@ -50,6 +51,11 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
                 .Options;
 
             // need to add an item to delete
+            using (var context = new CategoryContext(_options))
+            {
+                context.Categories.Add(new Category("css"));
+                context.SaveChanges();
+            }
         };
 
         Because of = async () =>
@@ -57,15 +63,16 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
             using (var context = new CategoryContext(_options))
             using (var controller = new CategoryController(new CategoryCommandHandler(new CategoryRepository(context))))
             {
-                await controller.Delete(new CreateCategoryViewModel { Name = "css" });
+                await controller.Delete(1);
             }
         };
 
-        It should_write_to_the_db = () =>
+        It should_set_the_entity_to_inactive = () =>
         {
             using (var context = new CategoryContext(_options))
             {
-                context.Categories.Count().ShouldEqual(0);
+                var entity = context.Categories.Find(1);
+                entity.IsActive.ShouldBeFalse();
             }
         };
 

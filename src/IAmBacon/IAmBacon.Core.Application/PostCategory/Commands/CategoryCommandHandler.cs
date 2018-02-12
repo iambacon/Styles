@@ -9,7 +9,7 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
     /// The handler's job is to do repository work.
     /// </summary>
     /// <seealso cref="CreateCategoryCommand" />
-    public sealed class CategoryCommandHandler : ICommandHandler<CreateCategoryCommand>
+    public sealed class CategoryCommandHandler : ICommandHandler<CreateCategoryCommand>, ICommandHandler<DeleteCategoryCommand>
     {
         private readonly ICategoryRepository _repository;
 
@@ -23,6 +23,14 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
             var entity = new Category(command.Name);
 
             _repository.Add(entity);
+            await _repository.UnitOfWork.CommitAsync();
+        }
+
+        public async Task HandleAsync(DeleteCategoryCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+            entity.SetDeleteStatus();
+
             await _repository.UnitOfWork.CommitAsync();
         }
     }

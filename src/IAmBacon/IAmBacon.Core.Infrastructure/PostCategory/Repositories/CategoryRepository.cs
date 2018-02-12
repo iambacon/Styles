@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Domain.Base;
 
@@ -18,6 +19,12 @@ namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
         public Category Add(Category entity)
         {
             return _context.Categories.Add(entity).Entity;
+        }
+
+        public async Task<Category> GetAsync(int categoryId)
+        {
+            var category = await _context.Categories.FindAsync(categoryId);
+            return category;
         }
     }
 }
