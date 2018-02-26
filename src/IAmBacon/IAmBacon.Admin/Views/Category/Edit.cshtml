@@ -1,0 +1,18 @@
+﻿@model IAmBacon.Admin.ViewModels.EditCategoryViewModel
+
+<h1>Edit a category</h1>
+<form asp-controller="Category" asp-action="Edit" method="post">
+    <fieldset>
+        <legend>Category</legend>
+        <input asp-for="Id" type="hidden" />
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text"/>
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Active">Active</label>
+        <input asp-for="Active" type="checkbox"/>
+    </fieldset>
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</form>
+<a asp-controller="Category" asp-action="Index">Back to List</a>

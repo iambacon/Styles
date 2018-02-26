@@ -52,7 +52,7 @@ namespace IAmBacon.Admin
             builder.Populate(services);
 
             builder.RegisterModule(new CategoryModule());
-            builder.RegisterModule(new CategoryCommandModule());
+            builder.RegisterModule(new CategoryCommandModule(Configuration.GetConnectionString("BaconSqlConnection")));
 
             //var assembliesInAppDomain = AppDomain.CurrentDomain.GetAssemblies().ToArray();
             //builder.RegisterAssemblyModules(assembliesInAppDomain);
