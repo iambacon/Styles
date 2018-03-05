@@ -1,39 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using IAmBacon.Core.Application.Infrastructure;
 
 namespace IAmBacon.Core.Application.PostCategory.Queries
 {
     public class CategoryQueries : ICategoryQueries
     {
-        private readonly string _connectionString;
+        private readonly IDbConnection _connection;
 
-        public CategoryQueries(string connectionString)
+        public CategoryQueries(IDbConnectionFactory connectionFactory)
         {
-            _connectionString = !string.IsNullOrWhiteSpace(connectionString)
-                ? connectionString
-                : throw new ArgumentNullException(nameof(connectionString));
+            if (connectionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(connectionFactory));
+            }
+
+            _connection = connectionFactory.CreateDbConnection();
         }
 
         public async Task<Category> GetAsync(int id)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            var result = await _connection.QueryAsync<Category>(@"select Id, Name, Active from Categories where id=@id", new { id });
+
+            var categories = result.ToList();
+            if (categories.Count == 0)
             {
-                connection.Open();
-
-                var result = await connection.QueryAsync<Category>(@"select Id, Name, Active from Categories where id=@id", new { id });
-
-                var categories = result.ToList();
-                if (categories.Count == 0)
-                {
-                    throw new KeyNotFoundException();
-                }
-
-                return categories.First();
+                throw new KeyNotFoundException();
             }
+
+            return categories.First();
         }
     }
 }

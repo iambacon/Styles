@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using IAmBacon.Core.Application.Infrastructure;
 using IAmBacon.Core.Application.PostCategory.Commands;
 using IAmBacon.Core.Application.PostCategory.Queries;
 
@@ -16,7 +17,11 @@ namespace IAmBacon.Core.Application.AutofacModules
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(x => new CategoryQueries(QueriesConnectionString))
+            builder.Register(x => new DapperDbConnectionFactory(QueriesConnectionString))
+                .As<IDbConnectionFactory>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<CategoryQueries>()
                 .As<ICategoryQueries>()
                 .InstancePerLifetimeScope(); // No idea if this is the correct scope to use.
 
