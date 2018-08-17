@@ -6,6 +6,7 @@ using IAmBacon.Core.Infrastructure.AutofacModules;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,7 @@ namespace IAmBacon.Admin
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
 
@@ -67,6 +68,16 @@ namespace IAmBacon.Admin
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                // This needs understanding before implementing
+                // https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio#http-strict-transport-security-protocol-hsts
+                //app.UseHsts();
+            }
+
+            // I think we can just use this in 2.1 instead of the other commented out code.
+            // Need to try first
+            ////app.UseHttpsRedirection();
 
             ////var options = new RewriteOptions()
             ////    .AddRedirectToHttps();
