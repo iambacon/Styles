@@ -86,5 +86,26 @@ namespace IAmBacon.Admin.Controllers
                 return NotFound();
             }
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                var result = await _categoryQueries.GetAsync(id);
+
+                var model = new RetrieveCategoryViewModel
+                {
+                    Id = result.Id,
+                    Name = result.Name,
+                    Active = result.Active
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
     }
 }
