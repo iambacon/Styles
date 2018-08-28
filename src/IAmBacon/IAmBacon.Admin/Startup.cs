@@ -30,11 +30,6 @@ namespace IAmBacon.Admin
 
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
 
-            ////services.Configure<MvcOptions>(options =>
-            ////{
-            ////    options.Filters.Add(new RequireHttpsAttribute());
-            ////});
-
             //configure autofac
 
             var builder = new ContainerBuilder();
@@ -70,19 +65,11 @@ namespace IAmBacon.Admin
             }
             else
             {
-                // This needs understanding before implementing
                 // https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio#http-strict-transport-security-protocol-hsts
-                //app.UseHsts();
+                app.UseHsts();
             }
 
-            // I think we can just use this in 2.1 instead of the other commented out code.
-            // Need to try first
-            ////app.UseHttpsRedirection();
-
-            ////var options = new RewriteOptions()
-            ////    .AddRedirectToHttps();
-
-            ////app.UseRewriter(options);
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
