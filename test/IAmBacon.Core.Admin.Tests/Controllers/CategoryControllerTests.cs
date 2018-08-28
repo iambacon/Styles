@@ -134,6 +134,35 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
+    [Subject("Category controller Details")]
+    public class CategoryControllerDetails : Category_controller_context
+    {
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.PostCategory.Queries.Category
+                {
+                    Id = 1,
+                    Name = "css"
+                };
+
+                CategoryQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Details(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_category_does_not_exist : Category_controller_context
+        {
+            Because of = async () => Result = await Sut.Details(2);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
     public abstract class Category_controller_context
     {
         Establish context = () =>
