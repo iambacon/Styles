@@ -1,2 +1,2 @@
-﻿User-Agent: *
+User-Agent: *
 Disallow: /admin
