@@ -27,6 +27,8 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
 
             It should_set_active_to_false = () => _sut.IsActive.ShouldBeFalse();
 
+            It should_set_IsDeleted_to_false = () => _sut.IsDeleted.ShouldBeTrue();
+
             static Category _sut;
         }
     }

@@ -66,6 +66,7 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
             {
                 var entity = context.Categories.Find(1);
                 entity.IsActive.ShouldBeFalse();
+                entity.IsDeleted.ShouldBeTrue();
             }
         };
     }

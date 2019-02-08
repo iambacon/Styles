@@ -23,6 +23,9 @@ namespace IAmBacon.Core.Infrastructure.PostCategory
             builder.Property<string>("Name").HasField("_name").IsRequired().HasMaxLength(150);
             builder.Property<string>("SeoName").HasField("_seoName").HasMaxLength(255);
             builder.Property<bool>("Active").HasField("_active");
+
+            // Configure entity filters
+            builder.HasQueryFilter(c => !c.IsDeleted);
         }
     }
 }

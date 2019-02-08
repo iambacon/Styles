@@ -10,7 +10,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
     /// This is an Aggregate Root as well because it is this Entity that will added to the DB.
     /// If this Entity had child Entities they would not be Aggregate roots
     /// </summary>
-    public class Category : Entity, IAggregateRoot
+    public class Category : Entity, IAggregateRoot, IDeleteable
     {
         private DateTime _dateCreated;
 
@@ -23,6 +23,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         private bool _active;
 
         public bool IsActive => _active;
+
+        public bool IsDeleted { get; private set; }
 
         // Empty constructor required for EF to be able to create an entity object
         protected Category() { }
@@ -39,8 +41,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         public void SetDeleteStatus()
         {
             // We do not delete a category as it may be associated with a post
-            // Therefore we set the active flag to false so that it does not surface anywhere
             _active = false;
+            IsDeleted = true;
         }
     }
 }
