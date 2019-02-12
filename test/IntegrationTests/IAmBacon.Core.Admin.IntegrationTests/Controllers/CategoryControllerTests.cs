@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Http;
-using IAmBacon.Admin;
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels;
-using IAmBacon.Core.Application.Infrastructure;
 using IAmBacon.Core.Application.Infrastructure.Fakes;
 using IAmBacon.Core.Application.PostCategory.Commands;
 using IAmBacon.Core.Application.PostCategory.Queries;
@@ -64,9 +61,9 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
         {
             using (var context = new CategoryContext(Options))
             {
-                var entity = context.Categories.Find(1);
-                entity.IsActive.ShouldBeFalse();
-                entity.IsDeleted.ShouldBeTrue();
+                var category = context.Categories.IgnoreQueryFilters().First(x => x.Id == 1);
+                category.IsActive.ShouldBeFalse();
+                category.IsDeleted.ShouldBeTrue();
             }
         };
     }
