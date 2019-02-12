@@ -26,7 +26,7 @@ namespace IAmBacon.Admin
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
 
