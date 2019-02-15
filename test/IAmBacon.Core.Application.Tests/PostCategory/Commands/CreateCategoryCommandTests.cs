@@ -11,7 +11,9 @@ namespace IAmBacon.Core.Application.Tests.PostCategory.Commands
 
         It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
-        It should_be_of_type_ArgumentNullException = () => _exception.ShouldBeOfExactType<ArgumentNullException>();
+        It should_be_of_type_ArgumentNullException = () => _exception.ShouldBeOfExactType<ArgumentException>();
+
+        It should_contain_an_error_message = () => _exception.ShouldContainErrorMessage("Value cannot be null or whitespace.");
 
         static CreateCategoryCommand _sut;
         static Exception _exception;

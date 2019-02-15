@@ -8,7 +8,9 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
 
         public CreateCategoryCommand(string name)
         {
-            Name = !string.IsNullOrWhiteSpace(name)? name : throw new ArgumentNullException("{name} cannot be null or empty", nameof(name));
+            Name = !string.IsNullOrWhiteSpace(name)
+                ? name
+                : throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
         }
     }
 }
