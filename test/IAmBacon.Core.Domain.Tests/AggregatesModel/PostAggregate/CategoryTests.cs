@@ -13,7 +13,7 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
 
             It should_throw_exception = () => _exception.ShouldNotBeNull();
 
-            It should_be_of_type_ArgumentNullExeception = () => _exception.ShouldBeOfExactType<ArgumentNullException>();
+            It should_be_of_type_ArgumentNullExeception = () => _exception.ShouldBeOfExactType<ArgumentException>();
 
             static Exception _exception;
             static Category _sut;

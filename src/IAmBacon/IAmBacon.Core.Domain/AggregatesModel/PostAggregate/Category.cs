@@ -31,7 +31,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
 
         public Category(string name)
         {
-            _name = !string.IsNullOrWhiteSpace(name) ? name : throw new ArgumentNullException("{name} cannot be null or empty", nameof(_name));
+            _name = ValidateName(name);
             _seoName = Seo.Title(name);
             _dateCreated = DateTime.Now;
             _dateModified = _dateCreated;
@@ -43,6 +43,20 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             // We do not delete a category as it may be associated with a post
             _active = false;
             IsDeleted = true;
+        }
+
+        public void SetName(string name)
+        {
+            _name = ValidateName(name);
+            _seoName = Seo.Title(name);
+            _dateModified = DateTime.Now;
+        }
+
+        private string ValidateName(string name)
+        {
+            return !string.IsNullOrWhiteSpace(name)
+                ? name
+                : throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
         }
     }
 }
