@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Domain.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
 {
@@ -19,6 +20,11 @@ namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories
         public Category Add(Category entity)
         {
             return _context.Categories.Add(entity).Entity;
+        }
+
+        public void Update(Category entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public async Task<Category> GetAsync(int categoryId)

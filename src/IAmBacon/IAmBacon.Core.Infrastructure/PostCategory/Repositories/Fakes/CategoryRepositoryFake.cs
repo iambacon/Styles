@@ -26,6 +26,12 @@ namespace IAmBacon.Core.Infrastructure.PostCategory.Repositories.Fakes
             return entity;
         }
 
+        public void Update(Category entity)
+        {
+            Data.RemoveWhere(x => x.Id == entity.Id);
+            Add(entity);
+        }
+
         public Task<Category> GetAsync(int categoryId)
         {
             var entity = Data.FirstOrDefault(x => x.Id == categoryId);

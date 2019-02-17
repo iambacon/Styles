@@ -7,6 +7,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
     {
         Category Add(Category entity);
 
+        void Update(Category entity);
+
         Task<Category> GetAsync(int categoryId);
     }
 }
