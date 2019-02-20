@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using IAmBacon.Admin.ViewModels;
 using IAmBacon.Core.Application.PostCategory.Commands;
 using IAmBacon.Core.Application.PostCategory.Queries;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IAmBacon.Admin.Controllers
@@ -84,6 +85,25 @@ namespace IAmBacon.Admin.Controllers
             catch (KeyNotFoundException)
             {
                 return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditCategoryViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            try
+            {
+                var command = new UpdateCategoryCommand(model.Id, model.Name);
+                await _handler.HandleAsync(command);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 

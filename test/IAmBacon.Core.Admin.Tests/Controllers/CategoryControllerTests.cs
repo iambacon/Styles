@@ -68,6 +68,8 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             Because of = async () => Result = await Sut.Create(new CreateCategoryViewModel());
 
             It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+
+            It should_return_modelState_error = () => ((ViewResult)Result).ViewData.ModelState.ErrorCount.ShouldEqual(1);
         }
 
         public class When_post_and_modelState_is_valid : Category_controller_context
@@ -131,6 +133,35 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             Because of = async () => Result = await Sut.Edit(1);
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+
+        public class When_put_and_modelState_is_invalid : Category_controller_context
+        {
+            Establish context = () => Sut.ModelState.AddModelError("Name", "Required");
+
+            Because of = async () => Result = await Sut.Edit(new EditCategoryViewModel());
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+
+            It should_return_modelState_error = () => ((ViewResult)Result).ViewData.ModelState.ErrorCount.ShouldEqual(1);
+        }
+
+        public class When_put_and_modelState_is_valid : Category_controller_context
+        {
+            Establish context = () => Repo.Add(new Category("css"));
+
+            Because of = async () => Result = await Sut.Edit(new EditCategoryViewModel { Name = "css" });
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+        }
+
+        public class When_put_throws_exception : Category_controller_context
+        {
+            Because of = async () => Result = await Sut.Edit(new EditCategoryViewModel { Name = "css" });
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<StatusCodeResult>();
+
+            It should_return_status_code_500 = () => ((StatusCodeResult)Result).StatusCode.ShouldEqual(500);
         }
     }
 
