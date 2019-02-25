@@ -23,11 +23,11 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
         {
             Establish context = () => _sut = new Category("css");
 
-            Because of = () => _sut.SetDeleteStatus();
+            Because of = () => _sut.SetDelete(true);
 
             It should_set_active_to_false = () => _sut.IsActive.ShouldBeFalse();
 
-            It should_set_IsDeleted_to_false = () => _sut.IsDeleted.ShouldBeTrue();
+            It should_set_IsDeleted_to_false = () => _sut.Deleted.ShouldBeTrue();
 
             static Category _sut;
         }

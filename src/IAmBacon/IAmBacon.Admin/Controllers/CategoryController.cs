@@ -77,7 +77,8 @@ namespace IAmBacon.Admin.Controllers
                 {
                     Id = result.Id,
                     Name = result.Name,
-                    Active = result.Active
+                    Active = result.Active,
+                    Deleted = result.Deleted
                 };
 
                 return View(model);
@@ -96,7 +97,7 @@ namespace IAmBacon.Admin.Controllers
 
             try
             {
-                var command = new UpdateCategoryCommand(model.Id, model.Name);
+                var command = new UpdateCategoryCommand(model.Id, model.Name, model.Active, model.Deleted);
                 await _handler.HandleAsync(command);
 
                 return RedirectToAction("Index");

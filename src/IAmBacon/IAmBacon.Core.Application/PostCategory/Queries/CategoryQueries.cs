@@ -24,7 +24,8 @@ namespace IAmBacon.Core.Application.PostCategory.Queries
 
         public async Task<Category> GetAsync(int id)
         {
-            var result = await _connection.QueryAsync<Category>(@"select Id, Name, Active from Categories where id=@id", new { id });
+            var result = await _connection.QueryAsync<Category>(
+                @"select Id, Name, Active, Deleted from Categories where id=@id and Deleted=0", new {id});
 
             var categories = result.ToList();
             if (categories.Count == 0)

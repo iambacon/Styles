@@ -7,7 +7,7 @@ namespace IAmBacon.Core.Application.Tests.PostCategory.Commands
     [Subject("Update category command")]
     public class When_category_argument_null
     {
-        Because of = () => _exception = Catch.Exception(() => _sut = new UpdateCategoryCommand(0, null));
+        Because of = () => _exception = Catch.Exception(() => _sut = new UpdateCategoryCommand(0, null, true, false));
 
         It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 

@@ -20,12 +20,12 @@ namespace IAmBacon.Core.Infrastructure.PostCategory
             // Need to test this!!
             builder.Property<DateTime>("DateCreated").HasField("_dateCreated").IsRequired();
             builder.Property<DateTime>("DateModified").HasField("_dateModified").IsRequired();
-            builder.Property<string>("Name").HasField("_name").IsRequired().HasMaxLength(150);
+            builder.Property<string>("Name").IsRequired().HasMaxLength(150);
             builder.Property<string>("SeoName").HasField("_seoName").HasMaxLength(255);
             builder.Property<bool>("Active").HasField("_active");
 
             // Configure entity filters
-            builder.HasQueryFilter(c => !c.IsDeleted);
+            builder.HasQueryFilter(c => !c.Deleted);
         }
     }
 }

@@ -61,9 +61,41 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
         {
             using (var context = new CategoryContext(Options))
             {
-                var category = context.Categories.IgnoreQueryFilters().First(x => x.Id == 1);
+                var category = context.Categories.IgnoreQueryFilters().First(x => x.Name == "css");
                 category.IsActive.ShouldBeFalse();
-                category.IsDeleted.ShouldBeTrue();
+                category.Deleted.ShouldBeTrue();
+            }
+        };
+    }
+
+    [Subject("Category controller - Update")]
+    public class When_updating_a_category : Category_controller_command_context
+    {
+        Establish context = () =>
+        {
+            using (var context = new CategoryContext(Options))
+            {
+                context.Categories.Add(new Category("css"));
+                context.SaveChanges();
+            }
+        };
+
+        Because of = async () =>
+        {
+            using (var context = new CategoryContext(Options))
+            using (Sut = new CategoryController(new CategoryCommandHandler(new CategoryRepository(context)), CategoryQueries))
+            {
+                await Sut.Edit(new EditCategoryViewModel { Name = "sass" });
+            }
+        };
+
+        It should_update_the_category_name = async () =>
+        {
+            using (var context = new CategoryContext(Options))
+            {
+                var category = await context.Categories.FindAsync(1);
+                category.ShouldNotBeNull();
+                category.Name.ShouldBeTheSameAs("sass");
             }
         };
     }

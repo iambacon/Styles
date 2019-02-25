@@ -3,6 +3,6 @@
     // https://www.ryansouthgate.com/2019/01/07/entity-framework-core-soft-delete/
     public interface IDeleteable
     {
-        bool IsDeleted { get; }
+        bool Deleted { get; }
     }
 }

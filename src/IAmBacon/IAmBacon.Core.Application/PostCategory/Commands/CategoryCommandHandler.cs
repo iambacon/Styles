@@ -30,7 +30,7 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
         public async Task HandleAsync(DeleteCategoryCommand command)
         {
             var entity = await _repository.GetAsync(command.Id);
-            entity.SetDeleteStatus();
+            entity.SetDelete(true);
 
             await _repository.UnitOfWork.CommitAsync();
         }
@@ -38,7 +38,15 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
         public async Task HandleAsync(UpdateCategoryCommand command)
         {
             var entity = await _repository.GetAsync(command.Id);
+
+            if (entity is null)
+            {
+                throw new NullReferenceException("Category cound not be found");
+            }
+
             entity.SetName(command.Name);
+            entity.SetActive(command.Active);
+            entity.SetDelete(command.Deleted);
 
             await _repository.UnitOfWork.CommitAsync();
         }
