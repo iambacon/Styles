@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using IAmBacon.Core.Application.Base;
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.PostCategory.Commands

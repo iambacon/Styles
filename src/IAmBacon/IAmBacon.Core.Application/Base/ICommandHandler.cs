@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace IAmBacon.Core.Application.PostCategory.Commands
+namespace IAmBacon.Core.Application.Base
 {
     internal interface ICommandHandler<in TCommand> where TCommand : class
     {
