@@ -19,7 +19,7 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             static Category _sut;
         }
 
-        public class SetDeleteStatus
+        public class SetDelete
         {
             Establish context = () => _sut = new Category("css");
 
@@ -30,6 +30,28 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             It should_set_IsDeleted_to_false = () => _sut.Deleted.ShouldBeTrue();
 
             static Category _sut;
+        }
+
+        public class SetName
+        {
+            Establish context = () => _sut = new Category("css");
+
+            Because of = () => _sut.SetName("sass");
+
+            It should_set_property = () => _sut.Name.ShouldEqual("sass");
+
+            static  Category _sut;
+        }
+
+        public class SetActive
+        {
+            Establish context = () => _sut = new Category("css");
+
+            Because of = () => _sut.SetActive(false);
+
+            It should_set_property = () => _sut.IsActive.ShouldBeFalse();
+
+            static  Category _sut;
         }
     }
 }
