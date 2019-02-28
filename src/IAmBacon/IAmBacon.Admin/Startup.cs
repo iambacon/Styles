@@ -4,6 +4,7 @@ using Autofac.Extensions.DependencyInjection;
 using IAmBacon.Core.Application.AutofacModules;
 using IAmBacon.Core.Infrastructure.AutofacModules;
 using IAmBacon.Core.Infrastructure.PostCategory;
+using IAmBacon.Core.Infrastructure.PostTag;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,7 @@ namespace IAmBacon.Admin
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
+            services.AddDbContext<TagContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
 
             //configure autofac
 
@@ -49,6 +51,8 @@ namespace IAmBacon.Admin
 
             builder.RegisterModule(new CategoryModule());
             builder.RegisterModule(new CategoryCommandModule(Configuration.GetConnectionString("BaconSqlConnection")));
+            builder.RegisterModule(new TagModule());
+            builder.RegisterModule(new TagCommandModule());
 
             //var assembliesInAppDomain = AppDomain.CurrentDomain.GetAssemblies().ToArray();
             //builder.RegisterAssemblyModules(assembliesInAppDomain);
