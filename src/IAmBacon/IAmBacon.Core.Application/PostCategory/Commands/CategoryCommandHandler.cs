@@ -49,6 +49,8 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
             entity.SetActive(command.Active);
             entity.SetDelete(command.Deleted);
 
+            _repository.Update(entity);
+
             await _repository.UnitOfWork.CommitAsync();
         }
     }
