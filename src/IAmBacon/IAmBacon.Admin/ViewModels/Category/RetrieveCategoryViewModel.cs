@@ -1,4 +1,4 @@
-﻿namespace IAmBacon.Admin.ViewModels
+﻿namespace IAmBacon.Admin.ViewModels.Category
 {
     public class RetrieveCategoryViewModel
     {
@@ -6,6 +6,6 @@
 
         public int Id { get; set; }
 
-        public string Name { get; set; }       
+        public string Name { get; set; }
     }
 }

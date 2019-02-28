@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IAmBacon.Admin.ViewModels;
+using IAmBacon.Admin.ViewModels.Category;
 using IAmBacon.Core.Application.PostCategory.Commands;
 using IAmBacon.Core.Application.PostCategory.Queries;
 using Microsoft.AspNetCore.Http;

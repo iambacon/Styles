@@ -1,6 +1,7 @@
 ﻿using System;
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels;
+using IAmBacon.Admin.ViewModels.Category;
 using IAmBacon.Core.Application.PostCategory.Commands;
 using IAmBacon.Core.Application.PostCategory.Queries.Fakes;
 using IAmBacon.Core.Infrastructure.PostCategory.Fakes;

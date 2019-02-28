@@ -1,4 +1,4 @@
-﻿namespace IAmBacon.Admin.ViewModels
+﻿namespace IAmBacon.Admin.ViewModels.Category
 {
     public class DeleteCategoryViewModel
     {
