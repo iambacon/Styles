@@ -6,11 +6,18 @@ namespace IAmBacon.Core.Infrastructure.PostTag.Repositories
 {
     public class TagRepository : ITagRepository
     {
-        public IUnitOfWork UnitOfWork { get; }
+        private readonly TagContext _context;
+
+        public TagRepository(TagContext context)
+        {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        public IUnitOfWork UnitOfWork => _context;
 
         public Tag Add(Tag entity)
         {
-            throw new NotImplementedException();
+            return _context.Tags.Add(entity).Entity;
         }
     }
 }
