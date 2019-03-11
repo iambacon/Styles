@@ -17,4 +17,9 @@
     <ProjectReference Include="..\..\src\IAmBacon\IAmBacon.Core.Application\IAmBacon.Core.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PostTag\" />
+    <Folder Include="PostTag\Commands\" />
+    <Folder Include="PostTag\Queries\" />
+  </ItemGroup>
 </Project>

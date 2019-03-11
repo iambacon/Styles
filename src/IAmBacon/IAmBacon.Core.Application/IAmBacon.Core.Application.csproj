@@ -13,4 +13,8 @@
     <ProjectReference Include="..\IAmBacon.Core.Domain\IAmBacon.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PostTag\Queries\" />
+    <Folder Include="PostTag\Queries\Fakes\" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using IAmBacon.Admin.ViewModels.Tag;
 using IAmBacon.Core.Application.PostTag.Commands;
+using IAmBacon.Core.Application.PostTag.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IAmBacon.Admin.Controllers
@@ -9,10 +11,12 @@ namespace IAmBacon.Admin.Controllers
     public class TagController : Controller
     {
         private readonly TagCommandHandler _handler;
+        private readonly ITagQueries _tagQueries;
 
-        public TagController(TagCommandHandler handler)
+        public TagController(TagCommandHandler handler, ITagQueries tagQueries)
         {
             _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+            _tagQueries = tagQueries ?? throw new ArgumentNullException(nameof(tagQueries));
         }
 
         public IActionResult Index()
@@ -41,6 +45,27 @@ namespace IAmBacon.Admin.Controllers
             catch
             {
                 return View(model);
+            }
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                var result = await _tagQueries.GetAsync(id);
+
+                var model = new RetrieveTagViewModel
+                {
+                    Id = result.Id,
+                    Name = result.Name,
+                    Active = result.Active
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
             }
         }
     }

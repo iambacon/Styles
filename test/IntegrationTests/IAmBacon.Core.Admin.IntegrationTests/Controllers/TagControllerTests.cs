@@ -2,7 +2,10 @@
 using System.Linq;
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.Tag;
+using IAmBacon.Core.Application.Infrastructure.Fakes;
 using IAmBacon.Core.Application.PostTag.Commands;
+using IAmBacon.Core.Application.PostTag.Queries;
+using IAmBacon.Core.Application.PostTag.Queries.Fakes;
 using IAmBacon.Core.Infrastructure.PostTag;
 using IAmBacon.Core.Infrastructure.PostTag.Repositories;
 using Machine.Specifications;
@@ -17,7 +20,7 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
         Because of = async () =>
         {
             using (var context = new TagContext(Options))
-            using (Sut = new TagController(new TagCommandHandler(new TagRepository(context))))
+            using (Sut = new TagController(new TagCommandHandler(new TagRepository(context)), TagQueries))
             {
                 await Sut.Create(new CreateTagViewModel { Name = "mvc" });
             }
@@ -34,17 +37,20 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
 
     public abstract class Tag_controller_command_context
     {
-        Establish context = () =>
+        private Establish context = () =>
         {
             Options = new DbContextOptionsBuilder<TagContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
             Config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+
+            TagQueries = new TagQueries(new DapperDbConnectionFactoryFake());
         };
 
         protected static TagController Sut;
         protected static DbContextOptions<TagContext> Options;
         protected static IConfigurationRoot Config;
+        protected static ITagQueries TagQueries;
     }
 }

@@ -2,6 +2,7 @@
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.Tag;
 using IAmBacon.Core.Application.PostTag.Commands;
+using IAmBacon.Core.Application.PostTag.Queries.Fakes;
 using IAmBacon.Core.Infrastructure.PostTag.Fakes;
 using IAmBacon.Core.Infrastructure.PostTag.Repositories.Fakes;
 using Machine.Specifications;
@@ -14,7 +15,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     {
         public class When_handler_argument_null
         {
-            Because of = () => _exception = Catch.Exception(() => _sut = new TagController(null));
+            Because of = () => _exception = Catch.Exception(() => _sut = new TagController(null, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -22,6 +23,26 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             static TagController _sut;
             static Exception _exception;
+        }
+
+        public class When_tagQueries_argument_null
+        {
+            Establish context = () =>
+            {
+                var categoryContext = new TagContextFake();
+                var repo = new TagRepositoryFake(categoryContext);
+                _handler = new TagCommandHandler(repo);
+            };
+
+            Because of = () => _exception = Catch.Exception(() => _sut = new TagController(_handler, null));
+
+            It should_throw_an_exception = () => _exception.ShouldNotBeNull();
+
+            It should_be_of_type_ArgumentNullException = () => _exception.ShouldBeOfExactType<ArgumentNullException>();
+
+            static TagController _sut;
+            static Exception _exception;
+            static TagCommandHandler _handler;
         }
     }
 
@@ -57,6 +78,35 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
+    [Subject ("Tag controller Details")]
+    public class TagControllerDetails : Tag_controller_context
+    {
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.PostTag.Queries.Tag
+                {
+                    Id = 1,
+                    Name = "css"
+                };
+
+                TagQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Details(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_tag_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Details(2);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
     public abstract class Tag_controller_context
     {
         Establish context = () =>
@@ -64,12 +114,14 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             var tagContext = new TagContextFake();
             Repo = new TagRepositoryFake(tagContext);
             var handler = new TagCommandHandler(Repo);
+            TagQueries = new TagQueriesFake();
 
-            Sut = new TagController(handler);
+            Sut = new TagController(handler, TagQueries);
         };
 
         protected static TagController Sut;
         protected static IActionResult Result;
         protected static TagRepositoryFake Repo;
+        protected static TagQueriesFake TagQueries;
     }
 }
