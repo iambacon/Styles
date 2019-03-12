@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Infrastructure.Base;
@@ -22,6 +24,18 @@ namespace IAmBacon.Core.Infrastructure.PostTag.Repositories.Fakes
             Data.Add(entity);
 
             return entity;
+        }
+
+        public void Update(Tag entity)
+        {
+            Data.RemoveWhere(x => x.Id == entity.Id);
+            Add(entity);
+        }
+
+        public Task<Tag> GetAsync(int tagId)
+        {
+            var entity = Data.FirstOrDefault(x => x.Id == tagId);
+            return Task.FromResult(entity);
         }
     }
 }

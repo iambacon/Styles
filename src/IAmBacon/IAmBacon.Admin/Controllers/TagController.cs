@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using IAmBacon.Admin.ViewModels.Tag;
 using IAmBacon.Core.Application.PostTag.Commands;
 using IAmBacon.Core.Application.PostTag.Queries;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IAmBacon.Admin.Controllers
@@ -45,6 +46,47 @@ namespace IAmBacon.Admin.Controllers
             catch
             {
                 return View(model);
+            }
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            try
+            {
+                var result = await _tagQueries.GetAsync(id);
+
+                var model = new EditTagViewModel
+                {
+                    Id = result.Id,
+                    Name = result.Name,
+                    Active = result.Active,
+                    Deleted = result.Deleted
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditTagViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            try
+            {
+                var command = new UpdateTagCommand(model.Id, model.Name, model.Active, model.Deleted);
+                await _handler.HandleAsync(command);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 

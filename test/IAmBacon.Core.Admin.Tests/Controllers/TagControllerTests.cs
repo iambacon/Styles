@@ -3,6 +3,7 @@ using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.Tag;
 using IAmBacon.Core.Application.PostTag.Commands;
 using IAmBacon.Core.Application.PostTag.Queries.Fakes;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Infrastructure.PostTag.Fakes;
 using IAmBacon.Core.Infrastructure.PostTag.Repositories.Fakes;
 using Machine.Specifications;
@@ -78,7 +79,66 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
-    [Subject ("Tag controller Details")]
+
+    [Subject("Tag controller Edit")]
+    public class TagControllerEdit : Tag_controller_context
+    {
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.PostTag.Queries.Tag
+                {
+                    Id = 1,
+                    Name = "css"
+                };
+
+                TagQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_tag_does_not_exist : Tag_controller_context
+        {
+            Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+
+        public class When_post_and_modelState_is_invalid : Tag_controller_context
+        {
+            Establish context = () => Sut.ModelState.AddModelError("Name", "Required");
+
+            Because of = async () => Result = await Sut.Edit(new EditTagViewModel());
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+
+            It should_return_modelState_error = () => ((ViewResult)Result).ViewData.ModelState.ErrorCount.ShouldEqual(1);
+        }
+
+        public class When_post_and_modelState_is_valid : Tag_controller_context
+        {
+            Establish context = () => Repo.Add(new Tag("css"));
+
+            Because of = async () => Result = await Sut.Edit(new EditTagViewModel { Name = "css" });
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+        }
+
+        public class When_post_throws_exception : Tag_controller_context
+        {
+            Because of = async () => Result = await Sut.Edit(new EditTagViewModel { Name = "css" });
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<StatusCodeResult>();
+
+            It should_return_status_code_500 = () => ((StatusCodeResult)Result).StatusCode.ShouldEqual(500);
+        }
+    }
+
+    [Subject("Tag controller Details")]
     public class TagControllerDetails : Tag_controller_context
     {
         public class When_get

@@ -5,7 +5,7 @@ using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.PostTag.Commands
 {
-    public class TagCommandHandler : ICommandHandler<CreateTagCommand>
+    public class TagCommandHandler : ICommandHandler<CreateTagCommand>, ICommandHandler<UpdateTagCommand>
     {
         private readonly ITagRepository _repository;
 
@@ -19,6 +19,24 @@ namespace IAmBacon.Core.Application.PostTag.Commands
             var entity = new Tag(command.Name);
 
             _repository.Add(entity);
+            await _repository.UnitOfWork.CommitAsync();
+        }
+
+        public async Task HandleAsync(UpdateTagCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+
+            if (entity is null)
+            {
+                throw new NullReferenceException("Tag cound not be found");
+            }
+
+            entity.SetName(command.Name);
+            entity.SetActive(command.Active);
+            entity.SetDelete(command.Deleted);
+
+            _repository.Update(entity);
+
             await _repository.UnitOfWork.CommitAsync();
         }
     }

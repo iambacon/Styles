@@ -38,6 +38,29 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             _active = true;
         }
 
+        public void SetDelete(bool status)
+        {
+            // We do not delete a tag as it may be associated with a post
+            Deleted = status;
+
+            if (Deleted)
+            {
+                _active = false;
+            }
+        }
+
+        public void SetName(string name)
+        {
+            Name = ValidateName(name);
+            _seoName = Seo.Title(name);
+            _dateModified = DateTime.Now;
+        }
+
+        public void SetActive(bool status)
+        {
+            _active = status;
+        }
+
         private string ValidateName(string name)
         {
             return !string.IsNullOrWhiteSpace(name)

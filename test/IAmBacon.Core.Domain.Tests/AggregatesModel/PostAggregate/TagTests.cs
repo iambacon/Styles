@@ -18,5 +18,40 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             static Exception _exception;
             static Tag _sut;
         }
+
+        public class SetDelete
+        {
+            Establish context = () => _sut = new Tag("css");
+
+            Because of = () => _sut.SetDelete(true);
+
+            It should_set_active_to_false = () => _sut.IsActive.ShouldBeFalse();
+
+            It should_set_IsDeleted_to_false = () => _sut.Deleted.ShouldBeTrue();
+
+            static Tag _sut;
+        }
+
+        public class SetName
+        {
+            Establish context = () => _sut = new Tag("css");
+
+            Because of = () => _sut.SetName("sass");
+
+            It should_set_property = () => _sut.Name.ShouldEqual("sass");
+
+            static Tag _sut;
+        }
+
+        public class SetActive
+        {
+            Establish context = () => _sut = new Tag("css");
+
+            Because of = () => _sut.SetActive(false);
+
+            It should_set_property = () => _sut.IsActive.ShouldBeFalse();
+
+            static Tag _sut;
+        }
     }
 }
