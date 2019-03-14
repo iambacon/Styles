@@ -67,6 +67,40 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
         };
     }
 
+    [Subject("Category controller - Delete")]
+    public class When_deleting_a_tag : Tag_controller_command_context
+    {
+        Establish context = () =>
+        {
+            // need to add an item to delete
+            using (var context = new TagContext(Options))
+            {
+                context.Tags.Add(new Tag("css"));
+                context.SaveChanges();
+            }
+        };
+
+        Because of = async () =>
+        {
+            using (var context = new TagContext(Options))
+            using (Sut = new TagController(new TagCommandHandler(new TagRepository(context)), TagQueries))
+            {
+                await Sut.Delete(1);
+            }
+        };
+
+        It should_set_the_entity_to_inactive = () =>
+        {
+            using (var context = new TagContext(Options))
+            {
+                var category = context.Tags.IgnoreQueryFilters().First(x => x.Name == "css");
+                category.IsActive.ShouldBeFalse();
+                category.Deleted.ShouldBeTrue();
+            }
+        };
+    }
+
+
     public abstract class Tag_controller_command_context
     {
         Establish context = () =>

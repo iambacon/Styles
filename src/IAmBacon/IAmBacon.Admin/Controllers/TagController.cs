@@ -110,5 +110,41 @@ namespace IAmBacon.Admin.Controllers
                 return NotFound();
             }
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var result = await _tagQueries.GetAsync(id);
+
+                var model = new DeleteTagViewModel
+                {
+                    Name = result.Name
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeleteTagViewModel model)
+        {
+            try
+            {
+                var command = new DeleteTagCommand(model.Id);
+                await _handler.HandleAsync(command);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

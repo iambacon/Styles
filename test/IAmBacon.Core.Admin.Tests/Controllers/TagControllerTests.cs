@@ -30,8 +30,8 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         {
             Establish context = () =>
             {
-                var categoryContext = new TagContextFake();
-                var repo = new TagRepositoryFake(categoryContext);
+                var tagContext = new TagContextFake();
+                var repo = new TagRepositoryFake(tagContext);
                 _handler = new TagCommandHandler(repo);
             };
 
@@ -164,6 +164,51 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             Because of = async () => Result = await Sut.Details(2);
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
+    [Subject("Tag controller Delete")]
+    public class TagControllerDelete : Tag_controller_context
+    {
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.PostTag.Queries.Tag
+                {
+                    Id = 1,
+                    Name = "css"
+                };
+
+                TagQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Delete(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_tag_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Delete(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+
+        public class When_post_and_tag_delete_successful
+        {
+            Establish context = () => Repo.Add(new Tag("css"));
+
+            Because of = async () => Result = await Sut.Delete(new DeleteTagViewModel { Id = 0, Name = "css" });
+
+            It should_redirect_to_the_tag_page = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+        }
+
+        public class When_post_and_tag_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Delete(new DeleteTagViewModel { Id = 1, Name = "css" });
+
+            It should_return_bad_request = () => Result.ShouldBeOfExactType<BadRequestResult>();
         }
     }
 

@@ -5,7 +5,7 @@ using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.PostTag.Commands
 {
-    public class TagCommandHandler : ICommandHandler<CreateTagCommand>, ICommandHandler<UpdateTagCommand>
+    public class TagCommandHandler : ICommandHandler<CreateTagCommand>, ICommandHandler<UpdateTagCommand>, ICommandHandler<DeleteTagCommand>
     {
         private readonly ITagRepository _repository;
 
@@ -36,6 +36,14 @@ namespace IAmBacon.Core.Application.PostTag.Commands
             entity.SetDelete(command.Deleted);
 
             _repository.Update(entity);
+
+            await _repository.UnitOfWork.CommitAsync();
+        }
+
+        public async Task HandleAsync(DeleteTagCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+            entity.SetDelete(true);
 
             await _repository.UnitOfWork.CommitAsync();
         }
