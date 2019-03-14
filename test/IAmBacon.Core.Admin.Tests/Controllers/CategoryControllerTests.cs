@@ -89,20 +89,44 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     }
 
     [Subject("Category controller Delete")]
-    public class CategoryControllerDelete
+    public class CategoryControllerDelete : Category_controller_context
     {
-        public class When_category_delete_successful : Category_controller_context
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.PostCategory.Queries.Category
+                {
+                    Id = 1,
+                    Name = "css"
+                };
+
+                CategoryQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Delete(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_tag_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Delete(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+        public class When_post_and_category_delete_successful
         {
             Establish context = () => Repo.Add(new Category("css"));
 
-            Because of = async () => Result = await Sut.Delete(0);
+            Because of = async () => Result = await Sut.Delete(new DeleteCategoryViewModel { Id = 0 });
 
             It should_redirect_to_the_category_page = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
         }
 
-        public class When_category_does_not_exist : Category_controller_context
+        public class When_post_and_category_does_not_exist
         {
-            Because of = async () => Result = await Sut.Delete(0);
+            Because of = async () => Result = await Sut.Delete(new DeleteCategoryViewModel { Id = 0 });
 
             It should_return_bad_request = () => Result.ShouldBeOfExactType<BadRequestResult>();
         }

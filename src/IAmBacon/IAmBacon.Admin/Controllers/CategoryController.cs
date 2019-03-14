@@ -50,13 +50,33 @@ namespace IAmBacon.Admin.Controllers
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var command = new DeleteCategoryCommand(id);
+                var result = await _categoryQueries.GetAsync(id);
+
+                var model = new DeleteCategoryViewModel
+                {
+                    Id = result.Id,
+                    Name = result.Name
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeleteCategoryViewModel model)
+        {
+            try
+            {
+                var command = new DeleteCategoryCommand(model.Id);
                 await _handler.HandleAsync(command);
             }
             catch
