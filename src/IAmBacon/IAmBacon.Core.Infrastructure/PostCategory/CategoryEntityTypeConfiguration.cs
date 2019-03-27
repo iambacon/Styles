@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory
 {
-    public class CategoryEntityTypeConfiguration: IEntityTypeConfiguration<Category>
+    public class CategoryEntityTypeConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {

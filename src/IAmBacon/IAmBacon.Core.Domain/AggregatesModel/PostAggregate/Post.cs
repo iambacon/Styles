@@ -1,18 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using IAmBacon.Core.Domain.Base;
+using IAmBacon.Core.Domain.Utilities;
+using Markdig;
 
 namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
 {
+    /// <summary>
+    /// This is the Post Entity.
+    /// It must hold the Entity's data attributes as well as the behaviour and logic.
+    /// This is an Aggregate Root as well because it is this Entity that will added to the DB.
+    /// If this Entity had child Entities they would not be Aggregate roots
+    /// </summary>
     public class Post : Entity, IAggregateRoot, IDeleteable
     {
+        private DateTime _dateCreated;
+        private DateTime _dateModified;
         private readonly int _authorId;
         private readonly int _categoryId;
         private readonly string _title;
         private readonly string _content;
+        private string _markdown;
+        private string _seoTitle;
         private string _image;
         private bool _noCss;
-        private List<Tag> _tags;
+
+        public ICollection<PostTag> PostTags { get; }
 
         public bool IsActive { get; private set; }
 
@@ -32,7 +45,11 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             _categoryId = categoryId;
             _title = title;
             _content = content;
-            IsActive = true;
+            _seoTitle = Seo.Title(title);
+            _dateCreated = DateTime.Now;
+            _dateModified = _dateCreated;
+            SetMarkdown();
+            PostTags = new List<PostTag>();
         }
 
         public void SetDelete(bool status)
@@ -63,9 +80,19 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             _noCss = noCss;
         }
 
-        public void SetTags(List<Tag> tags)
+        public void AddTag(Tag tag)
         {
-            _tags = tags ?? throw new ArgumentNullException(nameof(tags));
+            if (tag == null) throw new ArgumentNullException(nameof(tag));
+
+            var postTag = new PostTag { Tag = tag };
+            PostTags.Add(postTag);
+        }
+
+        private void SetMarkdown()
+        {
+            // Maybe create a wrapper class for this?
+            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+            _markdown = Markdown.ToHtml(_content, pipeline);
         }
     }
 }

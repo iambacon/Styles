@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Domain.Utilities;
 
@@ -25,6 +26,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         public bool Deleted { get; private set; }
 
         public string Name { get; private set; }
+
+        public ICollection<PostTag> Posts { get; private set; }
 
         // Empty constructor required for EF to be able to create an entity object
         protected Tag() { }

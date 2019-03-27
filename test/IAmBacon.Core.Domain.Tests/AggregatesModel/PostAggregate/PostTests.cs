@@ -67,7 +67,9 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
         {
             Because of = () => _sut = new Post(1, 1, "title", "content");
 
-            It should_set_IsActive_to_true = () => _sut.IsActive.ShouldBeTrue();
+            It should_set_IsActive_to_false = () => _sut.IsActive.ShouldBeFalse();
+
+            It should_set_new_PostTags = () => _sut.PostTags.ShouldNotBeNull();
 
             static Post _sut;
         }
@@ -110,11 +112,11 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             static Post _sut;
         }
 
-        public class SetTags_when_argument_null
+        public class AddTag_when_argument_null
         {
             Establish context = () => _sut = new Post(1, 1, "title", "content");
 
-            Because of = () => _exception = Catch.Exception(() => _sut.SetTags(null));
+            Because of = () => _exception = Catch.Exception(() => _sut.AddTag(null));
 
             It should_throw_exception = () => _exception.ShouldNotBeNull();
 

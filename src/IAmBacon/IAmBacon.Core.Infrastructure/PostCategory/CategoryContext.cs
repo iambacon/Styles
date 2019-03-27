@@ -21,6 +21,7 @@ namespace IAmBacon.Core.Infrastructure.PostCategory
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new PostTagEntityTypeConfiguration());
         }
     }
 }
