@@ -36,5 +36,13 @@ namespace IAmBacon.Core.Application.PostTag.Queries
 
             return tags.First();
         }
+
+        public async Task<IReadOnlyCollection<Tag>> GetAllAsync()
+        {
+            var result = await _connection.QueryAsync<Tag>(@"select Id, Name from Tags where Active=1");
+
+
+            return result.ToList();
+        }
     }
 }

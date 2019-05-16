@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,10 +11,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IAmBacon.Core.Domain\IAmBacon.Core.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="PostTag\Queries\" />
-    <Folder Include="PostTag\Queries\Fakes\" />
   </ItemGroup>
 </Project>

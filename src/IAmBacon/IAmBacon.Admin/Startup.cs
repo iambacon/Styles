@@ -53,6 +53,7 @@ namespace IAmBacon.Admin
             builder.RegisterModule(new CategoryCommandModule(Configuration.GetConnectionString("BaconSqlConnection")));
             builder.RegisterModule(new TagModule());
             builder.RegisterModule(new TagCommandModule());
+            builder.RegisterModule(new UserCommandModule());
 
             //var assembliesInAppDomain = AppDomain.CurrentDomain.GetAssemblies().ToArray();
             //builder.RegisterAssemblyModules(assembliesInAppDomain);

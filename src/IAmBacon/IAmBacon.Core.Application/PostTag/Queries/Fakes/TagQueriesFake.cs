@@ -30,5 +30,10 @@ namespace IAmBacon.Core.Application.PostTag.Queries.Fakes
                 throw new KeyNotFoundException();
             }
         }
+
+        public Task<IReadOnlyCollection<Tag>> GetAllAsync()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

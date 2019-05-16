@@ -30,5 +30,10 @@ namespace IAmBacon.Core.Application.PostCategory.Queries.Fakes
                 throw new KeyNotFoundException();
             }
         }
+
+        public Task<IReadOnlyCollection<Category>> GetAllAsync()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -1,0 +1,69 @@
+﻿@model IAmBacon.Admin.ViewModels.Post.CreatePostViewModel
+
+<h1>Create a post</h1>
+<form asp-controller="Post" asp-action="Create" method="post">
+    <fieldset>
+        <legend>Post</legend>
+        <div>
+            <label asp-for="Authors"></label>
+        </div>
+        <div>
+            <select asp-for="AuthorId" asp-items="Model.Authors"></select>
+            <span asp-validation-for="AuthorId"></span>
+        </div>
+        <div>
+            <label asp-for="Categories"></label>
+        </div>
+        <div>
+            <select asp-for="CategoryId" asp-items="Model.Categories"></select>
+            <span asp-validation-for="CategoryId"></span>
+        </div>
+        <div>
+            <label asp-for="Tags"></label>
+        </div>
+        <div>
+            @foreach (var tag in Model.Tags)
+            {
+                <input asp-for="@tag.Id" type="hidden" />
+                <label asp-for="@tag.Label">@tag.Label</label>
+                <input asp-for="@tag.IsChecked" type="checkbox" />
+            }
+        </div>
+        <div>
+            <label asp-for="NoCss"></label>
+        </div>
+        <div>
+            <input asp-for="NoCss" type="checkbox" />
+        </div>
+        <div>
+            <label asp-for="Active"></label>
+        </div>
+        <div>
+            <input asp-for="Active" type="checkbox" />
+        </div>
+        <div>
+            <label asp-for="Image"></label>
+        </div>
+        <div>
+            <input asp-for="Image" type="text" />
+        </div>
+        <div>
+            <label asp-for="Title"></label>
+        </div>
+        <div>
+            <input asp-for="Title" type="text" />
+            <span asp-validation-for="Title"></span>
+        </div>
+        <div>
+            <label asp-for="Markdown"></label>
+        </div>
+        <div>
+            <textarea asp-for="Markdown" rows="15" cols="92"></textarea>
+            <span asp-validation-for="Markdown"></span>
+        </div>
+    </fieldset>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>
+<a asp-controller="Tag" asp-action="Index">Back to list</a>
