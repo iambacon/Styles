@@ -13,7 +13,7 @@ namespace IAmBacon.Admin.ViewModels.Post
         public int AuthorId { get; set; }
 
         [Display(Name = "Author")]
-        public IEnumerable<SelectListItem> Authors { get; set; }
+        public List<SelectListItem> Authors { get; set; }
 
         [Range(1, int.MaxValue)]
         public int CategoryId { get; set; }

@@ -33,7 +33,7 @@ namespace IAmBacon.Core.Application.PostTag.Queries.Fakes
 
         public Task<IReadOnlyCollection<Tag>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(_data as IReadOnlyCollection<Tag>);
         }
     }
 }

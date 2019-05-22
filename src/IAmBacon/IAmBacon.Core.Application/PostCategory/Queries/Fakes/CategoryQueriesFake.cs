@@ -33,7 +33,7 @@ namespace IAmBacon.Core.Application.PostCategory.Queries.Fakes
 
         public Task<IReadOnlyCollection<Category>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(_data as IReadOnlyCollection<Category>);
         }
     }
 }
