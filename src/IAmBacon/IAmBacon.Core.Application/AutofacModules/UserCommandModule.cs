@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using IAmBacon.Core.Application.User.Commands;
 using IAmBacon.Core.Application.User.Queries;
 
 namespace IAmBacon.Core.Application.AutofacModules
@@ -8,6 +9,7 @@ namespace IAmBacon.Core.Application.AutofacModules
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<UserQueries>().As<IUserQueries>().InstancePerLifetimeScope();
+            builder.RegisterType<UserCommandHandler>();
         }
     }
 }

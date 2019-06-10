@@ -67,7 +67,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     [Subject("Post controller Create")]
     public class PostControllerCreate
     {
-        public class My_get : Post_controller_context
+        public class When_get : Post_controller_context
         {
             Establish context = () =>
             {
