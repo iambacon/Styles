@@ -111,19 +111,5 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             static Exception _exception;
             static Post _sut;
         }
-
-        public class AddTag_when_argument_null
-        {
-            Establish context = () => _sut = new Post(1, 1, "title", "content");
-
-            Because of = () => _exception = Catch.Exception(() => _sut.AddTag(null));
-
-            It should_throw_exception = () => _exception.ShouldNotBeNull();
-
-            It should_be_of_type_ArgumentNullException = () => _exception.ShouldBeOfExactType<ArgumentNullException>();
-
-            static Exception _exception;
-            static Post _sut;
-        }
     }
 }

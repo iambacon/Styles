@@ -1,10 +1,14 @@
 ﻿using System;
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.Post;
+using IAmBacon.Core.Application.Post.Commands;
 using IAmBacon.Core.Application.PostCategory.Queries.Fakes;
 using IAmBacon.Core.Application.PostTag.Queries.Fakes;
 using IAmBacon.Core.Application.User.Queries;
 using IAmBacon.Core.Application.User.Queries.Fakes;
+using IAmBacon.Core.Infrastructure.Post.Fakes;
+using IAmBacon.Core.Infrastructure.Post.Repositories.Fakes;
+using IAmBacon.Core.Infrastructure.PostTag.Fakes;
 using Machine.Specifications;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +19,15 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     {
         public class When_userQueries_argument_null
         {
-            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(null, null, null));
+            Establish context = () =>
+            {
+                var postContext = new PostContextFake();
+                var tagContext = new TagContextFake();
+                var postRepo = new PostRepositoryFake(postContext);
+                _handler = new PostCommandHandler(postRepo);
+            };
+
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, null, null, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -23,16 +35,21 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             static PostController _sut;
             static Exception _exception;
+            static PostCommandHandler _handler;
         }
 
         public class When_categoryQueries_argument_null
         {
             Establish context = () =>
             {
+                var postContext = new PostContextFake();
+                var tagContext = new TagContextFake();
+                var postRepo = new PostRepositoryFake(postContext);
+                _handler = new PostCommandHandler(postRepo);
                 _userQueries = new UserQueriesFake();
             };
 
-            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_userQueries, null, null));
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, null, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -40,18 +57,23 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             static PostController _sut;
             static Exception _exception;
-            private static UserQueriesFake _userQueries;
+            static UserQueriesFake _userQueries;
+            static PostCommandHandler _handler;
         }
 
         public class When_tagQueries_argument_null
         {
             Establish context = () =>
             {
+                var postContext = new PostContextFake();
+                var tagContext = new TagContextFake();
+                var postRepo = new PostRepositoryFake(postContext);
+                _handler = new PostCommandHandler(postRepo);
                 _userQueries = new UserQueriesFake();
                 _categoryQueries = new CategoryQueriesFake();
             };
 
-            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_userQueries, _categoryQueries, null));
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, _categoryQueries, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -59,8 +81,9 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             static PostController _sut;
             static Exception _exception;
-            private static UserQueriesFake _userQueries;
-            private static CategoryQueriesFake _categoryQueries;
+            static UserQueriesFake _userQueries;
+            static CategoryQueriesFake _categoryQueries;
+            static PostCommandHandler _handler;
         }
     }
 
@@ -125,10 +148,14 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     {
         Establish context = () =>
         {
+            var postContext = new PostContextFake();
+            var postRepo = new PostRepositoryFake(postContext);
+            var handler = new PostCommandHandler(postRepo);
+
             UserQueries = new UserQueriesFake();
             CategoryQueries = new CategoryQueriesFake();
             TagQueries = new TagQueriesFake();
-            Sut = new PostController(UserQueries, CategoryQueries, TagQueries);
+            Sut = new PostController(handler, UserQueries, CategoryQueries, TagQueries);
         };
 
         protected static PostController Sut;

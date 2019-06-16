@@ -26,6 +26,11 @@ namespace IAmBacon.Core.Infrastructure.Post.Repositories.Fakes
             return entity;
         }
 
+        public Domain.AggregatesModel.PostAggregate.PostTag Add(Domain.AggregatesModel.PostAggregate.PostTag entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Domain.AggregatesModel.PostAggregate.Post entity)
         {
             Data.RemoveWhere(x => x.Id == entity.Id);

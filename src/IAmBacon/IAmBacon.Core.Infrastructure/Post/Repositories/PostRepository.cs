@@ -20,6 +20,11 @@ namespace IAmBacon.Core.Infrastructure.Post.Repositories
             return _context.Posts.Add(entity).Entity;
         }
 
+        public Domain.AggregatesModel.PostAggregate.PostTag Add(Domain.AggregatesModel.PostAggregate.PostTag entity)
+        {
+            return _context.PostTags.Add(entity).Entity;
+        }
+
         public IUnitOfWork UnitOfWork => _context;
 
         public void Update(Domain.AggregatesModel.PostAggregate.Post entity)

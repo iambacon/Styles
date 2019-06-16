@@ -5,7 +5,7 @@ using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.Post.Commands
 {
-    public class PostCommandHandler: ICommandHandler<CreatePostCommand>
+    public class PostCommandHandler : ICommandHandler<CreatePostCommand>
     {
         private readonly IPostRepository _repository;
 
@@ -22,8 +22,16 @@ namespace IAmBacon.Core.Application.Post.Commands
             entity.SetActive(command.IsActive);
             entity.SetImage(command.Image);
             entity.SetNoCss(command.NoCss);
+            entity.SetTags(command.TagIds);
 
-            _repository.Add(entity);
+            var entityId = _repository.Add(entity).Id;
+
+            foreach (var tagId in command.TagIds)
+            {
+                var postTagEntity = new Domain.AggregatesModel.PostAggregate.PostTag(entityId, tagId);
+                _repository.Add(postTagEntity);
+            }
+
             await _repository.UnitOfWork.CommitAsync();
         }
     }

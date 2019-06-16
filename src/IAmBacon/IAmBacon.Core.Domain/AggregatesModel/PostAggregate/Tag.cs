@@ -27,7 +27,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
 
         public string Name { get; private set; }
 
-        public ICollection<PostTag> Posts { get; private set; }
+        public ICollection<PostTag> PostTags { get; set; }
 
         // Empty constructor required for EF to be able to create an entity object
         protected Tag() { }

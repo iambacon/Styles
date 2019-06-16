@@ -16,16 +16,22 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
     {
         private DateTime _dateCreated;
         private DateTime _dateModified;
-        private readonly int _authorId;
-        private readonly int _categoryId;
-        private readonly string _title;
-        private readonly string _content;
+        private int _authorId;
+        private int _categoryId;
+        private string _title;
+        private string _content;
         private string _markdown;
         private string _seoTitle;
         private string _image;
         private bool _noCss;
+        private Category _category;
+        private int[] _tagIds;
 
-        public ICollection<PostTag> PostTags { get; }
+        public Category Category => _category;
+
+        public int CategoryId => _categoryId;
+
+        public ICollection<PostTag> PostTags { get; set; }
 
         public bool IsActive { get; private set; }
 
@@ -48,8 +54,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             _seoTitle = Seo.Title(title);
             _dateCreated = DateTime.Now;
             _dateModified = _dateCreated;
-            SetMarkdown();
             PostTags = new List<PostTag>();
+            SetMarkdown();
         }
 
         public void SetDelete(bool status)
@@ -80,12 +86,9 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             _noCss = noCss;
         }
 
-        public void AddTag(Tag tag)
+        public void SetTags(int[] tagIds)
         {
-            if (tag == null) throw new ArgumentNullException(nameof(tag));
-
-            var postTag = new PostTag { Tag = tag };
-            PostTags.Add(postTag);
+            _tagIds = tagIds;
         }
 
         private void SetMarkdown()

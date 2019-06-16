@@ -28,6 +28,13 @@ namespace IAmBacon.Core.Infrastructure.Post
             builder.Property<string>("Markdown").HasField("_markdown").HasColumnType("varchar(MAX)");
             builder.Property<string>("SeoTitle").HasField("_seoTitle").HasMaxLength(510);
             builder.Property<bool>("NoCss").HasField("_noCss");
+
+            //// Foreign keys
+            //builder
+            //    .HasOne(x => x.Category)
+            //    .WithMany(x => x.Posts)
+            //    .HasForeignKey(x => x.CategoryId)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

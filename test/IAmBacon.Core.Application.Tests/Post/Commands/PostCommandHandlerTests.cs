@@ -5,7 +5,7 @@ using Machine.Specifications;
 namespace IAmBacon.Core.Application.Tests.Post.Commands
 {
     [Subject("Post command handler")]
-    public class When_repository_argument_null
+    public class When_post_repository_argument_null
     {
         Because of = () => _exception = Catch.Exception(() => _sut = new PostCommandHandler(null));
 

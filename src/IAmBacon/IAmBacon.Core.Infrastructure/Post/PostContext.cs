@@ -12,6 +12,8 @@ namespace IAmBacon.Core.Infrastructure.Post
 
         public DbSet<Domain.AggregatesModel.PostAggregate.Post> Posts { get; set; }
 
+        public DbSet<Domain.AggregatesModel.PostAggregate.PostTag> PostTags { get; set; }
+
         public async Task CommitAsync()
         {
             int result = await base.SaveChangesAsync();
@@ -20,7 +22,7 @@ namespace IAmBacon.Core.Infrastructure.Post
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PostEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new PostEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new PostTagEntityTypeConfiguration());
         }
     }
 }

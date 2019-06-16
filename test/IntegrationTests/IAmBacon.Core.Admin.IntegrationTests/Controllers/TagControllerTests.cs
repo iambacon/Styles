@@ -67,7 +67,7 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
         };
     }
 
-    [Subject("Category controller - Delete")]
+    [Subject("Tag controller - Delete")]
     public class When_deleting_a_tag : Tag_controller_command_context
     {
         Establish context = () =>

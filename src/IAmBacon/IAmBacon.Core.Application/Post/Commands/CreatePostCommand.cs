@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.Post.Commands
 {
@@ -11,7 +9,7 @@ namespace IAmBacon.Core.Application.Post.Commands
         public int CategoryId { get; }
         public string Image { get; set; }
         public bool NoCss { get; set; }
-        public List<Tag> Tags { get; set; }
+        public int[] TagIds { get; set; }
         public string Title { get; }
         public string Content { get; }
 
