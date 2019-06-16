@@ -14,20 +14,15 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
     public class Tag : Entity, IAggregateRoot, IDeleteable
     {
         private DateTime _dateCreated;
-
         private DateTime _dateModified;
-
         private string _seoName;
-
         private bool _active;
+        private ICollection<PostTag> _postTags;
 
         public bool IsActive => _active;
-
         public bool Deleted { get; private set; }
-
         public string Name { get; private set; }
-
-        public ICollection<PostTag> PostTags { get; set; }
+        public ICollection<PostTag> PostTags => _postTags;
 
         // Empty constructor required for EF to be able to create an entity object
         protected Tag() { }

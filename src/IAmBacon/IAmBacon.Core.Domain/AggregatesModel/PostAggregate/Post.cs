@@ -26,12 +26,13 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         private bool _noCss;
         private Category _category;
         private int[] _tagIds;
+        private ICollection<PostTag> _postTags;
 
         public Category Category => _category;
 
         public int CategoryId => _categoryId;
 
-        public ICollection<PostTag> PostTags { get; set; }
+        public ICollection<PostTag> PostTags => _postTags;
 
         public bool IsActive { get; private set; }
 
@@ -54,7 +55,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             _seoTitle = Seo.Title(title);
             _dateCreated = DateTime.Now;
             _dateModified = _dateCreated;
-            PostTags = new List<PostTag>();
+            _postTags = new List<PostTag>();
             SetMarkdown();
         }
 
