@@ -25,8 +25,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         private bool _noCss;
         private int[] _tagIds;
         private ICollection<PostTag> _postTags;
-
-        public int CategoryId { get; private set; }
+        private int _categoryId;
 
         public ICollection<PostTag> PostTags => _postTags;
 
@@ -45,7 +44,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             if (string.IsNullOrWhiteSpace(content)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(content));
 
             _authorId = authorId;
-            CategoryId = categoryId;
+            _categoryId = categoryId;
             _title = title;
             _content = content;
             _seoTitle = Seo.Title(title);

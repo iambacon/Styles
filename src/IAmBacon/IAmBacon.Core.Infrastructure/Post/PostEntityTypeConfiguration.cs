@@ -21,7 +21,7 @@ namespace IAmBacon.Core.Infrastructure.Post
             builder.Property<DateTime>("DateModified").HasField("_dateModified").IsRequired();
             builder.Property(b => b.IsActive).HasColumnName("Active");
             builder.Property<int>("AuthorId").HasField("_authorId");
-            //builder.Property<int>("CategoryId").HasField("_categoryId");
+            builder.Property<int>("CategoryId").HasField("_categoryId");
             builder.Property<string>("Title").HasField("_title").IsRequired().HasMaxLength(255);
             builder.Property<string>("Content").HasField("_content").IsRequired().HasColumnType("varchar(MAX)");
             builder.Property<string>("Image").HasField("_image").HasColumnType("varchar(MAX)");
