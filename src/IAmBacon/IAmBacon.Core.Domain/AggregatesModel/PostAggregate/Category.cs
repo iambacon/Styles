@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Domain.Utilities;
 
@@ -20,7 +21,11 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
 
         private bool _active;
 
+        private ICollection<Post> _posts;
+
         public bool IsActive => _active;
+
+        public ICollection<Post> Posts => _posts;
 
         public bool Deleted { get; private set; }
 

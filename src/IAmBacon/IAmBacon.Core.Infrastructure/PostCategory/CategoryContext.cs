@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Domain.Base;
+using IAmBacon.Core.Infrastructure.Post;
 using Microsoft.EntityFrameworkCore;
 
 namespace IAmBacon.Core.Infrastructure.PostCategory

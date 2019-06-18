@@ -21,20 +21,13 @@ namespace IAmBacon.Core.Infrastructure.Post
             builder.Property<DateTime>("DateModified").HasField("_dateModified").IsRequired();
             builder.Property(b => b.IsActive).HasColumnName("Active");
             builder.Property<int>("AuthorId").HasField("_authorId");
-            builder.Property<int>("CategoryId").HasField("_categoryId");
+            //builder.Property<int>("CategoryId").HasField("_categoryId");
             builder.Property<string>("Title").HasField("_title").IsRequired().HasMaxLength(255);
             builder.Property<string>("Content").HasField("_content").IsRequired().HasColumnType("varchar(MAX)");
             builder.Property<string>("Image").HasField("_image").HasColumnType("varchar(MAX)");
             builder.Property<string>("Markdown").HasField("_markdown").HasColumnType("varchar(MAX)");
             builder.Property<string>("SeoTitle").HasField("_seoTitle").HasMaxLength(510);
             builder.Property<bool>("NoCss").HasField("_noCss");
-
-            //// Foreign keys
-            //builder
-            //    .HasOne(x => x.Category)
-            //    .WithMany(x => x.Posts)
-            //    .HasForeignKey(x => x.CategoryId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
