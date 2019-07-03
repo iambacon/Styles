@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IAmBacon.Admin.Presentation.Extensions;
@@ -8,6 +9,7 @@ using IAmBacon.Core.Application.PostCategory.Queries;
 using IAmBacon.Core.Application.PostTag.Queries;
 using IAmBacon.Core.Application.User.Queries;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IAmBacon.Admin.Controllers
 {
@@ -33,14 +35,13 @@ namespace IAmBacon.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var authors = await _userQueries.GetAllAsync();
-            var categories = await _categoryQueries.GetAllAsync();
+
             var tags = await _tagQueries.GetAllAsync();
 
             var model = new CreatePostViewModel
             {
-                Authors = authors.ToSelectList(x => x.ToString(), y => y.Id.ToString()),
-                Categories = categories.ToSelectList(x => x.Name, y => y.Id.ToString()),
+                Authors = await GetAuthors(),
+                Categories = await GetCategories(),
                 Tags = tags.ToCheckboxList(x=> x.Name, y => y.Id)
             };
 
@@ -51,7 +52,13 @@ namespace IAmBacon.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                model.Authors = await GetAuthors();
+                model.Categories = await GetCategories();
+
+                return View(model);
+            }
 
             try
             {
@@ -70,6 +77,18 @@ namespace IAmBacon.Admin.Controllers
             {
                 return View(model);
             }
+        }
+
+        private async Task<List<SelectListItem>> GetCategories()
+        {
+            var categories = await _categoryQueries.GetAllAsync();
+            return categories.ToSelectList(x => x.Name, y => y.Id.ToString());
+        }
+
+        private async Task<List<SelectListItem>> GetAuthors()
+        {
+            var authors = await _userQueries.GetAllAsync();
+            return authors.ToSelectList(x => x.ToString(), y => y.Id.ToString());
         }
     }
 }

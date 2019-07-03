@@ -3,6 +3,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using IAmBacon.Core.Application.AutofacModules;
 using IAmBacon.Core.Infrastructure.AutofacModules;
+using IAmBacon.Core.Infrastructure.Post;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using IAmBacon.Core.Infrastructure.PostTag;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,7 @@ namespace IAmBacon.Admin
 
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<TagContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
+            services.AddDbContext<PostContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
 
             //configure autofac
 
@@ -55,6 +57,8 @@ namespace IAmBacon.Admin
             builder.RegisterModule(new TagCommandModule());
             builder.RegisterModule(new UserCommandModule());
             builder.RegisterModule(new UserModule());
+            builder.RegisterModule(new PostCommandModule());
+            builder.RegisterModule(new PostModule());
 
             //var assembliesInAppDomain = AppDomain.CurrentDomain.GetAssemblies().ToArray();
             //builder.RegisterAssemblyModules(assembliesInAppDomain);

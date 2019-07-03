@@ -24,11 +24,13 @@ namespace IAmBacon.Core.Application.Post.Commands
             entity.SetNoCss(command.NoCss);
             entity.SetTags(command.TagIds);
 
-            var entityId = _repository.Add(entity).Id;
+            _repository.Add(entity);
+
+            await _repository.UnitOfWork.CommitAsync();
 
             foreach (var tagId in command.TagIds)
             {
-                var postTagEntity = new Domain.AggregatesModel.PostAggregate.PostTag(entityId, tagId);
+                var postTagEntity = new Domain.AggregatesModel.PostAggregate.PostTag(entity.Id, tagId);
                 _repository.Add(postTagEntity);
             }
 
