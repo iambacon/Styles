@@ -142,6 +142,24 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
                 vm.Tags.Count.ShouldEqual(1);
             };
         }
+
+        public class When_post_and_modelstate_is_invalid : Post_controller_context
+        {
+            Establish context = () => Sut.ModelState.AddModelError("Title", "Required");
+
+            Because of = async () => Result = await Sut.Create(new CreatePostViewModel());
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+
+            It should_return_modelState_error = () => ((ViewResult)Result).ViewData.ModelState.ErrorCount.ShouldEqual(1);
+        }
+
+        public class When_post_and_modelState_is_valid : Post_controller_context
+        {
+            Because of = async () => Result = await Sut.Create(null);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
     }
 
     public abstract class Post_controller_context
