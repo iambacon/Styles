@@ -5,7 +5,7 @@ using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.Post.Commands
 {
-    public class PostCommandHandler : ICommandHandler<CreatePostCommand>
+    public class PostCommandHandler : ICommandHandler<CreatePostCommand>, ICommandHandler<UpdatePostCommand>
     {
         private readonly IPostRepository _repository;
 
@@ -33,6 +33,31 @@ namespace IAmBacon.Core.Application.Post.Commands
                 var postTagEntity = new Domain.AggregatesModel.PostAggregate.PostTag(entity.Id, tagId);
                 _repository.Add(postTagEntity);
             }
+
+            await _repository.UnitOfWork.CommitAsync();
+        }
+
+        public async Task HandleAsync(UpdatePostCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+
+            if (entity is null)
+            {
+                throw new NullReferenceException("Post could not be found");
+            }
+
+            // Need to have a way to delete the old post tags
+            entity.SetDelete(command.IsDeleted);
+            entity.SetActive(command.IsActive);
+            entity.SetImage(command.Image);
+            entity.SetNoCss(command.NoCss);
+            entity.SetTags(command.TagIds);
+            entity.SetAuthor(command.AuthorId);
+            entity.SetCategory(command.CategoryId);
+            entity.SetTitle(command.Title);
+            entity.SetContent(command.Content);
+
+            _repository.Update(entity);
 
             await _repository.UnitOfWork.CommitAsync();
         }

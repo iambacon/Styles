@@ -111,5 +111,61 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             static Exception _exception;
             static Post _sut;
         }
+
+        public class SetAuthor_when_argument_null
+        {
+            Establish context = () => _sut = new Post(1, 1, "title", "content");
+
+            Because of = () => _exception = Catch.Exception(() => _sut.SetAuthor(0));
+
+            It should_throw_exception = () => _exception.ShouldNotBeNull();
+
+            It should_be_of_type_ArgumentException = () => _exception.ShouldBeOfExactType<ArgumentOutOfRangeException>();
+
+            static Exception _exception;
+            static Post _sut;
+        }
+
+        public class SetCategory_when_argument_null
+        {
+            Establish context = () => _sut = new Post(1, 1, "title", "content");
+
+            Because of = () => _exception = Catch.Exception(() => _sut.SetCategory(0));
+
+            It should_throw_exception = () => _exception.ShouldNotBeNull();
+
+            It should_be_of_type_ArgumentException = () => _exception.ShouldBeOfExactType<ArgumentOutOfRangeException>();
+
+            static Exception _exception;
+            static Post _sut;
+        }
+
+        public class SetTitle_when_argument_null
+        {
+            Establish context = () => _sut = new Post(1, 1, "title", "content");
+
+            Because of = () => _exception = Catch.Exception(() => _sut.SetTitle(null));
+
+            It should_throw_exception = () => _exception.ShouldNotBeNull();
+
+            It should_be_of_type_ArgumentException = () => _exception.ShouldBeOfExactType<ArgumentException>();
+
+            static Exception _exception;
+            static Post _sut;
+        }
+
+        public class SetContent_when_argument_null
+        {
+            Establish context = () => _sut = new Post(1, 1, "title", "content");
+
+            Because of = () => _exception = Catch.Exception(() => _sut.SetContent(null));
+
+            It should_throw_exception = () => _exception.ShouldNotBeNull();
+
+            It should_be_of_type_ArgumentException = () => _exception.ShouldBeOfExactType<ArgumentException>();
+
+            static Exception _exception;
+            static Post _sut;
+        }
     }
 }

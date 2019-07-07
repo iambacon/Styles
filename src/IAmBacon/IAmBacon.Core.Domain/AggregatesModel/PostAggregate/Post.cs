@@ -93,5 +93,33 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
             _markdown = Markdown.ToHtml(_content, pipeline);
         }
+
+        public void SetAuthor(int authorId)
+        {
+            if (authorId <= 0) throw new ArgumentOutOfRangeException(nameof(authorId));
+
+            _authorId = authorId;
+        }
+
+        public void SetCategory(int categoryId)
+        {
+            if (categoryId <= 0) throw new ArgumentOutOfRangeException(nameof(categoryId));
+
+            _categoryId = categoryId;
+        }
+
+        public void SetTitle(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(title));
+
+            _title = title;
+        }
+
+        public void SetContent(string content)
+        {
+            if (string.IsNullOrWhiteSpace(content)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(content));
+
+            _content = content;
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace IAmBacon.Core.Application.PostCategory.Commands
 
             if (entity is null)
             {
-                throw new NullReferenceException("Category cound not be found");
+                throw new NullReferenceException("Category could not be found");
             }
 
             entity.SetName(command.Name);
