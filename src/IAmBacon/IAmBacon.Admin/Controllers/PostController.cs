@@ -68,7 +68,10 @@ namespace IAmBacon.Admin.Controllers
 
                 var command = new CreatePostCommand(model.AuthorId, model.CategoryId, model.Title, model.Markdown)
                 {
-                    Image = model.Image, TagIds = selectedTags, IsActive = model.Active, NoCss = model.NoCss
+                    Image = model.Image,
+                    TagIds = selectedTags,
+                    IsActive = model.Active,
+                    NoCss = model.NoCss
                 };
 
                 await _handler.HandleAsync(command);
@@ -86,6 +89,7 @@ namespace IAmBacon.Admin.Controllers
             try
             {
                 var result = await _postQueries.GetAsync(id);
+                var tags = await SetSelectedTags(id);
 
                 var model = new EditPostViewModel
                 {
@@ -97,7 +101,7 @@ namespace IAmBacon.Admin.Controllers
                     Image = result.Image,
                     Markdown = result.Markdown,
                     NoCss = result.NoCss,
-                    Tags = await GetTags(),
+                    Tags = tags,
                     Title = result.Title
                 };
 
@@ -126,6 +130,22 @@ namespace IAmBacon.Admin.Controllers
             var tags = await _tagQueries.GetAllAsync();
 
             return tags.ToCheckboxList(x => x.Name, y => y.Id);
+        }
+
+        private async Task<List<CheckboxItem>> SetSelectedTags(int id)
+        {
+            var postTags = await _tagQueries.GetTagsForPost(id);
+            var tags = await GetTags();
+
+            foreach (var postTag in postTags)
+            {
+                var tag = tags.FirstOrDefault(x => x.Id == postTag.Id);
+
+                if (tag != null)
+                    tag.IsChecked = true;
+            }
+
+            return tags;
         }
     }
 }

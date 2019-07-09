@@ -35,5 +35,10 @@ namespace IAmBacon.Core.Application.PostTag.Queries.Fakes
         {
             return Task.FromResult(_data as IReadOnlyCollection<Tag>);
         }
+
+        public Task<IReadOnlyCollection<Tag>> GetTagsForPost(int postId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
