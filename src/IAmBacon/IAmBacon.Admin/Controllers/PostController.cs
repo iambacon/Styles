@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IAmBacon.Admin.Presentation.Extensions;
+using IAmBacon.Admin.Presentation.Models;
 using IAmBacon.Admin.ViewModels.Post;
 using IAmBacon.Core.Application.Post.Commands;
+using IAmBacon.Core.Application.Post.Queries;
 using IAmBacon.Core.Application.PostCategory.Queries;
 using IAmBacon.Core.Application.PostTag.Queries;
 using IAmBacon.Core.Application.User.Queries;
@@ -19,13 +21,16 @@ namespace IAmBacon.Admin.Controllers
         private readonly IUserQueries _userQueries;
         private readonly ICategoryQueries _categoryQueries;
         private readonly ITagQueries _tagQueries;
+        private readonly IPostQueries _postQueries;
 
-        public PostController(PostCommandHandler handler, IUserQueries userQueries, ICategoryQueries categoryQueries, ITagQueries tagQueries)
+        public PostController(PostCommandHandler handler, IUserQueries userQueries, ICategoryQueries categoryQueries,
+            ITagQueries tagQueries, IPostQueries postQueries)
         {
             _handler = handler ?? throw new ArgumentNullException(nameof(handler));
             _userQueries = userQueries ?? throw new ArgumentNullException(nameof(userQueries));
             _categoryQueries = categoryQueries ?? throw new ArgumentNullException(nameof(categoryQueries));
             _tagQueries = tagQueries ?? throw new ArgumentNullException(nameof(tagQueries));
+            _postQueries = postQueries ?? throw new ArgumentNullException(nameof(postQueries));
         }
 
         public IActionResult Index()
@@ -35,14 +40,11 @@ namespace IAmBacon.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-
-            var tags = await _tagQueries.GetAllAsync();
-
             var model = new CreatePostViewModel
             {
                 Authors = await GetAuthors(),
                 Categories = await GetCategories(),
-                Tags = tags.ToCheckboxList(x=> x.Name, y => y.Id)
+                Tags = await GetTags()
             };
 
             return View(model);
@@ -79,6 +81,34 @@ namespace IAmBacon.Admin.Controllers
             }
         }
 
+        public async Task<IActionResult> Edit(int id)
+        {
+            try
+            {
+                var result = await _postQueries.GetAsync(id);
+
+                var model = new EditPostViewModel
+                {
+                    Active = result.Active,
+                    AuthorId = result.AuthorId,
+                    Authors = await GetAuthors(),
+                    Categories = await GetCategories(),
+                    CategoryId = result.CategoryId,
+                    Image = result.Image,
+                    Markdown = result.Markdown,
+                    NoCss = result.NoCss,
+                    Tags = await GetTags(),
+                    Title = result.Title
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
         private async Task<List<SelectListItem>> GetCategories()
         {
             var categories = await _categoryQueries.GetAllAsync();
@@ -89,6 +119,13 @@ namespace IAmBacon.Admin.Controllers
         {
             var authors = await _userQueries.GetAllAsync();
             return authors.ToSelectList(x => x.ToString(), y => y.Id.ToString());
+        }
+
+        private async Task<List<CheckboxItem>> GetTags()
+        {
+            var tags = await _tagQueries.GetAllAsync();
+
+            return tags.ToCheckboxList(x => x.Name, y => y.Id);
         }
     }
 }

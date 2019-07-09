@@ -1,7 +1,7 @@
-﻿@model IAmBacon.Admin.ViewModels.Post.CreatePostViewModel
+﻿@model IAmBacon.Admin.ViewModels.Post.EditPostViewModel
 
-<h1>Create a post</h1>
-<form asp-controller="Post" asp-action="Create" method="post">
+<h1>Edit a post</h1>
+<form asp-controller="Post" asp-action="Edit" method="post">
     <fieldset>
         <legend>Post</legend>
         <div>
@@ -66,7 +66,7 @@
         </div>
     </fieldset>
     <p>
-        <input type="submit" value="Create" />
+        <input type="submit" value="Save" />
     </p>
 </form>
-<a asp-controller="Post" asp-action="Index">Back to list</a>
+<a asp-controller="Post" asp-action="Index">Back to List</a>

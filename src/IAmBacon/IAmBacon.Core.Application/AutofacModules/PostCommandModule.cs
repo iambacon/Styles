@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using IAmBacon.Core.Application.Post.Commands;
+using IAmBacon.Core.Application.Post.Queries;
 
 namespace IAmBacon.Core.Application.AutofacModules
 {
@@ -8,6 +9,7 @@ namespace IAmBacon.Core.Application.AutofacModules
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<PostCommandHandler>();
+            builder.RegisterType<PostQueries>().As<IPostQueries>().InstancePerLifetimeScope();
         }
     }
 }

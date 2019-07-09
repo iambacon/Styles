@@ -2,6 +2,7 @@
 using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.Post;
 using IAmBacon.Core.Application.Post.Commands;
+using IAmBacon.Core.Application.Post.Queries.Fakes;
 using IAmBacon.Core.Application.PostCategory.Queries.Fakes;
 using IAmBacon.Core.Application.PostTag.Queries.Fakes;
 using IAmBacon.Core.Application.User.Queries;
@@ -27,7 +28,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
                 _handler = new PostCommandHandler(postRepo);
             };
 
-            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, null, null, null));
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, null, null, null, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -49,7 +50,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
                 _userQueries = new UserQueriesFake();
             };
 
-            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, null, null));
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, null, null, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -73,7 +74,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
                 _categoryQueries = new CategoryQueriesFake();
             };
 
-            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, _categoryQueries, null));
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, _categoryQueries, null, null));
 
             It should_throw_an_exception = () => _exception.ShouldNotBeNull();
 
@@ -83,6 +84,33 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             static Exception _exception;
             static UserQueriesFake _userQueries;
             static CategoryQueriesFake _categoryQueries;
+            static PostCommandHandler _handler;
+        }
+
+        public class When_postQueries_argument_null
+        {
+            Establish context = () =>
+            {
+                var postContext = new PostContextFake();
+                var tagContext = new TagContextFake();
+                var postRepo = new PostRepositoryFake(postContext);
+                _handler = new PostCommandHandler(postRepo);
+                _userQueries = new UserQueriesFake();
+                _categoryQueries = new CategoryQueriesFake();
+                _tagQueries = new TagQueriesFake();
+            };
+
+            Because of = () => _exception = Catch.Exception(() => _sut = new PostController(_handler, _userQueries, _categoryQueries, _tagQueries, null));
+
+            It should_throw_an_exception = () => _exception.ShouldNotBeNull();
+
+            It should_be_of_type_ArgumentNullException = () => _exception.ShouldBeOfExactType<ArgumentNullException>();
+
+            static PostController _sut;
+            static Exception _exception;
+            static UserQueriesFake _userQueries;
+            static CategoryQueriesFake _categoryQueries;
+            static TagQueriesFake _tagQueries;
             static PostCommandHandler _handler;
         }
     }
@@ -162,6 +190,35 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
+    [Subject("Post controller Edit")]
+    public class PostControllerEdit
+    {
+        public class When_get : Post_controller_context
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.Post.Queries.Post
+                {
+                    Id = 1,
+                    Title = "New post"
+                };
+
+                PostQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_post_does_not_exist : Post_controller_context
+        {
+            Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
     public abstract class Post_controller_context
     {
         Establish context = () =>
@@ -173,7 +230,8 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             UserQueries = new UserQueriesFake();
             CategoryQueries = new CategoryQueriesFake();
             TagQueries = new TagQueriesFake();
-            Sut = new PostController(handler, UserQueries, CategoryQueries, TagQueries);
+            PostQueries = new PostQueriesFake();
+            Sut = new PostController(handler, UserQueries, CategoryQueries, TagQueries, PostQueries);
         };
 
         protected static PostController Sut;
@@ -181,5 +239,6 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         protected static UserQueriesFake UserQueries;
         protected static CategoryQueriesFake CategoryQueries;
         protected static TagQueriesFake TagQueries;
+        protected static PostQueriesFake PostQueries;
     }
 }
