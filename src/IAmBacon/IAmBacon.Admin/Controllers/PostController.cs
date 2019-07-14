@@ -80,6 +80,9 @@ namespace IAmBacon.Admin.Controllers
             }
             catch
             {
+                model.Authors = await GetAuthors();
+                model.Categories = await GetCategories();
+
                 return View(model);
             }
         }
@@ -93,6 +96,7 @@ namespace IAmBacon.Admin.Controllers
 
                 var model = new EditPostViewModel
                 {
+                    PostId = id,
                     Active = result.Active,
                     AuthorId = result.AuthorId,
                     Authors = await GetAuthors(),
@@ -110,6 +114,43 @@ namespace IAmBacon.Admin.Controllers
             catch (KeyNotFoundException)
             {
                 return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditPostViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.Authors = await GetAuthors();
+                model.Categories = await GetCategories();
+
+                return View(model);
+            }
+
+            try
+            {
+                var selectedTags = model.Tags.Where(y => y.IsChecked).Select(x => x.Id).ToArray();
+
+                var command = new UpdatePostCommand(model.PostId, model.AuthorId, model.CategoryId, model.Title, model.Markdown)
+                {
+                    Image = model.Image,
+                    TagIds = selectedTags,
+                    IsActive = model.Active,
+                    NoCss = model.NoCss
+                };
+
+                await _handler.HandleAsync(command);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                model.Authors = await GetAuthors();
+                model.Categories = await GetCategories();
+
+                return View(model);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Domain.Utilities;
 using Markdig;
@@ -85,6 +86,21 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         public void SetTags(int[] tagIds)
         {
             _tagIds = tagIds;
+            UpdatePostTags();
+        }
+
+        private void UpdatePostTags()
+        {
+            PostTags.Clear();
+
+            foreach (var tagId in _tagIds)
+            {
+                if (PostTags.Any(x => x.TagId == tagId))
+                    continue;
+
+                var postTag = new PostTag(Id, tagId);
+                PostTags.Add(postTag);
+            }
         }
 
         private void SetMarkdown()

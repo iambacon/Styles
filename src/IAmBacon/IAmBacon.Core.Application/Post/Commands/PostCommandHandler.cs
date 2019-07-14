@@ -46,7 +46,6 @@ namespace IAmBacon.Core.Application.Post.Commands
                 throw new NullReferenceException("Post could not be found");
             }
 
-            // Need to have a way to delete the old post tags
             entity.SetDelete(command.IsDeleted);
             entity.SetActive(command.IsActive);
             entity.SetImage(command.Image);

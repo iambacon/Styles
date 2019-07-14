@@ -35,6 +35,9 @@ namespace IAmBacon.Core.Infrastructure.Post.Repositories
         public async Task<Domain.AggregatesModel.PostAggregate.Post> GetAsync(int postId)
         {
             var post = await _context.Posts.FindAsync(postId);
+
+            _context.Entry(post).Collection(p => p.PostTags).Load();
+
             return post;
         }
     }

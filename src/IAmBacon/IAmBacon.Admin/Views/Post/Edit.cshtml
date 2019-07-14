@@ -64,6 +64,7 @@
             <textarea asp-for="Markdown" rows="15" cols="92"></textarea>
             <span asp-validation-for="Markdown"></span>
         </div>
+        <input asp-for="@Model.PostId" type="hidden" />
     </fieldset>
     <p>
         <input type="submit" value="Save" />

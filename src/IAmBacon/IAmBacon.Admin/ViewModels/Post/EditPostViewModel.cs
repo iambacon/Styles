@@ -7,6 +7,8 @@ namespace IAmBacon.Admin.ViewModels.Post
 {
     public class EditPostViewModel
     {
+        public int PostId { get; set; }
+
         public bool Active { get; set; }
 
         [Range(1, int.MaxValue)]
