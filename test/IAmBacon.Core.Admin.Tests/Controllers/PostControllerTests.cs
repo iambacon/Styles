@@ -248,6 +248,35 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
+    [Subject("Post controller Delete")]
+    public class PostControllerDelete
+    {
+        public class When_get : Post_controller_context
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.Post.Queries.Post
+                {
+                    Id = 1,
+                    Title = "New post"
+                };
+
+                PostQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Delete(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
+        public class When_get_and_post_does_not_exist : Post_controller_context
+        {
+            Because of = async () => Result = await Sut.Delete(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
     public abstract class Post_controller_context
     {
         Establish context = () =>

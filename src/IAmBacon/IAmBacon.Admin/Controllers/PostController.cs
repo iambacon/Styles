@@ -154,6 +154,26 @@ namespace IAmBacon.Admin.Controllers
             }
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var result = await _postQueries.GetAsync(id);
+
+                var model = new DeletePostViewModel
+                {
+                    Id = result.Id,
+                    Title = result.Title
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
         private async Task<List<SelectListItem>> GetCategories()
         {
             var categories = await _categoryQueries.GetAllAsync();

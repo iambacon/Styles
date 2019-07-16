@@ -1,0 +1,17 @@
+﻿@model IAmBacon.Admin.ViewModels.Post.DeletePostViewModel
+
+<h1>Delete a post</h1>
+<p>
+    <strong>Are you sure you want to delete this?</strong>
+</p>
+<form asp-controller="Post" asp-action="Delete" method="post">
+    <fieldset>
+        <legend>Post</legend>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" type="text" readonly="readonly" />
+    </fieldset>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+</form>
+<a asp-controller="Post" asp-action="Index">Back to list</a>
