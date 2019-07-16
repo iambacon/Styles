@@ -98,20 +98,6 @@ namespace IAmBacon.Core.Domain.Tests.AggregatesModel.PostAggregate
             static Post _sut;
         }
 
-        public class SetImage_when_argument_null
-        {
-            Establish context = () => _sut = new Post(1, 1, "title", "content");
-
-            Because of = () => _exception = Catch.Exception(() => _sut.SetImage(null));
-
-            It should_throw_exception = () => _exception.ShouldNotBeNull();
-
-            It should_be_of_type_ArgumentException = () => _exception.ShouldBeOfExactType<ArgumentException>();
-
-            static Exception _exception;
-            static Post _sut;
-        }
-
         public class SetAuthor_when_argument_null
         {
             Establish context = () => _sut = new Post(1, 1, "title", "content");

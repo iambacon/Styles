@@ -73,8 +73,6 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
 
         public void SetImage(string image)
         {
-            if (string.IsNullOrWhiteSpace(image)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(image));
-
             _image = image;
         }
 
@@ -86,10 +84,9 @@ namespace IAmBacon.Core.Domain.AggregatesModel.PostAggregate
         public void SetTags(int[] tagIds)
         {
             _tagIds = tagIds;
-            UpdatePostTags();
         }
 
-        private void UpdatePostTags()
+        public void UpdatePostTags()
         {
             PostTags.Clear();
 

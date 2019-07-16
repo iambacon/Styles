@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using IAmBacon.Admin.Controllers;
+using IAmBacon.Admin.Presentation.Models;
 using IAmBacon.Admin.ViewModels.Post;
 using IAmBacon.Core.Application.Post.Commands;
 using IAmBacon.Core.Application.Post.Queries.Fakes;
@@ -7,6 +9,7 @@ using IAmBacon.Core.Application.PostCategory.Queries.Fakes;
 using IAmBacon.Core.Application.PostTag.Queries.Fakes;
 using IAmBacon.Core.Application.User.Queries;
 using IAmBacon.Core.Application.User.Queries.Fakes;
+using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 using IAmBacon.Core.Infrastructure.Post.Fakes;
 using IAmBacon.Core.Infrastructure.Post.Repositories.Fakes;
 using IAmBacon.Core.Infrastructure.PostTag.Fakes;
@@ -217,6 +220,32 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }
+
+        public class When_post_and_modelState_is_invalid : Post_controller_context
+        {
+            Establish context = () => Sut.ModelState.AddModelError("Title", "Required");
+
+            Because of = async () => Result = await Sut.Edit(new EditPostViewModel());
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+
+            It should_return_modelState_error = () => ((ViewResult)Result).ViewData.ModelState.ErrorCount.ShouldEqual(1);
+        }
+
+        public class When_post_and_modelState_is_valid : Post_controller_context
+        {
+            Establish context = () => Repo.Add(new Post(1, 1, "Title", "This is a post"));
+
+            Because of = async () =>
+            {
+                var vm = new EditPostViewModel
+                { AuthorId = 1, CategoryId = 1, Tags = new List<CheckboxItem>(), Title = "Title", Markdown = "This is a post" };
+
+                Result = await Sut.Edit(vm);
+            };
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+        }
     }
 
     public abstract class Post_controller_context
@@ -224,8 +253,8 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         Establish context = () =>
         {
             var postContext = new PostContextFake();
-            var postRepo = new PostRepositoryFake(postContext);
-            var handler = new PostCommandHandler(postRepo);
+            Repo = new PostRepositoryFake(postContext);
+            var handler = new PostCommandHandler(Repo);
 
             UserQueries = new UserQueriesFake();
             CategoryQueries = new CategoryQueriesFake();
@@ -240,5 +269,6 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         protected static CategoryQueriesFake CategoryQueries;
         protected static TagQueriesFake TagQueries;
         protected static PostQueriesFake PostQueries;
+        protected static PostRepositoryFake Repo;
     }
 }

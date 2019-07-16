@@ -51,6 +51,7 @@ namespace IAmBacon.Core.Application.Post.Commands
             entity.SetImage(command.Image);
             entity.SetNoCss(command.NoCss);
             entity.SetTags(command.TagIds);
+            entity.UpdatePostTags();
             entity.SetAuthor(command.AuthorId);
             entity.SetCategory(command.CategoryId);
             entity.SetTitle(command.Title);
