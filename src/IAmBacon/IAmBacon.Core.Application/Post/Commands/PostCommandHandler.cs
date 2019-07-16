@@ -5,7 +5,8 @@ using IAmBacon.Core.Domain.AggregatesModel.PostAggregate;
 
 namespace IAmBacon.Core.Application.Post.Commands
 {
-    public class PostCommandHandler : ICommandHandler<CreatePostCommand>, ICommandHandler<UpdatePostCommand>
+    public class PostCommandHandler : ICommandHandler<CreatePostCommand>, ICommandHandler<UpdatePostCommand>,
+        ICommandHandler<DeletePostCommand>
     {
         private readonly IPostRepository _repository;
 
@@ -58,6 +59,14 @@ namespace IAmBacon.Core.Application.Post.Commands
             entity.SetContent(command.Content);
 
             _repository.Update(entity);
+
+            await _repository.UnitOfWork.CommitAsync();
+        }
+
+        public async Task HandleAsync(DeletePostCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+            entity.SetDelete(true);
 
             await _repository.UnitOfWork.CommitAsync();
         }
