@@ -174,6 +174,23 @@ namespace IAmBacon.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeletePostViewModel model)
+        {
+            try
+            {
+                var command = new DeletePostCommand(model.Id);
+                await _handler.HandleAsync(command);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction("Index");
+        }
+
         private async Task<List<SelectListItem>> GetCategories()
         {
             var categories = await _categoryQueries.GetAllAsync();

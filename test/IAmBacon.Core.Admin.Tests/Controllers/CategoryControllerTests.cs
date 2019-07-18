@@ -114,6 +114,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }
+
         public class When_post_and_category_delete_successful
         {
             Establish context = () => Repo.Add(new Category("css"));

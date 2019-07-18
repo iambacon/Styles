@@ -275,6 +275,22 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }
+
+        public class When_post_and_post_delete_successful : Post_controller_context
+        {
+            Establish context = () => Repo.Add(new Post(1, 1, "Title", "This is a post"));
+
+            Because of = async () => Result = await Sut.Delete(new DeletePostViewModel { Id = 0 });
+
+            It should_redirect_to_the_post_page = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
+        }
+
+        public class When_post_and_post_does_not_exist : Post_controller_context
+        {
+            Because of = async () => Result = await Sut.Delete(new DeletePostViewModel { Id = 0 });
+
+            It should_return_bad_request = () => Result.ShouldBeOfExactType<BadRequestResult>();
+        }
     }
 
     public abstract class Post_controller_context

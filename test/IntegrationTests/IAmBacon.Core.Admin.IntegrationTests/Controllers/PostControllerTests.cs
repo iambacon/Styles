@@ -133,6 +133,40 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
         It should_update_the_content;
     }
 
+    [Subject("Post  controller - Delete")]
+    public class When_deleting_a_post : Post_controller_command_context
+    {
+        Establish context = () =>
+        {
+            // need to add an item to delete
+            using (var context = new PostContext(PostOptions))
+            {
+                context.Posts.Add(new Post(1, 1, "Css guide", "This is a post"));
+                context.SaveChanges();
+            }
+        };
+
+        Because of = async () =>
+        {
+            using (var context = new PostContext(PostOptions))
+            using (Sut = new PostController(new PostCommandHandler(new PostRepository(context)), UserQueries, CategoryQueries, TagQueries,
+                PostQueries))
+            {
+                await Sut.Delete(1);
+            }
+        };
+
+        It should_set_the_entity_to_inactive = () =>
+        {
+            using (var context = new PostContext(PostOptions))
+            {
+                var category = context.Posts.IgnoreQueryFilters().First(x => x.Id == 1);
+                category.IsActive.ShouldBeFalse();
+                category.Deleted.ShouldBeTrue();
+            }
+        };
+    }
+
     public abstract class Post_controller_command_context
     {
         Establish context = () =>
