@@ -11,12 +11,13 @@ namespace IAmBacon.Core.Application.User.Commands
 
         public UserCommandHandler(IUserRepository repository)
         {
-            _repository = repository ?? throw new ArgumentNullException("Value cannot be null or whitespace.", nameof(repository));
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public async Task HandleAsync(CreateUserCommand command)
         {
-            var entity = new Domain.AggregatesModel.UserAggregate.User(command.FirstName, command.LastName, command.Email);
+            var entity = new Domain.AggregatesModel.UserAggregate.User(command.FirstName, command.LastName, command.Email,
+                command.ProfileImage, command.Bio);
 
             _repository.Add(entity);
             await _repository.UnitOfWork.CommitAsync();
