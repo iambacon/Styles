@@ -18,24 +18,16 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
         private string _email;
         private DateTime _dateCreated;
         private DateTime _dateModified;
-        private bool _active;
 
-        public bool IsActive => _active;
-        public bool Deleted { get; }
+        public bool IsActive { get; private set; }
+
+        public bool Deleted { get; private set; }
 
         // Empty constructor required for EF to be able to create an entity object
         protected User() { }
 
         public User(string firstName, string lastName, string email, string profileImage, string bio)
         {
-            _profileImage = string.IsNullOrWhiteSpace(profileImage)
-                ? _profileImage
-                : throw new ArgumentException("Value cannot be null or whitespace.", nameof(profileImage));
-
-            _bio = string.IsNullOrWhiteSpace(bio)
-                ? bio
-                : throw new ArgumentException("Value cannot be null or whitespace.", nameof(bio));
-
             _firstName = !string.IsNullOrWhiteSpace(firstName)
                 ? firstName
                 : throw new ArgumentException("Value cannot be null or whitespace.", nameof(firstName));
@@ -48,9 +40,33 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
                 ? email
                 : throw new ArgumentException("Value cannot be null or whitespace.", nameof(email));
 
+            _profileImage = !string.IsNullOrWhiteSpace(profileImage)
+                ? profileImage
+                : throw new ArgumentException("Value cannot be null or whitespace.", nameof(profileImage));
+
+            _bio = !string.IsNullOrWhiteSpace(bio)
+                ? bio
+                : throw new ArgumentException("Value cannot be null or whitespace.", nameof(bio));
+
             _dateCreated = DateTime.Now;
             _dateModified = _dateCreated;
-            _active = true;
+            IsActive = true;
+        }
+
+        public void SetDelete(bool status)
+        {
+            // We do not hard delete
+            Deleted = status;
+
+            if (Deleted)
+            {
+                IsActive = false;
+            }
+        }
+
+        public void SetActive(bool status)
+        {
+            IsActive = status;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace IAmBacon.Admin.Controllers
 
             try
             {
-                var command = new CreateUserCommand(model.FirstName, model.LastName, model.Email);
+                var command = new CreateUserCommand(model.FirstName, model.LastName, model.Email, model.ProfileImage, model.Bio);
                 await _handler.HandleAsync(command);
 
                 return RedirectToAction("Index");
