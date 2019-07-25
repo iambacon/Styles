@@ -19,10 +19,15 @@ namespace IAmBacon.Core.Infrastructure.User
             // Need to test this!!
             builder.Property<DateTime>("DateCreated").HasField("_dateCreated").IsRequired();
             builder.Property<DateTime>("DateModified").HasField("_dateModified").IsRequired();
+            builder.Property(b => b.IsActive).HasColumnName("Active");
             builder.Property<string>("Email").HasField("_email").IsRequired().HasMaxLength(100);
             builder.Property<string>("FirstName").HasField("_firstName").IsRequired();
             builder.Property<string>("LastName").HasField("_lastName").IsRequired();
-            builder.Property<bool>("Active").HasField("_active");
+            builder.Property<string>("Bio").HasField("_bio").HasMaxLength(510).IsRequired();
+            builder.Property<string>("ProfileImage").HasField("_profileImage").HasMaxLength(255).IsRequired();
+
+            // Configure entity filters
+            builder.HasQueryFilter(c => !c.Deleted);
         }
     }
 }

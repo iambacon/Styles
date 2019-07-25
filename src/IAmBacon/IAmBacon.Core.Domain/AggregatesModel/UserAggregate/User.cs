@@ -11,8 +11,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
     /// </summary>
     public class User : Entity, IAggregateRoot, IDeleteable
     {
-        private readonly string _bio;
-        private readonly string _profileImage;
+        private string _bio;
+        private string _profileImage;
         private string _firstName;
         private string _lastName;
         private string _email;

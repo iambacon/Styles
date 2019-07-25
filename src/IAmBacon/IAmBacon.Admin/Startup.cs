@@ -6,6 +6,7 @@ using IAmBacon.Core.Infrastructure.AutofacModules;
 using IAmBacon.Core.Infrastructure.Post;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using IAmBacon.Core.Infrastructure.PostTag;
+using IAmBacon.Core.Infrastructure.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,7 @@ namespace IAmBacon.Admin
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<TagContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<PostContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
+            services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
 
             //configure autofac
 
