@@ -20,6 +20,11 @@ namespace IAmBacon.Admin.Controllers
             return View();
         }
 
+        public IActionResult Create()
+        {
+            return View("Create");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserViewModel model)

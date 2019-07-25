@@ -1,0 +1,48 @@
+﻿@model IAmBacon.Admin.ViewModels.User.CreateUserViewModel
+
+<h1>Create a user</h1>
+
+<form asp-controller="User" asp-action="Create" method="post">
+    <fieldset>
+        <legend>User</legend>
+        <div>
+            <label asp-for="Email"></label>
+        </div>
+        <div>
+            <input asp-for="Email" type="text" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="FirstName"></label>
+        </div>
+        <div>
+            <input asp-for="FirstName" type="text" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div>
+            <label asp-for="LastName"></label>
+        </div>
+        <div>
+            <input asp-for="LastName" type="text" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div>
+            <label asp-for="ProfileImage"></label>
+        </div>
+        <div>
+            <input asp-for="ProfileImage" type="text" />
+            <span asp-validation-for="ProfileImage"></span>
+        </div>
+        <div>
+            <label asp-for="Bio"></label>
+        </div>
+        <div>
+            <input asp-for="Bio" type="text" />
+            <span asp-validation-for="Bio"></span>
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+</form>
+<a asp-controller="User" asp-action="Index">Back to list</a>

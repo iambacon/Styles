@@ -23,6 +23,17 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
 
         public bool Deleted { get; private set; }
 
+        #region Temporary
+
+        public DateTime LastActivityDate { get; set; }
+        public DateTime LastLockoutDate { get; set; }
+        public DateTime LastLoginDate { get; set; }
+        public DateTime LastPasswordChangeDate { get; set; }
+        public string Password { get; set; }
+        public string Salt { get; set; }
+
+        #endregion
+
         // Empty constructor required for EF to be able to create an entity object
         protected User() { }
 
