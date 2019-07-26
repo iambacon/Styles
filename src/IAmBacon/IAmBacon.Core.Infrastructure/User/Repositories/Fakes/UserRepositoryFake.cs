@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.UserAggregate;
 using IAmBacon.Core.Domain.Base;
 using IAmBacon.Core.Infrastructure.Base;
@@ -22,6 +24,12 @@ namespace IAmBacon.Core.Infrastructure.User.Repositories.Fakes
             Data.Add(entity);
 
             return entity;
+        }
+
+        public Task<Domain.AggregatesModel.UserAggregate.User> GetAsync(int userId)
+        {
+            var entity = Data.FirstOrDefault(x => x.Id == userId);
+            return Task.FromResult(entity);
         }
     }
 }

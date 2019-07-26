@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using IAmBacon.Core.Domain.AggregatesModel.UserAggregate;
 using IAmBacon.Core.Domain.Base;
 
@@ -18,6 +19,12 @@ namespace IAmBacon.Core.Infrastructure.User.Repositories
         public Domain.AggregatesModel.UserAggregate.User Add(Domain.AggregatesModel.UserAggregate.User entity)
         {
             return _context.Users.Add(entity).Entity;
+        }
+
+        public async Task<Domain.AggregatesModel.UserAggregate.User> GetAsync(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            return user;
         }
     }
 }

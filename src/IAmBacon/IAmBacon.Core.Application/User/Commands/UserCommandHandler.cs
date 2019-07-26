@@ -5,7 +5,7 @@ using IAmBacon.Core.Domain.AggregatesModel.UserAggregate;
 
 namespace IAmBacon.Core.Application.User.Commands
 {
-    public class UserCommandHandler : ICommandHandler<CreateUserCommand>
+    public class UserCommandHandler : ICommandHandler<CreateUserCommand>, ICommandHandler<DeleteUserCommand>
     {
         private readonly IUserRepository _repository;
 
@@ -20,6 +20,14 @@ namespace IAmBacon.Core.Application.User.Commands
                 command.ProfileImage, command.Bio);
 
             _repository.Add(entity);
+            await _repository.UnitOfWork.CommitAsync();
+        }
+
+        public async Task HandleAsync(DeleteUserCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+            entity.SetDelete(true);
+
             await _repository.UnitOfWork.CommitAsync();
         }
     }
