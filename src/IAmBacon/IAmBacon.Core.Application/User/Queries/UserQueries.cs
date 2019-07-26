@@ -22,6 +22,20 @@ namespace IAmBacon.Core.Application.User.Queries
             _connection = connectionFactory.CreateDbConnection();
         }
 
+        public async Task<User> GetAsync(int id)
+        {
+            var result = await _connection.QueryAsync<User>(
+                @"select Id, FirstName, Lastname, Active, Deleted from Users where id=@id and Deleted=0", new { id });
+
+            var users = result.ToList();
+            if (users.Count == 0)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            return users.First();
+        }
+
         public async Task<IReadOnlyCollection<User>> GetAllAsync()
         {
             var result = await _connection.QueryAsync<User>(@"select Id, FirstName, LastName from Users where Active=1");
