@@ -11,6 +11,13 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     [Subject("User controller create")]
     public class UserControllerCreate
     {
+        public class When_get : User_controller_context
+        {
+            Because of = () => Result = Sut.Create();
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+        }
+
         public class When_post_and_modelState_is_invalid : User_controller_context
         {
             Establish context = () => Sut.ModelState.AddModelError("Email", "Required");

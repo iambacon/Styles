@@ -18,7 +18,7 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
             using (var context = new UserContext(Options))
             using (Sut = new UserController(new UserCommandHandler(new UserRepository(context))))
             {
-                await Sut.Create(new CreateUserViewModel {Email = "colin@iambacon.co.uk", FirstName = "colin", LastName = "bacon"});
+                await Sut.Create(new CreateUserViewModel {Email = "colin@iambacon.co.uk", FirstName = "colin", LastName = "bacon", ProfileImage = "image.jpg", Bio = "I am bacon."});
             }
         };
 
