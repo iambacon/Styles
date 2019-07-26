@@ -62,6 +62,13 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
             _dateCreated = DateTime.Now;
             _dateModified = _dateCreated;
             IsActive = true;
+
+            LastActivityDate = DateTime.Now;
+            LastLockoutDate = DateTime.Now;
+            LastLoginDate = DateTime.Now;
+            LastPasswordChangeDate = DateTime.Now;
+            Password = "temp";
+            Salt = "temp";
         }
 
         public void SetDelete(bool status)
