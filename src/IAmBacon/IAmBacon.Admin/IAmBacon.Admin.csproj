@@ -6,11 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac" Version="4.9.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
@@ -21,6 +17,10 @@
     <ProjectReference Include="..\IAmBacon.Core.Application\IAmBacon.Core.Application.csproj" />
     <ProjectReference Include="..\IAmBacon.Core.Domain\IAmBacon.Core.Domain.csproj" />
     <ProjectReference Include="..\IAmBacon.Core.Infrastructure\IAmBacon.Core.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>
