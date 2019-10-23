@@ -63,6 +63,7 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
             _dateModified = _dateCreated;
             IsActive = true;
 
+            // TODO: this are to be removed
             LastActivityDate = DateTime.Now;
             LastLockoutDate = DateTime.Now;
             LastLoginDate = DateTime.Now;

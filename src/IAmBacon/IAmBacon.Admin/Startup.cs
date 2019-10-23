@@ -3,12 +3,14 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using IAmBacon.Core.Application.AutofacModules;
 using IAmBacon.Core.Infrastructure.AutofacModules;
+using IAmBacon.Core.Infrastructure.Identity;
 using IAmBacon.Core.Infrastructure.Post;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using IAmBacon.Core.Infrastructure.PostTag;
 using IAmBacon.Core.Infrastructure.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,10 @@ namespace IAmBacon.Admin
             services.AddDbContext<TagContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<PostContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
+
+            //Identity
+            services.AddDbContext<IdentityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<IdentityContext>();
 
             //configure autofac
 
@@ -83,6 +89,7 @@ namespace IAmBacon.Admin
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
