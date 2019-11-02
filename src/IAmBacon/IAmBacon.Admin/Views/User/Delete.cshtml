@@ -7,8 +7,18 @@
 <form asp-controller="User" asp-action="Delete" method="post">
     <fieldset>
         <legend>User</legend>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" type="text" readonly="readonly" />
+        <div>
+            <label asp-for="Name"></label>
+        </div>
+        <div>
+            <input asp-for="Name" type="text" readonly="readonly" />
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+        </div>
+        <div>
+            <input asp-for="Email" type="text" readonly="readonly" />
+        </div>
     </fieldset>
     <p>
         <input type="submit" value="Delete" />

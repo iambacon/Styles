@@ -40,7 +40,17 @@ namespace IAmBacon.Core.Application.User.Commands
             var entity = await _repository.GetAsync(command.Id);
             entity.SetDelete(true);
 
-            await _repository.UnitOfWork.CommitAsync();
+            var user = await _userManager.FindByEmailAsync(command.Email);
+            var result = await _userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                await _repository.UnitOfWork.CommitAsync();
+            }
+            else
+            {
+                throw new Exception(result.Errors.ToString());
+            }
         }
     }
 }

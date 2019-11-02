@@ -52,11 +52,13 @@ namespace IAmBacon.Admin.Controllers
         {
             try
             {
-                var result = await _userQueries.GetAsync(id);
+                var user = await _userQueries.GetAsync(id);
 
                 var model = new DeleteUserViewModel
                 {
-                    Name = string.Join(" ", result.FirstName, result.LastName)
+                    Id = user.Id,
+                    Email = user.Email,
+                    Name = user.ToString()
                 };
 
                 return View(model);
@@ -64,6 +66,25 @@ namespace IAmBacon.Admin.Controllers
             catch (KeyNotFoundException)
             {
                 return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeleteUserViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            try
+            {
+                var command = new DeleteUserCommand(model.Id, model.Email);
+                await _handler.HandleAsync(command);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
             }
         }
     }
