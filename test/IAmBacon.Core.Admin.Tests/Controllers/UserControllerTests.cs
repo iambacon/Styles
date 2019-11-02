@@ -1,11 +1,16 @@
-﻿using IAmBacon.Admin.Controllers;
+﻿using System;
+using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.User;
 using IAmBacon.Core.Application.User.Commands;
 using IAmBacon.Core.Application.User.Queries.Fakes;
+using IAmBacon.Core.Infrastructure.Identity;
 using IAmBacon.Core.Infrastructure.User.Fakes;
 using IAmBacon.Core.Infrastructure.User.Repositories.Fakes;
 using Machine.Specifications;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IAmBacon.Core.Admin.Tests.Controllers
 {
@@ -33,7 +38,13 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         public class When_post_and_modelState_is_valid : User_controller_context
         {
             Because of = async () => Result = await Sut.Create(new CreateUserViewModel
-            { Email = "colin@iambacon.co.uk", FirstName = "Colin", LastName = "Bacon" });
+            {
+                Email = "colin@iambacon.co.uk",
+                FirstName = "Colin",
+                LastName = "Bacon",
+                ProfileImage = "image.png",
+                Bio = "I am Colin"
+            });
 
             It should_should_return_a_redirect = () => Result.ShouldBeOfExactType<RedirectToActionResult>();
         }
@@ -80,9 +91,16 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
     {
         Establish context = () =>
         {
+            var options = new DbContextOptionsBuilder<IdentityContext>()
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                .Options;
+            var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new IdentityContext(options)), null,
+                new PasswordHasher<IdentityUser>(), null,
+                null, null, null, null, null);
+
             var userContext = new UserContextFake();
             Repo = new UserRepositoryFake(userContext);
-            var handler = new UserCommandHandler(Repo);
+            var handler = new UserCommandHandler(Repo, userManager);
             UserQueries = new UserQueriesFake();
 
             Sut = new UserController(handler, UserQueries);
