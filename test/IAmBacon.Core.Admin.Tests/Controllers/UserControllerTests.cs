@@ -3,6 +3,7 @@ using IAmBacon.Admin.Controllers;
 using IAmBacon.Admin.ViewModels.User;
 using IAmBacon.Core.Application.User.Commands;
 using IAmBacon.Core.Application.User.Queries.Fakes;
+using IAmBacon.Core.Domain.AggregatesModel.UserAggregate;
 using IAmBacon.Core.Infrastructure.Identity;
 using IAmBacon.Core.Infrastructure.User.Fakes;
 using IAmBacon.Core.Infrastructure.User.Repositories.Fakes;
@@ -85,6 +86,46 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }
+
+        public class When_post_and_user_delete_is_successful : User_controller_context
+        {
+            Establish context = async () =>
+            {
+                var user = new IdentityUser("joe@bloggs.com") { Email = "joe@bloggs.com" };
+                await UserManager.CreateAsync(user, "password");
+
+                Repo.Add(new User("Joe", "Bloggs", "joe@bloggs.com", "me.jpg", "I am Joe."));
+            };
+
+            Because of = async () =>
+                Result = await Sut.Delete(new DeleteUserViewModel { Email = "joe@bloggs.com", Id = 0, Name = "Joe Bloggs" });
+
+            It should_redirect_to_the_user_page = () =>
+            {
+                Result.ShouldBeOfExactType<RedirectToActionResult>();
+
+                var redirectResult = (RedirectToActionResult)Result;
+                redirectResult.ActionName.ShouldBeEqualIgnoringCase("Index");
+            };
+        }
+
+        public class When_post_and_user_does_not_exist : User_controller_context
+        {
+            Because of = async () =>
+                Result = await Sut.Delete(new DeleteUserViewModel { Email = "joe@bloggs.com", Id = 0, Name = "Joe Bloggs" });
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+
+        public class When_post_and_identity_user_does_not_exist : User_controller_context
+        {
+            Establish context = () => Repo.Add(new User("Joe", "Bloggs", "joe@bloggs.com", "me.jpg", "I am Joe."));
+
+            Because of = async () =>
+                Result = await Sut.Delete(new DeleteUserViewModel { Email = "joe@bloggs.com", Id = 0, Name = "Joe Bloggs" });
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
     }
 
     public abstract class User_controller_context
@@ -94,13 +135,14 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             var options = new DbContextOptionsBuilder<IdentityContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
-            var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new IdentityContext(options)), null,
+
+            UserManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new IdentityContext(options)), null,
                 new PasswordHasher<IdentityUser>(), null,
                 null, null, null, null, null);
 
             var userContext = new UserContextFake();
             Repo = new UserRepositoryFake(userContext);
-            var handler = new UserCommandHandler(Repo, userManager);
+            var handler = new UserCommandHandler(Repo, UserManager);
             UserQueries = new UserQueriesFake();
 
             Sut = new UserController(handler, UserQueries);
@@ -110,5 +152,6 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         protected static IActionResult Result;
         protected static UserRepositoryFake Repo;
         protected static UserQueriesFake UserQueries;
+        protected static UserManager<IdentityUser> UserManager;
     }
 }

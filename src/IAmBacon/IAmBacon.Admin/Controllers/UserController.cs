@@ -82,9 +82,17 @@ namespace IAmBacon.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (NullReferenceException)
             {
-                return View(model);
+                return NotFound();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
