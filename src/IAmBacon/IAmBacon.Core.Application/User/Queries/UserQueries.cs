@@ -25,7 +25,8 @@ namespace IAmBacon.Core.Application.User.Queries
         public async Task<User> GetAsync(int id)
         {
             var result = await _connection.QueryAsync<User>(
-                @"select Id, FirstName, Lastname, Email, Active, Deleted from Users where id=@id and Deleted=0", new { id });
+                @"select Id, FirstName, Lastname, Email, Bio, ProfileImage, Active, Deleted from Users where id=@id and Deleted=0",
+                new {id});
 
             var users = result.ToList();
             if (users.Count == 0)

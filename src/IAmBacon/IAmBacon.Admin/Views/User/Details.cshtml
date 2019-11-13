@@ -1,0 +1,38 @@
+﻿@model IAmBacon.Admin.ViewModels.User.RetrieveUserViewModel
+
+<h1>User details</h1>
+<fieldset>
+    <legend>User</legend>
+    <div>
+        <label asp-for="FirstName">FirstName</label>
+    </div>
+    <div>
+        <input asp-for="FirstName" type="text" readonly="readonly" />
+    </div>
+    <div>
+        <label asp-for="LastName">LastName</label>
+    </div>
+    <div>
+        <input asp-for="LastName" type="text" readonly="readonly" />
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+    </div>
+    <div>
+        <input asp-for="Email" type="text" readonly="readonly" />
+    </div>
+    <div>
+        <label asp-for="Bio">Bio</label>
+    </div>
+    <div>
+        <input asp-for="Bio" type="text" readonly="readonly" />
+    </div>
+    <div>
+        <label asp-for="ProfileImage">ProfileImage</label>
+    </div>
+    <div>
+        <input asp-for="ProfileImage" type="text" readonly="readonly" />
+    </div>
+</fieldset>
+<a asp-controller="User" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-controller="User" asp-action="Index">Back to List</a>

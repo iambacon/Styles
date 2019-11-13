@@ -95,5 +95,29 @@ namespace IAmBacon.Admin.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                var user = await _userQueries.GetAsync(id);
+
+                var model = new RetrieveUserViewModel
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Bio = user.Bio,
+                    ProfileImage = user.ProfileImage
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
     }
 }
