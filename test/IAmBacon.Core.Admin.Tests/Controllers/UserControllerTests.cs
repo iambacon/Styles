@@ -58,6 +58,39 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
+    [Subject("User controller details")]
+    public class UserControllerDetails : User_controller_context
+    {
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.User.Queries.User
+                {
+                    Id = 1,
+                    FirstName = "Kevin"
+                };
+
+                UserQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Details(1);
+
+            It should_return_a_view_result = () =>
+             {
+                 Result.ShouldBeOfExactType<ViewResult>();
+                 ((ViewResult)Result).Model.ShouldBeOfExactType<RetrieveUserViewModel>();
+             };
+        }
+
+        public class When_get_and_user_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Details(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
     [Subject("User controller delete")]
     public class UserControllerDelete : User_controller_context
     {
