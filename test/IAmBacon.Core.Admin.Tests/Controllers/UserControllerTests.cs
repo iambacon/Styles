@@ -161,6 +161,38 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         }
     }
 
+    [Subject("User controller edit")]
+    public class UserControllerEdit : User_controller_context
+    {
+        public class When_get
+        {
+            Establish context = () =>
+            {
+                var entity = new Application.User.Queries.User
+                {
+                    Id = 1,
+                    FirstName = "Joe",
+                    LastName = "Bloggs"
+                };
+
+                UserQueries.Add(entity);
+            };
+
+            Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_a_view_result = () => Result.ShouldBeOfExactType<ViewResult>();
+
+            It should_return_an_edit_user_view_model = () => ((ViewResult)Result).Model.ShouldBeOfExactType<EditUserViewModel>();
+        }
+
+        public class When_get_and_user_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+    }
+
     public abstract class User_controller_context
     {
         Establish context = () =>

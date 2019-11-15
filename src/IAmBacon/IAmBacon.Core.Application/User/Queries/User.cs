@@ -14,6 +14,10 @@
 
         public string ProfileImage { get; set; }
 
+        public bool Active { get; set; }
+
+        public bool Deleted { get; set; }
+
         public override string ToString()
         {
             return $"{FirstName} {LastName}";

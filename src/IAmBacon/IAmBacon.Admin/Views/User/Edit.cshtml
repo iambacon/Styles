@@ -1,0 +1,59 @@
+﻿@model IAmBacon.Admin.ViewModels.User.EditUserViewModel
+<h1>Edit user</h1>
+<form asp-controller="User" asp-action="Edit" method="post">
+    <fieldset>
+        <legend>User</legend>
+        <div>
+            <label asp-for="FirstName"></label>
+        </div>
+        <div>
+            <input asp-for="FirstName" type="text" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div>
+            <label asp-for="LastName"></label>
+        </div>
+        <div>
+            <input asp-for="LastName" type="text" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+        </div>
+        <div>
+            <input asp-for="Email" type="text" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="Bio"></label>
+        </div>
+        <div>
+            <input asp-for="Bio" type="text" />
+            <span asp-validation-for="Bio"></span>
+        </div>
+        <div>
+            <label asp-for="ProfileImage"></label>
+        </div>
+        <div>
+            <input asp-for="ProfileImage" type="text" />
+            <span asp-validation-for="ProfileImage"></span>
+        </div>
+        <div>
+            <label asp-for="Active">Active</label>
+        </div>
+        <div>
+            <input asp-for="Active" type="checkbox" />
+        </div>
+        <div>
+            <label asp-for="Deleted">Delete</label>
+        </div>
+        <div>
+            <input asp-for="Deleted" type="checkbox" />
+        </div>
+        <input asp-for="@Model.Id" type="hidden" />
+    </fieldset>
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+</form>
+<a asp-controller="User" asp-action="Index">Back to List</a>
