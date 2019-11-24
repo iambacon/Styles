@@ -144,5 +144,37 @@ namespace IAmBacon.Admin.Controllers
                 return NotFound();
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditUserViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            try
+            {
+                var command = new UpdateUserCommand(
+                    model.Id,
+                    model.Bio,
+                    model.ProfileImage,
+                    model.FirstName,
+                    model.LastName,
+                    model.Email,
+                    model.Active,
+                    model.Deleted);
+
+                await _handler.HandleAsync(command);
+
+                return RedirectToAction("Index");
+            }
+            catch (NullReferenceException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

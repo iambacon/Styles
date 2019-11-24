@@ -120,7 +120,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }
 
-        public class When_post_and_user_delete_is_successful : User_controller_context
+        public class When_post_and_user_delete_is_successful
         {
             Establish context = async () =>
             {
@@ -142,7 +142,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             };
         }
 
-        public class When_post_and_user_does_not_exist : User_controller_context
+        public class When_post_and_user_does_not_exist
         {
             Because of = async () =>
                 Result = await Sut.Delete(new DeleteUserViewModel { Email = "joe@bloggs.com", Id = 0, Name = "Joe Bloggs" });
@@ -150,7 +150,7 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }
 
-        public class When_post_and_identity_user_does_not_exist : User_controller_context
+        public class When_post_and_identity_user_does_not_exist
         {
             Establish context = () => Repo.Add(new User("Joe", "Bloggs", "joe@bloggs.com", "me.jpg", "I am Joe."));
 
@@ -188,6 +188,44 @@ namespace IAmBacon.Core.Admin.Tests.Controllers
         public class When_get_and_user_does_not_exist
         {
             Because of = async () => Result = await Sut.Edit(1);
+
+            It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
+        }
+
+        public class When_post_and_user_edit_is_successful
+        {
+            Establish context = () => Repo.Add(new User("Joe", "Bloggs", "joe@bloggs.com", "me.jpg", "I am Joe."));
+
+            Because of = async () => Result = await Sut.Edit(new EditUserViewModel
+            {
+                Id = 0,
+                FirstName = "Bob",
+                LastName = "Bloggs",
+                Bio = "I am Bob",
+                ProfileImage = "me.jpg",
+                Email = "bob@bloggs.com"
+            });
+
+            It should_redirect_to_the_user_page = () =>
+            {
+                Result.ShouldBeOfExactType<RedirectToActionResult>();
+
+                var redirectResult = (RedirectToActionResult)Result;
+                redirectResult.ActionName.ShouldBeEqualIgnoringCase("Index");
+            };
+        }
+
+        public class When_post_and_user_does_not_exist
+        {
+            Because of = async () => Result = await Sut.Edit(new EditUserViewModel
+            {
+                Id = 0,
+                FirstName = "Bob",
+                LastName = "Bloggs",
+                Bio = "I am Bob",
+                ProfileImage = "me.jpg",
+                Email = "bob@bloggs.com"
+            });
 
             It should_return_not_found = () => Result.ShouldBeOfExactType<NotFoundResult>();
         }

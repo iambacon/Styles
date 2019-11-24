@@ -7,6 +7,8 @@ namespace IAmBacon.Core.Domain.AggregatesModel.UserAggregate
     {
         User Add(User entity);
 
+        void Update(User entity);
+
         Task<User> GetAsync(int userId);
     }
 }

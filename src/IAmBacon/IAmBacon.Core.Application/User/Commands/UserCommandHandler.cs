@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace IAmBacon.Core.Application.User.Commands
 {
-    public class UserCommandHandler : ICommandHandler<CreateUserCommand>, ICommandHandler<DeleteUserCommand>
+    public class UserCommandHandler : ICommandHandler<CreateUserCommand>, ICommandHandler<DeleteUserCommand>,
+        ICommandHandler<UpdateUserCommand>
     {
         private readonly IUserRepository _repository;
         private readonly UserManager<IdentityUser> _userManager;
@@ -51,6 +52,23 @@ namespace IAmBacon.Core.Application.User.Commands
             {
                 throw new Exception(result.Errors.ToString());
             }
+        }
+
+        public async Task HandleAsync(UpdateUserCommand command)
+        {
+            var entity = await _repository.GetAsync(command.Id);
+
+            entity.SetActive(command.Active);
+            entity.SetDelete(command.Deleted);
+            entity.SetEmail(command.Email);
+            entity.SetBio(command.Bio);
+            entity.SetFirstName(command.FirstName);
+            entity.SetLastName(command.LastName);
+            entity.SetProfileImage(command.ProfileImage);
+
+            _repository.Update(entity);
+
+            await _repository.UnitOfWork.CommitAsync();
         }
     }
 }

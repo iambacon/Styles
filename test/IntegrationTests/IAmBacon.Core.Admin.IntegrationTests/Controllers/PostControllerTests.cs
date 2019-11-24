@@ -76,7 +76,7 @@ namespace IAmBacon.Core.Admin.IntegrationTests.Controllers
             }
         };
 
-        private Because of = async () =>
+        Because of = async () =>
         {
             using (var context = new PostContext(PostOptions))
             using (Sut = new PostController(new PostCommandHandler(new PostRepository(context)), UserQueries, CategoryQueries, TagQueries, PostQueries))

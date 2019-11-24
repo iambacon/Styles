@@ -1,11 +1,10 @@
 ﻿using System;
-using IAmBacon.Core.Application.PostCategory.Commands;
 using IAmBacon.Core.Application.PostTag.Commands;
 using Machine.Specifications;
 
 namespace IAmBacon.Core.Application.Tests.PostTag.Commands
 {
-    [Subject("Update category command")]
+    [Subject("Update tag command")]
     public class When_tag_argument_null
     {
         Because of = () => _exception = Catch.Exception(() => _sut = new UpdateTagCommand(0, null, true, false));

@@ -26,6 +26,12 @@ namespace IAmBacon.Core.Infrastructure.User.Repositories.Fakes
             return entity;
         }
 
+        public void Update(Domain.AggregatesModel.UserAggregate.User entity)
+        {
+            Data.RemoveWhere(x => x.Id == entity.Id);
+            Add(entity);
+        }
+
         public Task<Domain.AggregatesModel.UserAggregate.User> GetAsync(int userId)
         {
             var entity = Data.FirstOrDefault(x => x.Id == userId);
