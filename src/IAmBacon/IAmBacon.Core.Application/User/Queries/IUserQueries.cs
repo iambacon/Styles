@@ -7,6 +7,8 @@ namespace IAmBacon.Core.Application.User.Queries
     {
         Task<User> GetAsync(int id);
 
+        Task<User> GetAsync(string email);
+
         Task<IReadOnlyCollection<User>> GetAllAsync();
     }
 }

@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using IAmBacon.Core.Application.AutofacModules;
+using IAmBacon.Core.Domain.ValueObject.Configuration;
 using IAmBacon.Core.Infrastructure.AutofacModules;
 using IAmBacon.Core.Infrastructure.Identity;
 using IAmBacon.Core.Infrastructure.Post;
@@ -33,6 +34,10 @@ namespace IAmBacon.Admin
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            var config = new EmailConfiguration();
+            Configuration.Bind("Email", config);
+            services.AddSingleton(config);
+
             services.AddDbContext<CategoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<TagContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
             services.AddDbContext<PostContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
@@ -40,7 +45,8 @@ namespace IAmBacon.Admin
 
             //Identity
             services.AddDbContext<IdentityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<IdentityContext>();
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedEmail = true)
+                .AddEntityFrameworkStores<IdentityContext>();
 
             //configure autofac
 
@@ -67,6 +73,7 @@ namespace IAmBacon.Admin
             builder.RegisterModule(new UserModule());
             builder.RegisterModule(new PostCommandModule());
             builder.RegisterModule(new PostModule());
+            builder.RegisterModule(new EmailCommandModule());
 
             //var assembliesInAppDomain = AppDomain.CurrentDomain.GetAssemblies().ToArray();
             //builder.RegisterAssemblyModules(assembliesInAppDomain);

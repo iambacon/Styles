@@ -26,6 +26,19 @@ namespace IAmBacon.Core.Application.User.Queries.Fakes
             }
         }
 
+        public Task<User> GetAsync(string email)
+        {
+            try
+            {
+                var entity = _data.First(x => x.Email == email);
+                return Task.FromResult(entity);
+            }
+            catch
+            {
+                throw new KeyNotFoundException();
+            }
+        }
+
         public Task<IReadOnlyCollection<User>> GetAllAsync()
         {
             return Task.FromResult(_data as IReadOnlyCollection<User>);
