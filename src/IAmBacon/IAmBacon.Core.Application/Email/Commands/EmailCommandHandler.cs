@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using IAmBacon.Core.Application.Base;
 using IAmBacon.Core.Domain.ValueObject.Configuration;
 using MailKit.Net.Smtp;
@@ -10,13 +11,14 @@ namespace IAmBacon.Core.Application.Email.Commands
     public class EmailCommandHandler : ICommandHandler<SendEmailCommand>
     {
         private readonly EmailConfiguration _configuration;
+
         private const string SystemEmailAddress = "email@iambacon.co.uk";
 
         private const string SystemDisplayName = "iambacon.co.uk";
 
         public EmailCommandHandler(EmailConfiguration configuration)
         {
-            _configuration = configuration;
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         public async Task HandleAsync(SendEmailCommand command)
