@@ -20,9 +20,11 @@ namespace IAmBacon.Admin.Controllers
             _tagQueries = tagQueries ?? throw new ArgumentNullException(nameof(tagQueries));
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var tags = await _tagQueries.GetAllAsync();
+
+            return View(tags);
         }
 
         public IActionResult Create()

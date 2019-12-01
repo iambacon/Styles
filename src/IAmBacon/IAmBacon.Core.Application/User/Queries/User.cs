@@ -1,4 +1,6 @@
-﻿namespace IAmBacon.Core.Application.User.Queries
+﻿using System;
+
+namespace IAmBacon.Core.Application.User.Queries
 {
     public class User
     {
@@ -17,6 +19,10 @@
         public bool Active { get; set; }
 
         public bool Deleted { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public DateTime DateModified { get; set; }
 
         public override string ToString()
         {

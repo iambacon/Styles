@@ -1,4 +1,6 @@
-﻿namespace IAmBacon.Core.Application.Post.Queries
+﻿using System;
+
+namespace IAmBacon.Core.Application.Post.Queries
 {
     public class Post
     {
@@ -12,5 +14,7 @@
         public bool NoCss { get; set; }
         public bool Active { get; set; }
         public bool Deleted { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
     }
 }

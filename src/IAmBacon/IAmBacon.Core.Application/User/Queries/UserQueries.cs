@@ -53,7 +53,8 @@ namespace IAmBacon.Core.Application.User.Queries
 
         public async Task<IReadOnlyCollection<User>> GetAllAsync()
         {
-            var result = await _connection.QueryAsync<User>(@"select Id, FirstName, LastName from Users where Active=1");
+            var result = await _connection.QueryAsync<User>(
+                @"select Id, FirstName, LastName, DateCreated, DateModified, Active from Users where Active=1");
 
             return result.ToList();
         }

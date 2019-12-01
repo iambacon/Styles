@@ -21,9 +21,10 @@ namespace IAmBacon.Admin.Controllers
             _categoryQueries = categoryQueries ?? throw new ArgumentNullException(nameof(categoryQueries));
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var categories = await _categoryQueries.GetAllAsync();
+            return View(categories);
         }
 
         public IActionResult Create()

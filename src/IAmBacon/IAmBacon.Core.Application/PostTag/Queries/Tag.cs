@@ -6,5 +6,6 @@
         public bool Deleted { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
+        public string DateCreated { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace IAmBacon.Core.Application.PostCategory.Queries
+﻿using System;
+
+namespace IAmBacon.Core.Application.PostCategory.Queries
 {
     public class Category
     {
@@ -6,5 +8,6 @@
         public bool Deleted { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

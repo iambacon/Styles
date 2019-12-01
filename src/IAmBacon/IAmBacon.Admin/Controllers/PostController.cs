@@ -33,9 +33,11 @@ namespace IAmBacon.Admin.Controllers
             _postQueries = postQueries ?? throw new ArgumentNullException(nameof(postQueries));
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var posts = await _postQueries.GetAllAsync();
+
+            return View(posts);
         }
 
         public async Task<IActionResult> Create()

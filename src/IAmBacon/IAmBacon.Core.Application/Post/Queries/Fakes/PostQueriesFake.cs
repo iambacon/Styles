@@ -30,5 +30,10 @@ namespace IAmBacon.Core.Application.Post.Queries.Fakes
                 throw new KeyNotFoundException();
             }
         }
+
+        public Task<IReadOnlyCollection<Post>> GetAllAsync()
+        {
+            return Task.FromResult(_data as IReadOnlyCollection<Post>);
+        }
     }
 }

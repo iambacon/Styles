@@ -19,9 +19,11 @@ namespace IAmBacon.Admin.Controllers
             _userQueries = userQueries ?? throw new ArgumentNullException(nameof(userQueries));
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var users = await _userQueries.GetAllAsync();
+
+            return View(users);
         }
 
         public IActionResult Create()

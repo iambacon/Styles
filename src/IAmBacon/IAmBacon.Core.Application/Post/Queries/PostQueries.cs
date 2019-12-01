@@ -43,5 +43,13 @@ namespace IAmBacon.Core.Application.Post.Queries
 
             return posts.First();
         }
+
+        public async Task<IReadOnlyCollection<Post>> GetAllAsync()
+        {
+            var result = await _connection.QueryAsync<Post>(
+                @"select Id, Title, DateModified, DateCreated from Posts where Active=1 order by DateCreated desc");
+
+            return result.ToList();
+        }
     }
 }

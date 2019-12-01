@@ -38,7 +38,7 @@ namespace IAmBacon.Core.Application.PostCategory.Queries
 
         public async Task<IReadOnlyCollection<Category>> GetAllAsync()
         {
-            var result = await _connection.QueryAsync<Category>(@"select Id, Name from Categories where Active=1");
+            var result = await _connection.QueryAsync<Category>(@"select Id, Name, DateCreated from Categories where Active=1");
 
             return result.ToList();
         }
