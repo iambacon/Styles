@@ -9,10 +9,12 @@ using IAmBacon.Core.Infrastructure.Post;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using IAmBacon.Core.Infrastructure.PostTag;
 using IAmBacon.Core.Infrastructure.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +34,9 @@ namespace IAmBacon.Admin
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services
+                .AddMvc(options => options.Filters.Add(new AuthorizeFilter()))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var config = new EmailConfiguration();
             Configuration.Bind("Email", config);
@@ -45,8 +49,21 @@ namespace IAmBacon.Admin
 
             //Identity
             services.AddDbContext<IdentityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BaconSqlConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedEmail = true)
-                .AddEntityFrameworkStores<IdentityContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.SignIn.RequireConfirmedEmail = true;
+                    options.Stores.MaxLengthForKeys = 128;
+                })
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/account/login";
+                options.LogoutPath = $"/account/logout";
+                options.AccessDeniedPath = $"/account/access-denied";
+            });
 
             //configure autofac
 

@@ -28,6 +28,7 @@ namespace IAmBacon.Admin.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
@@ -38,6 +39,7 @@ namespace IAmBacon.Admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
@@ -67,6 +69,7 @@ namespace IAmBacon.Admin.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
             return View();
