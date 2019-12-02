@@ -9,7 +9,6 @@ using IAmBacon.Core.Infrastructure.Post;
 using IAmBacon.Core.Infrastructure.PostCategory;
 using IAmBacon.Core.Infrastructure.PostTag;
 using IAmBacon.Core.Infrastructure.User;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -119,7 +118,7 @@ namespace IAmBacon.Admin
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Dashboard}/{action=Index}/{id?}");
             });
         }
     }
