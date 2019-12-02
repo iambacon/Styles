@@ -193,6 +193,39 @@ namespace IAmBacon.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                var post = await _postQueries.GetAsync(id);
+                var author = await _userQueries.GetAsync(post.AuthorId);
+                var category = await _categoryQueries.GetAsync(post.CategoryId);
+                var tags = await _tagQueries.GetTagsForPost(post.Id);
+
+                var model = new RetrievePostViewModel
+                {
+                    Active = post.Active,
+                    Author = author.ToString(),
+                    Category = category.Name,
+                    Content = post.Content,
+                    DateCreated = post.DateCreated,
+                    DateModified = post.DateModified,
+                    Deleted = post.Deleted,
+                    Id = post.Id,
+                    Image = post.Image,
+                    NoCss = post.NoCss,
+                    Tags = tags,
+                    Title = post.Title
+                };
+
+                return View(model);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
         private async Task<List<SelectListItem>> GetCategories()
         {
             var categories = await _categoryQueries.GetAllAsync();
