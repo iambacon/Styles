@@ -61,6 +61,11 @@ IF DEFINED MSBUILD_PATH goto MsbuildPathDefined
 SET MSBUILD_PATH=%ProgramFiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe
 :MsbuildPathDefined
 
+IF NOT DEFINED PROJECT (
+  echo Missing PROJECT app setting. Please configure in Azure portal and redeploy.
+  goto error
+)
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
@@ -75,21 +80,38 @@ IF /I "src\IAmBacon\IAmBacon.sln" NEQ "" (
 
 :: 2. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon\IAmBacon.Web.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\src\IAmBacon\\" %SCM_BUILD_ARGS%
+  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\%PROJECT%" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\src\IAmBacon\\" %SCM_BUILD_ARGS%
 ) ELSE (
-  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon\IAmBacon.Web.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\src\IAmBacon\\" %SCM_BUILD_ARGS%
+  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\%PROJECT%" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\src\IAmBacon\\" %SCM_BUILD_ARGS%
 )
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
-:: 2a. Build test project to temporary path
-call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj
+:: 2a. Build test projects to temporary path
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj"
+IF !ERRORLEVEL! NEQ 0 goto error
+call :ExecuteCmd dotnet msbuild "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Admin.Tests\IAmBacon.Core.Admin.Tests.csproj"
+IF !ERRORLEVEL! NEQ 0 goto error
+call :ExecuteCmd dotnet msbuild "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Application.Tests\IAmBacon.Core.Application.Tests.csproj"
+IF !ERRORLEVEL! NEQ 0 goto error
+call :ExecuteCmd dotnet msbuild "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Domain.Tests\IAmBacon.Core.Domain.Tests.csproj"
+IF !ERRORLEVEL! NEQ 0 goto error
+call :ExecuteCmd dotnet msbuild "%DEPLOYMENT_SOURCE%\test\IntegrationTests\IAmBacon.Core.Admin.IntegrationTests\IAmBacon.Core.Admin.IntegrationTests.csproj"
+IF !ERRORLEVEL! NEQ 0 goto error
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Domain.Tests\IAmBacon.Domain.Tests.csproj"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2b. Run unit tests
-call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\bin\Debug\IAmBacon.Web.Tests.dll
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\bin\Debug\IAmBacon.Web.Tests.dll"
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Admin.Tests\bin\Debug\netcoreapp2.2\IAmBacon.Core.Admin.Tests.dll"
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Application.Tests\bin\Debug\netcoreapp2.2\IAmBacon.Core.Application.Tests.dll"
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Domain.Tests\bin\Debug\netcoreapp2.2\IAmBacon.Core.Domain.Tests.dll"
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\test\IntegrationTests\IAmBacon.Core.Admin.IntegrationTests\bin\Debug\netcoreapp2.2\IAmBacon.Core.Admin.IntegrationTests.dll"
+call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Domain.Tests\bin\Debug\IAmBacon.Domain.Tests.dll"
 
 IF !ERRORLEVEL! NEQ 0 goto error
+
+IF /I "%PROJECT%" NEQ "src\IAmBacon\IAmBacon\IAmBacon.Web.csproj" goto :kuduSync
 
 :: 3. Restore Grunt packages and run Grunt tasks
 pushd %DEPLOYMENT_TEMP%
@@ -101,10 +123,11 @@ echo Running Grunt tasks
 call :ExecuteCmd grunt prod
 IF !ERRORLEVEL! NEQ 0 goto error
 echo cleaning up...
-call :ExecuteCmd rimraf node_modules Content\sass package.json gruntfile.js
+call :ExecuteCmd rimraf node_modules Content\sass package.json gruntfile.js package-lock.json
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. KuduSync
+:kuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
