@@ -74,8 +74,6 @@ IF /I "%PROJECT%" EQU  "src\IAmBacon\IAmBacon.Admin\IAmBacon.Admin.csproj" (
 :: Deployment
 :: ----------
 
-IF DEFINED ASPCORE_DEPLOY goto DotnetCoreDeploy
-
 echo Handling .NET Web Application deployment.
 
 :: 1. Restore NuGet packages
@@ -83,6 +81,8 @@ IF /I "src\IAmBacon\IAmBacon.sln" NEQ "" (
   call :ExecuteCmd nuget restore "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.sln"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
+
+IF DEFINED ASPCORE_DEPLOY goto DotnetCoreDeploy
 
 :: 2. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
