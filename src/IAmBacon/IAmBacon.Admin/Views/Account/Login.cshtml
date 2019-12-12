@@ -1,0 +1,28 @@
+﻿@model IAmBacon.Admin.ViewModels.Account.LoginViewModel
+<h1>Log in</h1>
+<form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+    <div asp-validation-summary="All"></div>
+    <fieldset>
+        <legend>Login form</legend>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+
+        <div class="checkbox">
+            <label asp-for="RememberMe">
+                <input asp-for="RememberMe" />
+                @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+        </div>
+    </fieldset>
+
+    <button type="submit">Log in</button>
+
+    <p>
+        <a asp-action="ForgotPassword">Forgot your password?</a>
+    </p>
+</form>

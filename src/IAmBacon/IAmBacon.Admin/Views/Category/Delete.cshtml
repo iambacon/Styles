@@ -1,0 +1,17 @@
+﻿@model IAmBacon.Admin.ViewModels.Category.DeleteCategoryViewModel
+
+<h1>Delete a category</h1>
+<p>
+    <strong>Are you sure you want to delete this?</strong>
+</p>
+<form asp-controller="Category" asp-action="Delete" method="post">
+    <fieldset>
+        <legend>Category</legend>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text" readonly="readonly" />
+    </fieldset>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+</form>
+<a asp-controller="Category" asp-action="Index">Back to list</a>

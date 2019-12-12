@@ -1,0 +1,61 @@
+﻿@model IAmBacon.Admin.ViewModels.Post.RetrievePostViewModel
+
+<h1>Post Details</h1>
+<fieldset>
+    <legend>Post</legend>
+    <div>
+        <label asp-for="Author"></label>
+    </div>
+    <div>
+        @Model.Author
+    </div>
+    <div>
+        <label asp-for="Category"></label>
+    </div>
+    <div>
+        @Model.Category
+    </div>
+    <div>
+        <label asp-for="Tags"></label>
+    </div>
+    <div>
+        <ul>
+            @foreach (var tag in Model.Tags)
+            {
+                <li>@tag.Name</li>
+            }
+        </ul>
+    </div>
+    <div>
+        <label asp-for="NoCss"></label>
+    </div>
+    <div>
+        <input asp-for="NoCss" type="checkbox" disabled />
+    </div>
+    <div>
+        <label asp-for="Active"></label>
+    </div>
+    <div>
+        <input asp-for="Active" type="checkbox" disabled />
+    </div>
+    <div>
+        <label asp-for="Content"></label>
+    </div>
+    <div>
+        @Html.Raw(Model.Content)
+    </div>
+    <div>
+        <label asp-for="DateCreated"></label>
+    </div>
+    <div>
+        @Model.DateCreated
+    </div>
+    <div>
+        <label asp-for="DateModified"></label>
+    </div>
+    <div>
+        @Model.DateModified
+    </div>
+</fieldset>
+<a asp-controller="Post" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-controller="Post" asp-action="Index">Back to List</a>

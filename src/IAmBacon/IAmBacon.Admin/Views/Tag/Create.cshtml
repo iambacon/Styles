@@ -1,0 +1,15 @@
+﻿@model IAmBacon.Admin.ViewModels.Tag.CreateTagViewModel
+
+<h1>Create a tag</h1>
+<form asp-controller="Tag" asp-action="Create" method="post">
+    <fieldset>
+        <legend>Tag</legend>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text" />
+        <span asp-validation-for="Name"></span>
+    </fieldset>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>
+<a asp-controller="Tag" asp-action="Index">Back to list</a>

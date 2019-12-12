@@ -1,7 +1,8 @@
 /// <vs SolutionOpened='dev' />
-module.exports = function (grunt) {
-    'use strict';
+'use strict';
+const sass = require('node-sass');
 
+module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -11,18 +12,19 @@ module.exports = function (grunt) {
         // Sass
         sass: {
             options: {
+                implementation: sass
                 //sourceMap: true, // Create source map
                 //outputStyle: 'compressed' // Minify output
             },
             dist: {
                 files: [
-                  {
-                      expand: true, // Recursive
-                      cwd: "Content/sass/pages", // The startup directory
-                      src: ["**/*.scss"], // Source files
-                      dest: "Content/stylesheets/pages", // Destination
-                      ext: ".css" // File extension
-                  }
+                    {
+                        expand: true, // Recursive
+                        cwd: "Content/sass/pages", // The startup directory
+                        src: ["**/*.scss"], // Source files
+                        dest: "Content/stylesheets/pages", // Destination
+                        ext: ".css" // File extension
+                    }
                 ]
             }
         },

@@ -1,0 +1,12 @@
+﻿@model IAmBacon.Admin.ViewModels.Tag.RetrieveTagViewModel
+
+<h1>Tag details</h1>
+<fieldset>
+    <legend>Tag</legend>
+    <label asp-for="Name">Name</label>
+    <input asp-for="Name" type="text" readonly="readonly" />
+    <label asp-for="Active">Active</label>
+    <input asp-for="Active" type="checkbox" disabled />
+</fieldset>
+<a asp-controller="Tag" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-controller="Tag" asp-action="Index">Back to List</a>

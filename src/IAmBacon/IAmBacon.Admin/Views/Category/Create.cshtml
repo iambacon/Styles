@@ -1,0 +1,15 @@
+﻿@model IAmBacon.Admin.ViewModels.Category.CreateCategoryViewModel
+
+<h1>Create a category</h1>
+<form asp-controller="Category" asp-action="Create" method="post">
+    <fieldset>
+        <legend>Category</legend>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text" />
+        <span asp-validation-for="Name"></span>
+    </fieldset>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</form>
+<a asp-controller="Category" asp-action="Index">Back to list</a>
