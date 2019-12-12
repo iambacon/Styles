@@ -2,7 +2,7 @@
 
 :: ----------------------
 :: KUDU Deployment Script
-:: Version: 1.0.6
+:: Version: 1.0.17
 :: ----------------------
 
 :: Prerequisites
@@ -66,9 +66,15 @@ IF NOT DEFINED PROJECT (
   goto error
 )
 
+IF /I "%PROJECT%" EQU  "src\IAmBacon\IAmBacon.Admin\IAmBacon.Admin.csproj" (
+  SET ASPCORE_DEPLOY=true
+)
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
+
+IF DEFINED ASPCORE_DEPLOY goto DotnetCoreDeploy
 
 echo Handling .NET Web Application deployment.
 
@@ -87,7 +93,21 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
+goto runTests
+
+:DotnetCoreDeploy
+echo Handling ASP.NET Core Web Application deployment.
+
+:: 1. Restore nuget packages
+call :ExecuteCmd dotnet restore "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.sln"
+IF !ERRORLEVEL! NEQ 0 goto error
+
+:: 2. Build and publish
+call :ExecuteCmd dotnet publish "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Admin\IAmBacon.Admin.csproj" --output "%DEPLOYMENT_TEMP%" --configuration Release
+IF !ERRORLEVEL! NEQ 0 goto error
+
 :: 2a. Build test projects to temporary path
+:runTests
 call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.Web.Tests\IAmBacon.Web.Tests.csproj"
 IF !ERRORLEVEL! NEQ 0 goto error
 call :ExecuteCmd dotnet msbuild "%DEPLOYMENT_SOURCE%\test\IAmBacon.Core.Admin.Tests\IAmBacon.Core.Admin.Tests.csproj"
@@ -111,7 +131,7 @@ call :ExecuteCmd vstest.console.exe "%DEPLOYMENT_SOURCE%\src\IAmBacon\IAmBacon.D
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
-IF /I "%PROJECT%" NEQ "src\IAmBacon\IAmBacon\IAmBacon.Web.csproj" goto :kuduSync
+IF DEFINED ASPCORE_DEPLOY goto :kuduSync
 
 :: 3. Restore Grunt packages and run Grunt tasks
 pushd %DEPLOYMENT_TEMP%
