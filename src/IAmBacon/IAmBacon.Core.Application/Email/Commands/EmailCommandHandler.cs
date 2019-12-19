@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using IAmBacon.Core.Application.Base;
 using IAmBacon.Core.Domain.ValueObject.Configuration;
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
 
@@ -35,7 +36,8 @@ namespace IAmBacon.Core.Application.Email.Commands
                 // Not sure if I need this or not?
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                await client.ConnectAsync(_configuration.Host, _configuration.Port, false);
+                await client.ConnectAsync(_configuration.Host, _configuration.Port, SecureSocketOptions.SslOnConnect);
+                await client.AuthenticateAsync(_configuration.UserName, _configuration.Password);
                 await client.SendAsync(message);
                 await client.DisconnectAsync(true);
             }
