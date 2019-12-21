@@ -13,8 +13,6 @@ namespace IAmBacon.Core.Application.Email.Commands
     {
         private readonly EmailConfiguration _configuration;
 
-        private const string SystemEmailAddress = "email@iambacon.co.uk";
-
         private const string SystemDisplayName = "iambacon.co.uk";
 
         public EmailCommandHandler(EmailConfiguration configuration)
@@ -25,7 +23,7 @@ namespace IAmBacon.Core.Application.Email.Commands
         public async Task HandleAsync(SendEmailCommand command)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(SystemDisplayName, SystemEmailAddress));
+            message.From.Add(new MailboxAddress(SystemDisplayName, _configuration.SystemEmailAddress));
             message.To.Add(new MailboxAddress(command.Name, command.Email));
             message.Subject = command.Subject;
             message.Body = new TextPart(TextFormat.Html) { Text = command.HtmlMessage };
@@ -36,7 +34,7 @@ namespace IAmBacon.Core.Application.Email.Commands
                 // Not sure if I need this or not?
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                await client.ConnectAsync(_configuration.Host, _configuration.Port, SecureSocketOptions.SslOnConnect);
+                await client.ConnectAsync(_configuration.Host, _configuration.Port, SecureSocketOptions.StartTls);
                 await client.AuthenticateAsync(_configuration.UserName, _configuration.Password);
                 await client.SendAsync(message);
                 await client.DisconnectAsync(true);
