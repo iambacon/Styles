@@ -1,0 +1,23 @@
+{
+  "name": "iambacon-style-guide",
+  "version": "0.0.1",
+  "description": "CSS and style guide for iambacon.co.uk",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Z:\\\\Projects\\\\iambacon-style-guide.git\\\\"
+  },
+  "author": "Colin Bacon",
+  "license": "ISC",
+  "devDependencies": {
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
