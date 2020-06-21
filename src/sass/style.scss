@@ -1,0 +1,164 @@
+﻿//
+// Site styles
+// --------------------------------------------------
+
+// Base
+// ------------------------
+@import "base/base",
+        "base/code";
+
+// Objects
+// ------------------------
+@import "objects/lists";
+
+// Components
+// ------------------------
+@import "components/header",
+        "components/footer",
+        "components/links-list",
+        "components/pagination",
+        "components/page-title",
+        "components/aside-nav",
+        "components/meter",
+        "components/author",
+        "components/buttons",
+        "components/tag",
+        "components/page-section",
+        "components/article-content",
+        "components/article";
+
+// Utilities
+// ------------------------
+@import "utilities/colours",
+        "utilities/typography",
+        "utilities/floats",
+        "utilities/social",
+        "utilities/display",
+        "utilities/tables",
+        "utilities/grid",
+        "utilities/margin"; // Margin must go after grid to avoid specificity problems
+
+// Page
+// ------------------------
+.profile {
+    position: relative;
+
+    &-desc {
+        color: $nobel;
+        padding-bottom: $base-line-height;
+        padding-top: $base-line-height;
+    }
+}
+
+.link { // See if this can be moved into typography
+    text-decoration: underline;
+    color: $cursive;
+}
+
+article {
+    @include vr-line-height($factor: 1.2);
+    font-size: $article-base-font-size;
+
+    footer {
+        margin: {
+            top: $base-line-height;
+            bottom: $base-line-height;
+        }
+    }
+
+    a {
+        color: $article-link;
+
+        &:hover {
+            text-decoration: underline;
+            color: $cursive;
+        }
+    }
+
+    p {
+        margin: {
+            top: 1em;
+            bottom: 1em;
+        }
+    }
+}
+
+/**
+ * 1. This is used in 1 article "Creating a pinch using css"
+ *    Do we still need this?
+ */
+.image-center { /* 1 */
+    margin: 0 auto;
+    display: block;
+}
+
+.metaData {
+    padding-top: $base-line-height * 2;
+}
+
+.g {
+    &-paging {
+        @include container;
+        margin-bottom: vr-space(1);
+
+        @include respond-to(extra-small) {
+            @include column(12);
+        }
+
+        @include respond-to(medium-up) {
+            @include column-no-gutter(6);
+        }
+
+        &-more {
+            @include container;
+            margin-bottom: vr-space(1);
+
+            @include respond-to(extra-small) {
+                @include column(12);
+            }
+
+            @include respond-to(medium-up) {
+                @include column-no-gutter(6);
+            }
+        }
+    }
+
+    &-article {
+        @include respond-to(extra-small) {
+            @include column(12);
+        }
+
+        @include respond-to(small-up) {
+            @include column(6);
+        }
+    }
+
+    &-landing {
+        @include container;
+
+        &-content {
+            padding-top: vr-space(1.5);
+
+            @include respond-to(extra-small) {
+                @include column(12);
+            }
+
+            @include respond-to(medium-up) {
+                @include column-no-gutter(7);
+            }
+        }
+
+        &-aside {
+            margin-bottom: vr-space(1);
+
+            @include respond-to(extra-small) {
+                @include column(12);
+            }
+
+            @include respond-to(medium-up) {
+                @include column(5);
+                margin-top: vr-space(4.5);
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+﻿//
+// Margin helper classes.
+// Based on line height for vertical rythym
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+.m-r {
+    &--full {
+        margin-right: vr-space(1);
+    }
+
+    &--half {
+        margin-right: vr-space(.5);
+    }
+}
+
+.m-b {
+    &--full {
+        margin-bottom: vr-space(1);
+    }
+
+    &--none {
+        margin-bottom: 0;
+    }
+}
+
+.m-br {
+    &--quarter {
+        margin-bottom: vr-space(.25);
+        margin-right: vr-space(.25);
+    }
+}
+
+.m-t--full {
+    margin-top: vr-space(1);
+}
+
+.m-tb--full {
+    margin-top: vr-space(1);
+    margin-bottom: vr-space(1);
+}

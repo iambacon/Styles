@@ -1,0 +1,21 @@
+﻿//
+// Meter component.
+// HTML fallback for meter tag
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.meter {
+    display: block;
+    background: $desert-storm;    
+    height: 7px;
+    width: 100%;
+
+    &-gauge {
+        display: inherit;
+        background-color: $cursive;
+        text-indent: -9999px; // hide the text
+        height: inherit;
+        overflow: hidden;
+    }
+}

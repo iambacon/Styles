@@ -1,0 +1,31 @@
+﻿//
+// Buttons component.
+// Buttons of all shapes and sizes.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+
+$btn-font-size: 1.125 * $base-font-size;
+
+.btn { // base button styles
+    border-radius: 10px;
+    font-size: $btn-font-size;
+
+    padding: {
+        top: vr-space(.25);
+        bottom: vr-space(.25);
+        left: vr-space(.5);
+        right: vr-space(.5);
+    }
+
+    &--tag { // modifier tag button
+        background-color: $cursive;
+        color: $marshmallow;
+        transition: background-color .1s linear;
+
+        &:hover,
+        &:active {
+            background-color: darken($cursive, 10%);
+            color: $marshmallow;
+        }
+    }
+}

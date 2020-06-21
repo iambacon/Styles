@@ -1,0 +1,19 @@
+﻿//
+// Helper classes for floats and clearing of floats.
+// --------------------------------------------------
+/// <reference path="../base/mixins/_base.scss" />
+
+// clear with overflow: hidden
+.co {
+	overflow: hidden;
+}
+
+// clear fix.
+.cf {
+	@include clearfix;
+}
+
+// clear both
+.cb {
+	clear: both;
+}

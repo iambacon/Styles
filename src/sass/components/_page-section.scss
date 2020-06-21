@@ -1,0 +1,19 @@
+﻿//
+// Page section component.
+// Defines the spacing for a page section.
+// Includes a section title.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.pageSection {
+    padding-top: $base-line-height;
+    padding-bottom: $base-line-height * 3;
+
+    &-title {
+        color: $nobel;
+        @include h3;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+}

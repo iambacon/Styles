@@ -1,0 +1,34 @@
+﻿//
+// Aside nav component.
+// Side menu for displaying things like tags or categories.
+// Contains a header and a list of items.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.asideNav {
+    &-title {
+        font-size: $h3-font-size;
+        @include vr-line-height($h3-font-size, 2);
+        color: $marshmallow;
+        background-color: $ill-stay-here;
+        padding-left: 20px;
+    }
+
+    &-items {
+        padding-left: 20px;
+        padding-right: 20px;
+        overflow: hidden;
+        margin-bottom: vr-space(2);
+    }
+
+    &-item {
+        @include vr-line-height;
+        margin-top: vr-space(.5);        
+
+        &-count {
+            float: right;
+            color: $nobel;
+        }
+    }
+}

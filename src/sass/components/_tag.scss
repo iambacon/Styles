@@ -1,0 +1,23 @@
+﻿//
+// Tag component.
+// Component representing an article category label or tag.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+.tag {
+    background-color: $very-light-grey;
+    color: $ill-stay-here;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 2px 10px;
+    transition: background .25s ease-out, color .25s ease-out;
+
+    &:hover {
+        color: $marshmallow;
+        background-color: $nobel;
+    }
+
+    &--category {
+        background-color: $very-light-grey;
+        color: $ill-stay-here;
+    }
+}

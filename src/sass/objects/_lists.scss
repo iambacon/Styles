@@ -1,0 +1,10 @@
+﻿//
+// List objects.
+// --------------------------------------------------
+
+// Inline list using inline-block
+.listInline {
+    > li {
+        display: inline-block;
+    }
+}

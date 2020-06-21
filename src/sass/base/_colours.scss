@@ -1,0 +1,44 @@
+﻿//
+// Colour variables.
+// --------------------------------------------------
+
+// Base colours. These should not be referenced in the css directly.
+// ------------------------
+
+// Flat Design #2 - http://www.colourlovers.com/palette/2907925/Flat_Design_2
+ $take-your-desire: #FF6766;
+ $ill-stay-here: 	#60646D;
+ $marshmallow: 		#FFFFF7;
+ $cursive: 			#83D6DE;
+ $fern: 			#97CE68;
+
+ // Core
+ $black:		#000000;
+ $mine-shaft:   #333333;
+ $white:		#FFFFFF;
+ $white-smoke:	#F5F5F5;
+ $davys-grey:   #555555;
+
+ // Grey pallette
+ $nobel:			#999999;
+ $alto:				#DFDFDF;
+ $very-light-grey:	#CCCCCC;
+ $desert-storm:     #F5F4F3;
+
+ // Examined Living - http://www.colourlovers.com/palette/3175417/Examined_Living
+ $yeah-right:	#A0F601;
+ $cloudy-blue:	#ECF0F1;
+ $steel-real:	#768A92;
+ $have-a-go:	#687E87;
+ $examined:		#5E7078;
+
+ // Misc
+ $article-link: #38A7BB;
+
+
+// Global colours.
+// Globally used colour variables.
+// ------------------------
+$base-color:            $davys-grey;
+$base-background-color: $white;
+$link-hover-colour:     $cursive;

@@ -1,0 +1,43 @@
+﻿//
+// Mixins for typography.
+// --------------------------------------------------
+/// <reference path="_base.scss" />
+
+@mixin visually-hidden() {
+    position: absolute !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+// Multiline ellipsis for webkit browsers.
+// $lines is the maximum number of lines before ellipsis.
+@mixin ellipsis($lines: 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// Default h3 style
+@mixin h3() {
+    @include font-size($h3-font-size);
+    font-weight: 700;
+    @include vr-line-height($h3-font-size, 1.5);
+}
+
+// Article content style
+@mixin article-content() {
+    @include respond-to(small-up) {
+        @include vr-line-height($factor: 1.2);
+        @include font-size($article-base-font-size);
+    }
+
+    @include respond-to(extra-small) {
+        @include vr-line-height($factor: 1);
+        @include font-size($article-base-font-size-small);
+    }
+}

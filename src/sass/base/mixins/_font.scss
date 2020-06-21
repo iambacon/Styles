@@ -1,0 +1,9 @@
+﻿//
+// Font mixins
+// For calculating font values
+// --------------------------------------------------
+
+// Sets the font size.
+@mixin font-size($size: $base-font-size) {
+    font-size: rem($size);
+}

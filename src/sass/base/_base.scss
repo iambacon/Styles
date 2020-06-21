@@ -1,0 +1,100 @@
+﻿//
+// Base
+// Imports all variables and reset styles.
+// --------------------------------------------------
+
+// Variables
+// ------------------------
+@import "variables";
+
+// Reset
+// ------------------------
+@import "normalize";
+
+// Mixins
+// ------------------------
+@import "mixins/base";
+
+// Functions
+// ------------------------
+@import "functions/functions";
+
+// putting my reset needs here for now, until I decide what to do.
+ul,
+ol {
+    list-style-type: none;
+}
+
+ul,
+ol {
+    padding: 0;
+}
+
+ul,
+ol,
+h1,
+h2,
+p,
+dl,
+dd {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: color 0.25s ease-out;
+
+    &:hover {
+        color: $link-hover-colour;
+    }
+}
+
+address {
+    font-style: normal;
+}
+
+// Set images to be responsive by default
+img {
+    max-width: 100%; //Set a maximum relative to the parent
+    height: auto; // Override the height to auto, otherwise images will be stretched when setting a width and height attribute on the img element.
+    vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
+}
+
+h3 {
+    @include h3;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    @include font-size;
+    @include vr-line-height;
+    font-family: $base-font-family;
+    color: $base-color;
+    background-color: $base-background-color;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+meter {
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+}
+
+meter::-webkit-meter-bar {
+    background: $desert-storm;
+    height: 7px;
+    width: 100%;
+}
+
+meter::-webkit-meter-optimum-value {
+    background-image: none;
+    background-color: $cursive;
+}

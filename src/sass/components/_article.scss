@@ -1,0 +1,67 @@
+﻿//
+// Article component.
+// Component representing an article.
+// Contains a header, metadata and an image.
+// --------------------------------------------------
+/// <reference path="../base/_variables.scss" />
+/// <reference path="../base/mixins/_base.scss" />
+
+.article {
+    border-radius: 3px;
+    margin-bottom: vr-space();
+    color: $mine-shaft;
+    transition: width .25s ease-out;
+
+    &-title {
+        @include ellipsis(2);
+
+        padding: {
+            left: 5px;
+            right: 5px;
+        }
+
+        margin: {
+            top: vr-space(0.5);
+            bottom: vr-space(0.5);
+        }
+
+        height: 72px; // TODO this should be a calculated value, not magic.
+
+        @include respond-to(extra-small) {
+            height: 59px;
+            @include font-size(20px);
+        }
+
+        &:hover {
+            color: $nobel;
+        }
+
+        > a { // any titles which are links must be block level for ellipsis to work
+            display: block;
+
+            &:hover {
+                color: inherit;
+            }
+        }
+    }
+
+    &-meta {
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 5px;
+        overflow: hidden;
+    }
+
+    &-image {
+        border-radius: 3px;
+    }
+
+    > p {
+        @include article-content;
+
+        margin: {
+            top: 1em;
+            bottom: 1em;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+﻿//
+// Vertical rhythm mixins
+// For calculating vertical rhythm values
+// --------------------------------------------------
+/// <reference path="../_variables.scss" />
+
+// Sets the line-height to the vertical rhythm ratio.
+@mixin vr-line-height($font-size: $base-font-size, $factor: 1) {
+    $line-height: $base-line-height * $factor;
+    line-height: vertical-rhythm-ratio($font-size, $line-height);
+}
+
+// Returns the vertical rhythm space.
+// Used for padding and margins.
+@function vr-space($factor: 1) {
+    @return $base-line-height * $factor;
+}
+
+// Returns the ratio for vertical rhythm.
+// $line-height is the height of the vertical rhythm e.g. 24px.
+@function vertical-rhythm-ratio($font-size, $line-height) {
+    @return $line-height/$font-size;
+}
