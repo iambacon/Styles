@@ -3,7 +3,30 @@ const sass = require('node-sass');
 
 module.exports = function (grunt) {
     grunt.initConfig({
-
+        // Shell commands
+        shell: {
+            eleventyBuild: {
+                command: 'npx @11ty/eleventy',
+                options: {
+                    stderr: false,
+                    execOptions: {
+                        cwd: 'docs',
+                        maxBuffer: 1000*1024,
+                    }
+                }
+            },
+            eleventyServe: {
+                command: 'npx @11ty/eleventy --serve',
+                options: {
+                    stderr: false,
+                    execOptions: {
+                        cwd: 'docs',
+                        maxBuffer: 1000*1024,
+                    }
+                }
+            }
+        },
+        
         // Sass
         sass: {
             options: {
@@ -58,13 +81,14 @@ module.exports = function (grunt) {
     });
 
     // Load plugins
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default',
         'Compile all SCSS files, then watch for file changes and re-compile',
-        ['watch']);
+        ['shell:eleventyServe', 'watch']);
 
     grunt.registerTask('build',
         'Compile all SCSS files minified',

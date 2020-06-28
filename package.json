@@ -12,6 +12,7 @@
   "author": "Colin Bacon",
   "license": "ISC",
   "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
     "autoprefixer": "^9.8.2",
     "commitizen": "^4.1.2",
     "cssnano": "^4.1.10",
@@ -36,5 +37,9 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "dependencies": {
+    "grunt-shell": "^3.0.1",
+    "save-dev": "0.0.1-security"
+  }
 }
