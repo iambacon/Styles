@@ -1,4 +1,17 @@
 //
 //  STYLEGUIDE
 //  CSS for iambacon styleguide.
+//
+//  Styleguide classes are prefixed with 'sg-' for readability and encapsulation
 // -----------------------------------------------------------------------------
+
+.sg-layout {
+    &-nav {
+        position: fixed;
+        padding: 20px;
+        width: 16rem;
+    }
+    &-main {
+        margin-left: 16rem;
+    }
+}

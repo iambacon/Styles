@@ -1,7 +1,7 @@
 {% if navigation %}
-<nav>
+<nav class="sg-layout-nav">
     {% for section in navigation.sections %}
-    <h2>{{ section.title }}</h2>
+    <h3>{{ section.title }}</h3>
     <ul>
         {% for link in section.links %}
         <li>

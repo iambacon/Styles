@@ -2,14 +2,22 @@
 <html lang="en-gb">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} - I am Bacon styleguide</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/styleguide.css">
 </head>
 
 <body>
+    {% include header.html %}
+    <a href="#maincontent" class="visuallyHidden">Skip to main content</a>
     {% include navigation.html %}
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>    
-    {{ content }}
+    <main id="#maincontent" class="sg-layout-main">
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+        {{ content }}
+    </main>
 </body>
 
 </html>
