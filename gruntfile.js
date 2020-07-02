@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                     stderr: false,
                     execOptions: {
                         cwd: 'docs',
-                        maxBuffer: 1000*1024,
+                        maxBuffer: 1000 * 1024,
                     }
                 }
             },
@@ -21,12 +21,19 @@ module.exports = function (grunt) {
                     stderr: false,
                     execOptions: {
                         cwd: 'docs',
-                        maxBuffer: 1000*1024,
+                        maxBuffer: 1000 * 1024,
                     }
                 }
             }
         },
-        
+
+        concurrent: {
+            options: {
+                logConcurrentOutput: true
+            },
+            dev: ['watch', 'shell:eleventyServe']
+        },
+
         // Sass
         sass: {
             options: {
@@ -35,7 +42,14 @@ module.exports = function (grunt) {
             dist: {
                 files: [
                     {
-                        'dist/css/style.css': 'src/sass/style.scss'
+                        'docs/assets/css/style.css': 'src/sass/style.scss'
+                    }
+                ]
+            },
+            styleguide: {
+                files: [
+                    {
+                        'docs/assets/css/styleguide.css': 'docs/assets/sass/styleguide.scss'
                     }
                 ]
             }
@@ -52,7 +66,7 @@ module.exports = function (grunt) {
                         require('cssnano')() // minify the result
                     ]
                 },
-                src: 'dist/css/style.css'
+                src: 'docs/assets/css/style.css'
             },
             dev: {
                 options: {
@@ -64,7 +78,7 @@ module.exports = function (grunt) {
                         require('autoprefixer')() // add vendor prefixes
                     ]
                 },
-                src: 'dist/css/style.css'
+                src: 'docs/assets/css/*.css'
             }
         },
 
@@ -76,19 +90,27 @@ module.exports = function (grunt) {
                 options: {
                     spawn: false
                 }
+            },
+            styleguide: {
+                files: 'docs/assets/**/*.scss',
+                tasks: ['sass:styleguide'],
+                options: {
+                    spawn: false
+                }
             }
         }
     });
 
     // Load plugins
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default',
-        'Compile all SCSS files, then watch for file changes and re-compile',
-        ['shell:eleventyServe', 'watch']);
+        'Compile all SCSS files and rebuild docs, then watch for file changes and re-compile',
+        ['concurrent:dev']);
 
     grunt.registerTask('build',
         'Compile all SCSS files minified',
