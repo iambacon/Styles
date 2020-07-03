@@ -8,10 +8,23 @@
 .sg-layout {
     &-nav {
         position: fixed;
-        padding: 20px;
+        padding: 2rem;
         width: 16rem;
+        border-right: 1px solid #d8dee6;
     }
     &-main {
-        margin-left: 16rem;
+        margin-left: 20rem;
+        padding: 24px 4vw;
+    }
+}
+
+.sg-example {
+    pre[class*="language-"] {
+        background-color: #f5f5f5;
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        line-height: 0.7em;
     }
 }

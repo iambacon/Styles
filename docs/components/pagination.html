@@ -1,5 +1,37 @@
 ---
 layout: layout
 title: Pagination
-description: Pagination for paged lists. Contains links and various states.
+description: Pagination for lists of articles that span across multiple pages. Used on categories, tags and landing pages.
 ---
+
+<section class="m-t--full">
+    <h2 class="m-b--full">Example</h2>
+    <div class="sg-example">
+        <nav class="pagination">
+            <div class="g-paging">
+                <a class="pagination-page" href="#">1</a>
+                <span class="pagination-page" href="#">...</span>
+                <a class="pagination-page" href="#">4</a>
+                <a class="pagination-page pagination-page--current" href="#">5</a>
+                <a class="pagination-page" href="#">6</a>
+            </div>
+            <div class="g-paging-more">
+                <a class="pagination-more" href="#">Show more</a>
+            </div>
+        </nav>
+{% highlight html %}
+<nav class="pagination">
+    <div class="g-paging">
+        <a class="pagination-page" href="#">1</a>
+        <span class="pagination-page" href="#">...</span>
+        <a class="pagination-page" href="#">4</a>
+        <a class="pagination-page pagination-page--current" href="#">5</a>
+        <a class="pagination-page" href="#">6</a>
+    </div>
+    <div class="g-paging-more">
+        <a class="pagination-more" href="#">Show more</a>
+    </div>
+</nav>
+{% endhighlight %}
+    </div>
+</section>

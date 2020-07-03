@@ -1,10 +1,7 @@
 ﻿//
 // Pagination component.
-// Pagination for paged lists
-// Contains links and various states
-// --------------------------------------------------
-/// <reference path="../base/_variables.scss" />
-/// <reference path="../base/mixins/_base.scss" />
+// Documentation url: https://iambacon.co.uk/styleguide/components/pagination
+// -----------------------------------------------------------------------------
 
 $pagination-height:     70px;
 $pagination-width:      70px;
@@ -13,7 +10,7 @@ $pagination-current-bg: $cursive;
 $pagination-more-bg:    $cursive;
 
 .pagination {
-    @include clearfix;
+    @include clearfix;    
     clear: both;
 
     &-page,
