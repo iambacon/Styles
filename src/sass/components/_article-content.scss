@@ -1,12 +1,7 @@
 ﻿//
 // Article content component.
-// Component representing the content of an article.
-// E.g. the meat of a blog post (the words)
-// Used as a wrapper to be able to do some specific base styling
-// without it messing with the rest of the site
-// --------------------------------------------------
-/// <reference path="../base/_variables.scss" />
-/// <reference path="../base/mixins/_base.scss" />
+// Documentation url: https://iambacon.co.uk/styleguide/components/article-content
+// -----------------------------------------------------------------------------
 
 .articleContent {
     h2,
