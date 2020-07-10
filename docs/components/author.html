@@ -1,5 +1,58 @@
 ---
 layout: layout
-title: author
-description: todo.
+title: Author
+description: Component representing the author of an article. Contains an image, the authors name, a description and social media links.
 ---
+<section class="m-t--full">
+    <h2 class="m-b--full">Example</h2>
+    <div class="illStayHere container">
+        <div class="author">
+            <strong class="visuallyHidden">Author:</strong>
+            <img class="author-image" src="https://images.iambacon.co.uk/blog/avatar.jpg"
+                alt="Profile picture for Colin Bacon">
+            <a href="#" class="author-title" rel="author">Colin Bacon</a>
+            <p class="author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating
+                compelling frontend experiences with HTML and CSS. In his free time he can be found teaching skiing at his
+                local slope.</p>
+            <div class="author-links">
+                <ul class="listInline m-b--full">
+                    <li>
+                        <a class="social linkedIn hideText m-r--full" rel="me" title="Connect with Colin Bacon on LinkedIn"
+                            href="#">LinkedIn</a>
+                    </li>
+                    <li>
+                        <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
+                            href="#">Twitter</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sg-example">
+{% highlight html %}
+<div class="illStayHere container">
+    <div class="author">
+        <strong class="visuallyHidden">Author:</strong>
+        <img class="author-image" src="https://images.iambacon.co.uk/blog/avatar.jpg"
+            alt="Profile picture for Colin Bacon">
+        <a href="#" class="author-title" rel="author">Colin Bacon</a>
+        <p class="author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating
+            compelling frontend experiences with HTML and CSS. In his free time he can be found teaching skiing at his
+            local slope.</p>
+        <div class="author-links">
+            <ul class="listInline m-b--full">
+                <li>
+                    <a class="social linkedIn hideText m-r--full" rel="me" title="Connect with Colin Bacon on LinkedIn"
+                        href="#">LinkedIn</a>
+                </li>
+                <li>
+                    <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
+                        href="#">Twitter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+    </div>
+</section>
