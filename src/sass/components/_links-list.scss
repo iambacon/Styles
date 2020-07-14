@@ -1,10 +1,7 @@
 ﻿//
 // Links list component.
-// A responsive list of site links.
-// Used in global footer.
-// --------------------------------------------------
-/// <reference path="../base/_variables.scss" />
-/// <reference path="../base/mixins/_base.scss" />
+// Documentation url: https://iambacon.co.uk/styleguide/components/links-list
+// -----------------------------------------------------------------------------
 
 .linksList {
 	@include container;
@@ -48,7 +45,7 @@
 }
 
 .linksList-link {
-	color: $marshmallow;
+	color: $marshmallow; // TODO: It should be up to the consumer to set the link colour not the component
 	overflow: hidden;
 	display: inline-block;
 	height: $base-line-height * 2;
