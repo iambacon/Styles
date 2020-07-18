@@ -29,3 +29,18 @@
         line-height: 0.7em;
     }
 }
+
+.sg-swatch {
+    position: relative;
+    padding-left: 120px;
+    min-height: 100px;
+
+    &-colour {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        position: absolute;
+        left: 0;
+        border: 1px solid rgba(0, 0, 0, .2);
+    }
+}
