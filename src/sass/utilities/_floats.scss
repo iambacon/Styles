@@ -1,7 +1,7 @@
 ﻿//
 // Helper classes for floats and clearing of floats.
-// --------------------------------------------------
-/// <reference path="../base/mixins/_base.scss" />
+// Documentation url: https://iambacon.co.uk/styleguide/utilities/floats
+// -----------------------------------------------------------------------------
 
 // clear with overflow: hidden
 .co {
@@ -11,9 +11,4 @@
 // clear fix.
 .cf {
 	@include clearfix;
-}
-
-// clear both
-.cb {
-	clear: both;
 }
