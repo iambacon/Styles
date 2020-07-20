@@ -3,3 +3,46 @@ layout: layout
 title: Grids
 description: Helper classes for grids and layouts.
 ---
+
+<section class="m-t--full">
+    <h2 class="m-b--full">Examples</h2>
+    <h3>Layout container</h3>
+    <p class="m-b--full">Layout class to set the maximum width for page content.</p>
+    <div class="layoutContainer alto sg-p10">
+        <p>Max width 1000px</p>
+    </div>
+    <div class="sg-example">
+        {% highlight html %}
+<div class="layoutContainer">...</div>
+        {% endhighlight %}
+    </div>
+    <h3>Layout container with overflow</h3>
+    <p class="m-b--full">Adding the <code>--visible</code> modifier sets <code>overflow</code> property to <code>visible</code>.</p>
+    <div class="layoutContainer layoutContainer--visible has-triangle cursive sg-p10 m-b--full">
+        <p>Max width 1000px with visible overflow</p>
+    </div>
+    <div class="sg-example">
+        {% highlight html %}
+<div class="layoutContainer layoutContainer--visible">...</div>
+        {% endhighlight %}
+    </div>
+    </div>
+    <h3>Article layout container</h3>
+    <p class="m-b--full">Indents grid columns by 1 either side when screen size is tablet and up.</p>
+    <div class="articleLayoutContainer">
+        <p>Sometimes it is necessary to add page specific styling. Typically I set a page class. 
+            In the context of an SPA (Single Page Application) such as Blazor it is not as straight forward. Here is one solution.</p>
+    </div>
+    <div class="sg-example">
+        {% highlight html %}
+<div class="articleLayoutContainer">...</div>
+        {% endhighlight %}
+    </div>
+    <h3>Container</h3>
+    <p class="m-b--full">Grid Container. Adds a clear fix and sets <code>box-sizing</code> to <code>border-box</code></p>
+    <div class="sg-example">
+        {% highlight html %}
+<div class="container">...</div>
+        {% endhighlight %}
+    </div>
+</section>
