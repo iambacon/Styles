@@ -60,3 +60,29 @@
 .sg-f-right {
     float: right;
 }
+
+.sg-table {
+    display: table;
+    width: 100%;
+
+    th,
+    td {
+        border-top: 1px solid #DFDFDF;
+        border-left: 1px solid #DFDFDF;
+        border-right: 1px solid #DFDFDF;
+        padding: 5px;
+    }
+
+    th {
+        font-weight: bold;
+        background-color: #F5F4F3;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    tr:last-of-type td {
+        border-bottom: 1px solid #DFDFDF;
+    }
+}
