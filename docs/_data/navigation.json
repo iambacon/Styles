@@ -119,6 +119,27 @@
                     "url": "/utilities/typography"
                 }
             ]
+        },
+        {
+            "title": "Pages",
+            "links": [
+                {
+                    "title": "Homepage",
+                    "url": "/pages/homepage"
+                },
+                {
+                    "title": "Blog landing page",
+                    "url": "/pages/blog-landing"
+                },
+                {
+                    "title": "Post",
+                    "url": "/pages/post"
+                },
+                {
+                    "title": "Filtered results",
+                    "url": "/pages/filtered-results"
+                }
+            ]
         }
     ]
 }
