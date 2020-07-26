@@ -52,6 +52,13 @@ module.exports = function (grunt) {
                         'docs/assets/css/styleguide.css': 'docs/assets/sass/styleguide.scss'
                     }
                 ]
+            },
+            prod: {
+                files: [
+                    {
+                        'dist/css/style.css': 'src/sass/style.scss'
+                    }
+                ]
             }
         },
 
@@ -66,7 +73,7 @@ module.exports = function (grunt) {
                         require('cssnano')() // minify the result
                     ]
                 },
-                src: 'docs/assets/css/style.css'
+                src: 'dist/css/style.css'
             },
             dev: {
                 options: {
@@ -114,5 +121,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build',
         'Compile all SCSS files minified',
-        ['sass', 'postcss:prod']);
+        ['sass:prod', 'postcss:prod']);
 };
