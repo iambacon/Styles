@@ -9,8 +9,11 @@
     &-nav {
         position: fixed;
         padding: 2rem;
-        width: 16rem;
+        width: 20rem;
         border-right: 1px solid #d8dee6;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
     }
     &-main {
         margin-left: 20rem;

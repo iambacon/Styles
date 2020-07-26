@@ -1,5 +1,6 @@
 {% if navigation %}
 <nav class="sg-layout-nav">
+    {% include header.html %}
     {% for section in navigation.sections %}
     <h3>{{ section.title }}</h3>
     <ul>
