@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elmah heads to the cloud, setting up elmah.io - I am Bacon</title>
+    <link rel="shortcut icon" href="/fav/favicon.ico">
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="layoutContainer">
+            <h2 class="header-logo">
+                <a href="#">I am Bacon</a>
+            </h2>
+            <p class="visuallyHidden"> Colin Bacon, web developer.</p>
+            <nav class="header-nav">
+                <h3 class="visuallyHidden">Site navigation</h3>
+                <ul class="listInline">
+                    <li class="header-nav-link">
+                        <a href="#">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+                <div class="pageTitle">
+                    <h1 class="layoutContainer layoutContainer--visible has-triangle pageTitle-headline pageTitle-headline--sm h2"
+                        itemprop="name headline">Elmah heads to the cloud, setting up elmah.io</h1>
+                </div>
+                <div class="layoutContainer">
+                    <ul class="articleLayoutContainer metaData listInline">
+                        <li class="m-r--half">
+                            <strong>Published:</strong>
+                            <time datetime="2013-09-03T21:22:52" itemprop="datePublished">2013-09-03</time>
+                        </li>
+                        <li>
+                            <strong>Category:</strong>
+                            <a href="#">ASP.NET</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <div class="layoutContainer">
+                <div class="articleLayoutContainer">
+                    <figure>
+                        <img alt="Elmah heads to the cloud, setting up elmah.io"
+                            src="https://images.iambacon.co.uk/blog/image.png" />
+                    </figure>
+                    <div class="articleContent">
+                        <p>Elmah (Error Logging Modules and Handlers), an open source ASP.NET application logging
+                            facility, has now gone to the cloud with elmah.io. And setting it up is super easy.</p>
+                        <p>Elmah has been providing error logging for ASP.NET applications for a while now, Scott
+                            Hanselmann <a
+                                href="http://www.hanselman.com/blog/ELMAHErrorLoggingModulesAndHandlersForASPNETAndMVCToo.aspx">blogged</a>
+                            about it in 2009. Previously logged exceptions were either stored in XML or local db. With
+                            elmah.io exceptions can now be logged straight to the cloud. You can use Elmah on ASP,
+                            ASP.NET and ASP.NET MVC applications. Setting it up couldn't be simpler, here's how.</p>
+                        <h2 id="setting-it-up">Setting it up</h2>
+                        <p>Firstly go to <a href="https://elmah.io">elmah.io</a> and sign in with one of the following
+                            accounts; Twitter, Facebook, Google, Windows Live. Then input your website url and create a
+                            new log.</p>
+                        <p><img src="https://az720974.vo.msecnd.net/blog/elmah-new.jpg"
+                                alt="Create a new log for your website on elmah.io" /></p>
+                        <p>Next you are prompted to install elmah.io to your project through NuGet package manager. Once
+                            that's complete you will need to modify your web.config with the settings provided. Note:
+                            you will need to know your IIS configuration.</p>
+                        <p><img src="https://az720974.vo.msecnd.net/blog/elmah-nuget.jpg"
+                                alt="Install elmah.io with NuGet package manager" /></p>
+                        <p>And it's as simple as that!</p>
+                        <p>To test it try a url that does not exist, for example <a
+                                href="http://www.iambacon.co.uk/not-found">www.iambacon.co.uk/not-found</a>. Now if we
+                            go to the dashboard on elmah.io we should see our exception.</p>
+                        <p><img src="https://az720974.vo.msecnd.net/blog/elmah-dashboard.jpg"
+                                alt="elmah.io dashboard" /></p>
+                        <p>Elmah.io takes away the need to store your logged exceptions locally by sending them to the
+                            cloud, and they've made it super easy to set up. Give it a try!</p>
+
+                    </div>
+                </div>
+                <footer>
+                    <address class="illStayHere container">
+                        <div class="author cf">
+                            <strong class="visuallyHidden">Author:</strong>
+                            <img loading="lazy" class="author-image" src="https://images.iambacon.co.uk/blog/avatar.jpg"
+                                alt="Profile picture for Colin Bacon" />
+                            <a href="#" class="author-title" rel="author">Colin Bacon</a>
+                            <p class="author-desc">Colin bacon is a professional development engineer, with a passion
+                                for C# and creating compelling frontend experiences with HTML and CSS. In his free time
+                                he can be found teaching skiing at his local slope.</p>
+                            <div class="author-links">
+                                <ul class="listInline m-b--full">
+                                    <li>
+                                        <a class="social linkedIn hideText m-r--full" rel="me"
+                                            title="Connect with Colin Bacon on LinkedIn"
+                                            href="http://uk.linkedin.com/pub/colin-bacon/32/1a1/776">LinkedIn</a>
+                                    </li>
+                                    <li>
+                                        <a class="social twitter hideText m-r--full" rel="me"
+                                            title="Follow Colin Bacon on Twitter"
+                                            href="http://www.twitter.com/iambacon">Twitter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </address>
+                    <section>
+                        <h4 class="textUpper inlineBlock m-r--half">Tags</h4>
+                        <ul class="listInline inlineBlock">
+
+                            <li class="asideNav-item inlineBlock m-r--half">
+                                <a class="btn btn--tag" href="#">error handling</a>
+                            </li>
+                        </ul>
+                    </section>
+                </footer>
+                <h2>1 Comments</h2>
+                <ol class="comments">
+                    <li>
+                        <article>
+                            <img loading="lazy" src="https://www.gravatar.com/avatar/f3fed18422c9db37c455728ecf3f880c"
+                                alt="Gavatar image of Thomas Ardal" width="80" height="80">
+                            <h4><a rel="external nofollow" href="http://elmah.io">Thomas Ardal</a></h4>
+                            <time datetime="2013-11-06T20:21:09">2013-11-06</time>
+                            <p class="comment">Thank you for the positive words, Colin. We really appreciate you trying
+                                out the site and happy to hear that you had no problems with installing elmah.io into
+                                your project. In fact installing elmah.io gets even easier next time we release. Check
+                                out https://twitter.com/elmah_io/status/396360351538610176/photo/1 for
+                                details.&#xD;&#xA;&#xD;&#xA;Please let us know if you need any help. Also don&#x27;t
+                                hesitate to contact us through email, twitter or uservoice if you have ideas for
+                                improvements.</p>
+                        </article>
+                    </li>
+                </ol>
+            </div>
+        </article>
+    </main>
+    <footer class="footer illStayHere co">
+        <div class="layoutContainer">
+            <div class="linksList">
+                <div class="linksList-items linksList-items--posts">
+                    <h3 class="h3 m-b--none">Recent posts</h3>
+                    <ol>
+                        <li class="linksList-item">
+                            <a href="#"
+                                class="linksList-link">FancyZones is my new favourite Windows 10 utility</a>
+                        </li>
+                        <li class="linksList-item">
+                            <a href="#"
+                                class="linksList-link">How I removed all validation warnings from my RSS feed - ASP.NET
+                                Core</a>
+                        </li>
+                        <li class="linksList-item">
+                            <a href="#" class="linksList-link">Setting a
+                                page class in your Blazor app</a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="linksList-items linksList-items--posts">
+                    <h3 class="h3 m-b--none">Popular posts</h3>
+                    <ol>
+                        <li class="linksList-item">
+                            <a href="#"
+                                class="linksList-link">MVC5 prevents your website being loaded in an IFRAME</a>
+                        </li>
+                        <li class="linksList-item">
+                            <a href="#"
+                                class="linksList-link">Life is now easier, Create media query mixins with rulesets -
+                                LESS CSS</a>
+                        </li>
+                        <li class="linksList-item">
+                            <a href="#"
+                                class="linksList-link">Getting started with Grunt, SASS and Task Runner Explorer -
+                                Visual Studio</a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="linksList-items linksList-items--social">
+                    <h3 class="h3">Let's be social</h3>
+                    <ul class="listInline m-b--full">
+                        <li>
+                            <a class="social linkedIn hideText m-r--full" rel="me"
+                                title="Connect with Colin Bacon on LinkedIn"
+                                href="http://uk.linkedin.com/pub/colin-bacon/32/1a1/776">LinkedIn</a>
+                        </li>
+                        <li>
+                            <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
+                                href="http://www.twitter.com/iambacon">Twitter</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copyright cursive">&copy; Copyright 2020 Colin Bacon</p>
+    </footer>
+    <link href="//fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</body>
+
+</html>
