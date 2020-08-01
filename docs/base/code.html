@@ -3,3 +3,55 @@ layout: layout
 title: Code
 description: Base styles for code snippets.
 ---
+
+<section class="m-t--full">
+    <h2 class="m-b--full">Example</h2>
+    <pre><code>public class RaygunLoggerProvider : ILoggerProvider
+{
+    private readonly RaygunConfiguration _config;
+    private readonly ConcurrentDictionary&lt;string, RaygunLogger&gt; _loggers = new ConcurrentDictionary&lt;string, RaygunLogger&gt;();
+    
+    public RaygunLoggerProvider(RaygunConfiguration config)
+    {
+        _config = config;
+    }
+    
+    public void Dispose()
+    {
+        _loggers.Clear();
+    }
+    
+    public ILogger CreateLogger(string categoryName)
+    {
+        return _loggers.GetOrAdd(categoryName, x =&gt; new RaygunLogger(categoryName, _config));
+    }
+}</code></pre>
+    <div class="sg-example">
+        {% highlight html %}
+<pre>
+    <code>
+    public class RaygunLoggerProvider : ILoggerProvider
+    {
+        private readonly RaygunConfiguration _config;
+        private readonly ConcurrentDictionary&lt;string, RaygunLogger&gt; _loggers = new ConcurrentDictionary&lt;string, RaygunLogger&gt;();
+        
+        public RaygunLoggerProvider(RaygunConfiguration config)
+        {
+            _config = config;
+        }
+        
+        public void Dispose()
+        {
+            _loggers.Clear();
+        }
+        
+        public ILogger CreateLogger(string categoryName)
+        {
+            return _loggers.GetOrAdd(categoryName, x =&gt; new RaygunLogger(categoryName, _config));
+        }
+    }
+    </code>
+</pre>
+        {% endhighlight %}
+    </div>
+</section>
