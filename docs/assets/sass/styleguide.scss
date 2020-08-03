@@ -44,7 +44,7 @@
         border-radius: 5px;
         position: absolute;
         left: 0;
-        border: 1px solid rgba(0, 0, 0, .2);
+        border: 1px solid rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -70,15 +70,15 @@
 
     th,
     td {
-        border-top: 1px solid #DFDFDF;
-        border-left: 1px solid #DFDFDF;
-        border-right: 1px solid #DFDFDF;
+        border-top: 1px solid #dfdfdf;
+        border-left: 1px solid #dfdfdf;
+        border-right: 1px solid #dfdfdf;
         padding: 5px;
     }
 
     th {
         font-weight: bold;
-        background-color: #F5F4F3;
+        background-color: #f5f4f3;
     }
 
     td {
@@ -86,6 +86,10 @@
     }
 
     tr:last-of-type td {
-        border-bottom: 1px solid #DFDFDF;
+        border-bottom: 1px solid #dfdfdf;
+    }
+
+    &-td-nowrap {
+        white-space: nowrap;
     }
 }
