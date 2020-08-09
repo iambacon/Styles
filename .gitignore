@@ -1,2 +1,24 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*_rsa
+*_rsa.pub
+
+# NPM #
+###############
 node_modules
+
+# Backstop Assets #
+###############################
+/backstop_data/bitmaps_test/*
+/backstop_data/html_report/*
+
+# Eleventy site #
+#################
 docs/_site
