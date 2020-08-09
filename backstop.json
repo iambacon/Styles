@@ -1,0 +1,254 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "label": "tablet",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "label": "desktop",
+      "width": 1600,
+      "height": 1024
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Home",
+      "url": "http://localhost:8080"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Code",
+      "url": "http://localhost:8080/base/code"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Colours",
+      "url": "http://localhost:8080/base/colours"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Grid",
+      "url": "http://localhost:8080/base/grid"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Typography",
+      "url": "http://localhost:8080/base/typography"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Article",
+      "url": "http://localhost:8080/components/article"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Article content",
+      "url": "http://localhost:8080/components/article-content"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Aside nav",
+      "url": "http://localhost:8080/components/aside-nav"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Author",
+      "url": "http://localhost:8080/components/author"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Buttons",
+      "url": "http://localhost:8080/components/buttons"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Footer",
+      "url": "http://localhost:8080/components/footer"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Header",
+      "url": "http://localhost:8080/components/header"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Links list",
+      "url": "http://localhost:8080/components/links-list"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Meter",
+      "url": "http://localhost:8080/components/meter"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Page section",
+      "url": "http://localhost:8080/components/page-section"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Page title",
+      "url": "http://localhost:8080/components/page-title"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Pagination",
+      "url": "http://localhost:8080/components/pagination"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Tag",
+      "url": "http://localhost:8080/components/tag"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Lists",
+      "url": "http://localhost:8080/objects/lists"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Colours",
+      "url": "http://localhost:8080/utilities/colours"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Display",
+      "url": "http://localhost:8080/utilities/display"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Floats",
+      "url": "http://localhost:8080/utilities/floats"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Grids",
+      "url": "http://localhost:8080/utilities/grid"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Margin",
+      "url": "http://localhost:8080/utilities/margin"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Social",
+      "url": "http://localhost:8080/utilities/social"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Typography",
+      "url": "http://localhost:8080/utilities/typography"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Homepage template",
+      "url": "http://localhost:8080/pages/homepage"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Blog landing template",
+      "url": "http://localhost:8080/pages/blog-landing"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Post template",
+      "url": "http://localhost:8080/pages/post"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Filtered results template",
+      "url": "http://localhost:8080/pages/filtered-results"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": [
+    "browser"
+  ],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": [
+      "--no-sandbox"
+    ]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
