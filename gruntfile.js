@@ -24,6 +24,9 @@ module.exports = function (grunt) {
                         maxBuffer: 1000 * 1024,
                     }
                 }
+            },
+            zipSite: { 
+                command: 'powershell -command "Compress-Archive -Path docs/_site/* -DestinationPath dist/site.zip"' 
             }
         },
 
@@ -31,7 +34,8 @@ module.exports = function (grunt) {
             options: {
                 logConcurrentOutput: true
             },
-            dev: ['watch', 'shell:eleventyServe']
+            dev: ['watch', 'shell:eleventyServe'],
+            sassCompile: ['sass', 'sass:styleguide']
         },
 
         // Sass
@@ -86,6 +90,17 @@ module.exports = function (grunt) {
                     ]
                 },
                 src: 'docs/assets/css/*.css'
+            },
+            docs: {
+                options: {
+                    map: false,
+
+                    processors: [
+                        require('autoprefixer')(),// add vendor prefixes
+                        require('cssnano')()// minify the result
+                    ]
+                },
+                src: 'docs/assets/css/*.css'
             }
         },
 
@@ -120,6 +135,10 @@ module.exports = function (grunt) {
         ['concurrent:dev']);
 
     grunt.registerTask('build',
-        'Compile all SCSS files minified',
+        'Compile all SCSS files minified and output to dist folder',
         ['sass:prod', 'postcss:prod']);
+
+    grunt.registerTask('deploy',
+        'Build documentation site and Zip ready for deployment',
+        ['concurrent:sassCompile', 'postcss:docs', 'shell:eleventyBuild', 'shell:zipSite']);
 };
