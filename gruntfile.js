@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                 }
             },
             zipSite: { 
-                command: 'powershell -command "Compress-Archive -Path docs/_site/* -DestinationPath dist/site.zip"' 
+                command: 'powershell -command "Compress-Archive -Path docs/_site/* -DestinationPath dist/site.zip -Force"' 
             }
         },
 
