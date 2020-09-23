@@ -185,8 +185,8 @@
       "selectors": [
         "document"
       ],
-      "label": "Margin",
-      "url": "http://localhost:8080/utilities/margin"
+      "label": "Spacing",
+      "url": "http://localhost:8080/utilities/spacing"
     },
     {
       "selectors": [

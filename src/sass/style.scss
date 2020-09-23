@@ -5,8 +5,8 @@
 
 // Base
 // ------------------------
-@import "base/base",
-        "base/code";
+@import "base/base", 
+		"base/code";
 
 // Objects
 // ------------------------
@@ -14,29 +14,29 @@
 
 // Components
 // ------------------------
-@import "components/header",
-        "components/footer",
-        "components/links-list",
-        "components/pagination",
-        "components/page-title",
-        "components/aside-nav",
-        "components/meter",
-        "components/author",
-        "components/buttons",
-        "components/tag",
-        "components/page-section",
-        "components/article-content",
-        "components/article";
+@import "components/header", 
+		"components/footer", 
+		"components/links-list", 
+		"components/pagination",
+		"components/page-title", 
+		"components/aside-nav", 
+		"components/meter", 
+		"components/author", 
+		"components/buttons",
+		"components/tag", 
+		"components/page-section", 
+		"components/article-content", 
+		"components/article";
 
 // Utilities
 // ------------------------
-@import "utilities/colours",
-        "utilities/typography",
-        "utilities/floats",
-        "utilities/social",
-        "utilities/display",
-        "utilities/grid",
-        "utilities/margin"; // Margin must go after grid to avoid specificity problems
+@import "utilities/colours", 
+		"utilities/typography", 
+		"utilities/floats", 
+		"utilities/social", 
+		"utilities/display",
+		"utilities/grid", 
+		"utilities/spacing"; // Spacing must go after grid to avoid specificity problems
 
 // Page
 // ------------------------
@@ -50,7 +50,8 @@
     }
 }
 
-.link { // See if this can be moved into typography
+.link {
+    // See if this can be moved into typography
     text-decoration: underline;
     color: $cursive;
 }
@@ -87,7 +88,8 @@ article {
  * 1. This is used in 1 article "Creating a pinch using css"
  *    Do we still need this?
  */
-.image-center { /* 1 */
+.image-center {
+    /* 1 */
     margin: 0 auto;
     display: block;
 }
