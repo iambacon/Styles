@@ -98,3 +98,7 @@ meter::-webkit-meter-optimum-value {
     background-image: none;
     background-color: $cursive;
 }
+
+table {
+    border-collapse: collapse;
+}
