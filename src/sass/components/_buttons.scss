@@ -27,4 +27,9 @@ $btn-font-size: 1.125 * $base-font-size;
             color: $marshmallow;
         }
     }
+
+    &--full { // modifier full width
+        display: block;
+        text-align: center;
+    }
 }
