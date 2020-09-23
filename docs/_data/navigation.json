@@ -138,6 +138,10 @@
                 {
                     "title": "Filtered results",
                     "url": "/pages/filtered-results"
+                },
+                {
+                    "title": "Hire me",
+                    "url": "/pages/hire-me"
                 }
             ]
         }

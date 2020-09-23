@@ -229,6 +229,13 @@
       ],
       "label": "Filtered results template",
       "url": "http://localhost:8080/pages/filtered-results"
+    },
+    {
+      "selectors": [
+        "document"
+      ],
+      "label": "Hire me template",
+      "url": "http://localhost:8080/pages/hire-me"
     }
   ],
   "paths": {
