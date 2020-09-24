@@ -18,11 +18,16 @@
 
 	@include respond-to(extra-small) {
 		@include font-size($h3-font-size);
+		width: 100%;
 	}
 }
 
 .header-nav {
 	float: right;
+
+	@include respond-to(extra-small) {
+		float: left;
+	}
 }
 
 .header-nav-link {
