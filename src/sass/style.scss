@@ -50,12 +50,6 @@
     }
 }
 
-.link {
-    // See if this can be moved into typography
-    text-decoration: underline;
-    color: $cursive;
-}
-
 article {
     @include vr-line-height($factor: 1.2);
     font-size: $article-base-font-size;
