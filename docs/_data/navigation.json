@@ -61,10 +61,6 @@
                     "url": "/components/meter"
                 },
                 {
-                    "title": "Page section",
-                    "url": "/components/page-section"
-                },
-                {
                     "title": "Page title",
                     "url": "/components/page-title"
                 },

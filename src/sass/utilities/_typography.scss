@@ -30,6 +30,13 @@
     @include line-height-proportional;
 }
 
+.sectionTitle {
+    color: $nobel;
+    @include h3;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
 // hides text for when you want to replace it with an image or icon.
 .hideText {
     text-indent: 100%;

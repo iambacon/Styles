@@ -122,13 +122,6 @@
       "selectors": [
         "document"
       ],
-      "label": "Page section",
-      "url": "http://localhost:8080/components/page-section"
-    },
-    {
-      "selectors": [
-        "document"
-      ],
       "label": "Page title",
       "url": "http://localhost:8080/components/page-title"
     },
