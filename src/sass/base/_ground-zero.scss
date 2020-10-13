@@ -1,37 +1,17 @@
-﻿//
-// Base
-// Imports all variables and reset styles.
-// --------------------------------------------------
+//
+// Ground zero
+// Normalization of HTML elements, extending normalize.css.
+// -----------------------------------------------------------------------------
 
-// Variables
-// ------------------------
-@import "variables";
-
-// Reset
-// ------------------------
 @import "normalize";
 
-// Mixins
-// ------------------------
-@import "mixins/base";
-
-// Functions
-// ------------------------
-@import "functions/functions";
-
-// putting my reset needs here for now, until I decide what to do.
 ul,
 ol {
     list-style-type: none;
-}
-
-ul,
-ol {
     padding: 0;
+    margin: 0;
 }
 
-ul,
-ol,
 h1,
 h2,
 p,
@@ -55,19 +35,31 @@ address {
     font-style: normal;
 }
 
-// Set images to be responsive by default
+/**
+ * Set images to be responsive by default
+ * 1. Set a maximum relative to the parent
+ *
+ * 2. Override the height to auto, otherwise images will be stretched when 
+ *    setting a width and height attribute on the img element.
+ *
+ * 3. Setting `vertical-align` removes the whitespace that appears 
+ *    under `img` elements
+ */
 img {
-    max-width: 100%; //Set a maximum relative to the parent
-    height: auto; // Override the height to auto, otherwise images will be stretched when setting a width and height attribute on the img element.
-    vertical-align: middle; // Setting `vertical-align` removes the whitespace that appears under `img` elements
+    max-width: 100%; /* 1 */
+    height: auto; /* 2 */ 
+    vertical-align: middle; /* 3 */ 
 }
 
 h3 {
     @include h3;
 }
 
+/**
+ * 1. font-size 1em = 10px on default browser settings
+ */
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1 */
 }
 
 body {
@@ -82,6 +74,8 @@ blockquote {
     font-style: italic;
 }
 
+/** TODO look at these meter resets and see if needed 
+ */
 meter {
     -webkit-appearance: none;
     display: block;
