@@ -47,8 +47,8 @@ address {
  */
 img {
     max-width: 100%; /* 1 */
-    height: auto; /* 2 */ 
-    vertical-align: middle; /* 3 */ 
+    height: auto; /* 2 */
+    vertical-align: middle; /* 3 */
 }
 
 h3 {
@@ -95,4 +95,30 @@ meter::-webkit-meter-optimum-value {
 
 table {
     border-collapse: collapse;
+}
+
+pre,
+code {
+    font-family: Consolas, Monaco, monospace;
+}
+
+pre {
+    background-color: $white-smoke;
+    color: $mine-shaft;
+    padding: vr-space();
+    overflow: auto;
+    border: 1px solid $very-light-grey;
+    font-size: 16px;
+
+    code {
+        background-color: $white-smoke;
+        padding: 0;
+        border: none;
+    }
+}
+
+code {
+    background-color: rgba($fern, 0.4);
+    padding: 0 0.2em;
+    border: 1px solid $fern;
 }
