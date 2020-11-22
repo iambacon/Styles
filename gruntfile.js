@@ -120,7 +120,28 @@ module.exports = function (grunt) {
                     spawn: false
                 }
             }
-        }
+        },
+
+        // Bump
+        bump: {
+            options: {
+              files: ['package.json'],
+              updateConfigs: [],
+              commit: true,
+              commitMessage: 'Release v%VERSION%',
+              commitFiles: ['package.json'],
+              createTag: true,
+              tagName: 'v%VERSION%',
+              tagMessage: 'Version %VERSION%',
+              push: true,
+              pushTo: 'upstream',
+              gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+              globalReplace: false,
+              prereleaseName: false,
+              metadata: '',
+              regExp: false
+            }
+          }
     });
 
     // Load plugins
@@ -129,6 +150,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-bump');
 
     grunt.registerTask('default',
         'Compile all SCSS files and rebuild docs, then watch for file changes and re-compile',
