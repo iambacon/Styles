@@ -1,0 +1,214 @@
+---
+layout: layout
+title: Code guidelines
+description: This guide lays out common patterns, structure and naming conventions.
+---
+<section class="m-t--full">
+    <h2>General style format and naming conventions</h2>
+    <ul class="listBullet">
+        <li>Class names are kebab case e.g. <code>.foo-bar</code>.</li>
+        <li>Use <code>//</code> for comment blocks.</li>
+        <li>Use hex codes or rgba for colours.</li>
+    </ul>
+    <p>Example:</p>
+    <div class="sg-example">
+        {% highlight html %}
+// this is a comment
+.style-format {
+color: #000000;
+background-color: rgba(0,0,0,0.5);
+}
+        {% endhighlight %}
+    </div>
+</section class="m-t--full">
+<section class="m-t--full">
+    <h2>File structure</h2>
+    <p>CSS files should be structured as follows:</p>
+    <div class="sg-example">
+        {% highlight html %}
+sass
++-- base
+| +-- functions
+| | +-- _functions.scss
+| +-- mixins
+| | +-- _breakpoints.scss
+| +-- _normalize.scss
+| +-- _variables.scss
++-- components
+| +-- _buttons.scss
+| +-- _footer.scss
++-- objects
+| +-- _lists.scss
++-- utilities
+| +-- _grid.scss
+| +-- _spacing.scss
+        {% endhighlight %}
+    </div>
+</section>
+<section class="m-t--full">
+    <h2>Base</h2>
+    <p>Base styles are default global styles for elements. Base styles are classless. Typically base will include your
+        css reset file and element defaults for the particular project.</p>
+    <blockquote>
+        <p>A Base rule is applied to an element using an element selector, a descendent selector, or a child selector,
+            along with any pseudo-classes. It doesn’t include any class or ID selectors. It is defining the default
+            styling for how that element should look in all occurrences on the page.</p>
+        <footer>—<a href="http://smacss.com/book/type-base" class="link">SMACSS</a></footer>
+    </blockquote>
+    <div class="sg-example">
+        {% highlight html %}
+// Example typography file
+html {
+font-size: 62.5%;
+}
+
+body {
+font-size: 14px;
+font-family: Arial, sans-serif;
+line-height: 1.2;
+}
+        {% endhighlight %}
+    </div>
+    <h3>Mixins</h3>
+    <p>Mixins are reusable classes that do not output any CSS unless used in another class.</p>
+    <div class="sg-example">
+        {% highlight html %}
+// Example mixin
+@mixin visually-hidden() {
+position: absolute !important;
+overflow: hidden !important;
+width: 1px !important;
+height: 1px !important;
+padding: 0 !important;
+border: 0 !important;
+clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+.visuallyHidden {
+@include visually-hidden;
+}
+        {% endhighlight %}
+    </div>
+    <h2>Objects</h2>
+    <p>Objects are universal abstractions. Objects define the layout and/or behaviour of a particular
+        repeatable object. Objects should not have knowledge of their height or width, they should fill their
+        container.
+    </p>
+    <h3>Naming convention</h3>
+    <p>For Objects use <a href="https://en.bem.info/methodology/" class="link">BEM</a> (Block, Element, Modifier)
+        notation.
+    </p>
+    <div class="sg-example">
+        {% highlight html %}
+// BEM notation pattern
+.block {
+&__element {
+}
+
+&--modifier {
+}
+}
+        {% endhighlight %}
+    </div>
+    <ul class="listBullet">
+        <li><em>Block</em> - An independent entity of an application.</li>
+        <li><em>Element</em> - Part of a block that performs a certain function.</li>
+        <li><em>Modifier</em> - A property of a block or element that alters its look or behaviour.</li>
+    </ul>
+    <p>CSS should be constructed as follows.</p>
+    <ul class="listBullet">
+        <li>An object must have a unique CSS class name.</li>
+        <li>An object name must be prefixed with <code>o-</code> for clarity.</li>
+        <li>Different behaviours of an object must be added as a modifier.</li>
+    </ul>
+    <p>Example:</p>
+    <div class="sg-example">
+        {% highlight html %}
+// Example BEM notation
+.o-vertical-menu {
+&__list {
+position: absolute;
+top: 100%;
+right: 0;
+}
+&__item {
+float: left;
+line-height: 1;
+
+&--large { // Modifier
+line-height: 2;
+}
+}
+}
+
+// Example html
+<menu class="o-vertical-menu">
+    <ul class="o-vertical-menu__list">
+        <li class="o-vertical-menu__item"></li>
+        <li class="o-vertical-menu__item--large"></li>
+    </ul>
+</menu>
+        {% endhighlight %}
+    </div>
+</section>
+<section class="m-t--full">
+    <h2>Components</h2>
+    <p>Components are one off modules such as banner/header/footer etc. This layer can make use of utilities, objects
+        and base styles and extends them for its own use. Here the design can be more flexible. Components can be made
+        up of other components.</p>
+    <h3>Naming conventions</h3>
+    <p>For components use kebab case.</p>
+    <ul class="listBullet">
+        <li>A component must have a unique CSS class name.</li>
+        <li>A component must be prefixed with <code>c-</code> for clarity.</li>
+    </ul>
+    <p>Example:</p>
+    <div class="sg-example">
+        {% highlight html %}
+// Example section
+.c-site-header {
+position: relative;
+
+&-logo {
+float: left;
+margin-top: 20px;
+margin-left: 5%
+}
+}
+        {% endhighlight %}
+    </div>
+</section>
+<section class="m-t--full">
+    <h2>Utilities</h2>
+    <p>Utilities are global classes, mixins and state classes to be used throughout the project.</p>
+    <h3>Global classes</h3>
+    <p>Typically these are helper classes such as heading sizes. These are commonly used styles that can be applied to
+        elements where required. This avoids repetition in components.</p>
+    <div class="sg-example">
+        {% highlight html %}
+// Example global classes
+.h1 { font-size: 20px; }
+.h2 { font-size: 17px; }
+.h3 { font-size: 14px; }
+.h4 { font-size: 13px; }
+.h5 { font-size: 13px; }
+.h6 { font-size: 11px; }
+        {% endhighlight %}
+    </div>
+    <h3>State</h3>
+    <p>State is something that overrides all other styles. These are typically used to represent if an element is
+        active, hidden, expanded etc.</p>
+    <ul class="listBullet">
+        <li>The use of <code>!important</code> is allowed in state classes but should only be added when necessary.</li>
+        <li>State classes are prefixed is-.</li>
+        <li>State classes can be used in both CSS and JS.</li>
+    </ul>
+    <p>Example:</p>
+    <div class="sg-example">
+        {% highlight html %}
+// Example state classes
+.is-error { background-color: #FF0000; }
+.is-hidden { display: none; }
+        {% endhighlight %}
+    </div>
+</section>
