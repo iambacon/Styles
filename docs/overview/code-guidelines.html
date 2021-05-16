@@ -5,7 +5,7 @@ description: This guide lays out common patterns, structure and naming conventio
 ---
 <section class="m-t--full">
     <h2>General style format and naming conventions</h2>
-    <ul class="listBullet">
+    <ul class="o-listBullet">
         <li>Class names are kebab case e.g. <code>.foo-bar</code>.</li>
         <li>Use <code>//</code> for comment blocks.</li>
         <li>Use hex codes or rgba for colours.</li>
@@ -110,15 +110,16 @@ clip: rect(1px, 1px, 1px, 1px) !important;
 }
         {% endhighlight %}
     </div>
-    <ul class="listBullet">
+    <ul class="o-listBullet">
         <li><em>Block</em> - An independent entity of an application.</li>
         <li><em>Element</em> - Part of a block that performs a certain function.</li>
         <li><em>Modifier</em> - A property of a block or element that alters its look or behaviour.</li>
     </ul>
     <p>CSS should be constructed as follows.</p>
-    <ul class="listBullet">
+    <ul class="o-listBullet">
         <li>An object must have a unique CSS class name.</li>
         <li>An object name must be prefixed with <code>o-</code> for clarity.</li>
+        <li>An object must use a camel case name.</li>
         <li>Different behaviours of an object must be added as a modifier.</li>
     </ul>
     <p>Example:</p>
@@ -158,7 +159,7 @@ line-height: 2;
         up of other components.</p>
     <h3>Naming conventions</h3>
     <p>For components use kebab case.</p>
-    <ul class="listBullet">
+    <ul class="o-listBullet">
         <li>A component must have a unique CSS class name.</li>
         <li>A component must be prefixed with <code>c-</code> for clarity.</li>
     </ul>
@@ -198,7 +199,7 @@ margin-left: 5%
     <h3>State</h3>
     <p>State is something that overrides all other styles. These are typically used to represent if an element is
         active, hidden, expanded etc.</p>
-    <ul class="listBullet">
+    <ul class="o-listBullet">
         <li>The use of <code>!important</code> is allowed in state classes but should only be added when necessary.</li>
         <li>State classes are prefixed is-.</li>
         <li>State classes can be used in both CSS and JS.</li>

@@ -1,15 +1,15 @@
 ﻿//
 // List objects.
-// Documentation url: https://iambacon.co.uk/styleguide/objects/lists
+// Documentation url: https://styles.iambacon.co.uk/objects/lists/
 // -----------------------------------------------------------------------------
 
-.listInline {
+.o-listInline {
     > li {
         display: inline-block;
     }
 }
 
-.listBullet {    
+.o-listBullet {    
     margin-left: 25px;
 
     > li {
