@@ -12,13 +12,13 @@
   "author": "Colin Bacon",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
-    "autoprefixer": "^9.8.2",
-    "commitizen": "^4.2.2",
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "autoprefixer": "^9.8.6",
+    "commitizen": "^4.2.3",
     "cssnano": "^4.1.10",
-    "cz-conventional-changelog": "^3.2.0",
-    "grunt": "^1.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "grunt": "^1.3.0",
     "grunt-bump": "^0.8.0",
     "grunt-cli": "^1.3.2",
     "grunt-concurrent": "^3.0.0",
@@ -26,7 +26,7 @@
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^3.1.0",
     "grunt-shell": "^3.0.1",
-    "husky": "^4.2.5",
+    "husky": "^4.3.8",
     "node-sass": "^4.14.1"
   },
   "config": {
@@ -43,6 +43,6 @@
     "defaults"
   ],
   "dependencies": {
-    "backstopjs": "^5.0.1"
+    "backstopjs": "^5.1.0"
   }
 }
