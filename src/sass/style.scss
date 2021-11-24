@@ -5,6 +5,7 @@
 
 // Base
 // ------------------------
+/* prettier-ignore */
 @import "base/variables";
 @import "base/mixins/base";
 @import "base/functions/functions";
@@ -16,6 +17,7 @@
 
 // Components
 // ------------------------
+/* prettier-ignore */
 @import "components/header", 
 		"components/footer", 
 		"components/links-list", 
@@ -31,6 +33,7 @@
 
 // Utilities
 // ------------------------
+/* prettier-ignore */
 @import "utilities/colours", 
 		"utilities/typography", 
 		"utilities/floats", 
