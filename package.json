@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "CSS and style guide for iambacon.co.uk",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -27,18 +27,13 @@
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^3.1.0",
     "grunt-shell": "^3.0.1",
-    "husky": "^4.2.5",
+    "husky": "^7.0.4",
     "node-sass": "^4.14.1",
     "postcss": "^8.3.11"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "browserslist": [
