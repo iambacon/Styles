@@ -7,9 +7,9 @@
 
 ul,
 ol {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 h1,
@@ -17,22 +17,22 @@ h2,
 p,
 dl,
 dd {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-    transition: color 0.25s ease-out;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: color 0.25s ease-out;
 
-    &:hover {
-        color: $link-hover-colour;
-    }
+  &:hover {
+    color: $link-hover-colour;
+  }
 }
 
 address {
-    font-style: normal;
+  font-style: normal;
 }
 
 /**
@@ -46,79 +46,79 @@ address {
  *    under `img` elements
  */
 img {
-    max-width: 100%; /* 1 */
-    height: auto; /* 2 */
-    vertical-align: middle; /* 3 */
+  max-width: 100%; /* 1 */
+  height: auto; /* 2 */
+  vertical-align: middle; /* 3 */
 }
 
 h3 {
-    @include h3;
+  @include h3;
 }
 
 /**
  * 1. font-size 1em = 10px on default browser settings
  */
 html {
-    font-size: 62.5%; /* 1 */
+  font-size: 62.5%; /* 1 */
 }
 
 body {
-    @include font-size;
-    @include vr-line-height;
-    font-family: $base-font-family;
-    color: $base-color;
-    background-color: $base-background-color;
+  @include font-size;
+  @include vr-line-height;
+  font-family: $base-font-family;
+  color: $base-color;
+  background-color: $base-background-color;
 }
 
 blockquote {
-    font-style: italic;
+  font-style: italic;
 }
 
 /** TODO look at these meter resets and see if needed 
  */
 meter {
-    -webkit-appearance: none;
-    display: block;
-    width: 100%;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
 }
 
 meter::-webkit-meter-bar {
-    background: $desert-storm;
-    height: 7px;
-    width: 100%;
+  background: $desert-storm;
+  height: 7px;
+  width: 100%;
 }
 
 meter::-webkit-meter-optimum-value {
-    background-image: none;
-    background-color: $cursive;
+  background-image: none;
+  background-color: $cursive;
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 pre,
 code {
-    font-family: Consolas, Monaco, monospace;
+  font-family: Consolas, Monaco, monospace;
 }
 
 pre {
-    background-color: $white-smoke;
-    color: $mine-shaft;
-    padding: vr-space();
-    overflow: auto;
-    border: 1px solid $very-light-grey;
-    font-size: 16px;
+  background-color: $white-smoke;
+  color: $mine-shaft;
+  padding: vr-space();
+  overflow: auto;
+  border: 1px solid $very-light-grey;
+  font-size: 16px;
 
-    code {
-        background-color: $white-smoke;
-        padding: 0;
-        border: none;
-    }
+  code {
+    background-color: $white-smoke;
+    padding: 0;
+    border: none;
+  }
 }
 
 code {
-    background-color: rgba($fern, 0.4);
-    padding: 0 0.2em;
-    border: 1px solid $fern;
+  background-color: rgba($fern, 0.4);
+  padding: 0 0.2em;
+  border: 1px solid $fern;
 }

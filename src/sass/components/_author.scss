@@ -4,59 +4,59 @@
 // -----------------------------------------------------------------------------
 
 .author {
-    color: $marshmallow;
-    text-align: center;
-    position: relative;
+  color: $marshmallow;
+  text-align: center;
+  position: relative;
+
+  margin: {
+    top: vr-space(1);
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  @include respond-to(small-up) {
+    @include column(10);
+    @include push;
+    @include pull;
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  &-title {
+    text-transform: uppercase;
+    display: block;
+    color: inherit;
+    font-size: $h3-font-size;
 
     margin: {
-        top: vr-space(1);
-        bottom: 10px;
-        left: 10px;
-        right: 10px;
+      top: vr-space(0.5);
     }
+  }
+
+  &-image {
+    height: auto;
+    width: 100%;
+    max-width: 140px;
+    border-radius: 50%;
 
     @include respond-to(small-up) {
-        @include column(10);
-        @include push;
-        @include pull;
-        text-align: left;
-        margin-top: 10px;
+      float: left;
+      margin-right: vr-space(1);
     }
+  }
 
-    &-title {
-        text-transform: uppercase;
-        display: block;
-        color: inherit;
-        font-size: $h3-font-size;
-
-        margin: {
-            top: vr-space(.5);
-        }
+  &-desc {
+    margin: {
+      bottom: vr-space(0.5);
     }
+  }
 
-    &-image {
-        height: auto;
-        width: 100%;
-        max-width: 140px;
-        border-radius: 50%;
-
-        @include respond-to(small-up) {
-            float: left;
-            margin-right: vr-space(1);
-        }
+  &-links {
+    @include respond-to(small-up) {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
-
-    &-desc {
-        margin: {
-            bottom: vr-space(.5);
-        }
-    }
-
-    &-links {
-        @include respond-to(small-up) {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-    }
+  }
 }

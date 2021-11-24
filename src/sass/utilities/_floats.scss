@@ -5,10 +5,10 @@
 
 // clear with overflow: hidden
 .co {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 // clear fix.
 .cf {
-	@include clearfix;
+  @include clearfix;
 }

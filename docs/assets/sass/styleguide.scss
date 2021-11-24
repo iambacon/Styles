@@ -6,99 +6,99 @@
 // -----------------------------------------------------------------------------
 
 .sg-layout {
-    &-nav {
-        position: fixed;
-        padding: 2rem;
-        width: 20rem;
-        border-right: 1px solid #d8dee6;
-        height: 100%;
-        overflow-y: auto;
-        box-sizing: border-box;
-    }
-    &-main {
-        margin-left: 20rem;
-        padding: 24px 4vw;
-        max-width: 767px;
-    }
+  &-nav {
+    position: fixed;
+    padding: 2rem;
+    width: 20rem;
+    border-right: 1px solid #d8dee6;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  &-main {
+    margin-left: 20rem;
+    padding: 24px 4vw;
+    max-width: 767px;
+  }
 }
 
 .sg-example {
-    pre[class*="language-"] {
-        background-color: #f5f5f5;
-    }
+  pre[class*="language-"] {
+    background-color: #f5f5f5;
+  }
 
-    code[class*="language-"],
-    pre[class*="language-"] {
-        line-height: 0.7em;
-    }
+  code[class*="language-"],
+  pre[class*="language-"] {
+    line-height: 0.7em;
+  }
 }
 
 .sg-swatch {
-    position: relative;
-    padding-left: 120px;
-    min-height: 100px;
+  position: relative;
+  padding-left: 120px;
+  min-height: 100px;
 
-    &-colour {
-        width: 100px;
-        height: 100px;
-        border-radius: 5px;
-        position: absolute;
-        left: 0;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-    }
+  &-colour {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
 }
 
 .sg-w20 {
-    width: 20%;
+  width: 20%;
 }
 
 .sg-p10 {
-    padding: 10px;
+  padding: 10px;
 }
 
 .sg-f-left {
-    float: left;
+  float: left;
 }
 
 .sg-f-right {
-    float: right;
+  float: right;
 }
 
 .sg-table {
-    display: table;
-    width: 100%;
+  display: table;
+  width: 100%;
 
-    th,
-    td {
-        border-top: 1px solid #dfdfdf;
-        border-left: 1px solid #dfdfdf;
-        border-right: 1px solid #dfdfdf;
-        padding: 5px;
-    }
+  th,
+  td {
+    border-top: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+    padding: 5px;
+  }
 
-    th {
-        font-weight: bold;
-        background-color: #f5f4f3;
-    }
+  th {
+    font-weight: bold;
+    background-color: #f5f4f3;
+  }
 
-    td {
-        text-align: center;
-    }
+  td {
+    text-align: center;
+  }
 
-    tr:last-of-type td {
-        border-bottom: 1px solid #dfdfdf;
-    }
+  tr:last-of-type td {
+    border-bottom: 1px solid #dfdfdf;
+  }
 
-    &-td-nowrap {
-        white-space: nowrap;
-    }
+  &-td-nowrap {
+    white-space: nowrap;
+  }
 }
 
 .sg-logo {
-    background-image: url(../images/square-pig.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 130px;
-    width: 100%;
+  background-image: url(../images/square-pig.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 130px;
+  width: 100%;
 }

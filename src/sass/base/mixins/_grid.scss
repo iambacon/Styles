@@ -10,65 +10,63 @@ $total-columns: 12;
 
 // Grid column.
 @mixin column($span) {
-    float: left;
-    width: fluid-grid($span);
-    margin-left: fluid-gutter();
-    box-sizing: border-box;
+  float: left;
+  width: fluid-grid($span);
+  margin-left: fluid-gutter();
+  box-sizing: border-box;
 
-    @if $span == 6 {
-        &:nth-of-type(odd) {
-            margin-left: 0;
-        }
+  @if $span == 6 {
+    &:nth-of-type(odd) {
+      margin-left: 0;
     }
+  }
 
-    @if $span == 4 {
-        &:nth-of-type(3n+1) {
-            margin-left: 0;
-        }
+  @if $span == 4 {
+    &:nth-of-type(3n + 1) {
+      margin-left: 0;
     }
+  }
 
-    @if $span == 3 {
-        &:nth-of-type(4n+1) {
-            clear: left;
-            margin-left: 0;
-        }
+  @if $span == 3 {
+    &:nth-of-type(4n + 1) {
+      clear: left;
+      margin-left: 0;
     }
+  }
 
-    @if $span == $total-columns {
-        margin-left: 0;
-    }
+  @if $span == $total-columns {
+    margin-left: 0;
+  }
 }
 
 // Removes the gutter.
 @mixin column-no-gutter($span) {
-    @include column($span);
-    margin-left: 0;
+  @include column($span);
+  margin-left: 0;
 }
 
 // Grid container.
 @mixin container() {
-    @include clearfix;
-    box-sizing: border-box;
+  @include clearfix;
+  box-sizing: border-box;
 }
 
 // Applies left indent to grid.
 @mixin push($offset: 1) {
-    @if $offset == 1 {
-        margin-left: fluid-grid($offset) + fluid-gutter();
-    }
-    @else {
-        margin-left: fluid-grid($offset);
-    }
+  @if $offset == 1 {
+    margin-left: fluid-grid($offset) + fluid-gutter();
+  } @else {
+    margin-left: fluid-grid($offset);
+  }
 }
 
 // Applies right indent to grid.
 @mixin pull($offset: 1) {
-    @if $offset == 1 {
-        margin-right: fluid-grid($offset) + fluid-gutter();
-    }
-    @else {
-        margin-right: fluid-grid($offset);
-    }
+  @if $offset == 1 {
+    margin-right: fluid-grid($offset) + fluid-gutter();
+  } @else {
+    margin-right: fluid-grid($offset);
+  }
 }
 
 // Functions
@@ -76,25 +74,26 @@ $total-columns: 12;
 
 // Returns the width of the column including gutters.
 @function column-width($columns) {
-    @return ($columns * $column-width) + (($columns - 1) * $gutter-width);
+  @return ($columns * $column-width) + (($columns - 1) * $gutter-width);
 }
 
 // Returns the total width of the column container.
 @function container-width() {
-    @return ($total-columns * $column-width) + (($total-columns - 1) * $gutter-width);
+  @return ($total-columns * $column-width) +
+    (($total-columns - 1) * $gutter-width);
 }
 
 // Returns the column width as a percentage.
 @function fluid-grid($columns) {
-    @return percentage(column-width($columns) / container-width());
+  @return percentage(column-width($columns) / container-width());
 }
 
 // Returns the gutter width as a percentage.
 @function fluid-gutter() {
-    @return percentage(gutter-width());
+  @return percentage(gutter-width());
 }
 
 // Returns the gutter width.
 @function gutter-width() {
-    @return $gutter-width / container-width();
+  @return $gutter-width / container-width();
 }

@@ -4,25 +4,25 @@
 // -----------------------------------------------------------------------------
 
 .social {
-    background-image: url(../images/social.png);
-    background-repeat: no-repeat;
-    height: 32px;
-    width: 32px;
-    display: block;
+  background-image: url(../images/social.png);
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 32px;
+  display: block;
 
-    &.linkedIn {
-        background-position: 0 -33px;
-    }
+  &.linkedIn {
+    background-position: 0 -33px;
+  }
 
-    &.google {
-        background-position: 0 0;
-    }
+  &.google {
+    background-position: 0 0;
+  }
 
-    &.rss {
-        background-position: 0 -66px;
-    }
+  &.rss {
+    background-position: 0 -66px;
+  }
 
-    &.twitter {
-        background-position: 0 -99px;
-    }
+  &.twitter {
+    background-position: 0 -99px;
+  }
 }

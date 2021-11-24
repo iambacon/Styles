@@ -4,27 +4,27 @@
 // -----------------------------------------------------------------------------
 
 .o-listInline {
-    > li {
-        display: inline-block;
-    }
+  > li {
+    display: inline-block;
+  }
 }
 
-.o-listBullet {    
-    margin-left: 25px;
+.o-listBullet {
+  margin-left: 25px;
 
-    > li {
-        position: relative;
+  > li {
+    position: relative;
 
-        &:before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: 100%;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: $cursive;
-            margin-right: 13px;
-        }
-    }    
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $cursive;
+      margin-right: 13px;
+    }
+  }
 }

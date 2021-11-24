@@ -10,18 +10,18 @@ $base-font-size: 16px;
 $base-line-height: 24px;
 
 // The default font family.
-$base-font-family: 'Lato', 'Trebuchet MS', sans-serif !default;
+$base-font-family: "Lato", "Trebuchet MS", sans-serif !default;
 // The font sizes for h1-h6.
 $h1-font-size: 3.75 * $base-font-size !default; //60px
-$h2-font-size: 3	* $base-font-size !default; //46px
-$h3-font-size: 1.5	* $base-font-size !default; //24px
-$h4-font-size: 1    * $base-font-size !default; //16px
+$h2-font-size: 3 * $base-font-size !default; //46px
+$h3-font-size: 1.5 * $base-font-size !default; //24px
+$h4-font-size: 1 * $base-font-size !default; //16px
 $h5-font-size: 0.87 * $base-font-size !default; //14px
 $h6-font-size: 0.69 * $base-font-size !default; //11px
 
 // Post article font size
-$article-base-font-size:        $base-font-size * 1.125; //18px
-$article-base-font-size-small:  $base-font-size * 1;     //16px
+$article-base-font-size: $base-font-size * 1.125; //18px
+$article-base-font-size-small: $base-font-size * 1; //16px
 
 // The amount lists and blockquotes are indented.
 $indent-amount: 40px !default;

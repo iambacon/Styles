@@ -5,65 +5,65 @@
 /// <reference path="../base/mixins/_base.scss" />
 
 .h1 {
-    @include font-size($h1-font-size);
-    font-weight: 700;
-    @include line-height-proportional;
+  @include font-size($h1-font-size);
+  font-weight: 700;
+  @include line-height-proportional;
 }
 
 .h2 {
-    @include font-size($h3-font-size);
-    @include vr-line-height($h3-font-size, 1.5);
-    font-weight: 700;
+  @include font-size($h3-font-size);
+  @include vr-line-height($h3-font-size, 1.5);
+  font-weight: 700;
 
-    @include respond-to(small-up) {
-        @include font-size($h2-font-size);
-        @include vr-line-height($h2-font-size, 3);
-    }
+  @include respond-to(small-up) {
+    @include font-size($h2-font-size);
+    @include vr-line-height($h2-font-size, 3);
+  }
 }
 
 .h3 {
-    @include h3;
+  @include h3;
 }
 
 .h4 {
-    @include font-size($h4-font-size);
-    @include line-height-proportional;
+  @include font-size($h4-font-size);
+  @include line-height-proportional;
 }
 
 .sectionTitle {
-    color: $nobel;
-    @include h3;
-    text-transform: uppercase;
-    display: inline-block;
+  color: $nobel;
+  @include h3;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
 // hides text for when you want to replace it with an image or icon.
 .hideText {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 // Hides text but not for screen readers.
 .visuallyHidden {
-    @include visually-hidden;
+  @include visually-hidden;
 }
 
 // Sets text decoration for text links.
 .link {
-    text-decoration: underline;
-    color: $cursive;
+  text-decoration: underline;
+  color: $cursive;
 }
 
 // Set behaviour for title links.
 .linkTitle {
-    &:hover {
-        text-decoration: underline;
-        color: inherit;
-    }
+  &:hover {
+    text-decoration: underline;
+    color: inherit;
+  }
 }
 
 // Uppercase text
 .textUpper {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }

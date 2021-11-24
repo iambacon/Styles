@@ -3,48 +3,48 @@
 // Documentation url: https://iambacon.co.uk/styleguide/components/pagination
 // -----------------------------------------------------------------------------
 
-$pagination-height:     70px;
-$pagination-width:      70px;
-$pagination-bg:         $desert-storm;
+$pagination-height: 70px;
+$pagination-width: 70px;
+$pagination-bg: $desert-storm;
 $pagination-current-bg: $cursive;
-$pagination-more-bg:    $cursive;
+$pagination-more-bg: $cursive;
 
 .pagination {
-    @include clearfix;    
-    clear: both;
+  @include clearfix;
+  clear: both;
 
-    &-page,
-    &-more {
-        @include font-size($h4-font-size);
-        background-color: $pagination-bg;
-        float: left;
-        margin-right: 1px;
-        height: $pagination-height;
-        line-height: $pagination-height;
-        text-align: center;
-        transition: all .25s ease-out;
+  &-page,
+  &-more {
+    @include font-size($h4-font-size);
+    background-color: $pagination-bg;
+    float: left;
+    margin-right: 1px;
+    height: $pagination-height;
+    line-height: $pagination-height;
+    text-align: center;
+    transition: all 0.25s ease-out;
 
-        &:hover {
-            color: inherit;
-        }
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &-page {
+    width: $pagination-width;
+
+    &:hover {
+      font-weight: 700;
     }
 
-    &-page {
-        width: $pagination-width;
-
-        &:hover {
-            font-weight: 700;
-        }
-
-        &--current {
-            background-color: $pagination-current-bg;
-        }
+    &--current {
+      background-color: $pagination-current-bg;
     }
+  }
 
-    &-more {
-        font-weight: 700;
-        width: 100%;
-        background-color: $pagination-more-bg;
-        text-transform: uppercase;
-    }
+  &-more {
+    font-weight: 700;
+    width: 100%;
+    background-color: $pagination-more-bg;
+    text-transform: uppercase;
+  }
 }
