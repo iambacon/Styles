@@ -148,12 +148,14 @@
     {
       "selectors": ["document"],
       "label": "Homepage template",
-      "url": "http://localhost:8080/pages/homepage"
+      "url": "http://localhost:8080/pages/homepage",
+      "delay": 1000
     },
     {
       "selectors": ["document"],
       "label": "Blog landing template",
-      "url": "http://localhost:8080/pages/blog-landing"
+      "url": "http://localhost:8080/pages/blog-landing",
+      "delay": 1000
     },
     {
       "selectors": ["document"],
@@ -163,7 +165,8 @@
     {
       "selectors": ["document"],
       "label": "Filtered results template",
-      "url": "http://localhost:8080/pages/filtered-results"
+      "url": "http://localhost:8080/pages/filtered-results",
+      "delay": 1000
     },
     {
       "selectors": ["document"],
