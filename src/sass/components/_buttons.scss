@@ -1,11 +1,11 @@
 ﻿//
 // Buttons component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/buttons
+// Documentation url: https://styles.iambacon.co.uk/components/buttons/
 // -----------------------------------------------------------------------------
 
 $btn-font-size: 1.125 * $base-font-size;
 
-.btn {
+.c-btn {
   // base button styles
   border-radius: 10px;
   font-size: $btn-font-size;
