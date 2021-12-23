@@ -1,22 +1,25 @@
 ---
 layout: layout
 title: Header
-description: The global header for the site.
+description: Component representing a page header. Contains a logo and navigation links.
 ---
 
 <section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
-    <header class="header">
+    <header class="c-header">
         <div class="layoutContainer">
-            <h2 class="header-logo">
+            <h2 class="c-header-logo">
                 <a href="#">I am Bacon</a>
             </h2>
             <p class="visuallyHidden"> Colin Bacon, web developer.</p>
-            <nav class="header-nav">
+            <nav class="c-header-nav">
                 <h3 class="visuallyHidden">Site navigation</h3>
                 <ul class="o-listInline">
-                    <li class="header-nav-link">
+                    <li class="c-header-nav-link">
                         <a href="#">Blog</a>
+                    </li>
+                    <li class="c-header-nav-link">
+                        <a href="#">About</a>
                     </li>
                 </ul>
             </nav>
@@ -24,17 +27,20 @@ description: The global header for the site.
     </header>
     <div class="sg-example">
 {% highlight html %}
-<header class="header">
+<header class="c-header">
     <div class="layoutContainer">
-        <h2 class="header-logo">
+        <h2 class="c-header-logo">
             <a href="#">I am Bacon</a>
         </h2>
         <p class="visuallyHidden"> Colin Bacon, web developer.</p>
-        <nav class="header-nav">
+        <nav class="c-header-nav">
             <h3 class="visuallyHidden">Site navigation</h3>
             <ul class="o-listInline">
-                <li class="header-nav-link">
+                <li class="c-header-nav-link">
                     <a href="#">Blog</a>
+                </li>
+                <li class="c-header-nav-link">
+                    <a href="#">About</a>
                 </li>
             </ul>
         </nav>
