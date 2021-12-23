@@ -1,9 +1,9 @@
 ﻿//
 // Aside nav component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/aside-nav
+// Documentation url: https://styles.iambacon.co.uk/components/aside-nav/
 // -----------------------------------------------------------------------------
 
-.asideNav {
+.c-asideNav {
   &-title {
     font-size: $h3-font-size;
     @include vr-line-height($h3-font-size, 2);
