@@ -72,11 +72,6 @@
     },
     {
       "selectors": ["document"],
-      "label": "Footer",
-      "url": "http://localhost:8080/components/footer"
-    },
-    {
-      "selectors": ["document"],
       "label": "Header",
       "url": "http://localhost:8080/components/header"
     },
