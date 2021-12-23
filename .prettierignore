@@ -8,4 +8,4 @@ docs/assets/css
 *.html
 
 # sass files:
-src/base/_colours.scss
+src/sass/base/_colours.scss
