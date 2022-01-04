@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "CSS and style guide for iambacon.co.uk",
   "scripts": {
+    "start": "grunt",
     "prepare": "husky install",
     "backstop:approve": "backstop approve",
     "backstop:test": "backstop test",
