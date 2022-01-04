@@ -1,8 +1,7 @@
 ﻿//
 // Helper classes for typography.
-// --------------------------------------------------
-/// <reference path="../base/_typography.scss" />
-/// <reference path="../base/mixins/_base.scss" />
+// Documentation url: https://styles.iambacon.co.uk/utilities/typography/
+// -----------------------------------------------------------------------------
 
 .h1 {
   @include font-size($h1-font-size);
