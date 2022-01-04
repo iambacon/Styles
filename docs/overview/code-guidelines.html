@@ -12,7 +12,7 @@ description: This guide lays out common patterns, structure and naming conventio
     </ul>
     <p>Example:</p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight css %}
 // this is a comment
 .styleFormat {
 color: #000000;
@@ -56,7 +56,7 @@ sass
         <footer>—<a href="http://smacss.com/book/type-base" class="link">SMACSS</a></footer>
     </blockquote>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight css %}
 // Example typography file
 html {
   font-size: 62.5%;
@@ -76,7 +76,7 @@ body {
         <li>A mixin must use a kebab case name.</li>
     </ul>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight scss %}
 // Example mixin
 @mixin visually-hidden() {
   position: absolute !important;
@@ -105,7 +105,7 @@ body {
         notation.
     </p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight scss %}
 // BEM notation pattern
 .block {
   &-element {
@@ -131,7 +131,7 @@ body {
     </ul>
     <p>Example:</p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight scss %}
 .o-verticalMenu {
   &-list {
     position: absolute;
@@ -169,7 +169,7 @@ body {
         notation.
     </p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight scss %}
 // BEM notation pattern
 .block {
   &-element {
@@ -194,7 +194,7 @@ body {
     </ul>
     <p>Example:</p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight scss %}
 // Example section
 .c-siteHeader {
   position: relative;
@@ -215,7 +215,7 @@ body {
     <p>Typically these are helper classes such as heading sizes. These are commonly used styles that can be applied to
         elements where required. This avoids repetition in components.</p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight css %}
 // Example global classes
 .h1 { font-size: 20px; }
 .h2 { font-size: 17px; }
@@ -235,7 +235,7 @@ body {
     </ul>
     <p>Example:</p>
     <div class="sg-example">
-        {% highlight html %}
+        {% highlight css %}
 // Example state classes
 .is-error { background-color: #FF0000; }
 .is-hidden { display: none; }
