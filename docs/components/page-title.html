@@ -1,21 +1,22 @@
 ---
 layout: layout
 title: Page title
-description: Used to style the title of each page.
+description: Component representing the title of a page.
 ---
 
 <section class="m-t--full">
+    <p class="m-b--full">The page title component can be used with a triangle using the state class <code>has-triangle</code>.</p>
     <h2 class="m-b--full">Example</h2>
-    <div class="pageTitle">
+    <div class="c-pageTitle">
         <div class="has-triangle">
-            <h1 class="pageTitle-headline pageTitle-headline--sm">Recent posts for Category 'ASP.NET'</h1>
+            <h1 class="c-pageTitle-headline c-pageTitle-headline--sm">Recent posts for Category 'ASP.NET'</h1>
         </div>
     </div>
     <div class="sg-example m-t--full">
         {% highlight html %}
-<div class="pageTitle">
+<div class="c-pageTitle">
     <div class="has-triangle">
-        <h1 class="pageTitle-headline pageTitle-headline--sm">Recent posts for Category 'ASP.NET'</h1>
+        <h1 class="c-pageTitle-headline c-pageTitle-headline--sm">Recent posts for Category 'ASP.NET'</h1>
     </div>
 </div>
         {% endhighlight %}
