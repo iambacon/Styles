@@ -14,7 +14,7 @@
     "url": "https://github.com/iambacon/Styles"
   },
   "author": "Colin Bacon",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
