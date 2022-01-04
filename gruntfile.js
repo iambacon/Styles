@@ -25,12 +25,9 @@ module.exports = function (grunt) {
           },
         },
       },
-      zipSite: {
-        command:
-          'powershell -command "Compress-Archive -Path docs/_site/* -DestinationPath dist/site.zip -Force"',
-      },
     },
 
+    // Concurrent
     concurrent: {
       options: {
         logConcurrentOutput: true,
@@ -143,6 +140,22 @@ module.exports = function (grunt) {
         regExp: false,
       },
     },
+
+    // Compress
+    compress: {
+      main: {
+        options: {
+          archive: "dist/site.zip",
+        },
+        files: [
+          {
+            src: ["_site/**"],
+            cwd: "docs/",
+            expand: true,
+          },
+        ],
+      },
+    },
   });
 
   // Load plugins
@@ -152,6 +165,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("@lodder/grunt-postcss");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-bump");
+  grunt.loadNpmTasks("grunt-contrib-compress");
 
   grunt.registerTask(
     "default",
@@ -172,7 +186,7 @@ module.exports = function (grunt) {
       "concurrent:sassCompile",
       "postcss:docs",
       "shell:eleventyBuild",
-      "shell:zipSite",
+      "compress:main",
     ]
   );
 };
