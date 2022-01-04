@@ -6,7 +6,7 @@ description: This guide lays out common patterns, structure and naming conventio
 <section class="m-t--full">
     <h2>General style format and naming conventions</h2>
     <ul class="o-listBullet">
-        <li>Class names are kebab case e.g. <code>.foo-bar</code>.</li>
+        <li>Class names are camel case e.g. <code>.fooBar</code>.</li>
         <li>Use <code>//</code> for comment blocks.</li>
         <li>Use hex codes or rgba for colours.</li>
     </ul>
@@ -14,7 +14,7 @@ description: This guide lays out common patterns, structure and naming conventio
     <div class="sg-example">
         {% highlight html %}
 // this is a comment
-.style-format {
+.styleFormat {
 color: #000000;
 background-color: rgba(0,0,0,0.5);
 }
@@ -59,36 +59,42 @@ sass
         {% highlight html %}
 // Example typography file
 html {
-font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-font-size: 14px;
-font-family: Arial, sans-serif;
-line-height: 1.2;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  line-height: 1.2;
 }
         {% endhighlight %}
     </div>
     <h3>Mixins</h3>
     <p>Mixins are reusable classes that do not output any CSS unless used in another class.</p>
+    <h4 class="h3">Naming convention</h4>
+    <ul>
+        <li>A mixin must use a kebab case name.</li>
+    </ul>
     <div class="sg-example">
         {% highlight html %}
 // Example mixin
 @mixin visually-hidden() {
-position: absolute !important;
-overflow: hidden !important;
-width: 1px !important;
-height: 1px !important;
-padding: 0 !important;
-border: 0 !important;
-clip: rect(1px, 1px, 1px, 1px) !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
 }
 
 .visuallyHidden {
-@include visually-hidden;
+  @include visually-hidden;
 }
         {% endhighlight %}
     </div>
+</section>
+<section class="m-t--full">    
     <h2>Objects</h2>
     <p>Objects are universal abstractions. Objects define the layout and/or behaviour of a particular
         repeatable object. Objects should not have knowledge of their height or width, they should fill their
@@ -102,11 +108,11 @@ clip: rect(1px, 1px, 1px, 1px) !important;
         {% highlight html %}
 // BEM notation pattern
 .block {
-&__element {
-}
+  &-element {
+  }
 
-&--modifier {
-}
+  &--modifier {
+  }
 }
         {% endhighlight %}
     </div>
@@ -115,6 +121,7 @@ clip: rect(1px, 1px, 1px, 1px) !important;
         <li><em>Element</em> - Part of a block that performs a certain function.</li>
         <li><em>Modifier</em> - A property of a block or element that alters its look or behaviour.</li>
     </ul>
+
     <p>CSS should be constructed as follows.</p>
     <ul class="o-listBullet">
         <li>An object must have a unique CSS class name.</li>
@@ -125,28 +132,28 @@ clip: rect(1px, 1px, 1px, 1px) !important;
     <p>Example:</p>
     <div class="sg-example">
         {% highlight html %}
-// Example BEM notation
-.o-vertical-menu {
-&__list {
-position: absolute;
-top: 100%;
-right: 0;
-}
-&__item {
-float: left;
-line-height: 1;
+.o-verticalMenu {
+  &-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
 
-&--large { // Modifier
-line-height: 2;
-}
-}
+  &-item {
+    float: left;
+    line-height: 1;
+
+    &--large { // Modifier
+      line-height: 2;
+    }
+  }
 }
 
 // Example html
-<menu class="o-vertical-menu">
-    <ul class="o-vertical-menu__list">
-        <li class="o-vertical-menu__item"></li>
-        <li class="o-vertical-menu__item--large"></li>
+<menu class="o-verticalMenu">
+    <ul class="o-verticalMenu-list">
+        <li class="o-verticalMenu-item"></li>
+        <li class="o-verticalMenu-item--large"></li>
     </ul>
 </menu>
         {% endhighlight %}
@@ -157,24 +164,46 @@ line-height: 2;
     <p>Components are one off modules such as banner/header/footer etc. This layer can make use of utilities, objects
         and base styles and extends them for its own use. Here the design can be more flexible. Components can be made
         up of other components.</p>
-    <h3>Naming conventions</h3>
-    <p>For components use kebab case.</p>
+    <h3>Naming convention</h3>
+    <p>For Objects use <a href="https://en.bem.info/methodology/" class="link">BEM</a> (Block, Element, Modifier)
+        notation.
+    </p>
+    <div class="sg-example">
+        {% highlight html %}
+// BEM notation pattern
+.block {
+  &-element {
+  }
+
+  &--modifier {
+  }
+}
+        {% endhighlight %}
+    </div>
+    <ul class="o-listBullet">
+        <li><em>Block</em> - An independent entity of an application.</li>
+        <li><em>Element</em> - Part of a block that performs a certain function.</li>
+        <li><em>Modifier</em> - A property of a block or element that alters its look or behaviour.</li>
+    </ul>
+
+    <p>CSS should be constructed as follows.</p>
     <ul class="o-listBullet">
         <li>A component must have a unique CSS class name.</li>
-        <li>A component must be prefixed with <code>c-</code> for clarity.</li>
+        <li>A component name must be prefixed with <code>c-</code> for clarity.</li>
+        <li>A component must use a camel case name.</li>
     </ul>
     <p>Example:</p>
     <div class="sg-example">
         {% highlight html %}
 // Example section
-.c-site-header {
-position: relative;
+.c-siteHeader {
+  position: relative;
 
-&-logo {
-float: left;
-margin-top: 20px;
-margin-left: 5%
-}
+  &-logo {
+    float: left;
+    margin-top: 20px;
+    margin-left: 5%
+  }
 }
         {% endhighlight %}
     </div>
@@ -201,7 +230,7 @@ margin-left: 5%
         active, hidden, expanded etc.</p>
     <ul class="o-listBullet">
         <li>The use of <code>!important</code> is allowed in state classes but should only be added when necessary.</li>
-        <li>State classes are prefixed is-.</li>
+        <li>State classes are prefixed <code>is-</code>.</li>
         <li>State classes can be used in both CSS and JS.</li>
     </ul>
     <p>Example:</p>
