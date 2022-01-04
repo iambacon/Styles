@@ -1,6 +1,6 @@
 ﻿//
 // Pagination component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/pagination
+// Documentation url: https://styles.iambacon.co.uk/components/pagination/
 // -----------------------------------------------------------------------------
 
 $pagination-height: 70px;
@@ -9,7 +9,7 @@ $pagination-bg: $desert-storm;
 $pagination-current-bg: $cursive;
 $pagination-more-bg: $cursive;
 
-.pagination {
+.c-pagination {
   @include clearfix;
   clear: both;
 
