@@ -4,14 +4,17 @@ Welcome to Styles, the pattern library for iambacon websites.
 
 ## Table of contents
 
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-    - [Clone the repo](#clone-the-repo)
-    - [Install npm dependencies](#install-npm-dependencies)
-    - [Run Styles](#run-styles)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+- [Styles](#styles)
+  - [Table of contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+      - [Clone the repo](#clone-the-repo)
+      - [Install npm dependencies](#install-npm-dependencies)
+      - [Run Styles](#run-styles)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Acknowledgements](#acknowledgements)
 
 ## Getting Started
 
@@ -42,6 +45,16 @@ This will build, serve and watch for changes. Browse to your local instance at `
 ```sh
 npm start
 ```
+
+## Usage
+
+To use Styles in your project you will need to generate the CSS file locally.
+
+```sh
+npm run build
+```
+
+A minified CSS file will be output to `dist/css/style.css`.
 
 ## License
 

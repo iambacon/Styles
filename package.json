@@ -4,6 +4,7 @@
   "description": "CSS and style guide for iambacon.co.uk",
   "scripts": {
     "start": "grunt",
+    "build": "grunt build",
     "prepare": "husky install",
     "backstop:approve": "backstop approve",
     "backstop:test": "backstop test",
