@@ -1,29 +1,29 @@
 ﻿//
 // Helper classes for grids and layouts.
-// Documentation url: https://iambacon.co.uk/styleguide/utilities/grid
+// Documentation url: https://styles.iambacon.co.uk/utilities/grid/
 // -----------------------------------------------------------------------------
 
 .layoutContainer {
-	max-width: 1000px;
-	margin: 0 auto;
-	overflow: hidden;
-	padding-left: $base-line-height * 0.5;
-	padding-right: $base-line-height * 0.5;
-    box-sizing: border-box;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-left: $base-line-height * 0.5;
+  padding-right: $base-line-height * 0.5;
+  box-sizing: border-box;
 
-    &--visible {
-        overflow: visible;
-    }
+  &--visible {
+    overflow: visible;
+  }
 }
 
 .articleLayoutContainer {
-    @include respond-to(small-up){
-        @include push;
-        @include pull;
-    }
+  @include respond-to(small-up) {
+    @include push;
+    @include pull;
+  }
 }
 
 // Helper class for a grid container.
 .container {
-    @include container;
+  @include container;
 }

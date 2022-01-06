@@ -5,5 +5,5 @@
 
 // Sets the font size.
 @mixin font-size($size: $base-font-size) {
-    font-size: rem($size);
+  font-size: rem($size);
 }

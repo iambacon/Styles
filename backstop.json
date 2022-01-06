@@ -21,212 +21,150 @@
   "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Home",
       "url": "http://localhost:8080"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Code",
       "url": "http://localhost:8080/base/code"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Colours",
       "url": "http://localhost:8080/base/colours"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Grid",
       "url": "http://localhost:8080/base/grid"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Typography",
       "url": "http://localhost:8080/base/typography"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Article",
       "url": "http://localhost:8080/components/article"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Article content",
       "url": "http://localhost:8080/components/article-content"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Aside nav",
       "url": "http://localhost:8080/components/aside-nav"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Author",
       "url": "http://localhost:8080/components/author"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Buttons",
       "url": "http://localhost:8080/components/buttons"
     },
     {
-      "selectors": [
-        "document"
-      ],
-      "label": "Footer",
-      "url": "http://localhost:8080/components/footer"
-    },
-    {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Header",
       "url": "http://localhost:8080/components/header"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Links list",
       "url": "http://localhost:8080/components/links-list"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Meter",
       "url": "http://localhost:8080/components/meter"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Page title",
       "url": "http://localhost:8080/components/page-title"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Pagination",
       "url": "http://localhost:8080/components/pagination"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Tag",
       "url": "http://localhost:8080/components/tag"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Lists",
       "url": "http://localhost:8080/objects/lists"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Colours",
       "url": "http://localhost:8080/utilities/colours"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Display",
       "url": "http://localhost:8080/utilities/display"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Floats",
       "url": "http://localhost:8080/utilities/floats"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Grids",
       "url": "http://localhost:8080/utilities/grid"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Spacing",
       "url": "http://localhost:8080/utilities/spacing"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Social",
       "url": "http://localhost:8080/utilities/social"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Typography",
       "url": "http://localhost:8080/utilities/typography"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Homepage template",
-      "url": "http://localhost:8080/pages/homepage"
+      "url": "http://localhost:8080/pages/homepage",
+      "delay": 1000
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Blog landing template",
-      "url": "http://localhost:8080/pages/blog-landing"
+      "url": "http://localhost:8080/pages/blog-landing",
+      "delay": 1000
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Post template",
       "url": "http://localhost:8080/pages/post"
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Filtered results template",
-      "url": "http://localhost:8080/pages/filtered-results"
+      "url": "http://localhost:8080/pages/filtered-results",
+      "delay": 1000
     },
     {
-      "selectors": [
-        "document"
-      ],
+      "selectors": ["document"],
       "label": "Hire me template",
       "url": "http://localhost:8080/pages/hire-me"
     }
@@ -238,14 +176,10 @@
     "html_report": "backstop_data/html_report",
     "ci_report": "backstop_data/ci_report"
   },
-  "report": [
-    "browser"
-  ],
+  "report": ["browser"],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": [
-      "--no-sandbox"
-    ]
+    "args": ["--no-sandbox"]
   },
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,

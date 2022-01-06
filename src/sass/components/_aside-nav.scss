@@ -1,31 +1,31 @@
 ﻿//
 // Aside nav component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/aside-nav
+// Documentation url: https://styles.iambacon.co.uk/components/aside-nav/
 // -----------------------------------------------------------------------------
 
-.asideNav {
-    &-title {
-        font-size: $h3-font-size;
-        @include vr-line-height($h3-font-size, 2);
-        color: $marshmallow;
-        background-color: $ill-stay-here;
-        padding-left: 20px;
-    }
+.c-asideNav {
+  &-title {
+    font-size: $h3-font-size;
+    @include vr-line-height($h3-font-size, 2);
+    color: $marshmallow;
+    background-color: $ill-stay-here;
+    padding-left: 20px;
+  }
 
-    &-items {
-        padding-left: 20px;
-        padding-right: 20px;
-        overflow: hidden;
-        margin-bottom: vr-space(2);
-    }
+  &-items {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+    margin-bottom: vr-space(2);
+  }
 
-    &-item {
-        @include vr-line-height;
-        margin-top: vr-space(.5);        
+  &-item {
+    @include vr-line-height;
+    margin-top: vr-space(0.5);
 
-        &-count {
-            float: right;
-            color: $nobel;
-        }
+    &-count {
+      float: right;
+      color: $nobel;
     }
+  }
 }

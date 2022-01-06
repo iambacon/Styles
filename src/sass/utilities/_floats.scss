@@ -1,14 +1,14 @@
 ﻿//
 // Helper classes for floats and clearing of floats.
-// Documentation url: https://iambacon.co.uk/styleguide/utilities/floats
+// Documentation url: https://styles.iambacon.co.uk/utilities/floats/
 // -----------------------------------------------------------------------------
 
 // clear with overflow: hidden
 .co {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 // clear fix.
 .cf {
-	@include clearfix;
+  @include clearfix;
 }

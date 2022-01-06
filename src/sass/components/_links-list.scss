@@ -1,52 +1,52 @@
 ﻿//
 // Links list component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/links-list
+// Documentation url: https://styles.iambacon.co.uk/components/links-list/
 // -----------------------------------------------------------------------------
 
-.linksList {
-	@include container;
-}
+.c-linksList {
+  @include container;
 
-.linksList-items {
-	@include respond-to(extra-small) {
-		@include column(12);
-	}
+  &-items {
+    @include respond-to(extra-small) {
+      @include column(12);
+    }
 
-	@include respond-to(small) {
-		@include column(6);
-	}
+    @include respond-to(small) {
+      @include column(6);
+    }
 
-	@include respond-to(medium-large) {
-		@include column(4);
-	}
-}
+    @include respond-to(medium-large) {
+      @include column(4);
+    }
 
-.linksList-items--posts {
-	@include respond-to(medium-large) {
-		padding-left: $base-line-height * 0.5;
-		padding-right: $base-line-height * 0.5;
+    &--posts {
+      @include respond-to(medium-large) {
+        padding-left: $base-line-height * 0.5;
+        padding-right: $base-line-height * 0.5;
 
-		&:first-child {
-			padding-left: 0;
-		}
-	}
-}
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
 
-.linksList-items--social {
-	@include respond-to(medium-large) {
-		text-align: right;
-	}
-}
+    &--social {
+      @include respond-to(medium-large) {
+        text-align: right;
+      }
+    }
+  }
 
-.linksList-item {
-	border-bottom: 1px solid rgba($nobel, .8);
-	padding-top: $base-line-height;
-	padding-bottom: $base-line-height * 0.5; // TODO: Should this be a utility or mixin (padding)?
-}
+  &-item {
+    border-bottom: 1px solid rgba($nobel, 0.8);
+    padding-top: $base-line-height;
+    padding-bottom: $base-line-height * 0.5; // TODO: Should this be a utility or mixin (padding)?
+  }
 
-.linksList-link {
-	color: $marshmallow; // TODO: It should be up to the consumer to set the link colour not the component
-	overflow: hidden;
-	display: inline-block;
-	height: $base-line-height * 2;
+  &-link {
+    color: $marshmallow; // TODO: It should be up to the consumer to set the link colour not the component
+    overflow: hidden;
+    display: inline-block;
+    height: $base-line-height * 2;
+  }
 }

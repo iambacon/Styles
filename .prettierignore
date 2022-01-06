@@ -1,0 +1,11 @@
+# Ignore artifacts:
+dist
+backstop_data
+docs/_site
+docs/assets/css
+
+# Not ready for HTML files yet:
+*.html
+
+# sass files:
+src/sass/base/_colours.scss

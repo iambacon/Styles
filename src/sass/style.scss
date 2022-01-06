@@ -5,6 +5,7 @@
 
 // Base
 // ------------------------
+/* prettier-ignore */
 @import "base/variables";
 @import "base/mixins/base";
 @import "base/functions/functions";
@@ -16,8 +17,8 @@
 
 // Components
 // ------------------------
+/* prettier-ignore */
 @import "components/header", 
-		"components/footer", 
 		"components/links-list", 
 		"components/pagination",
 		"components/page-title", 
@@ -31,6 +32,7 @@
 
 // Utilities
 // ------------------------
+/* prettier-ignore */
 @import "utilities/colours", 
 		"utilities/typography", 
 		"utilities/floats", 
@@ -42,41 +44,41 @@
 // Page
 // ------------------------
 .profile {
-    position: relative;
+  position: relative;
 
-    &-desc {
-        color: $nobel;
-        padding-bottom: $base-line-height;
-        padding-top: $base-line-height;
-    }
+  &-desc {
+    color: $nobel;
+    padding-bottom: $base-line-height;
+    padding-top: $base-line-height;
+  }
 }
 
 article {
-    @include vr-line-height($factor: 1.2);
-    font-size: $article-base-font-size;
+  @include vr-line-height($factor: 1.2);
+  font-size: $article-base-font-size;
 
-    footer {
-        margin: {
-            top: $base-line-height;
-            bottom: $base-line-height;
-        }
+  footer {
+    margin: {
+      top: $base-line-height;
+      bottom: $base-line-height;
     }
+  }
 
-    a {
-        color: $article-link;
+  a {
+    color: $article-link;
 
-        &:hover {
-            text-decoration: underline;
-            color: $cursive;
-        }
+    &:hover {
+      text-decoration: underline;
+      color: $cursive;
     }
+  }
 
-    p {
-        margin: {
-            top: 1em;
-            bottom: 1em;
-        }
+  p {
+    margin: {
+      top: 1em;
+      bottom: 1em;
     }
+  }
 }
 
 /**
@@ -84,78 +86,78 @@ article {
  *    Do we still need this?
  */
 .image-center {
-    /* 1 */
-    margin: 0 auto;
-    display: block;
+  /* 1 */
+  margin: 0 auto;
+  display: block;
 }
 
 .metaData {
-    padding-top: $base-line-height * 2;
+  padding-top: $base-line-height * 2;
 }
 
 .g {
-    &-paging {
-        @include container;
-        margin-bottom: vr-space(1);
+  &-paging {
+    @include container;
+    margin-bottom: vr-space(1);
 
-        @include respond-to(extra-small) {
-            @include column(12);
-        }
-
-        @include respond-to(medium-up) {
-            @include column-no-gutter(6);
-        }
-
-        &-more {
-            @include container;
-            margin-bottom: vr-space(1);
-
-            @include respond-to(extra-small) {
-                @include column(12);
-            }
-
-            @include respond-to(medium-up) {
-                @include column-no-gutter(6);
-            }
-        }
+    @include respond-to(extra-small) {
+      @include column(12);
     }
 
-    &-article {
-        @include respond-to(extra-small) {
-            @include column(12);
-        }
-
-        @include respond-to(small-up) {
-            @include column(6);
-        }
+    @include respond-to(medium-up) {
+      @include column-no-gutter(6);
     }
 
-    &-landing {
-        @include container;
+    &-more {
+      @include container;
+      margin-bottom: vr-space(1);
 
-        &-content {
-            padding-top: vr-space(1.5);
+      @include respond-to(extra-small) {
+        @include column(12);
+      }
 
-            @include respond-to(extra-small) {
-                @include column(12);
-            }
-
-            @include respond-to(medium-up) {
-                @include column-no-gutter(7);
-            }
-        }
-
-        &-aside {
-            margin-bottom: vr-space(1);
-
-            @include respond-to(extra-small) {
-                @include column(12);
-            }
-
-            @include respond-to(medium-up) {
-                @include column(5);
-                margin-top: vr-space(4.5);
-            }
-        }
+      @include respond-to(medium-up) {
+        @include column-no-gutter(6);
+      }
     }
+  }
+
+  &-article {
+    @include respond-to(extra-small) {
+      @include column(12);
+    }
+
+    @include respond-to(small-up) {
+      @include column(6);
+    }
+  }
+
+  &-landing {
+    @include container;
+
+    &-content {
+      padding-top: vr-space(1.5);
+
+      @include respond-to(extra-small) {
+        @include column(12);
+      }
+
+      @include respond-to(medium-up) {
+        @include column-no-gutter(7);
+      }
+    }
+
+    &-aside {
+      margin-bottom: vr-space(1);
+
+      @include respond-to(extra-small) {
+        @include column(12);
+      }
+
+      @include respond-to(medium-up) {
+        @include column(5);
+        margin-top: vr-space(4.5);
+      }
+    }
+  }
 }

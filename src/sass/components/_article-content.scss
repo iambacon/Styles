@@ -1,56 +1,56 @@
 ﻿//
 // Article content component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/article-content
+// Documentation url: https://styles.iambacon.co.uk/components/article-content/
 // -----------------------------------------------------------------------------
 
-.articleContent {
-    h2,
-    h3 {
-        margin: {
-            top: $base-line-height;
-            bottom: $base-line-height;
-        }
+.c-articleContent {
+  h2,
+  h3 {
+    margin: {
+      top: $base-line-height;
+      bottom: $base-line-height;
     }
-    
-    h2,
-    h3,
-    h4 {
-        text-transform: uppercase;
-    }
-    
-    // This needs to be replaced with something better!
-    // Added in haste for "My desktop build" post
-    table {
-        tr:nth-child(2n) {
-            background-color: #f8f8f8; // get this out!
-        }
+  }
 
-        tr td:first-child {
-            width: 120px;
-        }
+  h2,
+  h3,
+  h4 {
+    text-transform: uppercase;
+  }
 
-        td {
-            padding: 5px;
-        }
+  // This needs to be replaced with something better!
+  // Added in haste for "My desktop build" post
+  table {
+    tr:nth-child(2n) {
+      background-color: #f8f8f8; // get this out!
     }
 
-    ul {
-        margin-left: 25px;
-
-        li {
-            position: relative;
-
-            &:before {
-                content: "";
-                position: absolute;
-                top: 50%;
-                right: 100%;
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background-color: $cursive;
-                margin-right: 13px;
-            }
-        }
+    tr td:first-child {
+      width: 120px;
     }
+
+    td {
+      padding: 5px;
+    }
+  }
+
+  ul {
+    margin-left: 25px;
+
+    li {
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: $cursive;
+        margin-right: 13px;
+      }
+    }
+  }
 }

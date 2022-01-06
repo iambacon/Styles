@@ -1,145 +1,150 @@
 {
-    "sections": [
+  "sections": [
+    {
+      "title": "Overview",
+      "links": [
         {
-            "title": "Base",
-            "links": [
-                {
-                    "title": "Code",
-                    "url": "/base/code"
-                },
-                {
-                    "title": "Colours",
-                    "url": "/base/colours"
-                },
-                {
-                    "title": "Grid",
-                    "url": "/base/grid"
-                },
-                {
-                    "title": "Typography",
-                    "url": "/base/typography"
-                }
-            ]
-        },
-        {
-            "title": "Components",
-            "links": [
-                {
-                    "title": "Article",
-                    "url": "/components/article"
-                },
-                {
-                    "title": "Article content",
-                    "url": "/components/article-content"
-                },
-                {
-                    "title": "Aside nav",
-                    "url": "/components/aside-nav"
-                },
-                {
-                    "title": "Author",
-                    "url": "/components/author"
-                },
-                {
-                    "title": "Buttons",
-                    "url": "/components/buttons"
-                },
-                {
-                    "title": "Footer",
-                    "url": "/components/footer"
-                },
-                {
-                    "title": "Header",
-                    "url": "/components/header"
-                },
-                {
-                    "title": "Links list",
-                    "url": "/components/links-list"
-                },
-                {
-                    "title": "Meter",
-                    "url": "/components/meter"
-                },
-                {
-                    "title": "Page title",
-                    "url": "/components/page-title"
-                },
-                {
-                    "title": "Pagination",
-                    "url": "/components/pagination"
-                },
-                {
-                    "title": "Tag",
-                    "url": "/components/tag"
-                }
-            ]
-        },
-        {
-            "title": "Objects",
-            "links": [
-                {
-                    "title": "Lists",
-                    "url": "/objects/lists"
-                }
-            ]
-        },
-        {
-            "title": "Utilities",
-            "links": [
-                {
-                    "title": "Colours",
-                    "url": "/utilities/colours"
-                },
-                {
-                    "title": "Display",
-                    "url": "/utilities/display"
-                },
-                {
-                    "title": "Floats",
-                    "url": "/utilities/floats"
-                },
-                {
-                    "title": "Grid",
-                    "url": "/utilities/grid"
-                },
-                {
-                    "title": "Spacing",
-                    "url": "/utilities/spacing"
-                },
-                {
-                    "title": "Social",
-                    "url": "/utilities/social"
-                },
-                {
-                    "title": "Typography",
-                    "url": "/utilities/typography"
-                }
-            ]
-        },
-        {
-            "title": "Pages",
-            "links": [
-                {
-                    "title": "Homepage",
-                    "url": "/pages/homepage"
-                },
-                {
-                    "title": "Blog landing page",
-                    "url": "/pages/blog-landing"
-                },
-                {
-                    "title": "Post",
-                    "url": "/pages/post"
-                },
-                {
-                    "title": "Filtered results",
-                    "url": "/pages/filtered-results"
-                },
-                {
-                    "title": "Hire me",
-                    "url": "/pages/hire-me"
-                }
-            ]
+          "title": "Code guidelines",
+          "url": "/overview/code-guidelines"
         }
-    ]
+      ]
+    },
+    {
+      "title": "Base",
+      "links": [
+        {
+          "title": "Code",
+          "url": "/base/code"
+        },
+        {
+          "title": "Colours",
+          "url": "/base/colours"
+        },
+        {
+          "title": "Grid",
+          "url": "/base/grid"
+        },
+        {
+          "title": "Typography",
+          "url": "/base/typography"
+        }
+      ]
+    },
+    {
+      "title": "Components",
+      "links": [
+        {
+          "title": "Article",
+          "url": "/components/article"
+        },
+        {
+          "title": "Article content",
+          "url": "/components/article-content"
+        },
+        {
+          "title": "Aside nav",
+          "url": "/components/aside-nav"
+        },
+        {
+          "title": "Author",
+          "url": "/components/author"
+        },
+        {
+          "title": "Buttons",
+          "url": "/components/buttons"
+        },
+        {
+          "title": "Header",
+          "url": "/components/header"
+        },
+        {
+          "title": "Links list",
+          "url": "/components/links-list"
+        },
+        {
+          "title": "Meter",
+          "url": "/components/meter"
+        },
+        {
+          "title": "Page title",
+          "url": "/components/page-title"
+        },
+        {
+          "title": "Pagination",
+          "url": "/components/pagination"
+        },
+        {
+          "title": "Tag",
+          "url": "/components/tag"
+        }
+      ]
+    },
+    {
+      "title": "Objects",
+      "links": [
+        {
+          "title": "Lists",
+          "url": "/objects/lists"
+        }
+      ]
+    },
+    {
+      "title": "Utilities",
+      "links": [
+        {
+          "title": "Colours",
+          "url": "/utilities/colours"
+        },
+        {
+          "title": "Display",
+          "url": "/utilities/display"
+        },
+        {
+          "title": "Floats",
+          "url": "/utilities/floats"
+        },
+        {
+          "title": "Grid",
+          "url": "/utilities/grid"
+        },
+        {
+          "title": "Spacing",
+          "url": "/utilities/spacing"
+        },
+        {
+          "title": "Social",
+          "url": "/utilities/social"
+        },
+        {
+          "title": "Typography",
+          "url": "/utilities/typography"
+        }
+      ]
+    },
+    {
+      "title": "Pages",
+      "links": [
+        {
+          "title": "Homepage",
+          "url": "/pages/homepage"
+        },
+        {
+          "title": "Blog landing page",
+          "url": "/pages/blog-landing"
+        },
+        {
+          "title": "Post",
+          "url": "/pages/post"
+        },
+        {
+          "title": "Filtered results",
+          "url": "/pages/filtered-results"
+        },
+        {
+          "title": "Hire me",
+          "url": "/pages/hire-me"
+        }
+      ]
+    }
+  ]
 }

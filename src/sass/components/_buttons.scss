@@ -1,35 +1,38 @@
 ﻿//
 // Buttons component.
-// Documentation url: https://iambacon.co.uk/styleguide/components/buttons
+// Documentation url: https://styles.iambacon.co.uk/components/buttons/
 // -----------------------------------------------------------------------------
 
 $btn-font-size: 1.125 * $base-font-size;
 
-.btn { // base button styles
-    border-radius: 10px;
-    font-size: $btn-font-size;
+.c-btn {
+  // base button styles
+  border-radius: 10px;
+  font-size: $btn-font-size;
 
-    padding: {
-        top: vr-space(.25);
-        bottom: vr-space(.25);
-        left: vr-space(.5);
-        right: vr-space(.5);
+  padding: {
+    top: vr-space(0.25);
+    bottom: vr-space(0.25);
+    left: vr-space(0.5);
+    right: vr-space(0.5);
+  }
+
+  &--tag {
+    // modifier tag button
+    background-color: $cursive;
+    color: $marshmallow;
+    transition: background-color 0.1s linear;
+
+    &:hover,
+    &:active {
+      background-color: darken($cursive, 10%);
+      color: $marshmallow;
     }
+  }
 
-    &--tag { // modifier tag button
-        background-color: $cursive;
-        color: $marshmallow;
-        transition: background-color .1s linear;
-
-        &:hover,
-        &:active {
-            background-color: darken($cursive, 10%);
-            color: $marshmallow;
-        }
-    }
-
-    &--full { // modifier full width
-        display: block;
-        text-align: center;
-    }
+  &--full {
+    // modifier full width
+    display: block;
+    text-align: center;
+  }
 }
