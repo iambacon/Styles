@@ -149,8 +149,8 @@ module.exports = function (grunt) {
         },
         files: [
           {
-            src: ["_site/**"],
-            cwd: "docs/",
+            src: ["**/*"],
+            cwd: "docs/_site/",
             expand: true,
           },
         ],
