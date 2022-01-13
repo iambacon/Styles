@@ -168,6 +168,9 @@ module.exports = function (grunt) {
         src: ["docs/_site/**/*.html"],
       },
     },
+
+    // Clean
+    clean: ["docs/_site/assets/css/*"],
   });
 
   // Load plugins
@@ -179,6 +182,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-bump");
   grunt.loadNpmTasks("grunt-contrib-compress");
   grunt.loadNpmTasks("grunt-cache-bust");
+  grunt.loadNpmTasks("grunt-contrib-clean");
 
   grunt.registerTask(
     "default",
@@ -198,6 +202,7 @@ module.exports = function (grunt) {
     [
       "concurrent:sassCompile",
       "postcss:docs",
+      "clean",
       "shell:eleventyBuild",
       "cacheBust",
       "compress:main",
