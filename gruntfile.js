@@ -156,6 +156,18 @@ module.exports = function (grunt) {
         ],
       },
     },
+
+    // CacheBust
+    cacheBust: {
+      css: {
+        options: {
+          deleteOriginals: true,
+          baseDir: "docs/_site",
+          assets: ["assets/css/**"],
+        },
+        src: ["docs/_site/**/*.html"],
+      },
+    },
   });
 
   // Load plugins
@@ -166,6 +178,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-bump");
   grunt.loadNpmTasks("grunt-contrib-compress");
+  grunt.loadNpmTasks("grunt-cache-bust");
 
   grunt.registerTask(
     "default",
@@ -186,6 +199,7 @@ module.exports = function (grunt) {
       "concurrent:sassCompile",
       "postcss:docs",
       "shell:eleventyBuild",
+      "cacheBust",
       "compress:main",
     ]
   );
