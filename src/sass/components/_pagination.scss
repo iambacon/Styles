@@ -3,12 +3,6 @@
 // Documentation url: https://styles.iambacon.co.uk/components/pagination/
 // -----------------------------------------------------------------------------
 
-$pagination-height: 70px;
-$pagination-width: 70px;
-$pagination-bg: $desert-storm;
-$pagination-current-bg: $cursive;
-$pagination-more-bg: $cursive;
-
 .c-pagination {
   @include clearfix;
   clear: both;
@@ -30,7 +24,7 @@ $pagination-more-bg: $cursive;
   }
 
   &-page {
-    width: $pagination-width;
+    width: $pagination-page-width;
 
     &:hover {
       font-weight: 700;

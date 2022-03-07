@@ -4,7 +4,7 @@
 // -----------------------------------------------------------------------------
 
 .c-header {
-  border-bottom: 10px solid $ill-stay-here;
+  border-bottom: 10px solid $header-border-color;
 
   @include respond-to(extra-small) {
     border-bottom-width: 5px;
@@ -12,7 +12,7 @@
 
   &-logo {
     @include font-size($h2-font-size);
-    color: $ill-stay-here;
+    color: $header-logo-color;
     float: left;
 
     @include respond-to(extra-small) {
@@ -33,7 +33,7 @@
         18px
       ); // Todo this isn't a standard size.  Need to sort.
       line-height: 4; // magic number need to sort.
-      color: $ill-stay-here;
+      color: $header-nav-link-color;
       margin-left: $base-line-height;
 
       @include respond-to(extra-small) {

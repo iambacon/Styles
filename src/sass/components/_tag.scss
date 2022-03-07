@@ -4,20 +4,20 @@
 // -----------------------------------------------------------------------------
 
 .c-tag {
-  background-color: $very-light-grey;
-  color: $ill-stay-here;
+  background-color: $tag-bg;
+  color: $tag-color;
   border-radius: 2px;
   display: inline-block;
   padding: 2px 10px;
   transition: background 0.25s ease-out, color 0.25s ease-out;
 
   &:hover {
-    color: $marshmallow;
-    background-color: $nobel;
+    color: $tag-hover-color;
+    background-color: $tag-hover-bg;
   }
 
   &--category {
-    background-color: $very-light-grey;
-    color: $ill-stay-here;
+    background-color: $tag-category-bg;
+    color: $tag-category-color;
   }
 }

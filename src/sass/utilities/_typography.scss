@@ -30,7 +30,7 @@
 }
 
 .sectionTitle {
-  color: $nobel;
+  color: $section-title-color;
   @include h3;
   text-transform: uppercase;
   display: inline-block;

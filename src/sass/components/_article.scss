@@ -6,7 +6,7 @@
 .c-article {
   border-radius: 3px;
   margin-bottom: vr-space();
-  color: $mine-shaft;
+  color: $article-color;
   transition: width 0.25s ease-out;
 
   &-title {
@@ -30,7 +30,7 @@
     }
 
     &:hover {
-      color: $nobel;
+      color: $article-title-hover-color;
     }
 
     > a {
@@ -38,7 +38,7 @@
       display: block;
 
       &:hover {
-        color: inherit;
+        color: $article-title-link-hover-color;
       }
     }
   }

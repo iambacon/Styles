@@ -4,13 +4,13 @@
 // -----------------------------------------------------------------------------
 
 .c-pageTitle {
-  background-color: $cursive;
+  background-color: $page-title-bg;
   position: relative;
 
   &-headline {
     @include font-size($h1-font-size);
     @include line-height-proportional;
-    color: $marshmallow;
+    color: $page-title-headline-color;
     font-weight: 700;
     margin: 0;
     padding-top: $base-line-height;
@@ -35,7 +35,7 @@
     margin-bottom: 0;
     padding-bottom: $base-line-height;
     text-align: center;
-    color: $white;
+    color: $page-title-subline-color;
 
     @include respond-to(extra-small) {
       @include font-size($h4-font-size);
@@ -54,7 +54,7 @@
     left: 80px;
     border-width: 24px 24px 0;
     border-style: solid;
-    border-color: $cursive transparent;
+    border-color: $page-title-triangle-border-color;
     z-index: 1;
 
     @include respond-to(extra-small) {

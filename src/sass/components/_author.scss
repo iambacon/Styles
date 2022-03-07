@@ -4,7 +4,7 @@
 // -----------------------------------------------------------------------------
 
 .c-author {
-  color: $marshmallow;
+  color: $author-color;
   text-align: center;
   position: relative;
 
@@ -26,7 +26,7 @@
   &-title {
     text-transform: uppercase;
     display: block;
-    color: inherit;
+    color: $author-title-color;
     font-size: $h3-font-size;
 
     margin: {

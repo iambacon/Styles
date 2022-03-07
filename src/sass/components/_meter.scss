@@ -5,13 +5,13 @@
 
 .c-meter {
   display: block;
-  background: $desert-storm;
+  background: $meter-bg;
   height: 7px;
   width: 100%;
 
   &-gauge {
     display: inherit;
-    background-color: $cursive;
+    background-color: $meter-gauge-bg;
     text-indent: -9999px; // hide the text
     height: inherit;
     overflow: hidden;

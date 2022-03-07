@@ -38,13 +38,13 @@
   }
 
   &-item {
-    border-bottom: 1px solid rgba($nobel, 0.8);
+    border-bottom: 1px solid rgba($links-list-item-border-color, 0.8);
     padding-top: $base-line-height;
     padding-bottom: $base-line-height * 0.5; // TODO: Should this be a utility or mixin (padding)?
   }
 
   &-link {
-    color: $marshmallow; // TODO: It should be up to the consumer to set the link colour not the component
+    color: $links-list-link-color;
     overflow: hidden;
     display: inline-block;
     height: $base-line-height * 2;

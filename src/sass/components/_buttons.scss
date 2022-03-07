@@ -3,8 +3,6 @@
 // Documentation url: https://styles.iambacon.co.uk/components/buttons/
 // -----------------------------------------------------------------------------
 
-$btn-font-size: 1.125 * $base-font-size;
-
 .c-btn {
   // base button styles
   border-radius: 10px;
@@ -19,14 +17,14 @@ $btn-font-size: 1.125 * $base-font-size;
 
   &--tag {
     // modifier tag button
-    background-color: $cursive;
-    color: $marshmallow;
+    background-color: $btn-tag-bg;
+    color: $btn-tag-color;
     transition: background-color 0.1s linear;
 
     &:hover,
     &:active {
-      background-color: darken($cursive, 10%);
-      color: $marshmallow;
+      background-color: $btn-tag-hover-bg;
+      color: $btn-tag-hover-color;
     }
   }
 

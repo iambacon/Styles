@@ -22,7 +22,7 @@
   // Added in haste for "My desktop build" post
   table {
     tr:nth-child(2n) {
-      background-color: #f8f8f8; // get this out!
+      background-color: $article-content-table-row-bg;
     }
 
     tr td:first-child {
@@ -40,6 +40,9 @@
     li {
       position: relative;
 
+      /**
+       * Bulleted list styling
+       */
       &:before {
         content: "";
         position: absolute;
@@ -48,7 +51,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background-color: $cursive;
+        background-color: $article-content-bullet-bg;
         margin-right: 13px;
       }
     }
