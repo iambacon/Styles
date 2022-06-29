@@ -167,10 +167,20 @@ module.exports = function (grunt) {
         },
         src: ["docs/_site/**/*.html"],
       },
+      prod: {
+        options: {
+          deleteOriginals: true,
+          baseDir: "dist/css",
+          assets: ["**"],
+          separator: "-",
+        },
+        // fake file we don't want to update any HTML
+        src: ["dummy.html"],
+      },
     },
 
     // Clean
-    clean: ["docs/_site/assets/css/*"],
+    clean: ["docs/_site/assets/css/*", "dist/css/*"],
   });
 
   // Load plugins
@@ -193,7 +203,7 @@ module.exports = function (grunt) {
   grunt.registerTask(
     "build",
     "Compile all SCSS files minified and output to dist folder",
-    ["sass:prod", "postcss:prod"]
+    ["clean", "sass:prod", "postcss:prod", "cacheBust:prod"]
   );
 
   grunt.registerTask(
