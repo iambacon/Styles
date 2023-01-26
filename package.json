@@ -1,6 +1,6 @@
 {
   "name": "iambacon-style-guide",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "CSS and style guide for iambacon.co.uk",
   "scripts": {
     "start": "grunt",
