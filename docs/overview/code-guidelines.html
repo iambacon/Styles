@@ -11,21 +11,21 @@ description: This guide lays out common patterns, structure and naming conventio
         <li>Use hex codes or rgba for colours.</li>
     </ul>
     <p>Example:</p>
-    <div class="sg-example">
-        {% highlight css %}
+    <div class="sg-preview">
+{% highlight css %}
 // this is a comment
 .styleFormat {
 color: #000000;
 background-color: rgba(0,0,0,0.5);
 }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
 </section class="m-t--full">
 <section class="m-t--full">
     <h2>File structure</h2>
     <p>CSS files should be structured as follows:</p>
-    <div class="sg-example">
-        {% highlight html %}
+    <div class="sg-preview">
+{% highlight html %}
 sass
 +-- base
 | +-- functions
@@ -36,13 +36,11 @@ sass
 | +-- _variables.scss
 +-- components
 | +-- _buttons.scss
-| +-- _footer.scss
 +-- objects
 | +-- _lists.scss
 +-- utilities
 | +-- _grid.scss
-| +-- _spacing.scss
-        {% endhighlight %}
+{% endhighlight %}
     </div>
 </section>
 <section class="m-t--full">
@@ -55,8 +53,8 @@ sass
             styling for how that element should look in all occurrences on the page.</p>
         <footer>—<a href="http://smacss.com/book/type-base" class="link">SMACSS</a></footer>
     </blockquote>
-    <div class="sg-example">
-        {% highlight css %}
+    <div class="sg-preview">
+{% highlight css %}
 // Example typography file
 html {
   font-size: 62.5%;
@@ -67,7 +65,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.2;
 }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
     <h3>Mixins</h3>
     <p>Mixins are reusable classes that do not output any CSS unless used in another class.</p>
@@ -75,8 +73,8 @@ body {
     <ul>
         <li>A mixin must use a kebab case name.</li>
     </ul>
-    <div class="sg-example">
-        {% highlight scss %}
+    <div class="sg-preview">
+{% highlight scss %}
 // Example mixin
 @mixin visually-hidden() {
   position: absolute !important;
@@ -91,7 +89,7 @@ body {
 .visuallyHidden {
   @include visually-hidden;
 }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
 </section>
 <section class="m-t--full">    
@@ -104,8 +102,8 @@ body {
     <p>For Objects use <a href="https://en.bem.info/methodology/" class="link">BEM</a> (Block, Element, Modifier)
         notation.
     </p>
-    <div class="sg-example">
-        {% highlight scss %}
+    <div class="sg-preview">
+{% highlight scss %}
 // BEM notation pattern
 .block {
   &-element {
@@ -114,7 +112,7 @@ body {
   &--modifier {
   }
 }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
     <ul class="o-listBullet">
         <li><em>Block</em> - An independent entity of an application.</li>
@@ -130,8 +128,8 @@ body {
         <li>Different behaviours of an object must be added as a modifier.</li>
     </ul>
     <p>Example:</p>
-    <div class="sg-example">
-        {% highlight scss %}
+    <div class="sg-preview">
+{% highlight scss %}
 .o-verticalMenu {
   &-list {
     position: absolute;
@@ -156,7 +154,7 @@ body {
         <li class="o-verticalMenu-item--large"></li>
     </ul>
 </menu>
-        {% endhighlight %}
+{% endhighlight %}
     </div>
 </section>
 <section class="m-t--full">
@@ -168,8 +166,8 @@ body {
     <p>For Objects use <a href="https://en.bem.info/methodology/" class="link">BEM</a> (Block, Element, Modifier)
         notation.
     </p>
-    <div class="sg-example">
-        {% highlight scss %}
+    <div class="sg-preview">
+{% highlight scss %}
 // BEM notation pattern
 .block {
   &-element {
@@ -178,7 +176,7 @@ body {
   &--modifier {
   }
 }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
     <ul class="o-listBullet">
         <li><em>Block</em> - An independent entity of an application.</li>
@@ -193,8 +191,8 @@ body {
         <li>A component must use a camel case name.</li>
     </ul>
     <p>Example:</p>
-    <div class="sg-example">
-        {% highlight scss %}
+    <div class="sg-preview">
+{% highlight scss %}
 // Example section
 .c-siteHeader {
   position: relative;
@@ -205,7 +203,7 @@ body {
     margin-left: 5%
   }
 }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
 </section>
 <section class="m-t--full">
@@ -214,8 +212,8 @@ body {
     <h3>Global classes</h3>
     <p>Typically these are helper classes such as heading sizes. These are commonly used styles that can be applied to
         elements where required. This avoids repetition in components.</p>
-    <div class="sg-example">
-        {% highlight css %}
+    <div class="sg-preview">
+{% highlight css %}
 // Example global classes
 .h1 { font-size: 20px; }
 .h2 { font-size: 17px; }
@@ -223,7 +221,7 @@ body {
 .h4 { font-size: 13px; }
 .h5 { font-size: 13px; }
 .h6 { font-size: 11px; }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
     <h3>State</h3>
     <p>State is something that overrides all other styles. These are typically used to represent if an element is
@@ -234,11 +232,11 @@ body {
         <li>State classes can be used in both CSS and JS.</li>
     </ul>
     <p>Example:</p>
-    <div class="sg-example">
-        {% highlight css %}
+    <div class="sg-preview">
+{% highlight css %}
 // Example state classes
 .is-error { background-color: #FF0000; }
 .is-hidden { display: none; }
-        {% endhighlight %}
+{% endhighlight %}
     </div>
 </section>

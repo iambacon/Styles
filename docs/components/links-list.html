@@ -6,64 +6,66 @@ description: Component representing a responsive list of links.
 
 <section class="m-t--full">
     <p class="m-b--full">A <code>c-linkslist-link</code> takes up two lines of space. Titles longer than two lines do not currently have an ellipsis (TODO).</p>
-    <h2 class="m-b--full">Example</h2>    
-    <footer class="textMarshmallow illStayHere co">
-        <div class="layoutContainer">
-            <div class="c-linksList">
-                <div class="c-linksList-items c-linksList-items--posts">
-                    <h3 class="h3 m-b--none">Recent posts</h3>
-                    <ol>
-                        <li class="c-linksList-item">
-                            <a href="#" class="c-linksList-link">How I removed all validation warnings from my RSS feed -
-                                ASP.NET
-                                Core</a>
-                        </li>
-                        <li class="c-linksList-item">
-                            <a href="#" class="c-linksList-link">Setting a
-                                page class in your Blazor app</a>
-                        </li>
-                        <li class="c-linksList-item">
-                            <a href="#" class="c-linksList-link">Logging exceptions to Raygun from your Blazor Server
-                                app</a>
-                        </li>
-                    </ol>
+    <h2 class="m-b--full">Example</h2>   
+    <div class="sg-preview">
+        <div class="sg-preview-example">
+            <footer class="textMarshmallow illStayHere co">
+                <div class="layoutContainer">
+                    <div class="c-linksList">
+                        <div class="c-linksList-items c-linksList-items--posts">
+                            <h3 class="h3 m-b--none">Recent posts</h3>
+                            <ol>
+                                <li class="c-linksList-item">
+                                    <a href="#" class="c-linksList-link">How I removed all validation warnings from my RSS feed -
+                                        ASP.NET
+                                        Core</a>
+                                </li>
+                                <li class="c-linksList-item">
+                                    <a href="#" class="c-linksList-link">Setting a
+                                        page class in your Blazor app</a>
+                                </li>
+                                <li class="c-linksList-item">
+                                    <a href="#" class="c-linksList-link">Logging exceptions to Raygun from your Blazor Server
+                                        app</a>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="c-linksList-items c-linksList-items--posts">
+                            <h3 class="h3 m-b--none">Popular posts</h3>
+                            <ol>
+                                <li class="c-linksList-item">
+                                    <a href="#" class="c-linksList-link">MVC5 prevents your website being loaded in an IFRAME</a>
+                                </li>
+                                <li class="c-linksList-item">
+                                    <a href="#" class="c-linksList-link">Life is now easier, Create media query mixins with
+                                        rulesets -
+                                        LESS CSS</a>
+                                </li>
+                                <li class="c-linksList-item">
+                                    <a href="#" class="c-linksList-link">Getting started with Grunt, SASS and Task Runner Explorer
+                                        -
+                                        Visual Studio</a>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="c-linksList-items c-linksList-items--social">
+                            <h3 class="h3">Let's be social</h3>
+                            <ul class="o-listInline m-b--full">
+                                <li>
+                                    <a class="social linkedIn hideText m-r--full" rel="me"
+                                        title="Connect with Colin Bacon on LinkedIn" href="#">LinkedIn</a>
+                                </li>
+                                <li>
+                                    <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
+                                        href="#">Twitter</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="c-linksList-items c-linksList-items--posts">
-                    <h3 class="h3 m-b--none">Popular posts</h3>
-                    <ol>
-                        <li class="c-linksList-item">
-                            <a href="#" class="c-linksList-link">MVC5 prevents your website being loaded in an IFRAME</a>
-                        </li>
-                        <li class="c-linksList-item">
-                            <a href="#" class="c-linksList-link">Life is now easier, Create media query mixins with
-                                rulesets -
-                                LESS CSS</a>
-                        </li>
-                        <li class="c-linksList-item">
-                            <a href="#" class="c-linksList-link">Getting started with Grunt, SASS and Task Runner Explorer
-                                -
-                                Visual Studio</a>
-                        </li>
-                    </ol>
-                </div>
-                <div class="c-linksList-items c-linksList-items--social">
-                    <h3 class="h3">Let's be social</h3>
-                    <ul class="o-listInline m-b--full">
-                        <li>
-                            <a class="social linkedIn hideText m-r--full" rel="me"
-                                title="Connect with Colin Bacon on LinkedIn" href="#">LinkedIn</a>
-                        </li>
-                        <li>
-                            <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
-                                href="#">Twitter</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </footer>
         </div>
-    </footer>
-    <div class="sg-example">
-        {% highlight html %}
+{% highlight html %}
 <footer class="textMarshmallow illStayHere co">
     <div class="layoutContainer">
         <div class="c-linksList">
@@ -119,5 +121,5 @@ description: Component representing a responsive list of links.
         </div>
     </div>
 </footer>
-        {% endhighlight %}
+{% endhighlight %}
     </div>
