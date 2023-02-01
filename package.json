@@ -7,7 +7,7 @@
     "build": "grunt build",
     "prepare": "husky install",
     "backstop:approve": "backstop approve",
-    "backstop:test": "backstop test",
+    "backstop:test": "backstop test --docker",
     "backstop:init": "backstop init"
   },
   "repository": {
