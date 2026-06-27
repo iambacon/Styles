@@ -13,6 +13,7 @@ Welcome to Styles, the pattern library for iambacon websites.
       - [Install npm dependencies](#install-npm-dependencies)
       - [Run Styles](#run-styles)
   - [Usage](#usage)
+  - [Visual regression testing](#visual-regression-testing)
   - [License](#license)
   - [Acknowledgements](#acknowledgements)
 
@@ -67,6 +68,36 @@ To build the documentation site and run the same verification as CI:
 ```sh
 npm run check
 ```
+
+## Visual regression testing
+
+Styles uses BackstopJS to compare the rendered documentation pages against approved reference screenshots.
+
+Start the docs site before running visual tests:
+
+```sh
+npm start
+```
+
+Run the canonical Docker-backed suite:
+
+```sh
+npm run backstop:test
+```
+
+If Docker is not available, run the local Puppeteer fallback:
+
+```sh
+npm run backstop:test:local
+```
+
+When a visual change is intentional, inspect the generated report and approve the new screenshots:
+
+```sh
+npm run backstop:approve
+```
+
+After dependency or browser upgrades, expect the old screenshots to need a reviewed baseline refresh.
 
 ## License
 

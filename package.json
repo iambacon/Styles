@@ -25,8 +25,9 @@
     "docs:build": "npm run docs:css && npm run clean:docs && npm run docs:eleventy && npm run docs:cache-bust && npm run docs:zip",
     "check": "npm run css:build && npm run docs:build && npm audit",
     "prepare": "husky install",
-    "backstop:approve": "backstop approve",
-    "backstop:test": "backstop test --docker",
+    "backstop:approve": "backstop approve --config=backstop.config.js",
+    "backstop:test": "backstop test --config=backstop.config.js --docker",
+    "backstop:test:local": "BACKSTOP_BASE_URL=http://localhost:8080 backstop test --config=backstop.config.js",
     "backstop:init": "backstop init"
   },
   "repository": {
