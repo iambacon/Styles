@@ -1,13 +1,14 @@
 ﻿//
 // General functions
 // --------------------------------------------------
+@use "sass:math";
 
 // Strips unit value from number.
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return math.div($num, $num * 0 + 1);
 }
 
 // Returns pixel value as rem.
 @function rem($px) {
-  @return (strip-unit($px) / 10) + rem;
+  @return math.div(strip-unit($px), 10) * 1rem;
 }

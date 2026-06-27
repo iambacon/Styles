@@ -3,6 +3,7 @@
 // Variables should use the following convention::after
 // $component-state-property-size
 // --------------------------------------------------
+@use "sass:color";
 
 /**
  * Article Content
@@ -36,7 +37,7 @@ $author-title-color: inherit !default;
 $btn-font-size: 1.125 * $base-font-size !default;
 $btn-tag-bg: $cursive !default;
 $btn-tag-color: $marshmallow !default;
-$btn-tag-hover-bg: darken($cursive, 10%) !default;
+$btn-tag-hover-bg: color.adjust($cursive, $lightness: -10%) !default;
 $btn-tag-hover-color: $marshmallow !default;
 
 /**

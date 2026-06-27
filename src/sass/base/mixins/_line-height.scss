@@ -2,6 +2,8 @@
 // line height mixins
 // For calculating line height values
 // --------------------------------------------------
+@use "sass:math";
+
 /// <reference path="../_variables.scss" />
 
 // Sets the line-height in proportion to the font-size.
@@ -11,5 +13,5 @@
   $font-size: $base-font-size
 ) {
   // OBSOLETE.  Use vertical rhythm instead.
-  line-height: $line-height / $font-size;
+  line-height: math.div($line-height, $font-size);
 }

@@ -2,6 +2,8 @@
 // Grid mixins
 // Grid layout mixins to produce a semantic responsive layout.
 // --------------------------------------------------
+@use "sass:math";
+
 /// <reference path="_base.scss" />
 
 $column-width: 65px !default;
@@ -85,15 +87,15 @@ $total-columns: 12;
 
 // Returns the column width as a percentage.
 @function fluid-grid($columns) {
-  @return percentage(column-width($columns) / container-width());
+  @return math.percentage(math.div(column-width($columns), container-width()));
 }
 
 // Returns the gutter width as a percentage.
 @function fluid-gutter() {
-  @return percentage(gutter-width());
+  @return math.percentage(gutter-width());
 }
 
 // Returns the gutter width.
 @function gutter-width() {
-  @return $gutter-width / container-width();
+  @return math.div($gutter-width, container-width());
 }
