@@ -24,6 +24,12 @@ To get Styles running locally, follow these steps.
 
 You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
 
+This project is tested with Node.js 24 and npm 11. If you use [nvm](https://github.com/nvm-sh/nvm), run:
+
+```sh
+nvm use
+```
+
 ### Installation
 
 #### Clone the repo
@@ -55,6 +61,12 @@ npm run build
 ```
 
 A minified CSS file will be output to `dist/css/style.css`.
+
+To build the documentation site and run the same verification as CI:
+
+```sh
+npm run check
+```
 
 ## License
 
