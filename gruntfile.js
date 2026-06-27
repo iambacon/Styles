@@ -88,7 +88,7 @@ module.exports = function (grunt) {
             require("autoprefixer")(), // add vendor prefixes
           ],
         },
-        src: "docs/assets/css/*.css",
+        src: ["docs/assets/css/style.css", "docs/assets/css/styleguide.css"],
       },
       docs: {
         options: {
@@ -99,7 +99,7 @@ module.exports = function (grunt) {
             require("cssnano")(), // minify the result
           ],
         },
-        src: "docs/assets/css/*.css",
+        src: ["docs/assets/css/style.css", "docs/assets/css/styleguide.css"],
       },
     },
 

@@ -22,3 +22,9 @@ node_modules
 # Eleventy site #
 #################
 docs/_site
+
+# Generated assets #
+####################
+dist
+docs/assets/css/style.css
+docs/assets/css/styleguide.css
