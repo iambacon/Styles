@@ -1,36 +1,38 @@
-﻿//
+@use "../base/colours";
+
+//
 // Helper classes for colours.
 // Documentation url: https://styles.iambacon.co.uk/utilities/colours/
 // -----------------------------------------------------------------------------
 
 .takeYourDesire {
-  background-color: $take-your-desire;
+  background-color: colours.$take-your-desire;
 }
 
 .illStayHere {
-  background-color: $ill-stay-here;
+  background-color: colours.$ill-stay-here;
 }
 
 .marshmallow {
-  background-color: $marshmallow;
+  background-color: colours.$marshmallow;
 }
 
 .cursive {
-  background-color: $cursive;
+  background-color: colours.$cursive;
 }
 
 .fern {
-  background-color: $fern;
+  background-color: colours.$fern;
 }
 
 .cloudyBlue {
-  background-color: $cloudy-blue;
+  background-color: colours.$cloudy-blue;
 }
 
 .alto {
-  background-color: $alto;
+  background-color: colours.$alto;
 }
 
 .textMarshmallow {
-  color: $marshmallow;
+  color: colours.$marshmallow;
 }

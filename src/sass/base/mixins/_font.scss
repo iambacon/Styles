@@ -1,9 +1,12 @@
-﻿//
+@use "../functions/functions";
+@use "../typography";
+
+//
 // Font mixins
 // For calculating font values
 // --------------------------------------------------
 
 // Sets the font size.
-@mixin font-size($size: $base-font-size) {
-  font-size: rem($size);
+@mixin font-size($size: typography.$base-font-size) {
+  font-size: functions.rem($size);
 }

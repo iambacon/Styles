@@ -1,13 +1,11 @@
-﻿//
+//
 // Base
 // Imports all mixins.
 // --------------------------------------------------
-/* prettier-ignore */
-@import
-    "clearfix",
-    "breakpoints",
-    "grid",
-    "line-height",
-    "font",
-    "vertical-rhythm",
-    "typography";
+@use "clearfix";
+@use "breakpoints";
+@use "grid";
+@use "line-height";
+@use "font";
+@use "vertical-rhythm";
+@use "typography";

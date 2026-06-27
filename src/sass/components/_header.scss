@@ -1,22 +1,27 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/font";
+@use "../base/typography";
+
+//
 // Header component.
 // Documentation url: https://styles.iambacon.co.uk/components/header/
 // -----------------------------------------------------------------------------
 
 .c-header {
-  border-bottom: 10px solid $header-border-color;
+  border-bottom: 10px solid components.$header-border-color;
 
-  @include respond-to(extra-small) {
+  @include breakpoints.respond-to(extra-small) {
     border-bottom-width: 5px;
   }
 
   &-logo {
-    @include font-size($h2-font-size);
-    color: $header-logo-color;
+    @include font.font-size(typography.$h2-font-size);
+    color: components.$header-logo-color;
     float: left;
 
-    @include respond-to(extra-small) {
-      @include font-size($h3-font-size);
+    @include breakpoints.respond-to(extra-small) {
+      @include font.font-size(typography.$h3-font-size);
       width: 100%;
     }
   }
@@ -24,19 +29,19 @@
   &-nav {
     float: right;
 
-    @include respond-to(extra-small) {
+    @include breakpoints.respond-to(extra-small) {
       float: left;
     }
 
     &-link {
-      @include font-size(
+      @include font.font-size(
         18px
       ); // Todo this isn't a standard size.  Need to sort.
       line-height: 4; // magic number need to sort.
-      color: $header-nav-link-color;
-      margin-left: $base-line-height;
+      color: components.$header-nav-link-color;
+      margin-left: typography.$base-line-height;
 
-      @include respond-to(extra-small) {
+      @include breakpoints.respond-to(extra-small) {
         line-height: 2;
       }
 

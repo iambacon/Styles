@@ -1,4 +1,6 @@
-﻿//
+@use "../base/mixins/clearfix";
+
+//
 // Helper classes for floats and clearing of floats.
 // Documentation url: https://styles.iambacon.co.uk/utilities/floats/
 // -----------------------------------------------------------------------------
@@ -10,5 +12,5 @@
 
 // clear fix.
 .cf {
-  @include clearfix;
+  @include clearfix.clearfix;
 }

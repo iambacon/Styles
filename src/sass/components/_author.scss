@@ -1,24 +1,30 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/grid";
+@use "../base/mixins/vertical-rhythm";
+@use "../base/typography";
+
+//
 // The author component.
 // Documentation url: https://styles.iambacon.co.uk/components/author/
 // -----------------------------------------------------------------------------
 
 .c-author {
-  color: $author-color;
+  color: components.$author-color;
   text-align: center;
   position: relative;
 
   margin: {
-    top: vr-space(1);
+    top: vertical-rhythm.vr-space(1);
     bottom: 10px;
     left: 10px;
     right: 10px;
   }
 
-  @include respond-to(small-up) {
-    @include column(10);
-    @include push;
-    @include pull;
+  @include breakpoints.respond-to(small-up) {
+    @include grid.column(10);
+    @include grid.push;
+    @include grid.pull;
     text-align: left;
     margin-top: 10px;
   }
@@ -26,11 +32,11 @@
   &-title {
     text-transform: uppercase;
     display: block;
-    color: $author-title-color;
-    font-size: $h3-font-size;
+    color: components.$author-title-color;
+    font-size: typography.$h3-font-size;
 
     margin: {
-      top: vr-space(0.5);
+      top: vertical-rhythm.vr-space(0.5);
     }
   }
 
@@ -40,20 +46,20 @@
     max-width: 140px;
     border-radius: 50%;
 
-    @include respond-to(small-up) {
+    @include breakpoints.respond-to(small-up) {
       float: left;
-      margin-right: vr-space(1);
+      margin-right: vertical-rhythm.vr-space(1);
     }
   }
 
   &-desc {
     margin: {
-      bottom: vr-space(0.5);
+      bottom: vertical-rhythm.vr-space(0.5);
     }
   }
 
   &-links {
-    @include respond-to(small-up) {
+    @include breakpoints.respond-to(small-up) {
       position: absolute;
       top: 0;
       right: 0;

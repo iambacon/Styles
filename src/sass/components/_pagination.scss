@@ -1,20 +1,25 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/clearfix";
+@use "../base/mixins/font";
+@use "../base/typography";
+
+//
 // Pagination component.
 // Documentation url: https://styles.iambacon.co.uk/components/pagination/
 // -----------------------------------------------------------------------------
 
 .c-pagination {
-  @include clearfix;
+  @include clearfix.clearfix;
   clear: both;
 
   &-page,
   &-more {
-    @include font-size($h4-font-size);
-    background-color: $pagination-bg;
+    @include font.font-size(typography.$h4-font-size);
+    background-color: components.$pagination-bg;
     float: left;
     margin-right: 1px;
-    height: $pagination-height;
-    line-height: $pagination-height;
+    height: components.$pagination-height;
+    line-height: components.$pagination-height;
     text-align: center;
     transition: all 0.25s ease-out;
 
@@ -24,21 +29,21 @@
   }
 
   &-page {
-    width: $pagination-page-width;
+    width: components.$pagination-page-width;
 
     &:hover {
       font-weight: 700;
     }
 
     &--current {
-      background-color: $pagination-current-bg;
+      background-color: components.$pagination-current-bg;
     }
   }
 
   &-more {
     font-weight: 700;
     width: 100%;
-    background-color: $pagination-more-bg;
+    background-color: components.$pagination-more-bg;
     text-transform: uppercase;
   }
 }

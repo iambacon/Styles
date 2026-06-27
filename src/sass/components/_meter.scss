@@ -1,17 +1,19 @@
-﻿//
+@use "../base/components";
+
+//
 // Meter component.
 // Documentation url: https://styles.iambacon.co.uk/components/meter/
 // -----------------------------------------------------------------------------
 
 .c-meter {
   display: block;
-  background: $meter-bg;
+  background: components.$meter-bg;
   height: 7px;
   width: 100%;
 
   &-gauge {
     display: inherit;
-    background-color: $meter-gauge-bg;
+    background-color: components.$meter-gauge-bg;
     text-indent: -9999px; // hide the text
     height: inherit;
     overflow: hidden;

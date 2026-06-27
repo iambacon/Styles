@@ -1,4 +1,6 @@
-﻿//
+@use "../base/components";
+
+//
 // List objects.
 // Documentation url: https://styles.iambacon.co.uk/objects/lists/
 // -----------------------------------------------------------------------------
@@ -23,7 +25,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: $list-bullet-color;
+      background-color: components.$list-bullet-color;
       margin-right: 13px;
     }
   }

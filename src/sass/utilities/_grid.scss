@@ -1,4 +1,8 @@
-﻿//
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/grid";
+@use "../base/typography";
+
+//
 // Helper classes for grids and layouts.
 // Documentation url: https://styles.iambacon.co.uk/utilities/grid/
 // -----------------------------------------------------------------------------
@@ -7,8 +11,8 @@
   max-width: 1000px;
   margin: 0 auto;
   overflow: hidden;
-  padding-left: $base-line-height * 0.5;
-  padding-right: $base-line-height * 0.5;
+  padding-left: typography.$base-line-height * 0.5;
+  padding-right: typography.$base-line-height * 0.5;
   box-sizing: border-box;
 
   &--visible {
@@ -17,13 +21,13 @@
 }
 
 .articleLayoutContainer {
-  @include respond-to(small-up) {
-    @include push;
-    @include pull;
+  @include breakpoints.respond-to(small-up) {
+    @include grid.push;
+    @include grid.pull;
   }
 }
 
 // Helper class for a grid container.
 .container {
-  @include container;
+  @include grid.container;
 }

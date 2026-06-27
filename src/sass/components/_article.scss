@@ -1,16 +1,22 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/font";
+@use "../base/mixins/typography";
+@use "../base/mixins/vertical-rhythm";
+
+//
 // Article component.
 // Documentation url: https://styles.iambacon.co.uk/components/article/
 // -----------------------------------------------------------------------------
 
 .c-article {
   border-radius: 3px;
-  margin-bottom: vr-space();
-  color: $article-color;
+  margin-bottom: vertical-rhythm.vr-space();
+  color: components.$article-color;
   transition: width 0.25s ease-out;
 
   &-title {
-    @include ellipsis(2);
+    @include typography.ellipsis(2);
 
     padding: {
       left: 5px;
@@ -18,19 +24,19 @@
     }
 
     margin: {
-      top: vr-space(0.5);
-      bottom: vr-space(0.5);
+      top: vertical-rhythm.vr-space(0.5);
+      bottom: vertical-rhythm.vr-space(0.5);
     }
 
     height: 72px; // TODO this should be a calculated value, not magic.
 
-    @include respond-to(extra-small) {
+    @include breakpoints.respond-to(extra-small) {
       height: 59px;
-      @include font-size(20px);
+      @include font.font-size(20px);
     }
 
     &:hover {
-      color: $article-title-hover-color;
+      color: components.$article-title-hover-color;
     }
 
     > a {
@@ -38,7 +44,7 @@
       display: block;
 
       &:hover {
-        color: $article-title-link-hover-color;
+        color: components.$article-title-link-hover-color;
       }
     }
   }
@@ -55,7 +61,7 @@
   }
 
   > p {
-    @include article-content;
+    @include typography.article-content;
 
     margin: {
       top: 1em;

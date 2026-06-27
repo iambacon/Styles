@@ -1,4 +1,6 @@
-﻿//
+@use "typography";
+
+//
 // Grid variables.
 // Documentation url: https://iambacon.co.uk/styleguide/base/grid
 // -----------------------------------------------------------------------------
@@ -11,5 +13,5 @@ $screen-xs-max: 767px; // phones
 $screen-sm-max: 991px; // tablets
 $screen-md-max: 1199px; // desktops
 
-$gutter-width: $base-line-height;
+$gutter-width: typography.$base-line-height;
 $margin-width: 20px;

@@ -3,7 +3,12 @@
 // Normalization of HTML elements, extending normalize.css.
 // -----------------------------------------------------------------------------
 
-@import "normalize";
+@use "normalize";
+@use "colours";
+@use "mixins/font";
+@use "mixins/typography";
+@use "mixins/vertical-rhythm";
+@use "typography" as typography2;
 
 ul,
 ol {
@@ -27,7 +32,7 @@ a {
   transition: color 0.25s ease-out;
 
   &:hover {
-    color: $link-hover-colour;
+    color: colours.$link-hover-colour;
   }
 }
 
@@ -52,7 +57,7 @@ img {
 }
 
 h3 {
-  @include h3;
+  @include typography.h3;
 }
 
 /**
@@ -63,11 +68,11 @@ html {
 }
 
 body {
-  @include font-size;
-  @include vr-line-height;
-  font-family: $base-font-family;
-  color: $base-color;
-  background-color: $base-background-color;
+  @include font.font-size;
+  @include vertical-rhythm.vr-line-height;
+  font-family: typography2.$base-font-family;
+  color: colours.$base-color;
+  background-color: colours.$base-background-color;
 }
 
 blockquote {
@@ -83,14 +88,14 @@ meter {
 }
 
 meter::-webkit-meter-bar {
-  background: $desert-storm;
+  background: colours.$desert-storm;
   height: 7px;
   width: 100%;
 }
 
 meter::-webkit-meter-optimum-value {
   background-image: none;
-  background-color: $cursive;
+  background-color: colours.$cursive;
 }
 
 table {
@@ -103,22 +108,22 @@ code {
 }
 
 pre {
-  background-color: $white-smoke;
-  color: $mine-shaft;
-  padding: vr-space();
+  background-color: colours.$white-smoke;
+  color: colours.$mine-shaft;
+  padding: vertical-rhythm.vr-space();
   overflow: auto;
-  border: 1px solid $very-light-grey;
+  border: 1px solid colours.$very-light-grey;
   font-size: 16px;
 
   code {
-    background-color: $white-smoke;
+    background-color: colours.$white-smoke;
     padding: 0;
     border: none;
   }
 }
 
 code {
-  background-color: rgba($fern, 0.4);
+  background-color: rgba(colours.$fern, 0.4);
   padding: 0 0.2em;
-  border: 1px solid $fern;
+  border: 1px solid colours.$fern;
 }

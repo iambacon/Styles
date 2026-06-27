@@ -1,4 +1,9 @@
-﻿//
+@use "../typography";
+@use "breakpoints";
+@use "font";
+@use "vertical-rhythm";
+
+//
 // Mixins for typography.
 // --------------------------------------------------
 /// <reference path="_base.scss" />
@@ -24,20 +29,20 @@
 
 // Default h3 style
 @mixin h3() {
-  @include font-size($h3-font-size);
+  @include font.font-size(typography.$h3-font-size);
   font-weight: 700;
-  @include vr-line-height($h3-font-size, 1.5);
+  @include vertical-rhythm.vr-line-height(typography.$h3-font-size, 1.5);
 }
 
 // Article content style
 @mixin article-content() {
-  @include respond-to(small-up) {
-    @include vr-line-height($factor: 1.2);
-    @include font-size($article-base-font-size);
+  @include breakpoints.respond-to(small-up) {
+    @include vertical-rhythm.vr-line-height($factor: 1.2);
+    @include font.font-size(typography.$article-base-font-size);
   }
 
-  @include respond-to(extra-small) {
-    @include vr-line-height($factor: 1);
-    @include font-size($article-base-font-size-small);
+  @include breakpoints.respond-to(extra-small) {
+    @include vertical-rhythm.vr-line-height($factor: 1);
+    @include font.font-size(typography.$article-base-font-size-small);
   }
 }

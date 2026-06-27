@@ -1,4 +1,7 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/vertical-rhythm";
+
+//
 // Buttons component.
 // Documentation url: https://styles.iambacon.co.uk/components/buttons/
 // -----------------------------------------------------------------------------
@@ -6,25 +9,25 @@
 .c-btn {
   // base button styles
   border-radius: 10px;
-  font-size: $btn-font-size;
+  font-size: components.$btn-font-size;
 
   padding: {
-    top: vr-space(0.25);
-    bottom: vr-space(0.25);
-    left: vr-space(0.5);
-    right: vr-space(0.5);
+    top: vertical-rhythm.vr-space(0.25);
+    bottom: vertical-rhythm.vr-space(0.25);
+    left: vertical-rhythm.vr-space(0.5);
+    right: vertical-rhythm.vr-space(0.5);
   }
 
   &--tag {
     // modifier tag button
-    background-color: $btn-tag-bg;
-    color: $btn-tag-color;
+    background-color: components.$btn-tag-bg;
+    color: components.$btn-tag-color;
     transition: background-color 0.1s linear;
 
     &:hover,
     &:active {
-      background-color: $btn-tag-hover-bg;
-      color: $btn-tag-hover-color;
+      background-color: components.$btn-tag-hover-bg;
+      color: components.$btn-tag-hover-color;
     }
   }
 

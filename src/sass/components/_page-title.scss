@@ -1,44 +1,50 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/font";
+@use "../base/mixins/line-height";
+@use "../base/typography";
+
+//
 // Page title component.
 // Documentation url: https://styles.iambacon.co.uk/components/page-title/
 // -----------------------------------------------------------------------------
 
 .c-pageTitle {
-  background-color: $page-title-bg;
+  background-color: components.$page-title-bg;
   position: relative;
 
   &-headline {
-    @include font-size($h1-font-size);
-    @include line-height-proportional;
-    color: $page-title-headline-color;
+    @include font.font-size(typography.$h1-font-size);
+    @include line-height.line-height-proportional;
+    color: components.$page-title-headline-color;
     font-weight: 700;
     margin: 0;
-    padding-top: $base-line-height;
-    padding-bottom: $base-line-height;
+    padding-top: typography.$base-line-height;
+    padding-bottom: typography.$base-line-height;
     text-align: center;
     display: block;
 
-    @include respond-to(extra-small) {
-      @include font-size($h2-font-size);
+    @include breakpoints.respond-to(extra-small) {
+      @include font.font-size(typography.$h2-font-size);
     }
 
     &--sm {
-      @include respond-to(extra-small) {
-        @include font-size($h3-font-size);
+      @include breakpoints.respond-to(extra-small) {
+        @include font.font-size(typography.$h3-font-size);
       }
     }
   }
 
   &-subline {
-    @include font-size($h3-font-size);
+    @include font.font-size(typography.$h3-font-size);
     margin-top: 0;
     margin-bottom: 0;
-    padding-bottom: $base-line-height;
+    padding-bottom: typography.$base-line-height;
     text-align: center;
-    color: $page-title-subline-color;
+    color: components.$page-title-subline-color;
 
-    @include respond-to(extra-small) {
-      @include font-size($h4-font-size);
+    @include breakpoints.respond-to(extra-small) {
+      @include font.font-size(typography.$h4-font-size);
     }
   }
 }
@@ -54,10 +60,10 @@
     left: 80px;
     border-width: 24px 24px 0;
     border-style: solid;
-    border-color: $page-title-triangle-border-color;
+    border-color: components.$page-title-triangle-border-color;
     z-index: 1;
 
-    @include respond-to(extra-small) {
+    @include breakpoints.respond-to(extra-small) {
       border-width: 18px 18px 0;
       bottom: -18px;
     }

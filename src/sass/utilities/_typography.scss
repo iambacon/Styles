@@ -1,37 +1,46 @@
-﻿//
+@use "../base/colours";
+@use "../base/components";
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/font";
+@use "../base/mixins/line-height";
+@use "../base/mixins/typography" as typography2;
+@use "../base/mixins/vertical-rhythm";
+@use "../base/typography";
+
+//
 // Helper classes for typography.
 // Documentation url: https://styles.iambacon.co.uk/utilities/typography/
 // -----------------------------------------------------------------------------
 
 .h1 {
-  @include font-size($h1-font-size);
+  @include font.font-size(typography.$h1-font-size);
   font-weight: 700;
-  @include line-height-proportional;
+  @include line-height.line-height-proportional;
 }
 
 .h2 {
-  @include font-size($h3-font-size);
-  @include vr-line-height($h3-font-size, 1.5);
+  @include font.font-size(typography.$h3-font-size);
+  @include vertical-rhythm.vr-line-height(typography.$h3-font-size, 1.5);
   font-weight: 700;
 
-  @include respond-to(small-up) {
-    @include font-size($h2-font-size);
-    @include vr-line-height($h2-font-size, 3);
+  @include breakpoints.respond-to(small-up) {
+    @include font.font-size(typography.$h2-font-size);
+    @include vertical-rhythm.vr-line-height(typography.$h2-font-size, 3);
   }
 }
 
 .h3 {
-  @include h3;
+  @include typography2.h3;
 }
 
 .h4 {
-  @include font-size($h4-font-size);
-  @include line-height-proportional;
+  @include font.font-size(typography.$h4-font-size);
+  @include line-height.line-height-proportional;
 }
 
 .sectionTitle {
-  color: $section-title-color;
-  @include h3;
+  color: components.$section-title-color;
+  @include typography2.h3;
   text-transform: uppercase;
   display: inline-block;
 }
@@ -45,13 +54,13 @@
 
 // Hides text but not for screen readers.
 .visuallyHidden {
-  @include visually-hidden;
+  @include typography2.visually-hidden;
 }
 
 // Sets text decoration for text links.
 .link {
   text-decoration: underline;
-  color: $cursive;
+  color: colours.$cursive;
 }
 
 // Set behaviour for title links.

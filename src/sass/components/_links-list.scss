@@ -1,28 +1,33 @@
-﻿//
+@use "../base/components";
+@use "../base/mixins/breakpoints";
+@use "../base/mixins/grid";
+@use "../base/typography";
+
+//
 // Links list component.
 // Documentation url: https://styles.iambacon.co.uk/components/links-list/
 // -----------------------------------------------------------------------------
 
 .c-linksList {
-  @include container;
+  @include grid.container;
 
   &-items {
-    @include respond-to(extra-small) {
-      @include column(12);
+    @include breakpoints.respond-to(extra-small) {
+      @include grid.column(12);
     }
 
-    @include respond-to(small) {
-      @include column(6);
+    @include breakpoints.respond-to(small) {
+      @include grid.column(6);
     }
 
-    @include respond-to(medium-large) {
-      @include column(4);
+    @include breakpoints.respond-to(medium-large) {
+      @include grid.column(4);
     }
 
     &--posts {
-      @include respond-to(medium-large) {
-        padding-left: $base-line-height * 0.5;
-        padding-right: $base-line-height * 0.5;
+      @include breakpoints.respond-to(medium-large) {
+        padding-left: typography.$base-line-height * 0.5;
+        padding-right: typography.$base-line-height * 0.5;
 
         &:first-child {
           padding-left: 0;
@@ -31,22 +36,22 @@
     }
 
     &--social {
-      @include respond-to(medium-large) {
+      @include breakpoints.respond-to(medium-large) {
         text-align: right;
       }
     }
   }
 
   &-item {
-    border-bottom: 1px solid rgba($links-list-item-border-color, 0.8);
-    padding-top: $base-line-height;
-    padding-bottom: $base-line-height * 0.5; // TODO: Should this be a utility or mixin (padding)?
+    border-bottom: 1px solid rgba(components.$links-list-item-border-color, 0.8);
+    padding-top: typography.$base-line-height;
+    padding-bottom: typography.$base-line-height * 0.5; // TODO: Should this be a utility or mixin (padding)?
   }
 
   &-link {
-    color: $links-list-link-color;
+    color: components.$links-list-link-color;
     overflow: hidden;
     display: inline-block;
-    height: $base-line-height * 2;
+    height: typography.$base-line-height * 2;
   }
 }

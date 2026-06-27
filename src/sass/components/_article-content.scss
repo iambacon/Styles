@@ -1,4 +1,7 @@
-﻿//
+@use "../base/components";
+@use "../base/typography";
+
+//
 // Article content component.
 // Documentation url: https://styles.iambacon.co.uk/components/article-content/
 // -----------------------------------------------------------------------------
@@ -7,8 +10,8 @@
   h2,
   h3 {
     margin: {
-      top: $base-line-height;
-      bottom: $base-line-height;
+      top: typography.$base-line-height;
+      bottom: typography.$base-line-height;
     }
   }
 
@@ -22,7 +25,7 @@
   // Added in haste for "My desktop build" post
   table {
     tr:nth-child(2n) {
-      background-color: $article-content-table-row-bg;
+      background-color: components.$article-content-table-row-bg;
     }
 
     tr td:first-child {
@@ -51,7 +54,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background-color: $article-content-bullet-bg;
+        background-color: components.$article-content-bullet-bg;
         margin-right: 13px;
       }
     }

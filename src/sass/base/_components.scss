@@ -1,3 +1,6 @@
+@use "colours";
+@use "typography";
+
 //
 // Component variables.
 // Variables should use the following convention::after
@@ -8,83 +11,83 @@
 /**
  * Article Content
  */
-$article-content-bullet-bg: $cursive !default;
+$article-content-bullet-bg: colours.$cursive !default;
 $article-content-table-row-bg: #f8f8f8 !default; // TODO
 
 /**
  * Article
  */
-$article-color: $mine-shaft !default;
-$article-title-hover-color: $nobel !default;
+$article-color: colours.$mine-shaft !default;
+$article-title-hover-color: colours.$nobel !default;
 $article-title-link-hover-color: inherit !default;
 
 /**
  * Aside Nav
  */
-$aside-nav-title-color: $marshmallow !default;
-$aside-nav-title-bg: $ill-stay-here !default;
-$aside-nav-count-color: $nobel !default;
+$aside-nav-title-color: colours.$marshmallow !default;
+$aside-nav-title-bg: colours.$ill-stay-here !default;
+$aside-nav-count-color: colours.$nobel !default;
 
 /**
  * Author
  */
-$author-color: $marshmallow !default;
+$author-color: colours.$marshmallow !default;
 $author-title-color: inherit !default;
 
 /**
  * Button
  */
-$btn-font-size: 1.125 * $base-font-size !default;
-$btn-tag-bg: $cursive !default;
-$btn-tag-color: $marshmallow !default;
-$btn-tag-hover-bg: color.adjust($cursive, $lightness: -10%) !default;
-$btn-tag-hover-color: $marshmallow !default;
+$btn-font-size: 1.125 * typography.$base-font-size !default;
+$btn-tag-bg: colours.$cursive !default;
+$btn-tag-color: colours.$marshmallow !default;
+$btn-tag-hover-bg: color.adjust(colours.$cursive, $lightness: -10%) !default;
+$btn-tag-hover-color: colours.$marshmallow !default;
 
 /**
  * Hover
  */
-$header-border-color: $ill-stay-here !default;
-$header-logo-color: $ill-stay-here !default;
-$header-nav-link-color: $ill-stay-here !default;
+$header-border-color: colours.$ill-stay-here !default;
+$header-logo-color: colours.$ill-stay-here !default;
+$header-nav-link-color: colours.$ill-stay-here !default;
 
 /**
  * Links list
  */
-$links-list-item-border-color: $nobel !default;
-$links-list-link-color: $marshmallow !default;
+$links-list-item-border-color: colours.$nobel !default;
+$links-list-link-color: colours.$marshmallow !default;
 
 /**
  * Meter
  */
-$meter-bg: $desert-storm !default;
-$meter-gauge-bg: $cursive !default;
+$meter-bg: colours.$desert-storm !default;
+$meter-gauge-bg: colours.$cursive !default;
 
 /**
  * Page title
  */
-$page-title-bg: $cursive !default;
-$page-title-headline-color: $marshmallow !default;
-$page-title-subline-color: $white !default;
-$page-title-triangle-border-color: $cursive transparent !default;
+$page-title-bg: colours.$cursive !default;
+$page-title-headline-color: colours.$marshmallow !default;
+$page-title-subline-color: colours.$white !default;
+$page-title-triangle-border-color: colours.$cursive transparent !default;
 
 /**
  * Pagination
  */
 $pagination-height: 70px !default;
 $pagination-page-width: 70px !default;
-$pagination-bg: $desert-storm !default;
-$pagination-current-bg: $cursive !default;
-$pagination-more-bg: $cursive !default;
+$pagination-bg: colours.$desert-storm !default;
+$pagination-current-bg: colours.$cursive !default;
+$pagination-more-bg: colours.$cursive !default;
 
 /**
  * Tag
  */
-$tag-bg: $very-light-grey !default;
-$tag-color: $ill-stay-here !default;
-$tag-hover-bg: $nobel !default;
-$tag-hover-color: $marshmallow !default;
-$tag-category-bg: $very-light-grey !default;
-$tag-category-color: $ill-stay-here !default;
+$tag-bg: colours.$very-light-grey !default;
+$tag-color: colours.$ill-stay-here !default;
+$tag-hover-bg: colours.$nobel !default;
+$tag-hover-color: colours.$marshmallow !default;
+$tag-category-bg: colours.$very-light-grey !default;
+$tag-category-color: colours.$ill-stay-here !default;
 
 /**
  * List bullet object
@@ -94,4 +97,4 @@ $list-bullet-color: $article-content-bullet-bg !default;
 /**
  * Section title utility
  */
-$section-title-color: $nobel !default;
+$section-title-color: colours.$nobel !default;

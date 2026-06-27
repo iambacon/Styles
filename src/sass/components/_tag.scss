@@ -1,23 +1,25 @@
-﻿//
+@use "../base/components";
+
+//
 // Tag component.
 // Documentation url: https://styles.iambacon.co.uk/components/tag/
 // -----------------------------------------------------------------------------
 
 .c-tag {
-  background-color: $tag-bg;
-  color: $tag-color;
+  background-color: components.$tag-bg;
+  color: components.$tag-color;
   border-radius: 2px;
   display: inline-block;
   padding: 2px 10px;
   transition: background 0.25s ease-out, color 0.25s ease-out;
 
   &:hover {
-    color: $tag-hover-color;
-    background-color: $tag-hover-bg;
+    color: components.$tag-hover-color;
+    background-color: components.$tag-hover-bg;
   }
 
   &--category {
-    background-color: $tag-category-bg;
-    color: $tag-category-color;
+    background-color: components.$tag-category-bg;
+    color: components.$tag-category-color;
   }
 }

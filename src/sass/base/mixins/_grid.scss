@@ -1,4 +1,7 @@
-﻿//
+@use "clearfix";
+@use "../typography";
+
+//
 // Grid mixins
 // Grid layout mixins to produce a semantic responsive layout.
 // --------------------------------------------------
@@ -7,7 +10,7 @@
 /// <reference path="_base.scss" />
 
 $column-width: 65px !default;
-$gutter-width: 20px !default;
+$gutter-width: typography.$base-line-height !default;
 $total-columns: 12;
 
 // Grid column.
@@ -49,7 +52,7 @@ $total-columns: 12;
 
 // Grid container.
 @mixin container() {
-  @include clearfix;
+  @include clearfix.clearfix;
   box-sizing: border-box;
 }
 

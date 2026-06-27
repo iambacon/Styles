@@ -1,45 +1,47 @@
-﻿//
+//
 //  IAMBACON STYLES
 //  CSS for iambacon website.
 // -----------------------------------------------------------------------------
 
 // Base
 // ------------------------
-/* prettier-ignore */
-@import "base/variables";
-@import "base/mixins/base";
-@import "base/functions/functions";
-@import "base/ground-zero";
+@use "base/variables";
+@use "base/mixins/base";
+@use "base/functions/functions";
+@use "base/ground-zero";
 
 // Objects
 // ------------------------
-@import "objects/lists";
+@use "objects/lists";
 
 // Components
 // ------------------------
-/* prettier-ignore */
-@import "components/header", 
-		"components/links-list", 
-		"components/pagination",
-		"components/page-title", 
-		"components/aside-nav", 
-		"components/meter", 
-		"components/author", 
-		"components/buttons",
-		"components/tag", 
-		"components/article-content", 
-		"components/article";
+@use "components/header";
+@use "components/links-list";
+@use "components/pagination";
+@use "components/page-title";
+@use "components/aside-nav";
+@use "components/meter";
+@use "components/author";
+@use "components/buttons";
+@use "components/tag";
+@use "components/article-content";
+@use "components/article";
 
 // Utilities
 // ------------------------
-/* prettier-ignore */
-@import "utilities/colours", 
-		"utilities/typography", 
-		"utilities/floats", 
-		"utilities/social", 
-		"utilities/display",
-		"utilities/grid", 
-		"utilities/spacing"; // Spacing must go after grid to avoid specificity problems
+@use "utilities/colours" as colours2;
+@use "utilities/typography" as typography2;
+@use "utilities/floats";
+@use "utilities/social";
+@use "utilities/display";
+@use "utilities/grid" as grid2;
+@use "utilities/spacing"; // Spacing must go after grid to avoid specificity problems
+@use "base/colours";
+@use "base/mixins/breakpoints";
+@use "base/mixins/grid";
+@use "base/mixins/vertical-rhythm";
+@use "base/typography";
 
 // Page
 // ------------------------
@@ -47,29 +49,29 @@
   position: relative;
 
   &-desc {
-    color: $nobel;
-    padding-bottom: $base-line-height;
-    padding-top: $base-line-height;
+    color: colours.$nobel;
+    padding-bottom: typography.$base-line-height;
+    padding-top: typography.$base-line-height;
   }
 }
 
 article {
-  @include vr-line-height($factor: 1.2);
-  font-size: $article-base-font-size;
+  @include vertical-rhythm.vr-line-height($factor: 1.2);
+  font-size: typography.$article-base-font-size;
 
   footer {
     margin: {
-      top: $base-line-height;
-      bottom: $base-line-height;
+      top: typography.$base-line-height;
+      bottom: typography.$base-line-height;
     }
   }
 
   a {
-    color: $article-link;
+    color: colours.$article-link;
 
     &:hover {
       text-decoration: underline;
-      color: $cursive;
+      color: colours.$cursive;
     }
   }
 
@@ -92,71 +94,71 @@ article {
 }
 
 .metaData {
-  padding-top: $base-line-height * 2;
+  padding-top: typography.$base-line-height * 2;
 }
 
 .g {
   &-paging {
-    @include container;
-    margin-bottom: vr-space(1);
+    @include grid.container;
+    margin-bottom: vertical-rhythm.vr-space(1);
 
-    @include respond-to(extra-small) {
-      @include column(12);
+    @include breakpoints.respond-to(extra-small) {
+      @include grid.column(12);
     }
 
-    @include respond-to(medium-up) {
-      @include column-no-gutter(6);
+    @include breakpoints.respond-to(medium-up) {
+      @include grid.column-no-gutter(6);
     }
 
     &-more {
-      @include container;
-      margin-bottom: vr-space(1);
+      @include grid.container;
+      margin-bottom: vertical-rhythm.vr-space(1);
 
-      @include respond-to(extra-small) {
-        @include column(12);
+      @include breakpoints.respond-to(extra-small) {
+        @include grid.column(12);
       }
 
-      @include respond-to(medium-up) {
-        @include column-no-gutter(6);
+      @include breakpoints.respond-to(medium-up) {
+        @include grid.column-no-gutter(6);
       }
     }
   }
 
   &-article {
-    @include respond-to(extra-small) {
-      @include column(12);
+    @include breakpoints.respond-to(extra-small) {
+      @include grid.column(12);
     }
 
-    @include respond-to(small-up) {
-      @include column(6);
+    @include breakpoints.respond-to(small-up) {
+      @include grid.column(6);
     }
   }
 
   &-landing {
-    @include container;
+    @include grid.container;
 
     &-content {
-      padding-top: vr-space(1.5);
+      padding-top: vertical-rhythm.vr-space(1.5);
 
-      @include respond-to(extra-small) {
-        @include column(12);
+      @include breakpoints.respond-to(extra-small) {
+        @include grid.column(12);
       }
 
-      @include respond-to(medium-up) {
-        @include column-no-gutter(7);
+      @include breakpoints.respond-to(medium-up) {
+        @include grid.column-no-gutter(7);
       }
     }
 
     &-aside {
-      margin-bottom: vr-space(1);
+      margin-bottom: vertical-rhythm.vr-space(1);
 
-      @include respond-to(extra-small) {
-        @include column(12);
+      @include breakpoints.respond-to(extra-small) {
+        @include grid.column(12);
       }
 
-      @include respond-to(medium-up) {
-        @include column(5);
-        margin-top: vr-space(4.5);
+      @include breakpoints.respond-to(medium-up) {
+        @include grid.column(5);
+        margin-top: vertical-rhythm.vr-space(4.5);
       }
     }
   }
