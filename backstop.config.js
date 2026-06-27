@@ -5,6 +5,7 @@ const scenario = (label, path, options = {}) => ({
   selectors: ["document"],
   label,
   url: `${baseUrl}${path}`,
+  requireSameDimensions: false,
   ...options,
 });
 

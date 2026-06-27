@@ -73,10 +73,11 @@ npm run check
 
 Styles uses BackstopJS to compare the rendered documentation pages against approved reference screenshots.
 
-Start the docs site before running visual tests:
+Build the docs and serve the static output before running visual tests:
 
 ```sh
-npm start
+npm run docs:build
+npm run docs:serve:static
 ```
 
 Run the canonical Docker-backed suite:
@@ -95,6 +96,12 @@ When a visual change is intentional, inspect the generated report and approve th
 
 ```sh
 npm run backstop:approve
+```
+
+When rebuilding the full baseline after config, dependency, or browser upgrades:
+
+```sh
+npm run backstop:reference
 ```
 
 After dependency or browser upgrades, expect the old screenshots to need a reviewed baseline refresh.
