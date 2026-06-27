@@ -4,7 +4,10 @@
   "description": "CSS and style guide for iambacon.co.uk",
   "scripts": {
     "start": "grunt",
-    "build": "grunt build",
+    "build": "npm run css:build",
+    "css:build": "grunt build",
+    "docs:build": "grunt deploy",
+    "check": "npm run css:build && npm run docs:build && npm audit",
     "prepare": "husky install",
     "backstop:approve": "backstop approve",
     "backstop:test": "backstop test --docker",
