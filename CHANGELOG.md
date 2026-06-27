@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Bug Fixes
+
+- **test**: Modernise Backstop visual regression configuration
+- **test**: Refresh and stabilise Backstop reference screenshots
+
 ## [2.0.0] - 2026-06-27
 
 ### Features
