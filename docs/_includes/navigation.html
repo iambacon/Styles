@@ -1,15 +1,28 @@
 {% if navigation %}
-<nav class="sg-layout-nav">
+<nav class="sg-layout-nav" aria-label="Style guide">
     {% include "header.html" %}
     {% for section in navigation.sections %}
-    <h3>{{ section.title }}</h3>
-    <ul>
+    <section class="sg-nav-section">
+    <h3 class="sg-nav-title">{{ section.title }}</h3>
+    <ul class="sg-nav-list">
         {% for link in section.links %}
+        {% assign activeUrl = link.url | append: "/" %}
+        {% assign isActive = false %}
+        {% if page.url == link.url or page.url == activeUrl %}
+        {% assign isActive = true %}
+        {% endif %}
         <li>
-            <a href="{{ link.url }}">{{ link.title }}</a>
+            <a
+                class="sg-nav-link{% if isActive %} sg-nav-link--current{% endif %}"
+                href="{{ link.url }}"
+                {% if isActive %}aria-current="page"{% endif %}
+            >
+                {{ link.title }}
+            </a>
         </li>
         {% endfor %}
     </ul>
+    </section>
     {% endfor %}
 </nav>
 {% endif %}
