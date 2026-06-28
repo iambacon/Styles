@@ -36,4 +36,3 @@ All notable changes to this project will be documented in this file.
   - `npm run build` builds the production CSS.
   - `npm run docs:build` builds and zips the documentation site.
   - `npm run check` runs the same verification used in CI.
-- Existing Backstop reference images are stale and should be refreshed separately before using visual regression results as a release gate.
