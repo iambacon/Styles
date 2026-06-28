@@ -4,6 +4,11 @@ title: Author
 description: Component representing the author of an article. Contains an image, the authors name, a description and social media links.
 ---
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>The author component identifies the post author and gives readers a short biography with social links.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
     <div class="sg-preview">
         <div class="sg-preview-example">
@@ -12,19 +17,19 @@ description: Component representing the author of an article. Contains an image,
                     <strong class="visuallyHidden">Author:</strong>
                     <img class="c-author-image" src="https://images.iambacon.co.uk/blog/avatar.jpg"
                         alt="Profile picture for Colin Bacon">
-                    <a href="#" class="c-author-title" rel="author">Colin Bacon</a>
-                    <p class="c-author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating
+                    <a id="author-example" href="#author-example" class="c-author-title" rel="author">Colin Bacon</a>
+                    <p class="c-author-desc">Colin Bacon is a professional development engineer, with a passion for C# and creating
                         compelling frontend experiences with HTML and CSS. In his free time he can be found teaching skiing at his
                         local slope.</p>
                     <div class="c-author-links">
                         <ul class="o-listInline m-b--full">
                             <li>
                                 <a class="social linkedIn hideText m-r--full" rel="me" title="Connect with Colin Bacon on LinkedIn"
-                                    href="#">LinkedIn</a>
+                                    href="#author-example">LinkedIn</a>
                             </li>
                             <li>
                                 <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
-                                    href="#">Twitter</a>
+                                    href="#author-example">Twitter</a>
                             </li>
                         </ul>
                     </div>
@@ -37,19 +42,19 @@ description: Component representing the author of an article. Contains an image,
         <strong class="visuallyHidden">Author:</strong>
         <img class="c-author-image" src="https://images.iambacon.co.uk/blog/avatar.jpg"
             alt="Profile picture for Colin Bacon">
-        <a href="#" class="c-author-title" rel="author">Colin Bacon</a>
-        <p class="c-author-desc">Colin bacon is a professional development engineer, with a passion for C# and creating
+        <a id="author-example" href="#author-example" class="c-author-title" rel="author">Colin Bacon</a>
+        <p class="c-author-desc">Colin Bacon is a professional development engineer, with a passion for C# and creating
             compelling frontend experiences with HTML and CSS. In his free time he can be found teaching skiing at his
             local slope.</p>
         <div class="c-author-links">
             <ul class="o-listInline m-b--full">
                 <li>
                     <a class="social linkedIn hideText m-r--full" rel="me" title="Connect with Colin Bacon on LinkedIn"
-                        href="#">LinkedIn</a>
+                        href="#author-example">LinkedIn</a>
                 </li>
                 <li>
                     <a class="social twitter hideText m-r--full" rel="me" title="Follow Colin Bacon on Twitter"
-                        href="#">Twitter</a>
+                        href="#author-example">Twitter</a>
                 </li>
             </ul>
         </div>
@@ -57,4 +62,22 @@ description: Component representing the author of an article. Contains an image,
 </div>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use the component near article footers or profile summaries.</li>
+        <li>Wrap the component in a colour utility when it appears on a dark background.</li>
+        <li>Use <code>.c-author-links</code> for supporting social profile links.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Provide useful alt text for the author image.</li>
+        <li>Use <code>rel="author"</code> on the author profile link.</li>
+        <li>Keep social link text available to screen readers when using icon or hidden-text styles.</li>
+    </ul>
 </section>

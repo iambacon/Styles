@@ -5,23 +5,28 @@ description: Component representing a page header. Contains a logo and navigatio
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>The header component identifies the site and provides primary navigation links.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
     <div class="sg-preview">
         <div class="sg-preview-example">
             <header class="c-header">
                 <div class="layoutContainer">
                     <h2 class="c-header-logo">
-                        <a href="#">I am Bacon</a>
+                        <a id="header-example" href="#header-example">I am Bacon</a>
                     </h2>
                     <p class="visuallyHidden"> Colin Bacon, web developer.</p>
-                    <nav class="c-header-nav">
+                    <nav class="c-header-nav" aria-label="Site navigation">
                         <h3 class="visuallyHidden">Site navigation</h3>
                         <ul class="o-listInline">
                             <li class="c-header-nav-link">
-                                <a href="#">Blog</a>
+                                <a href="#header-example">Blog</a>
                             </li>
                             <li class="c-header-nav-link">
-                                <a href="#">About</a>
+                                <a href="#header-example">About</a>
                             </li>
                         </ul>
                     </nav>
@@ -32,17 +37,17 @@ description: Component representing a page header. Contains a logo and navigatio
 <header class="c-header">
     <div class="layoutContainer">
         <h2 class="c-header-logo">
-            <a href="#">I am Bacon</a>
+            <a id="header-example" href="#header-example">I am Bacon</a>
         </h2>
         <p class="visuallyHidden"> Colin Bacon, web developer.</p>
-        <nav class="c-header-nav">
+        <nav class="c-header-nav" aria-label="Site navigation">
             <h3 class="visuallyHidden">Site navigation</h3>
             <ul class="o-listInline">
                 <li class="c-header-nav-link">
-                    <a href="#">Blog</a>
+                    <a href="#header-example">Blog</a>
                 </li>
                 <li class="c-header-nav-link">
-                    <a href="#">About</a>
+                    <a href="#header-example">About</a>
                 </li>
             </ul>
         </nav>
@@ -50,4 +55,22 @@ description: Component representing a page header. Contains a logo and navigatio
 </header>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use the header once per page, before the main content.</li>
+        <li>Use <code>.c-header-logo</code> for the site identity link.</li>
+        <li>Use <code>.c-header-nav-link</code> for each primary navigation item.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Label the navigation so it can be distinguished from other nav regions.</li>
+        <li>Keep the site identity link first in the header.</li>
+        <li>Use visible link text for primary navigation items.</li>
+    </ul>
 </section>

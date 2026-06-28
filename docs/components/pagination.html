@@ -5,35 +5,58 @@ description: Component representing the pagination for a list that spans across 
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Pagination helps readers move through a long list of posts without losing their place.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <nav class="c-pagination">
+            <nav class="c-pagination" aria-label="Pagination">
                 <div class="g-paging">
-                    <a class="c-pagination-page" href="#">1</a>
-                    <span class="c-pagination-page" href="#">...</span>
-                    <a class="c-pagination-page" href="#">4</a>
-                    <a class="c-pagination-page c-pagination-page--current" href="#">5</a>
-                    <a class="c-pagination-page" href="#">6</a>
+                    <a class="c-pagination-page" href="#pagination-example">1</a>
+                    <span class="c-pagination-page">...</span>
+                    <a class="c-pagination-page" href="#pagination-example">4</a>
+                    <a class="c-pagination-page c-pagination-page--current" href="#pagination-example" aria-current="page">5</a>
+                    <a class="c-pagination-page" href="#pagination-example">6</a>
                 </div>
                 <div class="g-paging-more">
-                    <a class="c-pagination-more" href="#">Show more</a>
+                    <a id="pagination-example" class="c-pagination-more" href="#pagination-example">Show more</a>
                 </div>
             </nav>
         </div>
 {% highlight html %}
-<nav class="c-pagination">
+<nav class="c-pagination" aria-label="Pagination">
     <div class="g-paging">
-        <a class="c-pagination-page" href="#">1</a>
-        <span class="c-pagination-page" href="#">...</span>
-        <a class="c-pagination-page" href="#">4</a>
-        <a class="c-pagination-page c-pagination-page--current" href="#">5</a>
-        <a class="c-pagination-page" href="#">6</a>
+        <a class="c-pagination-page" href="#pagination-example">1</a>
+        <span class="c-pagination-page">...</span>
+        <a class="c-pagination-page" href="#pagination-example">4</a>
+        <a class="c-pagination-page c-pagination-page--current" href="#pagination-example" aria-current="page">5</a>
+        <a class="c-pagination-page" href="#pagination-example">6</a>
     </div>
     <div class="g-paging-more">
-        <a class="c-pagination-more" href="#">Show more</a>
+        <a id="pagination-example" class="c-pagination-more" href="#pagination-example">Show more</a>
     </div>
 </nav>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>.c-pagination-page</code> for individual page links.</li>
+        <li>Use <code>.c-pagination-page--current</code> for the current page.</li>
+        <li>Use <code>.c-pagination-more</code> for the larger load-more action.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Add an accessible label to the pagination navigation.</li>
+        <li>Mark the current page with <code>aria-current="page"</code>.</li>
+        <li>Use plain text for ellipses because they are not interactive.</li>
+    </ul>
 </section>

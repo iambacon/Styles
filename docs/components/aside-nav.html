@@ -4,40 +4,45 @@ title: Aside nav
 description: Side menu for displaying content such as tags or categories. Contains a header and a list of items.
 ---
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>The aside nav groups secondary navigation links, such as categories or tags, alongside a page list.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
-    <h3>Categories list with count</h3>
+    <h3 id="aside-nav-example">Categories list with count</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">            
-            <aside class="c-asideNav">
-                <h2 class="c-asideNav-title">Categories</h2>
+            <aside class="c-asideNav" aria-labelledby="aside-nav-title">
+                <h2 id="aside-nav-title" class="c-asideNav-title">Categories</h2>
                 <ol class="c-asideNav-items">
                     <li class="c-asideNav-item">
-                        <a class="block" href="#">
+                        <a class="block" href="#aside-nav-example">
                             ASP.NET <span class="c-asideNav-item-count">17</span>
                         </a>
                     </li>
                     <li class="c-asideNav-item">
-                        <a class="block" href="#">
+                        <a class="block" href="#aside-nav-example">
                             Visual Studio <span class="c-asideNav-item-count">12</span>
                         </a>
                     </li>
                     <li class="c-asideNav-item">
-                        <a class="block" href="#">
+                        <a class="block" href="#aside-nav-example">
                             CSS <span class="c-asideNav-item-count">8</span>
                         </a>
                     </li>
                     <li class="c-asideNav-item">
-                        <a class="block" href="#">
+                        <a class="block" href="#aside-nav-example">
                             NDepend <span class="c-asideNav-item-count">5</span>
                         </a>
                     </li>
                     <li class="c-asideNav-item">
-                        <a class="block" href="#">
+                        <a class="block" href="#aside-nav-example">
                             WinRT <span class="c-asideNav-item-count">4</span>
                         </a>
                     </li>
                     <li class="c-asideNav-item">
-                        <a class="block" href="#">
+                        <a class="block" href="#aside-nav-example">
                             Azure <span class="c-asideNav-item-count">4</span>
                         </a>
                     </li>
@@ -45,36 +50,36 @@ description: Side menu for displaying content such as tags or categories. Contai
             </aside>    
         </div>
 {% highlight html %}
-<aside class="c-asideNav">
-    <h2 class="c-asideNav-title">Categories</h2>
+<aside class="c-asideNav" aria-labelledby="aside-nav-title">
+    <h2 id="aside-nav-title" class="c-asideNav-title">Categories</h2>
     <ol class="c-asideNav-items">
         <li class="c-asideNav-item">
-            <a class="block" href="#">
+            <a class="block" href="#aside-nav-example">
                 ASP.NET <span class="c-asideNav-item-count">17</span>
             </a>
         </li>
         <li class="c-asideNav-item">
-            <a class="block" href="#">
+            <a class="block" href="#aside-nav-example">
                 Visual Studio <span class="c-asideNav-item-count">12</span>
             </a>
         </li>
         <li class="c-asideNav-item">
-            <a class="block" href="#">
+            <a class="block" href="#aside-nav-example">
                 CSS <span class="c-asideNav-item-count">8</span>
             </a>
         </li>
         <li class="c-asideNav-item">
-            <a class="block" href="#">
+            <a class="block" href="#aside-nav-example">
                 NDepend <span class="c-asideNav-item-count">5</span>
             </a>
         </li>
         <li class="c-asideNav-item">
-            <a class="block" href="#">
+            <a class="block" href="#aside-nav-example">
                 WinRT <span class="c-asideNav-item-count">4</span>
             </a>
         </li>
         <li class="c-asideNav-item">
-            <a class="block" href="#">
+            <a class="block" href="#aside-nav-example">
                 Azure <span class="c-asideNav-item-count">4</span>
             </a>
         </li>
@@ -82,4 +87,22 @@ description: Side menu for displaying content such as tags or categories. Contai
 </aside>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>.c-asideNav</code> for secondary link groups outside the main content flow.</li>
+        <li>Use an ordered list when the item order is meaningful, such as most-used categories.</li>
+        <li>Use <code>.c-asideNav-item-count</code> for supporting counts.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Give the aside a label using a visible heading and <code>aria-labelledby</code>.</li>
+        <li>Keep counts next to their label so screen readers announce the full context.</li>
+        <li>Do not use counts as the only indication of importance.</li>
+    </ul>
 </section>
