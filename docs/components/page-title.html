@@ -5,7 +5,11 @@ description: Component representing the title of a page.
 ---
 
 <section class="m-t--full">
-    <p class="m-b--full">The page title component can be used with a triangle using the state class <code>has-triangle</code>.</p>
+    <h2>Purpose</h2>
+    <p>The page title component introduces major pages with a prominent headline block.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
     <div class="sg-preview">
         <div class="sg-preview-example m-b--full">
@@ -23,4 +27,23 @@ description: Component representing the title of a page.
 </div>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>.c-pageTitle</code> to wrap the page title block.</li>
+        <li>Use <code>.c-pageTitle-headline</code> on the page heading text.</li>
+        <li>Add <code>.c-pageTitle-headline--sm</code> for long titles that need the smaller headline scale.</li>
+        <li>Add <code>.has-triangle</code> to the inner wrapper when the title needs the decorative pointer.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Use one <code>&lt;h1&gt;</code> for the visible page title.</li>
+        <li>Keep the title text descriptive because it anchors the page outline.</li>
+        <li>The triangle is decorative and should not carry meaning on its own.</li>
+    </ul>
 </section>

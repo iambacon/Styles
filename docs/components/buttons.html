@@ -4,23 +4,47 @@ title: Buttons
 description: Buttons of all shapes and sizes. Well, just one shape and size.
 ---
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Button styles provide a stronger link treatment for category and tag calls to action.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Examples</h2>
-    <h3>Tag button</h3>
+    <h3 id="tag-button">Tag button</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <a class="c-btn c-btn--tag" href="#">Azure web apps</a>
+            <a class="c-btn c-btn--tag" href="#tag-button">Azure web apps</a>
         </div>
 {% highlight html %}
-<a class="c-btn c-btn--tag" href="#">Azure web apps</a>
+<a class="c-btn c-btn--tag" href="#tag-button">Azure web apps</a>
 {% endhighlight %}
     </div>
-    <h3>Full width tag button</h3>
+
+    <h3 id="full-width-tag-button" class="m-t--full">Full width tag button</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <a class="c-btn c-btn--tag c-btn--full" href="#">Azure web apps</a>
+            <a class="c-btn c-btn--tag c-btn--full" href="#full-width-tag-button">Azure web apps</a>
         </div>
 {% highlight html %}
-<a class="c-btn c-btn--tag c-btn--full" href="#">Azure web apps</a>
+<a class="c-btn c-btn--tag c-btn--full" href="#full-width-tag-button">Azure web apps</a>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>.c-btn</code> as the base class for button-like links.</li>
+        <li>Add <code>.c-btn--tag</code> for the tag button treatment.</li>
+        <li>Add <code>.c-btn--full</code> when the button should fill its container.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Use an anchor only when the control navigates to another page or section.</li>
+        <li>Use a real <code>&lt;button&gt;</code> for actions that change state, submit forms or open interfaces.</li>
+        <li>Write link text that makes sense out of context.</li>
+    </ul>
 </section>

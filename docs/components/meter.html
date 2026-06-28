@@ -5,22 +5,46 @@ description: Component representing a meter element.
 ---
 
 <section class="m-t--full">
-    <p class="m-b--full">The meter component provides consistent styling of the HTML <code>&lt;meter&gt;</code> element across browsers.</p>
+    <h2>Purpose</h2>
+    <p>The meter component provides consistent styling for bounded scalar values, such as progress, score or completion.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <meter value="1">
+            <label for="meter-example">Profile completion</label>
+            <meter id="meter-example" min="0" max="1" value="0.7">
                 <span class="c-meter">
                     <span style="width: 70%;" class="c-meter-gauge">70%</span>
                 </span>
             </meter>
         </div>
 {% highlight html %}
-<meter value="0.7058823529411765">
+<label for="meter-example">Profile completion</label>
+<meter id="meter-example" min="0" max="1" value="0.7">
     <span class="c-meter">
         <span style="width: 70%;" class="c-meter-gauge">70%</span>
     </span>
 </meter>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use the native <code>&lt;meter&gt;</code> element for known ranges with a minimum and maximum.</li>
+        <li>Keep the fallback <code>.c-meter</code> markup in sync with the numeric value.</li>
+        <li>Use <code>&lt;progress&gt;</code> instead when showing task progress.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Provide a visible label or another accessible name for the meter.</li>
+        <li>Expose the actual value with <code>min</code>, <code>max</code> and <code>value</code> attributes.</li>
+        <li>Do not depend on the bar length alone; include nearby text when the exact value matters.</li>
+    </ul>
 </section>
