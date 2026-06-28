@@ -3,25 +3,32 @@ layout: layout
 title: Article
 description: Component representing an article. Contains a header, metadata and an image.
 ---
+
+<section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>The article component presents a post summary with an image, linked title and supporting metadata.</p>
+</section>
+
 <section class="m-t--full">
     <h2 class="m-b--full">Examples</h2>
-    <h3>Article with category</h3>
-    <p class="m-b--full">A article containing an image, title and a category</p>
+
+    <h3 id="article-category">Article with category</h3>
+    <p class="m-b--full">Use this version when a post has one primary category.</p>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <div class="article">
-                <a href="#">
-                    <img class="article-image" src="https://images.iambacon.co.uk/blog/git.png" alt="">
+            <div class="c-article">
+                <a href="#article-category">
+                    <img class="c-article-image" src="https://images.iambacon.co.uk/blog/git.png" alt="Git logo on a blue background">
                 </a>
-                <h3 class="article-title">
-                    <a href="#">
+                <h3 class="c-article-title">
+                    <a href="#article-category">
                         A long example article title that wraps over a maximum of two lines
                     </a>
                 </h3>
-                <dl class="article-meta">
+                <dl class="c-article-meta">
                     <dt class="visuallyHidden">Category:</dt>
                     <dd>
-                        <a href="#" class="c-tag c-tag--category">
+                        <a href="#article-category" class="c-tag c-tag--category">
                             ASP.NET
                         </a>
                     </dd>
@@ -29,19 +36,19 @@ description: Component representing an article. Contains a header, metadata and 
             </div>
         </div>
 {% highlight html %}
-<div class="article">
-    <a href="#">
-        <img class="article-image" src="https://images.iambacon.co.uk/blog/git.png" alt="">
+<div class="c-article">
+    <a href="#article-category">
+        <img class="c-article-image" src="https://images.iambacon.co.uk/blog/git.png" alt="Git logo on a blue background">
     </a>
-    <h3 class="article-title">
-        <a href="#">
-            How I removed all validation warnings from my RSS feed - ASP.NET Core
+    <h3 class="c-article-title">
+        <a href="#article-category">
+            A long example article title that wraps over a maximum of two lines
         </a>
     </h3>
-    <dl class="article-meta">
+    <dl class="c-article-meta">
         <dt class="visuallyHidden">Category:</dt>
         <dd>
-            <a href="#" class="c-tag c-tag--category">
+            <a href="#article-category" class="c-tag c-tag--category">
                 ASP.NET
             </a>
         </dd>
@@ -49,35 +56,36 @@ description: Component representing an article. Contains a header, metadata and 
 </div>
 {% endhighlight %}
     </div>
-    <h3 class="m-t--full">Article with tags</h3>
-    <p class="m-b--full">A article containing an image, title and a list of tags</p>    
+
+    <h3 id="article-tags" class="m-t--full">Article with tags</h3>
+    <p class="m-b--full">Use this version when a post has several tags.</p>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <div class="article">
-                <a href="#">
-                    <img class="article-image" src="https://images.iambacon.co.uk/blog/rss.png" alt="">
+            <div class="c-article">
+                <a href="#article-tags">
+                    <img class="c-article-image" src="https://images.iambacon.co.uk/blog/rss.png" alt="RSS icon on a blue background">
                 </a>
-                <h3 class="article-title">
-                    <a href="#">How I removed all validation warnings from my RSS feed - ASP.NET Core</a>
+                <h3 class="c-article-title">
+                    <a href="#article-tags">How I removed all validation warnings from my RSS feed - ASP.NET Core</a>
                 </h3>
-                <dl class="article-meta">
+                <dl class="c-article-meta">
                     <dt class="visuallyHidden">Tags:</dt>
                     <dd>
                         <ul>
                             <li class="inlineBlock m-br--quarter">
-                                <a class="c-tag" href="#">Azure web apps</a>
+                                <a class="c-tag" href="#article-tags">Azure web apps</a>
                             </li>
                             <li class="inlineBlock m-br--quarter">
-                                <a class="c-tag" href="#">dotnet core</a>
+                                <a class="c-tag" href="#article-tags">dotnet core</a>
                             </li>
                             <li class="inlineBlock m-br--quarter">
-                                <a class="c-tag" href="#">MVC</a>
+                                <a class="c-tag" href="#article-tags">MVC</a>
                             </li>
                             <li class="inlineBlock m-br--quarter">
-                                <a class="c-tag" href="#">RSS</a>
+                                <a class="c-tag" href="#article-tags">RSS</a>
                             </li>
                             <li class="inlineBlock m-br--quarter">
-                                <a class="c-tag" href="#">validation</a>
+                                <a class="c-tag" href="#article-tags">validation</a>
                             </li>
                         </ul>
                     </dd>
@@ -85,33 +93,33 @@ description: Component representing an article. Contains a header, metadata and 
             </div>
         </div>
 {% highlight html %}
-<div class="article">
-    <a href="#">
-        <img class="article-image" src="https://images.iambacon.co.uk/blog/rss.png" alt="">
+<div class="c-article">
+    <a href="#article-tags">
+        <img class="c-article-image" src="https://images.iambacon.co.uk/blog/rss.png" alt="RSS icon on a blue background">
     </a>
-    <h3 class="article-title">
-        <a href="#">
+    <h3 class="c-article-title">
+        <a href="#article-tags">
             How I removed all validation warnings from my RSS feed - ASP.NET Core
         </a>
     </h3>
-    <dl class="article-meta">
+    <dl class="c-article-meta">
         <dt class="visuallyHidden">Tags:</dt>
         <dd>
             <ul>
                 <li class="inlineBlock m-br--quarter">
-                    <a class="c-tag" href="#">Azure web apps</a>
+                    <a class="c-tag" href="#article-tags">Azure web apps</a>
                 </li>
                 <li class="inlineBlock m-br--quarter">
-                    <a class="c-tag" href="#">dotnet core</a>
+                    <a class="c-tag" href="#article-tags">dotnet core</a>
                 </li>
                 <li class="inlineBlock m-br--quarter">
-                    <a class="c-tag" href="#">MVC</a>
+                    <a class="c-tag" href="#article-tags">MVC</a>
                 </li>
                 <li class="inlineBlock m-br--quarter">
-                    <a class="c-tag" href="#">RSS</a>
+                    <a class="c-tag" href="#article-tags">RSS</a>
                 </li>
                 <li class="inlineBlock m-br--quarter">
-                    <a class="c-tag" href="#">validation</a>
+                    <a class="c-tag" href="#article-tags">validation</a>
                 </li>
             </ul>
         </dd>
@@ -119,48 +127,68 @@ description: Component representing an article. Contains a header, metadata and 
 </div>
 {% endhighlight %}
     </div>
-    <h3 class="m-t--full">Article with summary</h3>
-    <p class="m-b--full">A article containing an image, title and a category and a summary</p>
+
+    <h3 id="article-summary" class="m-t--full">Article with summary</h3>
+    <p class="m-b--full">Use this version when the listing needs an excerpt as well as metadata.</p>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <div class="article">
-                <a href="#">
-                    <img class="article-image" src="https://images.iambacon.co.uk/blog/blazor-with-refit.png" alt="">
+            <div class="c-article">
+                <a href="#article-summary">
+                    <img class="c-article-image" src="https://images.iambacon.co.uk/blog/blazor-with-refit.png" alt="Blazor and Refit logos on a blue background">
                 </a>
-                <h3 class="article-title">
-                    <a href="#">Using Refit REST library with client-side Blazor</a>
+                <h3 class="c-article-title">
+                    <a href="#article-summary">Using Refit REST library with client-side Blazor</a>
                 </h3>
                 <p>
-                    Refit, a REST library for .NET, takes your API interfaces and dynamically generates a service using HttpClient to make the requests. 
+                    Refit, a REST library for .NET, takes your API interfaces and dynamically generates a service using HttpClient to make the requests.
                     This cuts out a lot of repetitive code and can be used with client-side Blazor. Here's how.
-                </p>    
-                <dl class="article-meta">
+                </p>
+                <dl class="c-article-meta">
                     <dt class="visuallyHidden">Category:</dt>
                     <dd>
-                        <a href="#" class="c-tag c-tag--category">ASP.NET</a>
+                        <a href="#article-summary" class="c-tag c-tag--category">ASP.NET</a>
                     </dd>
                 </dl>
             </div>
         </div>
 {% highlight html %}
-<div class="article">
-    <a href="#">
-        <img class="article-image" src="https://images.iambacon.co.uk/blog/blazor-with-refit.png" alt="">
+<div class="c-article">
+    <a href="#article-summary">
+        <img class="c-article-image" src="https://images.iambacon.co.uk/blog/blazor-with-refit.png" alt="Blazor and Refit logos on a blue background">
     </a>
-    <h3 class="article-title">
-        <a href="#">Using Refit REST library with client-side Blazor</a>
+    <h3 class="c-article-title">
+        <a href="#article-summary">Using Refit REST library with client-side Blazor</a>
     </h3>
     <p>
-        Refit, a REST library for .NET, takes your API interfaces and dynamically generates a service using HttpClient to make the requests. 
+        Refit, a REST library for .NET, takes your API interfaces and dynamically generates a service using HttpClient to make the requests.
         This cuts out a lot of repetitive code and can be used with client-side Blazor. Here's how.
-    </p>    
-    <dl class="article-meta">
+    </p>
+    <dl class="c-article-meta">
         <dt class="visuallyHidden">Category:</dt>
         <dd>
-            <a href="#" class="c-tag c-tag--category">ASP.NET</a>
+            <a href="#article-summary" class="c-tag c-tag--category">ASP.NET</a>
         </dd>
     </dl>
 </div>
-{% endhighlight %}        
+{% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>.c-article</code> for post cards and listing summaries.</li>
+        <li>Use <code>.c-article-title</code> for the linked post title.</li>
+        <li>Use <code>.c-article-meta</code> for categories, tags and other supporting metadata.</li>
+        <li>Keep the title link block-level so the two-line truncation behaves as expected.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Use meaningful image alt text when the image link is part of the article teaser.</li>
+        <li>Keep metadata labels available with visually hidden <code>&lt;dt&gt;</code> text.</li>
+        <li>Make the image and title links point to the same article destination in production.</li>
+    </ul>
 </section>
