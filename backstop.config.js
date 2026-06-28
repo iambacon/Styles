@@ -60,6 +60,7 @@ module.exports = {
     scenario("Utility spacing", "/utilities/spacing"),
     scenario("Utility social", "/utilities/social"),
     scenario("Utility typography", "/utilities/typography"),
+    scenario("Site examples", "/pages"),
     scenario("Homepage template", "/pages/homepage", { delay: 1000 }),
     scenario("Blog landing template", "/pages/blog-landing", { delay: 1000 }),
     scenario("Post template", "/pages/post"),

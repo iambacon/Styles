@@ -122,8 +122,12 @@
       ]
     },
     {
-      "title": "Pages",
+      "title": "Site examples",
       "links": [
+        {
+          "title": "Overview",
+          "url": "/pages"
+        },
         {
           "title": "Homepage",
           "url": "/pages/homepage"
