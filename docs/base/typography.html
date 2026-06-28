@@ -5,6 +5,11 @@ description: Typography variables.
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Typography variables define the base font stack, scale and rhythm used throughout the site styles.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Variables</h2>
     <table class="sg-table">
         <thead>
@@ -13,53 +18,70 @@ description: Typography variables.
                 <th scope="col">Description</th>
                 <th scope="col">Value</th>
             </tr>
+        </thead>
         <tbody>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$base-font-size</code></td>
+                <td><code>$base-font-size</code></td>
                 <td>The base font size.</td>
                 <td>16px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$base-line-height</code></td>
-                <td>The base line height determines the basic unit of vertical rhythm.</td>
+                <td><code>$base-line-height</code></td>
+                <td>The base line height determines the vertical rhythm unit.</td>
                 <td>24px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$base-font-family</code></td>
+                <td><code>$base-font-family</code></td>
                 <td>The default font family.</td>
                 <td>Lato, Trebuchet MS, sans-serif</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$h1-font-size</code></td>
+                <td><code>$h1-font-size</code></td>
                 <td>The font size for h1.</td>
                 <td>60px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$h2-font-size</code></td>
+                <td><code>$h2-font-size</code></td>
                 <td>The font size for h2.</td>
                 <td>46px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$h3-font-size</code></td>
+                <td><code>$h3-font-size</code></td>
                 <td>The font size for h3.</td>
                 <td>24px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$h4-font-size</code></td>
+                <td><code>$h4-font-size</code></td>
                 <td>The font size for h4.</td>
                 <td>16px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$h5-font-size</code></td>
+                <td><code>$h5-font-size</code></td>
                 <td>The font size for h5.</td>
                 <td>14px</td>
             </tr>
             <tr>
-                <td class="sg-table-td-nowrap"><code>$h6-font-size</code></td>
+                <td><code>$h6-font-size</code></td>
                 <td>The font size for h6.</td>
                 <td>11px</td>
             </tr>
         </tbody>
-        </thead>
     </table>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use the typography variables through mixins and utility classes.</li>
+        <li>Keep vertical spacing tied to <code>$base-line-height</code>.</li>
+        <li>Use heading utility classes only when the visual scale needs to differ from the semantic heading level.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Keep heading levels in document order even when using visual heading classes.</li>
+        <li>Check line lengths and wrapping at mobile widths.</li>
+    </ul>
 </section>

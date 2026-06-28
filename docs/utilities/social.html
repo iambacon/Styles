@@ -5,19 +5,40 @@ description: Helper classes for social media.
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Social utilities apply sprite positions for supported social profile icons.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Examples</h2>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <a class="social linkedIn hideText m-r--full m-b--full" href="#">LinkedIn</a>
-            <a class="social twitter hideText m-r--full m-b--full" href="#">Twitter</a>
-            <a class="social rss hideText m-r--full m-b--full" href="#">RSS</a>
-            <a class="social google hideText m-r--full" href="#">Google</a>
+            <a class="social linkedIn hideText m-r--full m-b--full" href="#social-example">LinkedIn</a>
+            <a class="social twitter hideText m-r--full m-b--full" href="#social-example">Twitter</a>
+            <a class="social rss hideText m-r--full m-b--full" href="#social-example">RSS</a>
+            <a id="social-example" class="social google hideText m-r--full" href="#social-example">Google</a>
         </div>
 {% highlight html %}
-<a class="social linkedIn hideText" href="#">LinkedIn</a>
-<a class="social twitter hideText" href="#">Twitter</a>
-<a class="social rss hideText" href="#">RSS</a>
-<a class="social google hideText" href="#">Google</a>
+<a class="social linkedIn hideText" href="#social-example">LinkedIn</a>
+<a class="social twitter hideText" href="#social-example">Twitter</a>
+<a class="social rss hideText" href="#social-example">RSS</a>
+<a class="social google hideText" href="#social-example">Google</a>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>.social</code> with one service class: <code>.linkedIn</code>, <code>.twitter</code>, <code>.rss</code> or <code>.google</code>.</li>
+        <li>Pair icon links with <code>.hideText</code> when the text is visually replaced by the sprite.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Keep readable link text in the anchor so screen readers get a useful name.</li>
+        <li>Use real destinations in production rather than example anchors.</li>
+    </ul>
 </section>

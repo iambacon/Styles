@@ -3,6 +3,12 @@ layout: layout
 title: Grid
 description: Grid variables. Extra small devices (less than 768px) are the default styles.
 ---
+
+<section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Grid variables define the breakpoints and spacing used by layout mixins and utilities.</p>
+</section>
+
 <section class="m-t--full">
     <h2 class="m-b--full">Variables</h2>
     <table class="sg-table">
@@ -17,17 +23,17 @@ description: Grid variables. Extra small devices (less than 768px) are the defau
             <tr>
                 <td><code>$screen-sm-min</code></td>
                 <td>768px</td>
-                <td>Tablet</td>
+                <td>Tablet and up</td>
             </tr>
             <tr>
                 <td><code>$screen-md-min</code></td>
                 <td>992px</td>
-                <td>Desktop</td>
+                <td>Desktop and up</td>
             </tr>
             <tr>
                 <td><code>$screen-lg-min</code></td>
                 <td>1200px</td>
-                <td>Large desktop</td>
+                <td>Large desktop and up</td>
             </tr>
             <tr>
                 <td><code>$screen-xs-max</code></td>
@@ -46,14 +52,31 @@ description: Grid variables. Extra small devices (less than 768px) are the defau
             </tr>
             <tr>
                 <td><code>$gutter-width</code></td>
+                <td>24px</td>
                 <td>Base line height</td>
-                <td>-</td>
             </tr>
             <tr>
                 <td><code>$margin-width</code></td>
                 <td>20px</td>
-                <td>-</td>
+                <td>Page edge spacing</td>
             </tr>
         </tbody>
-    </table>   
+    </table>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Extra-small screens are the default; larger breakpoints are layered on top.</li>
+        <li>Use the grid variables through mixins rather than hard-coding breakpoint values.</li>
+        <li>Keep layout utility examples aligned with these breakpoint names.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Check layouts at each breakpoint with long headings and enlarged text.</li>
+        <li>Do not rely on viewport width alone to hide essential content.</li>
+    </ul>
 </section>

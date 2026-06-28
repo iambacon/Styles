@@ -5,55 +5,51 @@ description: Base styles for code snippets.
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Code styles make inline and block examples readable inside posts and documentation.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Example</h2>
     <div class="sg-preview">
         <div class="sg-preview-example">
 <pre><code>public class RaygunLoggerProvider : ILoggerProvider
 {
     private readonly RaygunConfiguration _config;
-    private readonly ConcurrentDictionary&lt;string, RaygunLogger&gt; _loggers = new ConcurrentDictionary&lt;string, RaygunLogger&gt;();
-    
-    public RaygunLoggerProvider(RaygunConfiguration config)
-    {
-        _config = config;
-    }
-    
-    public void Dispose()
-    {
-        _loggers.Clear();
-    }
-    
+
     public ILogger CreateLogger(string categoryName)
     {
-        return _loggers.GetOrAdd(categoryName, x =&gt; new RaygunLogger(categoryName, _config));
+        return new RaygunLogger(categoryName, _config);
     }
 }</code></pre>
         </div>
 {% highlight html %}
-<pre>
-    <code>
-    public class RaygunLoggerProvider : ILoggerProvider
+<pre><code>public class RaygunLoggerProvider : ILoggerProvider
+{
+    private readonly RaygunConfiguration _config;
+
+    public ILogger CreateLogger(string categoryName)
     {
-        private readonly RaygunConfiguration _config;
-        private readonly ConcurrentDictionary&lt;string, RaygunLogger&gt; _loggers = new ConcurrentDictionary&lt;string, RaygunLogger&gt;();
-        
-        public RaygunLoggerProvider(RaygunConfiguration config)
-        {
-            _config = config;
-        }
-        
-        public void Dispose()
-        {
-            _loggers.Clear();
-        }
-        
-        public ILogger CreateLogger(string categoryName)
-        {
-            return _loggers.GetOrAdd(categoryName, x =&gt; new RaygunLogger(categoryName, _config));
-        }
+        return new RaygunLogger(categoryName, _config);
     }
-    </code>
-</pre>
+}</code></pre>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use <code>&lt;code&gt;</code> for inline code references.</li>
+        <li>Wrap longer examples in <code>&lt;pre&gt;&lt;code&gt;</code> so spacing is preserved.</li>
+        <li>Keep code examples short enough to scan in article content.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Do not use screenshots of code when text code will work.</li>
+        <li>Keep line lengths reasonable so code does not force horizontal scrolling on small screens.</li>
+    </ul>
 </section>

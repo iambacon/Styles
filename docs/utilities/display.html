@@ -5,6 +5,11 @@ description: Display helper classes.
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Display utilities provide small overrides for block, inline-block and inline layout behaviour.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Examples</h2>
     <h3>Block</h3>
     <div class="sg-preview">
@@ -13,27 +18,44 @@ description: Display helper classes.
             <div class="block alto m-t--full sg-w20 sg-p10">.block</div>
         </div>
 {% highlight html %}
-<div class="block"></div>
+<div class="block">...</div>
 {% endhighlight %}
     </div>
-    <h3>Inline block</h3>
+
+    <h3 class="m-t--full">Inline block</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">
             <div class="inlineBlock alto sg-w20 sg-p10">.inlineBlock</div>
             <div class="inlineBlock alto sg-w20 sg-p10">.inlineBlock</div>
         </div>
 {% highlight html %}
-<div class="inlineBlock"></div>
+<div class="inlineBlock">...</div>
 {% endhighlight %}
     </div>
-    <h3>Inline</h3>
+
+    <h3 class="m-t--full">Inline</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">
             <div class="inline alto sg-w20 sg-p10">.inline</div>
             <div class="inline alto sg-w20 sg-p10">.inline</div>
         </div>
 {% highlight html %}
-<div class="inline"></div>
+<div class="inline">...</div>
 {% endhighlight %}
     </div>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use display utilities for small composition fixes.</li>
+        <li>Prefer component styles when display behaviour is part of a reusable pattern.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Do not change display in a way that breaks reading order or keyboard focus order.</li>
+    </ul>
 </section>

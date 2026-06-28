@@ -1,77 +1,102 @@
 ---
 layout: layout
 title: Spacing
-description: Margin and padding helper classes. Based on line height for vertical rythym.
+description: Margin and padding helper classes. Based on line height for vertical rhythm.
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Spacing utilities apply small margin and padding adjustments based on the base line-height rhythm.</p>
+</section>
+
+<section class="m-t--full">
+    <h2 class="m-b--full">Reference</h2>
     <table class="sg-table">
         <thead>
-            <th scope="col">Class</th>
-            <th scope="col">Description</th>
-            <th scope="col">Spacing</th>
+            <tr>
+                <th scope="col">Class</th>
+                <th scope="col">Description</th>
+                <th scope="col">Spacing</th>
+            </tr>
         </thead>
         <tbody>
             <tr>
                 <td><code>.m-r--none</code></td>
-                <td>margin right</td>
+                <td>Margin right</td>
                 <td>0px</td>
             </tr>
             <tr>
                 <td><code>.m-r--half</code></td>
-                <td>margin right</td>
+                <td>Margin right</td>
                 <td>12px</td>
             </tr>
             <tr>
                 <td><code>.m-r--full</code></td>
-                <td>margin right</td>
+                <td>Margin right</td>
                 <td>24px</td>
             </tr>
             <tr>
                 <td><code>.m-l--none</code></td>
-                <td>margin left</td>
+                <td>Margin left</td>
                 <td>0px</td>
             </tr>
             <tr>
                 <td><code>.m-b--full</code></td>
-                <td>margin bottom</td>
+                <td>Margin bottom</td>
                 <td>24px</td>
             </tr>
             <tr>
                 <td><code>.m-b--none</code></td>
-                <td>margin bottom</td>
+                <td>Margin bottom</td>
                 <td>0px</td>
             </tr>
             <tr>
                 <td><code>.m-br--quarter</code></td>
-                <td>margin bottom & right</td>
+                <td>Margin bottom and right</td>
                 <td>6px</td>
             </tr>
             <tr>
                 <td><code>.m-t--full</code></td>
-                <td>margin top</td>
+                <td>Margin top</td>
                 <td>24px</td>
             </tr>
             <tr>
                 <td><code>.m-tb--full</code></td>
-                <td>margin top & bottom</td>
+                <td>Margin top and bottom</td>
                 <td>24px</td>
             </tr>
             <tr>
                 <td><code>.p-t--half</code></td>
-                <td>padding top</td>
+                <td>Padding top</td>
                 <td>12px</td>
             </tr>
             <tr>
                 <td><code>.p-t--full</code></td>
-                <td>padding top</td>
+                <td>Padding top</td>
                 <td>24px</td>
             </tr>
             <tr>
                 <td><code>.p-b--3</code></td>
-                <td>padding bottom</td>
+                <td>Padding bottom</td>
                 <td>72px</td>
             </tr>
         </tbody>
     </table>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use spacing utilities for small one-off layout adjustments.</li>
+        <li>Prefer component spacing when the spacing is part of a reusable pattern.</li>
+        <li>Keep new spacing helpers tied to the base vertical rhythm.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Do not use spacing utilities to create visual order that differs from source order.</li>
+        <li>Check compact layouts with zoomed text and long labels.</li>
+    </ul>
 </section>

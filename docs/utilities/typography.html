@@ -5,6 +5,11 @@ description: Helper classes for typography.
 ---
 
 <section class="m-t--full">
+    <h2>Purpose</h2>
+    <p>Typography utilities apply established heading, link, alignment and text-hiding treatments.</p>
+</section>
+
+<section class="m-t--full">
     <h2 class="m-b--full">Examples</h2>
     <h3>Heading classes</h3>
     <div class="sg-preview">
@@ -21,7 +26,8 @@ description: Helper classes for typography.
 <p class="h4">H4</p>
 {% endhighlight %}
     </div>
-    <h3>Section title</h3>
+
+    <h3 class="m-t--full">Section title</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">
             <h4 class="sectionTitle">Latest posts</h4>
@@ -30,21 +36,22 @@ description: Helper classes for typography.
 <h4 class="sectionTitle">Latest posts</h4>
 {% endhighlight %}
     </div>
-    <h3>Links and text classes</h3>
+
+    <h3 class="m-t--full">Links and text classes</h3>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <p><a href="#" class="link">Underlined link</a></p>
+            <p><a id="typography-link-example" href="#typography-link-example" class="link">Underlined link</a></p>
         </div>
 {% highlight html %}
-<a href="#" class="link">Underlined link</a>
+<a href="#typography-link-example" class="link">Underlined link</a>
 {% endhighlight %}
     </div>
     <div class="sg-preview">
         <div class="sg-preview-example">
-            <p><a href="#" class="linkTitle">A title that is a link</a></p>
+            <p><a href="#typography-link-example" class="linkTitle">A title that is a link</a></p>
         </div>
 {% highlight html %}
-<a href="#" class="linkTitle">A title that is a link</a>
+<a href="#typography-link-example" class="linkTitle">A title that is a link</a>
 {% endhighlight %}
     </div>
     <div class="sg-preview">
@@ -63,11 +70,30 @@ description: Helper classes for typography.
 <p class="textCenter">Center text</p>
 {% endhighlight %}
     </div>
-    <h3>Hiding text classes</h3>
+
+    <h3 class="m-t--full">Hiding text classes</h3>
     <dl>
         <dt><code>.visuallyHidden</code></dt>
-        <dd>Hides text but not for screen readers.</dd>
+        <dd>Hides text visually but keeps it available to screen readers.</dd>
         <dt class="m-t--full"><code>.hideText</code></dt>
-        <dd>Hides text for when you want to replace it with an image or icon.</dd>
+        <dd>Hides visible text when replacing it with an image or icon.</dd>
     </dl>
+</section>
+
+<section class="m-t--full">
+    <h2>Usage notes</h2>
+    <ul>
+        <li>Use heading classes when visual size needs to differ from semantic heading level.</li>
+        <li>Use <code>.link</code> and <code>.linkTitle</code> for established link treatments.</li>
+        <li>Use text-hiding utilities only when the accessible text remains meaningful.</li>
+    </ul>
+</section>
+
+<section class="m-t--full">
+    <h2>Accessibility notes</h2>
+    <ul>
+        <li>Do not choose heading elements for appearance alone; keep heading levels meaningful.</li>
+        <li>Use <code>.visuallyHidden</code> for accessible labels, not <code>.hideText</code>.</li>
+        <li>Avoid long all-uppercase text because it can be harder to read.</li>
+    </ul>
 </section>
