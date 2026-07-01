@@ -15,6 +15,11 @@
   --sg-text: oklch(27% 0.014 245);
   --sg-text-muted: oklch(45% 0.018 245);
   --sg-text-soft: oklch(56% 0.016 245);
+  --sg-code-comment: oklch(51% 0.018 245);
+  --sg-code-keyword: oklch(44% 0.11 252);
+  --sg-code-name: oklch(43% 0.09 208);
+  --sg-code-string: oklch(46% 0.13 350);
+  --sg-code-value: oklch(44% 0.105 185);
   --sg-accent: oklch(73% 0.095 207);
   --sg-accent-soft: oklch(94.5% 0.033 207);
   --sg-focus: oklch(58% 0.105 207);
@@ -202,10 +207,21 @@ a:focus-visible {
   border-radius: var(--sg-radius);
   background-color: var(--sg-surface-raised);
 
+  code[class*="language-"],
   pre[class*="language-"] {
-    margin-top: 0;
-    margin-bottom: 0;
-    max-height: 28rem;
+    color: var(--sg-text);
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
+      "Liberation Mono", monospace;
+    font-size: 1.45rem;
+    line-height: 1.5;
+    tab-size: 2;
+  }
+
+  pre[class*="language-"] {
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 1.6rem 1.8rem;
     border: 0;
     border-top: 1px solid var(--sg-border);
     border-radius: 0;
@@ -234,10 +250,87 @@ a:focus-visible {
     }
   }
 
+  > pre[class*="language-"]:first-child {
+    border-top: 0;
+  }
+
+  pre > code[class*="language-"] {
+    display: block;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: var(--sg-code-comment);
+    font-style: italic;
+  }
+
+  .token.string,
+  .token.attr-value {
+    color: var(--sg-code-string);
+  }
+
+  .token.punctuation,
+  .token.operator {
+    color: var(--sg-text-muted);
+  }
+
+  .token.entity,
+  .token.url,
+  .token.symbol,
+  .token.number,
+  .token.boolean,
+  .token.variable,
+  .token.constant,
+  .token.property,
+  .token.regex,
+  .token.inserted {
+    color: var(--sg-code-value);
+  }
+
+  .token.atrule,
+  .token.keyword,
+  .token.attr-name {
+    color: var(--sg-code-keyword);
+  }
+
+  .token.function,
+  .token.deleted,
+  .token.tag,
+  .token.selector {
+    color: var(--sg-code-name);
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: 700;
+  }
+
   &-example {
     overflow: auto;
-    padding: 2.4rem;
+    padding: 2rem;
     background-color: var(--sg-surface-raised);
+  }
+}
+
+@media (max-width: 47.9375em) {
+  .sg-preview {
+    pre[class*="language-"] {
+      padding: 1.4rem;
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+      font-size: 1.4rem;
+    }
+
+    &-example {
+      padding: 1.6rem;
+    }
   }
 }
 
