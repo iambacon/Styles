@@ -56,9 +56,8 @@ a:focus-visible {
     max-width: 86rem;
     box-sizing: border-box;
 
-    > .h1 {
+    > .sg-page-title {
       max-width: 12em;
-      color: var(--sg-text);
     }
 
     p,
@@ -72,7 +71,7 @@ a:focus-visible {
     }
 
     section > h2:first-child,
-    section > .h2:first-child {
+    section > .sg-section-title:first-child {
       margin-bottom: 1.2rem;
     }
 
@@ -81,13 +80,26 @@ a:focus-visible {
       margin-bottom: 1.2rem;
       color: var(--sg-text);
     }
-
-    .link {
-      color: oklch(48% 0.095 207);
-      text-underline-offset: 0.16em;
-      text-decoration-thickness: 1px;
-    }
   }
+}
+
+.sg-visually-hidden {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.sg-page-title {
+  color: var(--sg-text);
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .sg-page-description {
@@ -116,6 +128,57 @@ a:focus-visible {
     font-weight: 700;
     box-shadow: 0 8px 24px oklch(27% 0.014 245 / 18%);
   }
+}
+
+.sg-section {
+  margin-top: 4.8rem;
+}
+
+.sg-section-title {
+  margin-bottom: 1.2rem;
+  color: var(--sg-text);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.sg-subsection-title {
+  margin-top: 3.2rem;
+  margin-bottom: 1.2rem;
+  color: var(--sg-text);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.sg-copy-offset {
+  margin-top: 1.2rem;
+}
+
+.sg-copy-spaced {
+  margin-bottom: 2.4rem;
+}
+
+.sg-spaced-block,
+.sg-term {
+  margin-top: 2.4rem;
+}
+
+.sg-list {
+  list-style: disc;
+  margin-top: 1.2rem;
+  padding-left: 2.4rem;
+
+  > li + li {
+    margin-top: 0.45rem;
+  }
+}
+
+.sg-link {
+  color: oklch(48% 0.095 207);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 1px;
 }
 
 .sg-brand {
@@ -374,6 +437,10 @@ a:focus-visible {
     overflow: auto;
     padding: 2rem;
     background-color: var(--sg-surface-raised);
+
+    &--spaced {
+      margin-bottom: 2.4rem;
+    }
   }
 }
 
