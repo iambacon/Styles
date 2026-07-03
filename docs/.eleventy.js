@@ -5,6 +5,7 @@ module.exports = (config) => {
   config.addPassthroughCopy("assets/fav");
   config.addPassthroughCopy("assets/images");
   config.addPassthroughCopy("images");
+  config.addPassthroughCopy("staticwebapp.config.json");
   config.addPassthroughCopy("web.config");
   config.addPassthroughCopy("robots.txt");
   config.addPlugin(syntaxHighlight);
