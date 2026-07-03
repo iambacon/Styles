@@ -2,12 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## [2.1.0] - 2026-07-03
+
+### Features
+
+- **docs**: Polish the style guide shell layout, navigation, and preview presentation
+- **docs**: Replace the menu logo with a brand lockup
+- **docs**: Scope library styles to component and page previews
+- **docs**: Reframe page snapshots as site examples
+- **docs**: Standardise base, utility, component, and page documentation
 
 ### Bug Fixes
 
+- **docs**: Improve style guide shell accessibility
+- **docs**: Refine preview code boxes
+- **docs**: Cool the style guide shell neutrals
 - **test**: Modernise Backstop visual regression configuration
 - **test**: Refresh and stabilise Backstop reference screenshots
+
+### Migration
+
+- The docs shell now uses its own `sg-` styles more consistently.
+- Library CSS is scoped to rendered previews, reducing accidental coupling between the docs interface and the blog styles.
 
 ## [2.0.0] - 2026-06-27
 

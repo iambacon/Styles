@@ -1,6 +1,6 @@
 {
   "name": "iambacon-style-guide",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "CSS and style guide for iambacon.co.uk",
   "packageManager": "npm@11.7.0",
   "scripts": {
