@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Features
+
+- **docs**: Add Cloudflare Web Analytics to the documentation site
+
+### Bug Fixes
+
+- **build**: Simplify the documentation build output for Azure Static Web Apps
+
 ## [2.1.0] - 2026-07-03
 
 ### Features
