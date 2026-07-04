@@ -7,7 +7,7 @@
     "start": "npm run docs:css:dev && concurrently -k -n sass,preview,styleguide,postcss,eleventy \"npm:css:watch\" \"npm:preview:watch\" \"npm:styleguide:watch\" \"npm:postcss:watch\" \"npm:docs:serve\"",
     "build": "npm run css:build",
     "clean:css": "node scripts/clean.mjs dist/css",
-    "clean:docs": "node scripts/clean.mjs docs/_site/assets/css dist/css",
+    "clean:docs": "node scripts/clean.mjs docs/_site dist/site.zip",
     "clean:docs-source": "node scripts/clean.mjs docs/assets/css/style.css docs/assets/css/style.css.map docs/assets/css/library-preview.css docs/assets/css/library-preview.css.map docs/assets/css/styleguide.css docs/assets/css/styleguide.css.map",
     "css:compile": "sass --no-source-map src/sass/style.scss dist/css/style.css",
     "css:postcss": "postcss dist/css/style.css --replace --no-map --use autoprefixer --use cssnano",
@@ -24,8 +24,7 @@
     "docs:serve": "cd docs && eleventy --serve",
     "docs:serve:static": "node scripts/serve-static.mjs docs/_site 8080",
     "docs:cache-bust": "node scripts/cache-bust.mjs --base docs/_site --assets assets/css --html docs/_site --separator .",
-    "docs:zip": "node scripts/zip-site.mjs docs/_site dist/site.zip",
-    "docs:build": "npm run docs:css && npm run clean:docs && npm run docs:eleventy && npm run docs:cache-bust && npm run docs:zip",
+    "docs:build": "npm run docs:css && npm run clean:docs && npm run docs:eleventy && npm run docs:cache-bust",
     "check": "npm run css:build && npm run docs:build && npm audit",
     "prepare": "husky install",
     "backstop:approve": "backstop approve --config=backstop.config.js",
@@ -57,8 +56,7 @@
     "postcss": "^8.5.15",
     "postcss-cli": "^11.0.1",
     "prettier": "2.4.1",
-    "sass": "^1.101.0",
-    "yazl": "^3.3.1"
+    "sass": "^1.101.0"
   },
   "config": {
     "commitizen": {
