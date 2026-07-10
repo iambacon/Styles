@@ -1,7 +1,10 @@
 @use "../base/components";
+@use "../base/mixins/breakpoints";
 @use "../base/mixins/clearfix";
 @use "../base/mixins/font";
+@use "../base/mixins/grid";
 @use "../base/typography";
+@use "../base/mixins/vertical-rhythm";
 
 //
 // Pagination component.
@@ -12,8 +15,22 @@
   @include clearfix.clearfix;
   clear: both;
 
-  &-page,
+  &-pages,
   &-more {
+    @include grid.container;
+    margin-bottom: vertical-rhythm.vr-space(1);
+
+    @include breakpoints.respond-to(extra-small) {
+      @include grid.column(12);
+    }
+
+    @include breakpoints.respond-to(medium-up) {
+      @include grid.column-no-gutter(6);
+    }
+  }
+
+  &-page,
+  &-moreLink {
     @include font.font-size(typography.$h4-font-size);
     background-color: components.$pagination-bg;
     float: left;
@@ -40,7 +57,7 @@
     }
   }
 
-  &-more {
+  &-moreLink {
     font-weight: 700;
     width: 100%;
     background-color: components.$pagination-more-bg;

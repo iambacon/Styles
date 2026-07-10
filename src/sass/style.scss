@@ -44,32 +44,6 @@
 // Page
 // ------------------------
 .g {
-  &-paging {
-    @include grid.container;
-    margin-bottom: vertical-rhythm.vr-space(1);
-
-    @include breakpoints.respond-to(extra-small) {
-      @include grid.column(12);
-    }
-
-    @include breakpoints.respond-to(medium-up) {
-      @include grid.column-no-gutter(6);
-    }
-
-    &-more {
-      @include grid.container;
-      margin-bottom: vertical-rhythm.vr-space(1);
-
-      @include breakpoints.respond-to(extra-small) {
-        @include grid.column(12);
-      }
-
-      @include breakpoints.respond-to(medium-up) {
-        @include grid.column-no-gutter(6);
-      }
-    }
-  }
-
   &-article {
     @include breakpoints.respond-to(extra-small) {
       @include grid.column(12);

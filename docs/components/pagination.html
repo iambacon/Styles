@@ -14,29 +14,29 @@ description: Component representing the pagination for a list that spans across 
     <div class="sg-preview">
         <div class="sg-preview-example">
             <nav class="c-pagination" aria-label="Pagination">
-                <div class="g-paging">
+                <div class="c-pagination-pages">
                     <a class="c-pagination-page" href="#pagination-example">1</a>
                     <span class="c-pagination-page">...</span>
                     <a class="c-pagination-page" href="#pagination-example">4</a>
                     <a class="c-pagination-page c-pagination-page--current" href="#pagination-example" aria-current="page">5</a>
                     <a class="c-pagination-page" href="#pagination-example">6</a>
                 </div>
-                <div class="g-paging-more">
-                    <a id="pagination-example" class="c-pagination-more" href="#pagination-example">Show more</a>
+                <div class="c-pagination-more">
+                    <a id="pagination-example" class="c-pagination-moreLink" href="#pagination-example">Show more</a>
                 </div>
             </nav>
         </div>
 {% highlight html %}
 <nav class="c-pagination" aria-label="Pagination">
-    <div class="g-paging">
+    <div class="c-pagination-pages">
         <a class="c-pagination-page" href="#pagination-example">1</a>
         <span class="c-pagination-page">...</span>
         <a class="c-pagination-page" href="#pagination-example">4</a>
         <a class="c-pagination-page c-pagination-page--current" href="#pagination-example" aria-current="page">5</a>
         <a class="c-pagination-page" href="#pagination-example">6</a>
     </div>
-    <div class="g-paging-more">
-        <a id="pagination-example" class="c-pagination-more" href="#pagination-example">Show more</a>
+    <div class="c-pagination-more">
+        <a id="pagination-example" class="c-pagination-moreLink" href="#pagination-example">Show more</a>
     </div>
 </nav>
 {% endhighlight %}
@@ -47,8 +47,10 @@ description: Component representing the pagination for a list that spans across 
     <h2>Usage notes</h2>
     <ul>
         <li>Use <code>.c-pagination-page</code> for individual page links.</li>
+        <li>Group page links inside <code>.c-pagination-pages</code>.</li>
         <li>Use <code>.c-pagination-page--current</code> for the current page.</li>
-        <li>Use <code>.c-pagination-more</code> for the larger load-more action.</li>
+        <li>Use <code>.c-pagination-more</code> to place the larger load-more action.</li>
+        <li>Use <code>.c-pagination-moreLink</code> for the larger load-more link.</li>
     </ul>
 </section>
 
