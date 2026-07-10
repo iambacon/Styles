@@ -31,3 +31,14 @@
 .container {
   @include grid.container;
 }
+
+// Helper class for a half-width grid item.
+.gridHalf {
+  @include breakpoints.respond-to(extra-small) {
+    @include grid.column(12);
+  }
+
+  @include breakpoints.respond-to(small-up) {
+    @include grid.column(6);
+  }
+}

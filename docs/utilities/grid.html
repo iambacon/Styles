@@ -60,6 +60,23 @@ description: Helper classes for grids and layouts.
 <div class="container">...</div>
 {% endhighlight %}
     </div>
+
+    <h3 class="sg-subsection-title">Half grid item</h3>
+    <p class="sg-copy-spaced">Use <code>.gridHalf</code> for items that stack on mobile and sit two per row from small screens up.</p>
+    <div class="sg-preview">
+        <div class="sg-preview-example">
+            <div class="container">
+                <div class="gridHalf alto sg-p10">First item</div>
+                <div class="gridHalf cloudyBlue sg-p10">Second item</div>
+            </div>
+        </div>
+{% highlight html %}
+<div class="container">
+    <div class="gridHalf">...</div>
+    <div class="gridHalf">...</div>
+</div>
+{% endhighlight %}
+    </div>
 </section>
 
 <section class="sg-section">
@@ -67,6 +84,7 @@ description: Helper classes for grids and layouts.
     <ul>
         <li>Use layout containers to control measure and page rhythm.</li>
         <li>Use <code>.layoutContainer--visible</code> only when a child element intentionally escapes the container.</li>
+        <li>Use <code>.gridHalf</code> inside a grid container for repeatable two-column layouts.</li>
         <li>Prefer semantic wrappers and add grid utilities as layout helpers.</li>
     </ul>
 </section>
