@@ -45,16 +45,6 @@
 
 // Page
 // ------------------------
-.profile {
-  position: relative;
-
-  &-desc {
-    color: colours.$nobel;
-    padding-bottom: typography.$base-line-height;
-    padding-top: typography.$base-line-height;
-  }
-}
-
 article {
   @include vertical-rhythm.vr-line-height($factor: 1.2);
   font-size: typography.$article-base-font-size;
