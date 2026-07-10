@@ -37,39 +37,3 @@
 @use "utilities/display";
 @use "utilities/grid" as grid2;
 @use "utilities/spacing"; // Spacing must go after grid to avoid specificity problems
-@use "base/mixins/breakpoints";
-@use "base/mixins/grid";
-@use "base/mixins/vertical-rhythm";
-
-// Page
-// ------------------------
-.g {
-  &-landing {
-    @include grid.container;
-
-    &-content {
-      padding-top: vertical-rhythm.vr-space(1.5);
-
-      @include breakpoints.respond-to(extra-small) {
-        @include grid.column(12);
-      }
-
-      @include breakpoints.respond-to(medium-up) {
-        @include grid.column-no-gutter(7);
-      }
-    }
-
-    &-aside {
-      margin-bottom: vertical-rhythm.vr-space(1);
-
-      @include breakpoints.respond-to(extra-small) {
-        @include grid.column(12);
-      }
-
-      @include breakpoints.respond-to(medium-up) {
-        @include grid.column(5);
-        margin-top: vertical-rhythm.vr-space(4.5);
-      }
-    }
-  }
-}

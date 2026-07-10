@@ -1,0 +1,35 @@
+@use "../../../src/sass/base/mixins/breakpoints";
+@use "../../../src/sass/base/mixins/grid";
+@use "../../../src/sass/base/mixins/vertical-rhythm";
+
+//
+// Page snapshot styles.
+// Styles needed only by copied integration examples under docs/pages.
+// -----------------------------------------------------------------------------
+
+.sg-pageSnapshotLanding {
+  &-content {
+    padding-top: vertical-rhythm.vr-space(1.5);
+
+    @include breakpoints.respond-to(extra-small) {
+      @include grid.column(12);
+    }
+
+    @include breakpoints.respond-to(medium-up) {
+      @include grid.column-no-gutter(7);
+    }
+  }
+
+  &-aside {
+    margin-bottom: vertical-rhythm.vr-space(1);
+
+    @include breakpoints.respond-to(extra-small) {
+      @include grid.column(12);
+    }
+
+    @include breakpoints.respond-to(medium-up) {
+      @include grid.column(5);
+      margin-top: vertical-rhythm.vr-space(4.5);
+    }
+  }
+}
