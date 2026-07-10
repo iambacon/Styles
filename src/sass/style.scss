@@ -83,10 +83,6 @@ article {
   }
 }
 
-.metaData {
-  padding-top: typography.$base-line-height * 2;
-}
-
 .g {
   &-paging {
     @include grid.container;
