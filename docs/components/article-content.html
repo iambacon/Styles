@@ -6,7 +6,7 @@ description: Component representing the content of an article.
 
 <section class="sg-section">
     <h2>Purpose</h2>
-    <p>The article content component scopes long-form post styling so headings, tables and lists do not affect the rest of the site.</p>
+    <p>The article content component scopes long-form post styling so body copy, links, media, tables and lists do not affect the rest of the site.</p>
 </section>
 
 <section class="sg-section">
@@ -132,6 +132,7 @@ description: Component representing the content of an article.
     <ul>
         <li>Use <code>.c-articleContent</code> around long-form post body content.</li>
         <li>Keep component-specific typography inside this wrapper so base element styles stay contained.</li>
+        <li>Paragraph rhythm and link treatment are scoped to this wrapper.</li>
         <li>Standalone images are centred when they are direct children or placed inside a direct paragraph.</li>
         <li>Use semantic HTML first; the component should style normal headings, tables and lists.</li>
     </ul>

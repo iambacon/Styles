@@ -37,42 +37,12 @@
 @use "utilities/display";
 @use "utilities/grid" as grid2;
 @use "utilities/spacing"; // Spacing must go after grid to avoid specificity problems
-@use "base/colours";
 @use "base/mixins/breakpoints";
 @use "base/mixins/grid";
 @use "base/mixins/vertical-rhythm";
-@use "base/typography";
 
 // Page
 // ------------------------
-article {
-  @include vertical-rhythm.vr-line-height($factor: 1.2);
-  font-size: typography.$article-base-font-size;
-
-  footer {
-    margin: {
-      top: typography.$base-line-height;
-      bottom: typography.$base-line-height;
-    }
-  }
-
-  a {
-    color: colours.$article-link;
-
-    &:hover {
-      text-decoration: underline;
-      color: colours.$cursive;
-    }
-  }
-
-  p {
-    margin: {
-      top: 1em;
-      bottom: 1em;
-    }
-  }
-}
-
 .g {
   &-paging {
     @include grid.container;

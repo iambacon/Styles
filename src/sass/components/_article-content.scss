@@ -1,4 +1,6 @@
 @use "../base/components";
+@use "../base/colours";
+@use "../base/mixins/typography" as typography-mixins;
 @use "../base/typography";
 
 //
@@ -7,6 +9,8 @@
 // -----------------------------------------------------------------------------
 
 .c-articleContent {
+  @include typography-mixins.article-content;
+
   h2,
   h3 {
     margin: {
@@ -19,6 +23,22 @@
   h3,
   h4 {
     text-transform: uppercase;
+  }
+
+  a {
+    color: colours.$article-link;
+
+    &:hover {
+      text-decoration: underline;
+      color: colours.$cursive;
+    }
+  }
+
+  p {
+    margin: {
+      top: 1em;
+      bottom: 1em;
+    }
   }
 
   > img,
