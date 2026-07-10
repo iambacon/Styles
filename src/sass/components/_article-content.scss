@@ -21,6 +21,13 @@
     text-transform: uppercase;
   }
 
+  > img,
+  > p > img {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+
   // This needs to be replaced with something better!
   // Added in haste for "My desktop build" post
   table {

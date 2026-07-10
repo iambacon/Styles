@@ -83,16 +83,6 @@ article {
   }
 }
 
-/**
- * 1. This is used in 1 article "Creating a pinch using css"
- *    Do we still need this?
- */
-.image-center {
-  /* 1 */
-  margin: 0 auto;
-  display: block;
-}
-
 .metaData {
   padding-top: typography.$base-line-height * 2;
 }
