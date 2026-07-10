@@ -6,11 +6,22 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
+- **css**: Add reusable spacing, colour, and grid utilities for migrated site styles
+- **css**: Scope pagination layout classes to the pagination component
+- **css**: Centre standalone images inside article content
 - **docs**: Add Cloudflare Web Analytics to the documentation site
+- **docs**: Refresh code guidelines for the reusable CSS library
 
 ### Bug Fixes
 
 - **build**: Simplify the documentation build output for Azure Static Web Apps
+
+### Migration
+
+- Site-specific selectors have been removed from the library entrypoint where possible.
+- Replace `g-paging` and `g-paging-more` with `c-pagination-pages`, `c-pagination-more`, and `c-pagination-moreLink`.
+- Replace repeated `g-article` wrappers with the `gridHalf` utility.
+- Blog landing snapshot layout styles now live in the docs snapshot Sass and are no longer part of the library CSS.
 
 ## [2.1.0] - 2026-07-03
 
