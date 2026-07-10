@@ -6,24 +6,38 @@ description: This guide lays out common patterns, structure and naming conventio
 <section class="sg-section">
     <h2>General style format and naming conventions</h2>
     <ul class="sg-list">
-        <li>Class names are camel case e.g. <code>.fooBar</code>.</li>
-        <li>Use <code>//</code> for comment blocks.</li>
-        <li>Use hex codes or rgba for colours.</li>
+        <li>Class names use camel case after any layer prefix, for example <code>.c-cardPreview</code>.</li>
+        <li>Object classes are prefixed with <code>o-</code>.</li>
+        <li>Component classes are prefixed with <code>c-</code>.</li>
+        <li>State classes are prefixed with <code>is-</code>.</li>
+        <li>Use <code>//</code> for short Sass comments and reserve longer comments for behaviour that is not obvious.</li>
+        <li>Use semantic Sass variables for reusable colour decisions. Raw hex and rgba values belong in token files or
+            rare one-off implementation details.</li>
     </ul>
     <p>Example:</p>
     <div class="sg-preview">
-{% highlight css %}
-// this is a comment
-.styleFormat {
-color: #000000;
-background-color: rgba(0,0,0,0.5);
+{% highlight scss %}
+// Reusable component styles use a c- prefix.
+.c-cardPreview {
+  color: components.$card-preview-color;
+  background-color: components.$card-preview-bg;
+
+  &-media {
+    display: block;
+  }
+
+  &--compact {
+    padding-block: vertical-rhythm.vr-space(0.5);
+  }
 }
 {% endhighlight %}
     </div>
 </section>
+
 <section class="sg-section">
     <h2>File structure</h2>
-    <p>CSS files should be structured as follows:</p>
+    <p>Library Sass should stay grouped by responsibility. The main entrypoint should compose the public library layers
+        in a predictable order.</p>
     <div class="sg-preview">
 {% highlight html %}
 sass
@@ -32,21 +46,32 @@ sass
 | | +-- _functions.scss
 | +-- mixins
 | | +-- _breakpoints.scss
+| +-- _colours.scss
+| +-- _components.scss
+| +-- _ground-zero.scss
 | +-- _normalize.scss
-| +-- _variables.scss
+| +-- _typography.scss
 +-- components
 | +-- _buttons.scss
 +-- objects
 | +-- _lists.scss
 +-- utilities
 | +-- _grid.scss
++-- style.scss
 {% endhighlight %}
     </div>
+    <ul class="sg-list">
+        <li>Use Sass <code>@use</code> rather than <code>@import</code>.</li>
+        <li>Keep design tokens and mixins in <code>base</code>.</li>
+        <li>Keep public reusable selectors in <code>objects</code>, <code>components</code> and <code>utilities</code>.</li>
+        <li>Create or extend a documented reusable pattern rather than adding unrelated selectors to the entrypoint.</li>
+    </ul>
 </section>
+
 <section class="sg-section">
     <h2>Base</h2>
-    <p>Base styles are default global styles for elements. Base styles are classless. Typically base will include your
-        css reset file and element defaults for the particular project.</p>
+    <p>Base styles define global element defaults, design tokens, functions and mixins. Element selectors belong here
+        when they describe the default behaviour of the library.</p>
     <blockquote>
         <p>A Base rule is applied to an element using an element selector, a descendent selector, or a child selector,
             along with any pseudo-classes. It doesn’t include any class or ID selectors. It is defining the default
@@ -54,28 +79,36 @@ sass
         <footer>—<a href="http://smacss.com/book/type-base" class="sg-link">SMACSS</a></footer>
     </blockquote>
     <div class="sg-preview">
-{% highlight css %}
-// Example typography file
+{% highlight scss %}
 html {
   font-size: 62.5%;
 }
 
 body {
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  line-height: 1.2;
+  @include font.font-size;
+  @include vertical-rhythm.vr-line-height;
+  font-family: typography.$base-font-family;
+  color: colours.$base-color;
+  background-color: colours.$base-background-color;
 }
 {% endhighlight %}
     </div>
+    <h3>Tokens</h3>
+    <p>Token files expose reusable values for colours, typography, grid settings and component decisions.</p>
+    <ul class="sg-list">
+        <li>Use semantic token names for decisions made by the library.</li>
+        <li>Keep raw palette names available only when they are intentionally part of the documented API.</li>
+        <li>Use <code>!default</code> for values that consuming projects may override.</li>
+    </ul>
     <h3>Mixins</h3>
-    <p>Mixins are reusable classes that do not output any CSS unless used in another class.</p>
-    <h4 class="sg-subsection-title">Naming convention</h4>
-    <ul>
-        <li>A mixin must use a kebab case name.</li>
+    <p>Mixins are reusable Sass helpers that do not output CSS unless included by another rule.</p>
+    <h4>Naming convention</h4>
+    <ul class="sg-list">
+        <li>Mixins use kebab case names.</li>
+        <li>Mixin arguments should describe the design decision, not the implementation detail.</li>
     </ul>
     <div class="sg-preview">
 {% highlight scss %}
-// Example mixin
 @mixin visually-hidden() {
   position: absolute !important;
   overflow: hidden !important;
@@ -87,156 +120,108 @@ body {
 }
 
 .visuallyHidden {
-  @include visually-hidden;
+  @include typography.visually-hidden;
 }
 {% endhighlight %}
     </div>
 </section>
+
 <section class="sg-section">
     <h2>Objects</h2>
-    <p>Objects are universal abstractions. Objects define the layout and/or behaviour of a particular
-        repeatable object. Objects should not have knowledge of their height or width, they should fill their
-        container.
-    </p>
+    <p>Objects are reusable structural abstractions. They define layout or behaviour for a repeatable pattern without
+        carrying project-specific visual design.</p>
     <h3>Naming convention</h3>
-    <p>For Objects use <a href="https://en.bem.info/methodology/" class="sg-link">BEM</a> (Block, Element, Modifier)
-        notation.
-    </p>
-    <div class="sg-preview">
-{% highlight scss %}
-// BEM notation pattern
-.block {
-  &-element {
-  }
-
-  &--modifier {
-  }
-}
-{% endhighlight %}
-    </div>
-    <ul class="sg-list">
-        <li><em>Block</em> - An independent entity of an application.</li>
-        <li><em>Element</em> - Part of a block that performs a certain function.</li>
-        <li><em>Modifier</em> - A property of a block or element that alters its look or behaviour.</li>
-    </ul>
-
-    <p>CSS should be constructed as follows.</p>
+    <p>Objects use <a href="https://en.bem.info/methodology/" class="sg-link">BEM</a> style block, element and
+        modifier notation.</p>
     <ul class="sg-list">
         <li>An object must have a unique CSS class name.</li>
-        <li>An object name must be prefixed with <code>o-</code> for clarity.</li>
+        <li>An object name must be prefixed with <code>o-</code>.</li>
         <li>An object must use a camel case name.</li>
-        <li>Different behaviours of an object must be added as a modifier.</li>
+        <li>Different behaviours of an object must be added as modifiers.</li>
+        <li>Objects should fill their container rather than owning fixed width or height.</li>
     </ul>
     <p>Example:</p>
     <div class="sg-preview">
 {% highlight scss %}
-.o-verticalMenu {
-  &-list {
-    position: absolute;
-    top: 100%;
-    right: 0;
-  }
-
-  &-item {
-    float: left;
-    line-height: 1;
-
-    &--large { // Modifier
-      line-height: 2;
-    }
+.o-listInline {
+  > li {
+    display: inline-block;
   }
 }
 
-// Example html
-<menu class="o-verticalMenu">
-    <ul class="o-verticalMenu-list">
-        <li class="o-verticalMenu-item"></li>
-        <li class="o-verticalMenu-item--large"></li>
-    </ul>
-</menu>
+.o-listInline--spaced {
+  > li + li {
+    margin-left: vertical-rhythm.vr-space(0.5);
+  }
+}
 {% endhighlight %}
     </div>
 </section>
+
 <section class="sg-section">
     <h2>Components</h2>
-    <p>Components are one off modules such as banner/header/footer etc. This layer can make use of utilities, objects
-        and base styles and extends them for its own use. Here the design can be more flexible. Components can be made
-        up of other components.</p>
+    <p>Components are reusable interface modules. They can use base tokens, mixins, objects and utilities, but their
+        styling should remain scoped to the component contract.</p>
     <h3>Naming convention</h3>
-    <p>For Objects use <a href="https://en.bem.info/methodology/" class="sg-link">BEM</a> (Block, Element, Modifier)
-        notation.
-    </p>
-    <div class="sg-preview">
-{% highlight scss %}
-// BEM notation pattern
-.block {
-  &-element {
-  }
-
-  &--modifier {
-  }
-}
-{% endhighlight %}
-    </div>
-    <ul class="sg-list">
-        <li><em>Block</em> - An independent entity of an application.</li>
-        <li><em>Element</em> - Part of a block that performs a certain function.</li>
-        <li><em>Modifier</em> - A property of a block or element that alters its look or behaviour.</li>
-    </ul>
-
-    <p>CSS should be constructed as follows.</p>
+    <p>Components use <a href="https://en.bem.info/methodology/" class="sg-link">BEM</a> style block, element and
+        modifier notation.</p>
     <ul class="sg-list">
         <li>A component must have a unique CSS class name.</li>
-        <li>A component name must be prefixed with <code>c-</code> for clarity.</li>
+        <li>A component name must be prefixed with <code>c-</code>.</li>
         <li>A component must use a camel case name.</li>
+        <li>Component variants should be modifiers rather than separate unrelated classes.</li>
+        <li>A component should not depend on a specific application template to make sense.</li>
     </ul>
     <p>Example:</p>
     <div class="sg-preview">
 {% highlight scss %}
-// Example section
-.c-siteHeader {
-  position: relative;
+.c-card {
+  padding: vertical-rhythm.vr-space();
+  border: 1px solid components.$card-border-color;
 
-  &-logo {
-    float: left;
-    margin-top: 20px;
-    margin-left: 5%
+  &-title {
+    @include typography.h3;
+  }
+
+  &--featured {
+    border-color: components.$card-featured-border-color;
   }
 }
 {% endhighlight %}
     </div>
 </section>
+
 <section class="sg-section">
     <h2>Utilities</h2>
-    <p>Utilities are global classes, mixins and state classes to be used throughout the project.</p>
+    <p>Utilities are small, single-purpose classes that make composition easier without creating a new component.</p>
     <h3>Global classes</h3>
-    <p>Typically these are helper classes such as heading sizes. These are commonly used styles that can be applied to
-        elements where required. This avoids repetition in components.</p>
+    <ul class="sg-list">
+        <li>Utilities should do one thing and have predictable specificity.</li>
+        <li>Use utilities for small composition adjustments, not as a substitute for component styling.</li>
+        <li>Prefer component variables and component classes when a visual decision belongs to a reusable pattern.</li>
+        <li>Review broad layout helpers before treating them as reusable utilities.</li>
+    </ul>
     <div class="sg-preview">
 {% highlight css %}
-// Example global classes
-.h1 { font-size: 20px; }
-.h2 { font-size: 17px; }
-.h3 { font-size: 14px; }
-.h4 { font-size: 13px; }
-.h5 { font-size: 13px; }
-.h6 { font-size: 11px; }
+.h1 { font-size: 60px; }
+.block { display: block; }
+.textCenter { text-align: center; }
+.m-b--full { margin-bottom: 24px; }
 {% endhighlight %}
     </div>
     <h3>State</h3>
-    <p>State is something that overrides all other styles. These are typically used to represent if an element is
-        active, hidden, expanded etc.</p>
+    <p>State classes represent temporary UI state such as hidden, active, selected or expanded. They may be shared by CSS
+        and JavaScript.</p>
     <ul class="sg-list">
-        <li>The use of <code>!important</code> is allowed in state classes but should only be added when necessary.</li>
         <li>State classes are prefixed <code>is-</code>.</li>
-        <li>State classes can be used in both CSS and JS.</li>
+        <li>Use <code>!important</code> in state classes only when the state must override component styles.</li>
+        <li>Do not use state classes for permanent variants; use component modifiers instead.</li>
     </ul>
     <p>Example:</p>
     <div class="sg-preview">
 {% highlight css %}
-// Example state classes
-.is-error { background-color: #FF0000; }
 .is-hidden { display: none; }
+.is-active { font-weight: 700; }
 {% endhighlight %}
     </div>
 </section>
